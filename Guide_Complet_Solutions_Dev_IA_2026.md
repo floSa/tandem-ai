@@ -1,406 +1,288 @@
+# Guide de référence des solutions de développement par IA
+
+**Édition Septembre 2026** · document généré le 2026-09-15 depuis `catalog/` · prochaine révision prévue le 2027-03-15
+
+> [!NOTE]
+> Ce document est **généré**. Toute correction se fait dans `catalog/`, puis `python3 pipeline/build_guide.py`.
+> Une modification faite ici sera écrasée à la prochaine génération.
+
+## État de vérification
+
+| Couche | Couverture |
+| :-- | :-- |
+| Mesures de benchmark | 1 275 sur 18 benchmarks |
+| Modèles au catalogue | 194 |
+| Tarifs API relevés sur page officielle | 25 / 194 |
+| Forfaits d'abonnement relevés | 13 |
+| Harnais re-vérifiés | 4 / 18 |
+| Taux de change USD→EUR | 0.92 — **non vérifié** |
+
+> [!WARNING]
+> Le taux de change n'est pas vérifié : **toutes les valeurs en euros de ce document en héritent**. Les montants en dollars, eux, sont relevés sur les pages officielles.
+
+---
+
+## 1. Architecture conceptuelle : la taxonomie en quatre couches
+
+Évaluer une solution de développement assisté par IA suppose de découpler quatre
+choses que le marketing mélange volontiers : l'interface, le transport, le modèle
+et la facturation. Un même modèle donne des résultats différents selon le harnais
+qui l'exécute, et un même harnais change de prix du tout au tout selon le régime
+de facturation choisi.
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│ COUCHE 1 — LE HARNAIS D'EXÉCUTION                                      │
+│ IDE dérivés · extensions VS Code · applications desktop · agents CLI   │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │  REST · API OpenAI · MCP · ACP
+┌───────────────────────────────────▼────────────────────────────────────┐
+│ COUCHE 2 — LA PASSERELLE                                               │
+│ agrégateurs cloud · serveurs locaux compatibles OpenAI · accès direct  │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │
+┌───────────────────────────────────▼────────────────────────────────────┐
+│ COUCHE 3 — LE FOURNISSEUR DE MODÈLE                                    │
+│ laboratoires propriétaires · laboratoires à poids ouverts              │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │
+┌───────────────────────────────────▼────────────────────────────────────┐
+│ COUCHE 4 — LE MODÈLE ÉCONOMIQUE                                        │
+│ forfait SaaS · facturation au token (BYOK) · auto-hébergement          │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+La couche 1 n'est pas neutre. Sur Terminal-Bench, le référentiel recense des
+dizaines de harnais différents pour les mêmes modèles, et l'écart qu'ils
+produisent dépasse souvent l'écart entre deux modèles concurrents. C'est la
+raison d'être de ce document : un score ne se lit jamais sans son harnais.
+
+---
+
+## 2. Facturation depuis la France
+
+Deux régimes coexistent, et ils ne produisent pas le même débit pour le même
+prix affiché.
+
+**Plateformes facturant en dollars via Stripe.** Un particulier français se voit
+appliquer la TVA de 20 % au paiement : un forfait affiché à 20 $ donne lieu à un
+débit de 24 $. Un professionnel qui renseigne son numéro de TVA
+intracommunautaire bascule en autoliquidation : la facture est émise à 0 % de TVA
+et le montant débité est strictement le montant hors taxes.
+
+**Plateformes affichant un prix en euros TTC.** Le prix européen intègre déjà la
+TVA. Le professionnel ne bénéficie alors d'aucune autoliquidation sur ce canal.
+
+Les colonnes « € HT » et « € TTC » des tableaux qui suivent sont **calculées**,
+jamais saisies : elles dérivent d'un taux de change unique et d'un taux de TVA
+uniques, déclarés dans `catalog/_meta.yaml`. Quand le taux bouge, tout le
+document suit.
+
+Un point de vigilance qui coûte cher en pratique : **ne pas confondre un
+abonnement de chat grand public avec une consommation d'API**. Les deux
+s'expriment en dollars par mois mais ne financent pas la même chose, et seul le
+second passe à l'échelle d'une équipe.
+
+---
+
+## 3. Panorama des harnais
+
+La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édition. Une fiche non re-contrôlée est signalée comme telle plutôt que présentée comme à jour.
+
+### 3.1 IDE dérivés
+
+| Outil | Éditeur | Capacités | Forfaits | Vérifié |
+| :-- | :-- | :-- | :-- | :-- |
+| [Cursor](https://cursor.com) | Anysphere, Inc. | BYOK, modèles locaux, MCP | Hobby, Individual, Teams | 2026-09-15 |
+| [Trae](https://trae.ai) | ByteDance | MCP | — | non |
+| [Void IDE](https://voideditor.com) *(maintenance)* | Communauté open-source | BYOK, modèles locaux | — | non |
+| [Windsurf / Devin](https://devin.ai) | Cognition AI | BYOK, MCP | — | non |
+| [Zed](https://zed.dev) | Zed Industries, Inc. | BYOK, modèles locaux | — | non |
+
+> **Cursor —** Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente ne figurent plus.
+
+### 3.2 Extensions VS Code
+
+| Outil | Éditeur | Capacités | Forfaits | Vérifié |
+| :-- | :-- | :-- | :-- | :-- |
+| Cline | Collectif open-source | BYOK, modèles locaux, MCP, gratuit | — | non |
+| [Continue](https://continue.dev) | Continue Dev, Inc. | BYOK, modèles locaux, gratuit | — | non |
+| [GitHub Copilot](https://github.com/features/copilot) | GitHub / Microsoft | — | Free, Pro, Pro+, Max | 2026-09-15 |
+| Roo Code | Collectif open-source | BYOK, modèles locaux, MCP, gratuit | — | non |
+
+> **GitHub Copilot —** Modèle de crédits confirmé : 15 $ (Pro), 70 $ (Pro+), 200 $ (Max). Complétions illimitées sur tout forfait payant.
+
+### 3.3 Applications desktop
+
+| Outil | Éditeur | Capacités | Forfaits | Vérifié |
+| :-- | :-- | :-- | :-- | :-- |
+| [ChatGPT Desktop](https://openai.com/chatgpt/desktop) | OpenAI, LLC | — | — | non |
+| [Claude Desktop](https://claude.ai/download) | Anthropic, PBC | MCP | Free, Pro, Max | 2026-09-15 |
+| [LM Studio](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — | non |
+
+### 3.4 Agents CLI
+
+| Outil | Éditeur | Capacités | Forfaits | Vérifié |
+| :-- | :-- | :-- | :-- | :-- |
+| [Aider](https://aider.chat) | Paul Gauthier (open-source) | BYOK, modèles locaux, gratuit | — | non |
+| [Claude Code](https://docs.claude.com/en/docs/claude-code) | Anthropic, PBC | MCP | Pro, Max | 2026-09-15 |
+| [Kimi Code CLI](https://platform.kimi.ai) | Moonshot AI | — | — | non |
+| [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — | non |
+
+> **Claude Code —** Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
+
+### 3.5 Passerelles
+
+| Outil | Éditeur | Capacités | Forfaits | Vérifié |
+| :-- | :-- | :-- | :-- | :-- |
+| [Ollama](https://ollama.com) | Ollama | modèles locaux, gratuit | — | non |
+| [OpenRouter](https://openrouter.ai) | OpenRouter, Inc. | — | — | non |
+
+---
+
+## 4. Forfaits d'abonnement
+
+Montants calculés au taux de 0.92 $/€ et à une TVA de 20%. La colonne **€ HT** est ce que débite un professionnel en autoliquidation ; la colonne **€ TTC** ce que débite un particulier.
+
+| Éditeur | Produit | Forfait | Affiché | € HT (pro) | € TTC | Inclus | Source |
+| :-- | :-- | :-- | --: | --: | --: | :-- | :-- |
+| Anthropic | Claude | **Free** | gratuit | 0,00 € | 0,00 € | Chat web, iOS, Android et desktop. Claude Code non inclus. | [page](https://claude.com/pricing) |
+| Anthropic | Claude | **Pro** | $20 | 18,40 € | 22,08 € | Usage étendu, accès Opus, projets étendus, Claude for Microsoft 365. Inclut Claude Code. | [page](https://claude.com/pricing) |
+| Anthropic | Claude | **Max** | $100 | 92,00 € | 110,40 € | 5x ou 20x l'usage de Pro, limites de sortie supérieures, accès prioritaire. | [page](https://claude.com/pricing) |
+| Anysphere | Cursor | **Hobby** | gratuit | 0,00 € | 0,00 € | Requêtes Agent limitées, accès Composer. | [page](https://cursor.com/pricing) |
+| Anysphere | Cursor | **Individual** | $20 | 18,40 € | 22,08 € | Limites étendues sur Agent, modèles frontier, MCP, skills, hooks, agents cloud. | [page](https://cursor.com/pricing) |
+| Anysphere | Cursor | **Teams** | $40/u | 36,80 € | 44,16 € | Facturation centralisée, marketplace interne, SSO SAML/OIDC, mode privé. | [page](https://cursor.com/pricing) |
+| GitHub | GitHub Copilot | **Free** | gratuit | 0,00 € | 0,00 € | 2 000 complétions/mois, 24+ modèles dont Haiku 4.5 et GPT-5 mini. | [page](https://github.com/features/copilot/plans) |
+| GitHub | GitHub Copilot | **Pro** | $10 | 9,20 € | 11,04 € | Complétion et next-edit illimitées, 15 $ de crédits mensuels. | [page](https://github.com/features/copilot/plans) |
+| GitHub | GitHub Copilot | **Pro+** | $39 | 35,88 € | 43,06 € | 70 $ de crédits mensuels, 4x+ l'usage de Pro. | [page](https://github.com/features/copilot/plans) |
+| GitHub | GitHub Copilot | **Max** | $100 | 92,00 € | 110,40 € | 200 $ de crédits mensuels, 2,9x+ l'usage de Pro+. | [page](https://github.com/features/copilot/plans) |
+| Mistral AI | Mistral Vibe | **Free** | gratuit | 0,00 € | 0,00 € | Messages et recherches limités, 10 $/mois de crédits API. | [page](https://mistral.ai/pricing) |
+| Mistral AI | Mistral Vibe | **Pro** | $14.99 | 13,79 € | 16,55 € | Capacité de code étendue, 15 $/mois de crédits API. 5,99 $ pour les étudiants vérifiés. | [page](https://mistral.ai/pricing) |
+| Mistral AI | Mistral Vibe | **Team** | $24.99/u | 22,99 € | 27,59 € | Minimum 50 $/mois, 30 Go de stockage par utilisateur, vérification de domaine. | [page](https://mistral.ai/pricing) |
+
+---
+
+## 5. Tarifs API au million de tokens
+
+Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les modèles dont le tarif a été relevé sur la page officielle du fournisseur : un modèle absent de ce tableau n'est pas un modèle sans tarif, c'est un tarif non encore vérifié.
+
+| Fournisseur | Modèle | Rôle | Contexte | Entrée $ | Cache $ | Sortie $ | Entrée € HT | Sortie € HT | Relevé le |
+| :-- | :-- | :-- | --: | --: | --: | --: | --: | --: | :-- |
+| Z.ai (Zhipu AI) | **GLM-4.7-Flash** | Gratuit avec limites de débit | — | gratuit | gratuit | gratuit | 0,00 € | 0,00 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-5.3-Flash** | Flash économique | — | $0.15 | $0.03 | $0.5 | 0,14 € | 0,46 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Luna** | Flash / économique | — | $0.2 | $0.02 | $1.2 | 0,18 € | 1,10 € | 2026-09-15 |
+| DeepSeek | **DeepSeek Flash** | Flash ultra-économique | 1000k | $0.3 | $0.006 | $1.2 | 0,28 € | 1,10 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.5 Flash-Lite** | Ultra-économique | — | $0.3 | $0.03 | $2.5 | 0,28 € | 2,30 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.8 Flash** | Flash génération courante | — | $0.75 | $0.075 | $3.75 | 0,69 € | 3,45 € | 2026-09-15 |
+| Moonshot | **Kimi K2.6** | — | 262k | $0.95 | $0.16 | $4 | 0,87 € | 3,68 € | 2026-09-15 |
+| Moonshot | **Kimi K2.7 Code** | Dédié développement logiciel | 262k | $0.95 | $0.19 | $4 | 0,87 € | 3,68 € | 2026-09-15 |
+| Anthropic | **Claude Haiku 4.5** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,92 € | 4,60 € | 2026-09-15 |
+| DeepSeek | **DeepSeek V4-Pro** | Flagship raisonnement | 1000k | $1.32 | $0.044 | $3.96 | 1,21 € | 3,64 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-5.3** | Flagship raisonnement et code | — | $1.4 | $0.26 | $4.4 | 1,29 € | 4,05 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.5 Flash** | — | — | $1.5 | $0.15 | $9 | 1,38 € | 8,28 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 5** | Référence ingénierie logicielle | 200k | $2 | $0.2 | $10 | 1,84 € | 9,20 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.1 Pro** | Flagship raisonnement | 200k | $2 | $0.2 | $12 | 1,84 € | 11,04 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Terra** | Équilibré développeur | — | $2 | $0.2 | $12 | 1,84 € | 11,04 € | 2026-09-15 |
+| OpenAI | **o3** | Raisonnement algorithmique | — | $2 | $0.5 | $8 | 1,84 € | 7,36 € | 2026-09-15 |
+| OpenAI | **GPT-5.4** | — | — | $2.5 | $0.25 | $15 | 2,30 € | 13,80 € | 2026-09-15 |
+| Moonshot | **Kimi K3** | Flagship multimodal | 1048k | $3 | $0.3 | $15 | 2,76 € | 13,80 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Sol** | Haute capacité multimodal | — | $4 | $0.4 | $20 | 3,68 € | 18,40 € | 2026-09-15 |
+| Anthropic | **Claude Opus 5** | Flagship architecture et cas complexes | 200k | $5 | $0.5 | $25 | 4,60 € | 23,00 € | 2026-09-15 |
+| OpenAI | **GPT-5.5** | — | — | $5 | $0.5 | $30 | 4,60 € | 27,60 € | 2026-09-15 |
+| Anthropic | **Claude Fable 5.1** | Flagship raisonnement étendu | 200k | $10 | $0.25 | $50 | 9,20 € | 46,00 € | 2026-09-15 |
+| OpenAI | **GPT-6 Astra** | Flagship nouvelle génération | — | $10 | $1 | $50 | 9,20 € | 46,00 € | 2026-09-15 |
+| OpenAI | **o3-pro** | Raisonnement extrême | — | $20 | — | $80 | 18,40 € | 73,60 € | 2026-09-15 |
+| OpenAI | **GPT-5.5 Pro** | — | — | $30 | — | $180 | 27,60 € | 165,60 € | 2026-09-15 |
+
+**Particularités tarifaires**
+
+- **DeepSeek Flash** — heures creuses : $0.15 en entrée, $0.6 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
+- **DeepSeek V4-Pro** — heures creuses : $0.66 en entrée, $1.98 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
+- **Gemini 3.1 Pro** — Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00.
+- **Gemini 3.8 Flash** — Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50. (jusqu'au 2026-12-31).
+
+---
+
+## 6. Performance mesurée
+
+18 benchmarks suivis, 14 écartés (saturés, obsolètes ou mesurant de la mémorisation). Chaque rejet est documenté avec son motif dans `catalog/benchmarks.yaml`.
+
+### 6.1 État de l'art par benchmark
+
+| Benchmark | Ce qu'il mesure | Meilleur score | Modèle | Harnais |
+| :-- | :-- | --: | :-- | :-- |
+| **Aider polyglot** | Édition de code existant dans plusieurs langages, au format diff. | 88.0% | `gpt-5-2025-08-07_high` | — |
+| **GPQA diamond** | Questions scientifiques de niveau doctorat, hors de portée d'une recherche | 95.8% | `gpt-6-astra_max` | — |
+| **HLE** | Humanity's Last Exam : questions expertes volontairement très difficiles. | 46.5% | `claude-fable-5-1_xhigh` | — |
+| **METR Time Horizons** | Durée de tâche humaine qu'un modèle accomplit avec 50% de réussite. Exprim | 0.85 min | `claude-mythos-preview-early` | — |
+| **SWE-Bench verified** | Résolution de vraies issues GitHub Python, patch validé par les tests du d | 83.5% | `claude-opus-4-7_max` | — |
+| **Terminal Bench** | Tâches multi-étapes en ligne de commande : navigation, exécution, vérifica | 84.7% | `gpt-5.5_unknown` | NexAU-AHE |
+| **APEX-Agents** | Capacités agentiques sur tâches expertes. | 47.4% | `claude-fable-5-1_unknown` | — |
+| **ARC-AGI-2** | Raisonnement abstrait sur grilles, résistant à la mémorisation. | 95.0% | `gpt-6-astra_max` | — |
+| **Cybench** | Résolution de défis de cybersécurité type CTF. | 93.0% | `claude-opus-4-6_unknown` | — |
+| **DeepSWE** | Ingénierie logicielle sur tâches longues. | 74.1% | `gpt-6-astra_xhigh` | mini-swe-agent |
+| **FrontierCode** | Génération de code sur problèmes récents, conçu contre la contamination. | 53.5% | `claude-fable-5_unknown` | claude-code |
+| **GDPval** | Tâches professionnelles réelles évaluées par des experts du métier. | 49.7% | `gpt-5.2-2025-12-11_none` | — |
+| **GSO-Bench** | Optimisation de code sous contrainte de performance mesurée. | 47.1% | `claude-opus-4-8_unknown` | OpenHands |
+| **MirrorCode** | Benchmark de code récent, résistant à la contamination. | 73.3% | `claude-fable-5-1_high` | — |
+| **OSWorld 2.0** | Pilotage d'un vrai bureau graphique (fenêtres, applications). | 31.4% | `claude-opus-5_max` | — |
+| **Remote Labor Index** | Capacité à accomplir des missions freelance réellement rémunérées. | 16.1% | `claude-fable-5` | — |
+| **SciCode** | Implémentation de code scientifique à partir d'énoncés de recherche. | 62.0% | `claude-fable-5-1_max` | — |
+| **The Agent Company** | Tâches de travail réalistes en entreprise simulée (navigation, outils, col | 52.4% | `DeepSeek-V3.2-Exp` | — |
+
 > [!IMPORTANT]
-> **Document en cours de régénération — vérification tarifaire de septembre 2026.**
+> **Égalités statistiques.** Sur les benchmarks suivants, les deux premiers ne sont pas séparés au seuil de 95 % : les classer l'un devant l'autre est une erreur de lecture.
 >
-> Ce Guide a été confronté aux pages officielles des fournisseurs. Le bilan est
-> nuancé et mérite d'être dit précisément :
->
-> **Ce qui tient.** Les noms de modèles sont réels (`gpt-5.6-sol/terra/luna`,
-> `Kimi K3`, `GLM-5.3` figurent bien aux catalogues officiels). Les tarifs
-> Anthropic, Moonshot et Codestral sont exacts au centime. Les prix d'entrée et de
-> sortie de GLM-5.3 et DeepSeek V4-Pro sont corrects.
->
-> **Ce qui ne tient pas.** Les prix de mise en cache sont fréquemment faux
-> (GLM-5.3 : 0,26 $ et non 0,14 $ ; DeepSeek V4-Pro : 0,022 $ et non 0,16 $). Les
-> tarifs attribués à GPT-5.6 sont en réalité ceux de GPT-5.5 et GPT-5.4. Mistral
-> Large 2 est remplacé par Large 3 à un tarif très différent. Les paliers Cursor
-> Pro+ et Ultra n'existent plus. Aucun de ces chiffres n'était sourcé.
->
-> **Ce qui manquait.** Google/Gemini n'a aucune fiche, alors que le lab est au
-> premier rang sur plusieurs benchmarks.
->
-> Les données vérifiées vivent désormais dans [`catalog/`](./catalog/) et se
-> consultent via [`site/index.html`](./site/index.html). Ce Guide sera régénéré
-> depuis le catalogue.
+> - **Terminal Bench** — `gpt-5.5_unknown` et `gpt-5.5_unknown` (écart 0.016, intervalle 0.058)
+> - **GPQA diamond** — `gpt-6-astra_max` et `gemini-3.8-flash_high` (écart 0.004, intervalle 0.038)
+> - **SWE-Bench verified** — `claude-opus-4-7_max` et `gpt-5.5-pre-release_xhigh` (écart 0.029, intervalle 0.048)
+> - **DeepSWE** — `gpt-6-astra_xhigh` et `gemini-3.8-flash_high` (écart 0.003, intervalle 0.032)
+
+### 6.2 Coût mesuré et effort de raisonnement
+
+Les suffixes `low` à `max` ne désignent pas des modèles différents mais le **budget de raisonnement** accordé au même modèle. Son effet dépasse souvent l'écart entre deux modèles concurrents, et il se paie. Le coût ci-dessous est celui **réellement mesuré pendant le run**, pas un prix au token.
+
+Benchmark de référence sur cet axe : **DeepSWE**, mesuré sous un harnais unique (`mini-swe-agent`) — l'écart observé s'impute donc au modèle et à son effort, pas au harnais.
+
+| Modèle | Effort le plus bas | Effort le plus haut | Gain | Surcoût |
+| :-- | :-- | :-- | --: | --: |
+| `gpt-6-astra` | low — 67.0% à $2.19 | max — 73.2% à $12.37 | +6.2 pts | ×5.7 |
+| `gemini-3.8-flash` | medium — 71.0% à $1.97 | high — 73.8% à $2.36 | +2.8 pts | ×1.2 |
+| `claude-opus-5` | low — 58.1% à $1.66 | max — 73.7% à $11.84 | +15.5 pts | ×7.1 |
+| `gpt-5.6-sol` | low — 45.4% à $1.07 | max — 72.7% à $8.39 | +27.3 pts | ×7.8 |
+| `claude-fable-5` | low — 59.6% à $3.76 | max — 69.7% à $21.63 | +10.1 pts | ×5.8 |
+| `gpt-5.6-terra` | low — 24.1% à $0.43 | max — 69.6% à $4.95 | +45.6 pts | ×11.6 |
+| `grok-4.6` | low — 41.6% à $1.04 | xhigh — 66.7% à $5.50 | +25.1 pts | ×5.3 |
+| `gpt-5.6-luna` | low — 1.6% à $0.07 | max — 67.2% à $3.03 | +65.6 pts | ×41.8 |
+| `gpt-5.5` | low — 27.0% à $1.20 | xhigh — 67.0% à $7.23 | +40.1 pts | ×6.0 |
+| `gemini-3.7-flash` | low — 53.8% à $1.83 | high — 65.3% à $2.18 | +11.5 pts | ×1.2 |
+| `claude-opus-4-8` | low — 40.8% à $2.29 | max — 59.0% à $13.22 | +18.2 pts | ×5.8 |
+| `claude-sonnet-5` | low — 30.5% à $2.19 | max — 53.8% à $26.40 | +23.3 pts | ×12.1 |
+| `glm-5.2` | high — 36.3% à $2.84 | max — 43.8% à $3.92 | +7.5 pts | ×1.4 |
+| `gemini-3.5-flash` | medium — 37.4% à $7.34 | high — 36.1% à $3.45 | -1.3 pts | ×0.5 |
+
+Un gain faible pour un surcoût élevé signale que l'effort supplémentaire ne s'achète plus. Certains modèles **régressent** au palier maximal.
 
 ---
 
-# Guide de Référence & Audit Exhaustif des Solutions de Développement par IA (Août 2026)
-## Panorama des Harnais, IDEs Dérivés, Applications Desktop, Agents CLI, Passerelles & Grilles Tarifaires Réelles en France
+## Ce que ce document n'affirme pas
+
+Un référentiel honnête énonce ses limites avant ses conclusions.
+
+- **Aucun classement de « meilleur modèle ».** La question est mal posée : un
+  score appartient au triplet *(modèle × harnais × effort de raisonnement)*.
+- **Aucun score composite maison.** Agréger des benchmarks aux protocoles
+  différents produit un nombre sans signification.
+- **Aucune interpolation.** Un modèle non mesuré sur un benchmark reste vide.
+- **Le coût par tâche de benchmark n'est pas le coût d'une journée de
+  développement.** Il en donne un ordre de grandeur comparatif, rien de plus.
+- **Rien sur la latence perçue, l'ergonomie du harnais ni la qualité durable du
+  code produit** — trois facteurs qui pèsent souvent plus que quelques points de
+  benchmark.
 
 ---
 
-## Sommaire
-1. [Architecture Conceptuelle & Taxonomie en 4 Couches](#1-architecture-conceptuelle--taxonomie-en-4-couches)
-2. [Règles de Facturation en France : Devises, Stripe & Impact Réel de la TVA (20%)](#2-règles-de-facturation-en-france--devises-stripe--impact-réel-de-la-tva-20)
-3. [Panorama Comparatif des Harnais et Environnements de Développement](#3-panorama-comparatif-des-harnais-et-environnements-de-développement)
-   * 3.1 [Les IDE Dérivés IA (Forks VS Code & Éditeurs Dédiés)](#31-les-ide-dérivés-ia-forks-vs-code--éditeurs-dédiés)
-   * 3.2 [Les Extensions Agentes VS Code Standard (BYOK & Multi-Modèles)](#32-les-extensions-agentes-vs-code-standard-byok--multi-modèles)
-   * 3.3 [Les Applications Desktop Autonomes (GUI & Agents Locaux)](#33-les-applications-desktop-autonomes-gui--agents-locaux)
-   * 3.4 [Les Agents CLI & Frameworks d'Automatisation Terminal](#34-les-agents-cli--frameworks-dautomatisation-terminal)
-   * 3.5 [Les Passerelles Universelles & Agrégateurs Multi-Modèles](#35-les-passerelles-universelles--agrégateurs-multi-modèles)
-4. [Panorama Détaillé des Fournisseurs de Modèles (Labs IA)](#4-panorama-détaillé-des-fournisseurs-de-modèles-labs-ia)
-5. [Tableaux Comparatifs Économiques Détaillés & Sourcés](#5-tableaux-comparatifs-économiques-détaillés--sourcés)
-   * 5.1 [Tableau Comparatif des Forfaits SaaS : Montants Débités Réels en France (Particulier TTC vs Pro HT)](#51-tableau-comparatif-des-forfaits-saas--montants-débités-réels-en-france-particulier-ttc-vs-pro-ht)
-   * 5.2 [Tableau Comparatif des Prix API au 1M de Tokens (1 Ligne par Modèle)](#52-tableau-comparatif-des-prix-api-au-1m-de-tokens-1-ligne-par-modèle)
-   * 5.3 [Simulations Budgétaires Réelles en France](#53-simulations-budgétaires-réelles-en-france)
-6. [Guide Pratique d'Interopérabilité & Matrice de Décision](#6-guide-pratique-dinteropérabilité--matrice-de-décision)
+## Sources et licences
 
----
+Données de benchmark : [Epoch AI — *Capabilities & Benchmarking*](https://epoch.ai/benchmarks), sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Tarifs relevés sur les pages officielles des fournisseurs, dont l'URL et la date de consultation figurent dans `catalog/`. Attributions complètes : [`ATTRIBUTION.md`](./ATTRIBUTION.md).
 
-## 1. Architecture Conceptuelle & Taxonomie en 4 Couches
-
-Pour évaluer objectivement les solutions d'assistance au code, il est nécessaire de découpler la couche d'interaction humaine du modèle d'intelligence artificielle et du modèle de facturation.
-
-```
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│ COUCHE 1 : LE HARNAIS D'EXÉCUTION (L'Interface Développeur)                      │
-│ • IDE Dérivés : Cursor, Windsurf (Devin Desktop), Trae, Zed AI                   │
-│ • Extensions VS Code : GitHub Copilot, Cline, Roo Code, Continue, Qoder, CodeGeeX│
-│ • Applications Desktop : LM Studio Bionic, Claude Desktop (MCP), ChatGPT Desktop │
-│ • Agents CLI : Claude Code, Aider, Hermes Agent, OpenClaw, Kimi Code CLI         │
-└────────────────────────────────────────┬─────────────────────────────────────────┘
-                                         │ (Protocoles : REST, OpenAI API, MCP, SSE)
-┌────────────────────────────────────────▼─────────────────────────────────────────┐
-│ COUCHE 2 : LA PASSERELLE / ROUTEUR D'ACCÈS                                       │
-│ • Agrégateurs Cloud Universels : OpenRouter, Together AI, Fireworks AI, Groq     │
-│ • Serveurs Locaux OpenAI-Compatibles : Ollama, LM Studio Server, vLLM, SGLang    │
-│ • Connexion Directe Provider : SDK officiel du laboratoire (Anthropic, OpenAI)   │
-└────────────────────────────────────────┬─────────────────────────────────────────┘
-                                         │
-┌────────────────────────────────────────▼─────────────────────────────────────────┐
-│ COUCHE 3 : LE FOURNISSEUR DE MODÈLE (Le Laboratoire d'IA / Les Poids)            │
-│ • Laboratoires Occidentaux : Anthropic (Claude 5), OpenAI (GPT-5.6, o3), Mistral │
-│ • Laboratoires Asiatiques : DeepSeek (V4), Qwen (Qwen 3.8), Moonshot (Kimi K3),  │
-│   Zhipu AI (GLM-5.3)                                                             │
-└────────────────────────────────────────┬─────────────────────────────────────────┘
-                                         │
-┌────────────────────────────────────────▼─────────────────────────────────────────┐
-│ COUCHE 4 : LE MODÈLE ÉCONOMIQUE & LA FACTURATION EN FRANCE                       │
-│ • Forfait SaaS Fixe en Euros TTC (ex: ChatGPT Plus à 23 € TTC/mois)              │
-│ • Forfait SaaS facturé en USD via Stripe + TVA française de 20% ($20 -> $24 TTC) │
-│ • Consommation API au token via passerelle (OpenRouter / Clé directe + TVA)      │
-│ • Auto-Hébergé / Gratuit : Modèles Open-Weights exécutés sur votre propre GPU    │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 2. Règles de Facturation en France : Devises, Stripe & Impact Réel de la TVA (20%)
-
-Lors de l'achat d'un abonnement ou de crédits API depuis la France, deux régimes de facturation coexistent :
-
-1. **Les plateformes à prix fixe en Euros (€) avec TVA intégrée :**
-   * **OpenAI (ChatGPT) :** Fixe son prix européen directement à **23,00 € TTC / mois** pour le forfait Plus (au lieu de 20 $), intégrant nativement la TVA française de 20%.
-   * **Mistral AI :** Entreprise française basée à Paris. Les factures sont assujetties à la TVA française classique de 20%.
-2. **Les plateformes américaines facturant en Dollars US ($) via Stripe :**
-   * **Anthropic (Claude Pro), Cursor, Windsurf, Trae, GitHub, OpenRouter :**
-     * **Pour un Particulier en France :** La plateforme applique automatiquement la **TVA française de 20%** lors du paiement Stripe. Un forfait affiché à 20,00 $ USD donne lieu à un débit de **24,00 $ USD** (soit environ **21,50 € à 22,80 € prélevés sur votre compte bancaire**, selon le taux de change et les frais de transaction internationale de votre banque).
-     * **Pour un Professionnel / Entreprise :** Si vous renseignez votre **numéro de TVA intracommunautaire (FRxx...)**, la facture est émise en **autoliquidation de TVA (0% de TVA débitée)**. Le montant prélevé est strictement le montant hors taxes (ex: 20,00 $ USD ≈ **18,40 € HT**).
-
----
-
-## 3. Panorama Comparatif des Harnais et Environnements de Développement
-
-### 3.1 Les IDE Dérivés IA (Forks VS Code & Éditeurs Dédiés)
-
-#### 🔹 Cursor
-* **Éditeur :** Anysphere, Inc. (San Francisco, USA)
-* **Liens Officiels :** [Site Cursor](https://cursor.com) | [Documentation](https://docs.cursor.com) | [Tarifs Cursor](https://cursor.com/pricing)
-* **Nature Technique :** Fork complet et autonome de Visual Studio Code.
-* **Fonctionnalités Clés :**
-  - Autocomplétion multi-lignes prédictive (*Cursor Tab*).
-  - Mode Agentique *Composer* (édition multi-fichiers simultanée, exécution terminale et auto-correction).
-  - Indexation vectorielle sémantique du dépôt local et support natif de MCP (*Model Context Protocol*).
-* **Modèles Supportés :** Claude Sonnet 5.0, Claude Opus 5.0, GPT-5.6 Sol/Terra, DeepSeek V4, et modèles internes.
-* **Facturation France :** Facturation en USD via Stripe avec ajout de la TVA française (20%) pour les particuliers ($20 + 20% = $24,00 USD débités).
-
-#### 🔹 Windsurf / Devin Desktop
-* **Éditeur :** Cognition AI (ayant intégré Codeium / Windsurf).
-* **Liens Officiels :** [Site Devin AI](https://devin.ai) | [Portail Windsurf](https://codeium.com/windsurf) | [Tarifs Devin](https://devin.ai/pricing)
-* **Nature Technique :** Fork VS Code articulé autour du moteur de flux en cascade (*Cascade Flow*).
-* **Fonctionnalités Clés :**
-  - Moteur Cascade : combine la recherche sémantique profonde, l'ordonnancement de tâches et l'exécution terminale contrôlée.
-  - Connexion avec *Devin Cloud* pour déporter des tâches d'ingénierie longues en tâche de fond.
-* **Modèles Supportés :** Claude Sonnet 5.0, GPT-5.6, Gemini 2.0 Pro et modèles Codeium.
-
-#### 🔹 Trae
-* **Éditeur :** ByteDance.
-* **Liens Officiels :** [Site Trae](https://trae.ai) | [Documentation](https://docs.trae.ai) | [Tarifs Trae](https://trae.ai/pricing)
-* **Nature Technique :** Fork VS Code optimisé pour le travail agentique autonome (macOS, Windows, Cloud IDE).
-* **Fonctionnalités Clés :**
-  - Mode **SOLO** : Agent entièrement autonome capable de concevoir, coder, tester et déployer une application complète à partir d'un prompt naturel.
-  - Tarification très compétitive : Forfait Pro à $10/mois (~11,00 € TTC en France).
-* **Modèles Supportés :** Claude Sonnet 5.0, GPT-5.6, DeepSeek V4 Pro/Flash et modèles Doubao.
-
-#### 🔹 Zed AI
-* **Éditeur :** Zed Industries, Inc.
-* **Liens Officiels :** [Site Zed](https://zed.dev) | [Docs Assistant](https://zed.dev/docs/assistant) | [Tarifs Zed](https://zed.dev/pricing)
-* **Nature Technique :** Éditeur natif haute performance écrit en Rust, rendu GPU pur.
-* **Fonctionnalités Clés :** *Edit Predictions* instantanées et intégration native BYOK sans aucun surcoût.
-
----
-
-### 3.2 Les Extensions Agentes VS Code Standard (BYOK & Multi-Modèles)
-
-#### 🔹 GitHub Copilot & Copilot Workspace
-* **Éditeur :** GitHub / Microsoft.
-* **Liens Officiels :** [GitHub Copilot](https://github.com/features/copilot) | [Grille Tarifaire GitHub](https://github.com/pricing)
-* **Système de Facturation (Depuis le 1er juin 2026) :**
-  - Passage au modèle basé sur les **GitHub AI Credits** à la consommation de tokens.
-  - **Autocomplétion gratuite :** Les suggestions en ligne et l'autocomplétion par tabulation ne consomment aucun crédit IA sur tous les plans payants.
-  - Facturation en France : $10 USD + TVA 20% = **$12,00 USD TTC / mois** (environ 11,00 € TTC) pour le forfait Pro.
-
-#### 🔹 Cline (ex-Claude Dev)
-* **Éditeur :** Collectif Open-Source.
-* **Liens Officiels :** [Dépôt GitHub Cline](https://github.com/cline/cline) | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev)
-* **Nature Technique :** Extension agentique autonome open-source pour VS Code.
-* **Fonctionnalités Clés :**
-  - Agent autonome complet : lit la codebase, crée/modifie des fichiers, exécute les commandes dans le terminal intégré et teste son code de manière itérative.
-  - Approbation humaine requise pour chaque action sensible.
-  - 100% Gratuit et Open-Source (fonctionne exclusivement en BYOK via Anthropic, OpenAI, OpenRouter ou Ollama local).
-
-#### 🔹 Roo Code
-* **Éditeur :** Collectif Open-Source RooVetGit.
-* **Liens Officiels :** [Dépôt GitHub Roo Code](https://github.com/RooVetGit/Roo-Code) | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline)
-* **Nature Technique :** Fork avancé de Cline avec modes spécialisés (`Code`, `Architect`, `Ask`, `Debug`, `Custom Modes`).
-* **Modèle Économique :** **100% Gratuit et Open-Source** (BYOK pur).
-
-#### 🔹 Continue.dev
-* **Éditeur :** Continue Dev, Inc.
-* **Liens Officiels :** [Site Continue](https://continue.dev) | [Dépôt GitHub](https://github.com/continuedev/continue)
-* **Nature Technique :** Extension modulaire permettant de séparer le modèle d'autocomplétion rapide (ex: Codestral ou modèle local en VRAM) du modèle de chat/raisonnement (ex: Claude Sonnet 5.0 ou DeepSeek V4-Pro).
-* **Modèle Économique :** **Gratuit & Open-Source** pour développeurs individuels.
-
-#### 🔹 Qoder / Tongyi Lingma
-* **Éditeur :** Alibaba Cloud.
-* **Liens Officiels :** [Alibaba Model Studio](https://www.alibabacloud.com/product/model-studio)
-* **Nature Technique :** Extension officielle pour VS Code et JetBrains optimisée pour la gamme Qwen (Coding Plan à ~$50/mois ou API Model Studio).
-
-#### 🔹 CodeGeeX
-* **Éditeur :** Zhipu AI (Z.ai).
-* **Liens Officiels :** [Site CodeGeeX](https://codegeex.cn) | [Z.ai](https://z.ai)
-* **Nature Technique :** Extension multilingue pour VS Code (gratuite avec GLM-4.7-Flash / GLM-5.3-Flash, ou forfaits GLM Coding Plan pour GLM-5.3).
-
----
-
-### 3.3 Les Applications Desktop Autonomes (GUI & Agents Locaux)
-
-#### 🔹 LM Studio Bionic vs LM Studio Classique
-* **Éditeur :** Element Labs, Inc.
-* **Liens Officiels :** [Site LM Studio](https://lmstudio.ai) | [Documentation](https://lmstudio.ai/docs)
-* **Nature Technique :**
-  - **LM Studio Classique :** Serveur d'inférence local fournissant une API OpenAI locale sur `http://localhost:1234/v1`.
-  - **LM Studio Bionic :** Application agentique autonome dédiée au développement, à l'inspection de dépôts, aux diffs de code et à la dictée vocale locale (via Voxtral de Mistral).
-* **Modèle Économique :** **Gratuit pour usage personnel**.
-
-#### 🔹 Claude Desktop (avec MCP)
-* **Éditeur :** Anthropic, PBC.
-* **Liens Officiels :** [Téléchargement Claude Desktop](https://claude.ai/download) | [Protocole MCP](https://modelcontextprotocol.io)
-* **Nature Technique :** Application native Windows / macOS connectable aux outils locaux via MCP (*Model Context Protocol*) et dotée de capacités *Computer Use*.
-* **Modèle Économique :** Gratuit de base, ou débloqué via Claude Pro ($20 + 20% TVA = **$24,00 USD TTC / mois** en France).
-
-#### 🔹 ChatGPT Desktop (avec *Work with Apps*)
-* **Éditeur :** OpenAI, LLC.
-* **Liens Officiels :** [ChatGPT Desktop](https://openai.com/chatgpt/desktop)
-* **Nature Technique :** Application native capturant directement le code et le contexte ouvert dans VS Code, Xcode ou le Terminal.
-* **Modèle Économique :** Gratuit (Luna), ou abonnement **ChatGPT Plus fixé à 23,00 € TTC / mois en France**.
-
-#### 🔹 Kimi Work
-* **Éditeur :** Moonshot AI.
-* **Liens Officiels :** [Kimi](https://kimi.moonshot.cn)
-* **Nature Technique :** Application bureautique Windows / macOS avec exécution de tâches et automatisation locale.
-
----
-
-### 3.4 Les Agents CLI & Frameworks d'Automatisation Terminal
-
-#### 🔹 Claude Code CLI
-* **Éditeur :** Anthropic, PBC.
-* **Liens Officiels :** [Documentation Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-* **Installation :** `npm install -g @anthropic-ai/claude-code`
-* **Nature Technique :** Outil CLI agentique opérant directement dans le terminal au sein du dépôt Git local.
-* **Modèle Économique :** Inclus sans surcoût dans l'abonnement **Claude Pro ($24 TTC / mois)** ou facturé à l'usage exact via clé API Anthropic (Claude Sonnet 5.0 / Opus 5.0).
-
-#### 🔹 Aider
-* **Éditeur :** Paul Gauthier (Open-Source).
-* **Liens Officiels :** [Site Aider](https://aider.chat) | [GitHub Aider](https://github.com/paul-gauthier/aider)
-* **Nature Technique :** Agent de pair-programming en ligne de commande avec commits Git automatiques et compression de carte syntaxique Tree-sitter.
-* **Modèle Économique :** **100% Gratuit et Open-Source**.
-
-#### 🔹 Hermes Agent
-* **Éditeur :** Nous Research.
-* **Liens Officiels :** [Site Hermes Agent](https://hermes-agent.org) | [GitHub](https://github.com/NousResearch/Hermes-Agent)
-* **Nature Technique :** Framework agentique persistant avec mémoire continue et pipeline multi-agents (Architect, Engineer, Reviewer).
-* **Modèle Économique :** **Open-Source** (BYOK via OpenRouter).
-
-#### 🔹 OpenClaw & OpenHands
-* **OpenClaw :** [Site OpenClaw](https://openclaw.ai) — Orchestrateur de tâches terminal / messageries.
-* **OpenHands (ex-OpenDevin) :** [Site OpenHands](https://all-hands.dev) | [GitHub](https://github.com/All-Hands-AI/OpenHands) — Plateforme complète de génie logiciel autonome dans des conteneurs Docker.
-
----
-
-### 3.5 Les Passerelles Universelles & Agrégateurs Multi-Modèles
-
-#### 🔹 OpenRouter (L'Agrégateur Universel de Référence)
-* **Éditeur :** OpenRouter, Inc.
-* **Liens Officiels :** [Site OpenRouter](https://openrouter.ai) | [Catalogue des Modèles & Tarifs](https://openrouter.ai/models) | [Documentation](https://openrouter.ai/docs)
-* **Rôle Stratégique :** Fournit **une clé API unique** au format standardisé OpenAI pour accéder à plus de **300 modèles** de tous les laboratoires mondiaux (Claude 5.0, GPT-5.6, DeepSeek V4, Qwen 3.8, GLM-5.3) sans abonnement captif et avec support transparent du *Prompt Caching*.
-* **Facturation en France :** Recharges de crédits en dollars via Stripe avec application de la TVA française (20%) pour les particuliers ($10 de crédits = $12 débités).
-
----
-
-## 4. Panorama Détaillé des Fournisseurs de Modèles (Labs IA)
-
-| Fournisseur | App Desktop Officielle | Extension / Harnais VS Code | Agent CLI Officiel | Forfaits Pro Développeur | Modèles Phares (Août 2026) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Anthropic** | **Claude Desktop** (MCP) | Non (via Cline/Roo Code) | **Claude Code CLI** | Claude Pro ($20 HT / $24 TTC) | Claude Opus 5.0, Claude Sonnet 5.0, Haiku 4.5 |
-| **OpenAI** | **ChatGPT Desktop** | Non (via *Work with Apps*) | Outils CLI intégrés | ChatGPT Plus (23 € TTC), Pro (103 € TTC) | GPT-5.6 Sol, GPT-5.6 Terra, GPT-5.6 Luna, o3 |
-| **DeepSeek** | Non (GUI communautaires) | Non (via Cline, Roo, Aider) | Non (CLI communautaires) | Aucun (100% API & Poids ouverts) | DeepSeek V4-Pro, DeepSeek V4-Flash |
-| **Qwen (Alibaba)** | QoderWork | **Qoder / Tongyi Lingma** | Non | Coding Plan (~$50 HT / $60 TTC) | Qwen3.8-Max, Qwen3.7-Plus, Qwen3.8-Flash-Next |
-| **Mistral AI** | **Mistral Vibe** (PWA) | **Mistral Vibe / Continue** | Non | Le Chat Pro (~18 € TTC / mois) | Codestral, Mistral Large 2, Mistral Small |
-| **Moonshot (Kimi)** | **Kimi Work** | **Kimi Code Extension** | **Kimi Code CLI** | Moderato ($19 HT / $22.80 TTC) | Kimi K3, Kimi K2.7 Code, Kimi K2.5 |
-| **Zhipu AI (GLM)** | Non | **CodeGeeX** | Non | GLM Coding Plan ($18 à $168 HT) | GLM-5.3, GLM-5.2, GLM-5.3-Flash |
-
----
-
-## 5. Tableaux Comparatifs Économiques Détaillés & Sourcés
-
-### 5.1 Tableau Comparatif des Forfaits SaaS : Montants Débités Réels en France (Particulier TTC vs Pro HT)
-
-*Ce tableau détaille le coût exact facturé en France selon votre statut : Particulier (TTC avec TVA 20%) ou Professionnel avec N° TVA intracommunautaire (HT en autoliquidation).*
-
-| Fournisseur / Outil | Nom du Forfait | Prix Affiché (Devise Origine) | Montant Débité Particulier en France (TTC) | Montant Débité Pro France (HT Autoliquidation) | Quotas & Crédits Inclus | Modèles Inclus | Source / Lien Officiel |
-| :--- | :--- | :---: | :---: | :---: | :--- | :--- | :--- |
-| **ChatGPT (OpenAI)** | **Go** | 8,00 € TTC | **8,00 € TTC** | ~6,67 € HT | Requêtes illimitées modèle Luna + fichiers | GPT-5.6 Luna | [OpenAI Pricing](https://openai.com/chatgpt/pricing) |
-| **ChatGPT (OpenAI)** | **Plus** | 23,00 € TTC | **23,00 € TTC** | ~19,17 € HT | *Work with Apps* Desktop, Canvas, Deep Research | GPT-5.6 Sol / Terra / Luna, o3 | [OpenAI Pricing](https://openai.com/chatgpt/pricing) |
-| **ChatGPT (OpenAI)** | **Pro** | 103,00 € TTC | **103,00 € TTC** | ~85,83 € HT | Puissance maximale o3, quotas étendus | GPT-5.6 Sol, o3-pro | [OpenAI Pricing](https://openai.com/chatgpt/pricing) |
-| **ChatGPT (OpenAI)** | **Business** | 20,00 $ /u HT | **24,00 $ /u TTC** (~22 €) | **20,00 $ /u HT** (~18,40 €) | Min. 2 sièges, console admin, rétention zéro | Tous modèles GPT-5.6 & o3 | [OpenAI Pricing](https://openai.com/chatgpt/pricing) |
-| **Claude (Anthropic)** | **Pro** | 20,00 $ HT | **24,00 $ TTC** (~22,00 €) | **20,00 $ HT** (~18,40 €) | **Claude Code CLI inclus** + Claude Desktop MCP | Claude Sonnet 5.0, Claude Opus 5.0 | [Anthropic Pricing](https://anthropic.com/pricing) |
-| **Claude (Anthropic)** | **Max 5x** | 100,00 $ HT | **120,00 $ TTC** (~110,00 €) | **100,00 $ HT** (~92,00 €) | 5x le quota de requêtes Claude Code & Desktop | Claude Sonnet 5.0, Claude Opus 5.0 | [Anthropic Pricing](https://anthropic.com/pricing) |
-| **Claude (Anthropic)** | **Max 20x** | 200,00 $ HT | **240,00 $ TTC** (~220,00 €) | **200,00 $ HT** (~184,00 €) | 20x le quota de requêtes pour usage intensif | Claude Opus 5.0, Claude Sonnet 5.0 | [Anthropic Pricing](https://anthropic.com/pricing) |
-| **GitHub Copilot** | **Free** | 0,00 $ | **0,00 €** | **0,00 €** | Complétions limitées et chat standard | Modèles de base GitHub | [GitHub Pricing](https://github.com/pricing) |
-| **GitHub Copilot** | **Pro** | 10,00 $ HT | **12,00 $ TTC** (~11,00 €) | **10,00 $ HT** (~9,20 €) | **Autocomplétion gratuite** + allocation AI Credits | GPT-5.6, Claude Sonnet 5.0 | [GitHub Pricing](https://github.com/pricing) |
-| **GitHub Copilot** | **Pro+** | 39,00 $ HT | **46,80 $ TTC** (~43,00 €) | **39,00 $ HT** (~35,90 €) | Crédits IA renforcés pour agents autonomes | GPT-5.6, Claude Sonnet 5.0, Workspace | [GitHub Pricing](https://github.com/pricing) |
-| **GitHub Copilot** | **Max** | 100,00 $ HT | **120,00 $ TTC** (~110,00 €) | **100,00 $ HT** (~92,00 €) | Volume maximal de GitHub AI Credits | Tous modèles prioritaires | [GitHub Pricing](https://github.com/pricing) |
-| **GitHub Copilot** | **Business** | 19,00 $ /u HT | **22,80 $ /u TTC** (~21 €) | **19,00 $ /u HT** (~17,50 €) | Crédits mutualisés par équipe ($0.01/crédit sup.) | Tous modèles avec gouvernance d'entreprise | [GitHub Pricing](https://github.com/pricing) |
-| **GitHub Copilot** | **Enterprise** | 39,00 $ /u HT | **46,80 $ /u TTC** (~43 €) | **39,00 $ /u HT** (~35,90 €) | Indexation de repos privés et modèles dédiés | Modèles personnalisés d'organisation | [GitHub Pricing](https://github.com/pricing) |
-| **Trae (ByteDance)** | **Free** | 0,00 $ | **0,00 €** | **0,00 €** | 5 000 autocomplétions/mois + essais Frontier | Modèles Doubao, Claude Sonnet 5.0 (limité) | [Trae Pricing](https://trae.ai/pricing) |
-| **Trae (ByteDance)** | **Lite** | 3,00 $ HT | **3,60 $ TTC** (~3,30 €) | **3,00 $ HT** (~2,76 €) | Quota de requêtes rapides légères | Claude Sonnet 5.0, GPT-5.6 | [Trae Pricing](https://trae.ai/pricing) |
-| **Trae (ByteDance)** | **Pro** | 10,00 $ HT | **12,00 $ TTC** (~11,00 €) | **10,00 $ HT** (~9,20 €) | Agent autonome SOLO illimité + solde mensuel | Claude Sonnet 5.0, GPT-5.6, DeepSeek V4 | [Trae Pricing](https://trae.ai/pricing) |
-| **Trae (ByteDance)** | **Pro+** | 30,00 $ HT | **36,00 $ TTC** (~33,00 €) | **30,00 $ HT** (~27,60 €) | Quota de crédits pour développeurs quotidiens | Claude Sonnet 5.0, GPT-5.6, DeepSeek V4 Pro | [Trae Pricing](https://trae.ai/pricing) |
-| **Trae (ByteDance)** | **Ultra** | 100,00 $ HT | **120,00 $ TTC** (~110,00 €) | **100,00 $ HT** (~92,00 €) | Accès illimité sans file d'attente | Ensemble des modèles sans restriction | [Trae Pricing](https://trae.ai/pricing) |
-| **Cursor** | **Hobby** | 0,00 $ | **0,00 €** | **0,00 €** | Autocomplétion de base + essai agent | Modèles internes Cursor | [Cursor Pricing](https://cursor.com/pricing) |
-| **Cursor** | **Pro** | 20,00 $ HT | **24,00 $ TTC** (~22,00 €) | **20,00 $ HT** (~18,40 €) | Modèles Cursor illimités + pool rapide Frontier | Claude Sonnet 5.0, GPT-5.6, DeepSeek V4 | [Cursor Pricing](https://cursor.com/pricing) |
-| **Cursor** | **Pro+** | 60,00 $ HT | **72,00 $ TTC** (~66,00 €) | **60,00 $ HT** (~55,20 €) | Quota de requêtes rapides 3x supérieur | Claude Sonnet 5.0, GPT-5.6, Opus 5.0 | [Cursor Pricing](https://cursor.com/pricing) |
-| **Cursor** | **Ultra** | 200,00 $ HT | **240,00 $ TTC** (~220,00 €) | **200,00 $ HT** (~184,00 €) | Priorité absolue et quota maximal | Tous modèles tiers avec latence minimale | [Cursor Pricing](https://cursor.com/pricing) |
-| **Cursor** | **Teams** | 40,00 $ /u HT | **48,00 $ /u TTC** (~44 €) | **40,00 $ /u HT** (~36,80 €) | Facturation centralisée + Zero Data Retention | Tous modèles + audit de sécurité | [Cursor Pricing](https://cursor.com/pricing) |
-| **Windsurf / Devin** | **Free** | 0,00 $ | **0,00 €** | **0,00 €** | Quota quotidien de requêtes Cascade | Modèles Codeium standard | [Devin Pricing](https://devin.ai/pricing) |
-| **Windsurf / Devin** | **Pro** | 20,00 $ HT | **24,00 $ TTC** (~22,00 €) | **20,00 $ HT** (~18,40 €) | Quotas Cascade standard + accès Devin Cloud | Claude Sonnet 5.0, GPT-5.6, Gemini 2.0 Pro | [Devin Pricing](https://devin.ai/pricing) |
-| **Windsurf / Devin** | **Max** | 200,00 $ HT | **240,00 $ TTC** (~220,00 €) | **200,00 $ HT** (~184,00 €) | Quota massif pour flux de travail continus | Tous modèles + priorité Devin Cloud | [Devin Pricing](https://devin.ai/pricing) |
-| **Zed AI** | **Zed Pro** | 10,00 $ HT | **12,00 $ TTC** (~11,00 €) | **10,00 $ HT** (~9,20 €) | Modèles hébergés inclus + $5 de crédits API | Claude Sonnet 5.0, GPT-5.6 | [Zed Pricing](https://zed.dev/pricing) |
-| **Mistral AI** | **Le Chat Pro** | ~15,00 € HT | **~18,00 € TTC** | **~15,00 € HT** | Canvas illimité, génération d'agents | Codestral, Mistral Large 2 | [Mistral Vibe](https://vibe.mistral.ai) |
-| **Moonshot (Kimi)** | **Moderato** | 19,00 $ HT | **22,80 $ TTC** (~21,00 €) | **19,00 $ HT** (~17,50 €) | Kimi Work Desktop + crédits Kimi Code | Kimi K2.6, Kimi K2.7 Code | [Kimi Portal](https://kimi.moonshot.cn) |
-| **Moonshot (Kimi)** | **Allegretto** | 39,00 $ HT | **46,80 $ TTC** (~43,00 €) | **39,00 $ HT** (~35,90 €) | Quotas renforcés Kimi Code et productivité | Kimi K2.7 Code, Kimi K3 | [Kimi Portal](https://kimi.moonshot.cn) |
-| **Moonshot (Kimi)** | **Allegro** | 99,00 $ HT | **118,80 $ TTC** (~109,00 €) | **99,00 $ HT** (~91,00 €) | Accès aux essaims d'agents professionnels | Kimi K3, Essaims d'agents | [Kimi Portal](https://kimi.moonshot.cn) |
-| **Qwen (Alibaba)** | **Coding Plan** | 50,00 $ HT | **60,00 $ TTC** (~55,00 €) | **50,00 $ HT** (~46,00 €) | Forfait mensuel fixe pour IDEs et agents | Qwen3.8-Max, Qwen3.7-Plus | [Alibaba Model Studio](https://www.alibabacloud.com/product/model-studio) |
-| **GLM (Zhipu AI)** | **Coding Lite** | 18,00 $ HT | **21,60 $ TTC** (~19,90 €) | **18,00 $ HT** (~16,56 €) | Crédits hebdomadaires pour l'extension CodeGeeX | GLM-5.2, GLM-5.3 | [Z.ai Platform](https://z.ai) |
-| **GLM (Zhipu AI)** | **Coding Pro** | 80,00 $ HT | **96,00 $ TTC** (~88,30 €) | **80,00 $ HT** (~73,60 €) | Quota mensuel étendu pour développement actif | GLM-5.3, GLM-5.2 | [Z.ai Platform](https://z.ai) |
-| **GLM (Zhipu AI)** | **Coding Max** | 168,00 $ HT | **201,60 $ TTC** (~185,50 €) | **168,00 $ HT** (~154,56 €) | Quota maximal pour équipes et agents | GLM-5.3, GLM-5.2 | [Z.ai Platform](https://z.ai) |
-
----
-
-### 5.2 Tableau Comparatif des Prix API au 1M de Tokens (1 Ligne par Modèle)
-
-*Les tarifs officiels sont triés par ordre croissant du coût d'entrée standard en dollars US ($), avec le coût équivalent en Euros HT (1 $ ≈ 0,92 €) et le coût TTC indicatif en France (TVA 20% appliquée lors des recharges de compte Stripe).*
-
-| Fournisseur | Modèle Officiel | Rôle / Spécialité | Contexte | Entrée Standard (USD / 1M) | Entrée HT / TTC en France (€ / 1M) | Entrée avec Cache (€ HT / 1M) | Sortie (€ HT / TTC / 1M) | Source / Lien Officiel |
-| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Zhipu AI (GLM)** | **GLM-5.3-Flash / 4.7-Flash** | Flash / Gratuit | 128k | **$0.00** | **0,00 €** / 0,00 € | **0,00 €** | **0,00 €** / 0,00 € | [Z.ai Platform](https://z.ai) |
-| **Qwen (Alibaba)** | **Qwen3.8-Flash-Next** | Flash Ultra-Rapide | 1M | **$0.05** | **0,046 €** / 0,055 € | **0,009 €** | **0,184 €** / 0,221 € | [Alibaba Model Studio](https://www.alibabacloud.com/product/model-studio) |
-| **Mistral AI** | **Mistral Small** | Flash / Économique | 128k | **$0.10** | **0,092 €** / 0,110 € | **0,009 €** | **0,276 €** / 0,331 € | [Mistral Platform](https://console.mistral.ai) |
-| **DeepSeek** | **DeepSeek V4-Flash (Off-Peak)** | Flash / Économique | 1M | **$0.22** | **0,202 €** / 0,243 € | **0,046 €** | **0,607 €** / 0,729 € | [DeepSeek Docs](https://api-docs.deepseek.com) |
-| **Mistral AI** | **Codestral** | Spécialisé Code 256k | 256k | **$0.30** | **0,276 €** / 0,331 € | **0,028 €** | **0,828 €** / 0,994 € | [Mistral Platform](https://console.mistral.ai) |
-| **Qwen (Alibaba)** | **Qwen3.7-Plus** | Équilibré Dev & Code | 128k | **$0.35** | **0,322 €** / 0,386 € | **0,046 €** | **1,150 €** / 1,380 € | [Alibaba Model Studio](https://www.alibabacloud.com/product/model-studio) |
-| **DeepSeek** | **DeepSeek V4-Flash (Peak)** | Flash (Heures de pointe) | 1M | **$0.44** | **0,405 €** / 0,486 € | **0,101 €** | **1,214 €** / 1,457 € | [DeepSeek Docs](https://api-docs.deepseek.com) |
-| **Moonshot (Kimi)** | **Kimi K2.5** | MoE Économique | 256k | **$0.60** | **0,552 €** / 0,662 € | **0,092 €** | **2,760 €** / 3,312 € | [Moonshot Platform](https://platform.moonshot.cn) |
-| **DeepSeek** | **DeepSeek V4-Pro (Off-Peak)** | Flagship Raisonnement | 1M | **$0.66** | **0,607 €** / 0,729 € | **0,147 €** | **1,822 €** / 2,186 € | [DeepSeek Docs](https://api-docs.deepseek.com) |
-| **Moonshot (Kimi)** | **Kimi K2.7 Code** | Spécialisé Code & Dev | 256k | **$0.95** | **0,874 €** / 1,049 € | **0,175 €** | **3,680 €** / 4,416 € | [Moonshot Platform](https://platform.moonshot.cn) |
-| **Anthropic** | **Claude Haiku 4.5** | Flash / Économique | 200k | **$1.00** | **0,920 €** / 1,104 € | **0,092 €** | **4,600 €** / 5,520 € | [Anthropic Pricing](https://anthropic.com/pricing) |
-| **OpenAI** | **GPT-5.6 Luna** | Flash / Économique | 128k | **$1.00** | **0,920 €** / 1,104 € | **0,092 €** | **5,520 €** / 6,624 € | [OpenAI Pricing](https://openai.com/api/pricing) |
-| **DeepSeek** | **DeepSeek V4-Pro (Peak)** | Flagship (Heures de pointe) | 1M | **$1.32** | **1,214 €** / 1,457 € | **0,304 €** | **3,643 €** / 4,372 € | [DeepSeek Docs](https://api-docs.deepseek.com) |
-| **Zhipu AI (GLM)** | **GLM-5.3 / GLM-5.2** | Flagship Raisonnement | 128k | **$1.40** | **1,288 €** / 1,546 € | **0,129 €** | **4,048 €** / 4,858 € | [Z.ai Platform](https://z.ai) |
-| **Anthropic** | **Claude Sonnet 5.0** | **Référence Mondiale Code** | 200k | **$2.00** | **1,840 €** / 2,208 € | **0,184 €** | **9,200 €** / 11,040 € | [Anthropic Pricing](https://anthropic.com/pricing) |
-| **Qwen (Alibaba)** | **Qwen3.8-Max** | **Flagship MoE Multimodal 2.4T** | 1M | **$2.00** | **1,840 €** / 2,208 € | **0,184 €** | **5,520 €** / 6,624 € | [Alibaba Model Studio](https://www.alibabacloud.com/product/model-studio) |
-| **Mistral AI** | **Mistral Large 2** | Flagship Raisonnement | 128k | **$2.00** | **1,840 €** / 2,208 € | **0,184 €** | **5,520 €** / 6,624 € | [Mistral Platform](https://console.mistral.ai) |
-| **OpenAI** | **o3 (Reasoning)** | Raisonnement Algorithmique | 200k | **$2.00** | **1,840 €** / 2,208 € | **0,184 €** | **7,360 €** / 8,832 € | [OpenAI Pricing](https://openai.com/api/pricing) |
-| **OpenAI** | **GPT-5.6 Terra** | Équilibré Développeur | 256k | **$2.50** | **2,300 €** / 2,760 € | **0,230 €** | **13,800 €** / 16,560 € | [OpenAI Pricing](https://openai.com/api/pricing) |
-| **Moonshot (Kimi)** | **Kimi K3** | Flagship 2.8T Multimodal | 1M | **$3.00** | **2,760 €** / 3,312 € | **0,276 €** | **13,800 €** / 16,560 € | [Moonshot Platform](https://platform.moonshot.cn) |
-| **Anthropic** | **Claude Opus 5.0** | **Flagship Ultra-Complexe** | 200k | **$5.00** | **4,600 €** / 5,520 € | **0,460 €** | **23,000 €** / 27,600 € | [Anthropic Pricing](https://anthropic.com/pricing) |
-| **OpenAI** | **GPT-5.6 Sol** | **Flagship Haute Capacité** | 256k | **$5.00** | **4,600 €** / 5,520 € | **0,460 €** | **27,600 €** / 33,120 € | [OpenAI Pricing](https://openai.com/api/pricing) |
-| **OpenAI** | **o3-pro (Reasoning Max)** | Raisonnement Extrême | 200k | **$20.00** | **18,400 €** / 22,080 € | **1,840 €** | **73,600 €** / 88,320 € | [OpenAI Pricing](https://openai.com/api/pricing) |
-
----
-
-### 5.3 Simulations Budgétaires Réelles en France
-
-#### 📊 Profil Développeur Solo Modéré (~3 Millions Tokens Entrée + 300k Tokens Sortie / mois)
-* **Via Abonnement Forfaitaire :**
-  * Trae Pro : **~11,00 € TTC / mois** ($12 TTC débités).
-  * GitHub Copilot Pro : **~11,00 € TTC / mois** ($12 TTC débités).
-  * ChatGPT Plus : **23,00 € TTC / mois** (prix fixe France).
-  * Claude Pro / Cursor Pro : **~22,00 € TTC / mois** ($24 TTC débités).
-* **Via Harnais Libre (Cline / Roo Code) + Crédits OpenRouter TTC :**
-  * Avec **DeepSeek V4-Flash** : **~0,95 € TTC / mois**.
-  * Avec **DeepSeek V4-Pro** : **~2,85 € TTC / mois**.
-  * Avec **Qwen3.7-Plus** : **~1,55 € TTC / mois**.
-  * Avec **Claude Sonnet 5.0** (avec cache) : **~4,65 € TTC / mois**.
-  * Avec **Claude Opus 5.0** : **~11,60 € TTC / mois**.
-
----
-
-## 6. Guide Pratique d'Interopérabilité & Matrice de Décision
-
-### 6.1 Recette Universelle : Brancher n'importe quel modèle dans n'importe quel harnais
-
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ CONFIGURATION PAS-À-PAS (Cursor / Cline / Roo Code / Aider / Continue)                │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 1. Créer un compte sur OpenRouter (https://openrouter.ai) et recharger 10$ par Stripe │
-│ 2. Dans votre extension VS Code (ex: Cline / Roo Code) :                               │
-│    • Provider : Sélectionner "OpenRouter"                                              │
-│    • API Key : Coller votre clé OpenRouter                                             │
-│    • Model ID : Sélectionner le modèle exact :                                         │
-│      - `anthropic/claude-sonnet-5` (Référence absolue en code)                         │
-│      - `anthropic/claude-opus-5` (Architecture et cas hautement complexes)             │
-│      - `deepseek/deepseek-v4-pro` (Raisonnement avancé à tarif ultra-compétitif)       │
-│      - `qwen/qwen-3.8-max` (MoE multimodal géant pour les gros projets)               │
-│      - `zhipu/glm-5.3` (Modèle GLM de pointe)                                          │
-│ 3. Pour un modèle local (exécuté sur votre PC avec LM Studio ou Ollama) :              │
-│    • Provider : "OpenAI Compatible"                                                    │
-│    • Base URL : `http://localhost:1234/v1` (LM Studio) ou `http://localhost:11434/v1` │
-│    • API Key : `local`                                                                 │
-└────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-### 6.2 Matrice de Décision selon la Configuration Matérielle & le Profil
-
-#### 🖥️ Profil 1 : Développeur sur PC Fixe avec GPU Dédié (Nvidia RTX 4060 Ti 16 Go VRAM)
-* **Architecture Recommandée :** Hybride Local / Cloud.
-* **Harnais :** **Continue.dev** (autocomplétion) + **Cline / Roo Code** (agentique).
-* **Moteur Local :** **LM Studio Server** ou **Ollama** avec un modèle *Qwen 2.5/3 Coder 7B/14B* chargé à 100% en VRAM (latence zéro, 0 € de coût récurrent).
-* **Moteur Cloud :** OpenRouter appelant **DeepSeek V4-Pro** ou **Claude Sonnet 5.0** pour les refactorings d'envergure.
-* **Coût Réel :** **< 3 € à 8 € TTC / mois**.
-
-#### 💻 Profil 2 : Développeur sur PC Portable Nomade (CPU / APU sans CUDA)
-* **Architecture Recommandée :** 100% Cloud optimisé.
-* **Harnais :** **Trae Pro (~11,00 € TTC / mois)** pour une solution tout-en-un clé en main, OU **VS Code standard + Cline + OpenRouter**.
-* **Modèles Clés :** **DeepSeek V4-Flash** (tâches courantes) et **Claude Sonnet 5.0 / Qwen 3.8-Max** (architecture).
-* **Coût Réel :** **5 € à 15 € TTC / mois**.
-
-#### 🏢 Profil 3 : Développeur en Entreprise & Grands Comptes
-* **Architecture Recommandée :** Conformité, Sécurité et Rétention Zéro.
-* **Harnais :** **GitHub Copilot Enterprise (~43 € TTC / 35,90 € HT par siège)** ou **Cursor Teams (~44 € TTC / 36,80 € HT par siège)**.
-* **Bénéfices :** Facturation unique, conformité RGPD/SOC2, étanchéité stricte des données de code propriétaire.

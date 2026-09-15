@@ -258,6 +258,57 @@ class TestScriptsExecutables(unittest.TestCase):
             self.assertIn(marque, page, f"la page a perdu : {marque}")
 
 
+class TestGuideGenere(unittest.TestCase):
+    """Le Guide et les fiches data/ sont générés : ils ne peuvent plus diverger."""
+
+    @classmethod
+    def setUpClass(cls):
+        r = subprocess.run([sys.executable, "pipeline/build_guide.py"], cwd=ROOT,
+                           capture_output=True, text=True, timeout=120)
+        assert r.returncode == 0, r.stderr[-1500:]
+        cls.guide = (ROOT / "Guide_Complet_Solutions_Dev_IA_2026.md").read_text(encoding="utf-8")
+
+    def test_porte_la_mention_de_generation(self):
+        self.assertIn("Ce document est **généré**", self.guide)
+
+    def test_les_fiches_portent_l_avertissement(self):
+        for f in (ROOT / "data").glob("*.md"):
+            self.assertIn("FICHIER GÉNÉRÉ", f.read_text(encoding="utf-8")[:200],
+                          f"{f.name} sans avertissement de génération")
+
+    def test_chaque_tarif_du_catalogue_apparait(self):
+        for m in load("models.yaml").get("models", []):
+            pr = m.get("pricing") or {}
+            if pr.get("input_per_1m") is None:
+                continue
+            self.assertIn(m.get("display_name", m["id"]), self.guide,
+                          f"{m['id']} tarifé mais absent du Guide")
+
+    def test_les_egalites_statistiques_sont_signalees(self):
+        """Le Guide ne doit jamais présenter un classement que le validateur conteste."""
+        import math
+        scores = load("scores.yaml").get("scores", [])
+        par_b = {}
+        for s_ in scores:
+            if s_.get("stderr") and s_.get("score") is not None:
+                par_b.setdefault(s_["benchmark"], []).append(s_)
+        for b, rows in par_b.items():
+            r = sorted(rows, key=lambda x: -x["score"])
+            if len(r) < 2:
+                continue
+            gap = r[0]["score"] - r[1]["score"]
+            ci = 1.96 * math.sqrt(r[0]["stderr"] ** 2 + r[1]["stderr"] ** 2)
+            if gap < ci:
+                self.assertIn("Égalités statistiques", self.guide,
+                              f"{b} est une égalité non signalée dans le Guide")
+                return
+
+    def test_aucun_euro_sans_taux_declare(self):
+        if "€" in self.guide:
+            self.assertIn("taux de", self.guide.lower(),
+                          "des euros sont affichés sans que le taux soit énoncé")
+
+
 class TestFraicheur(unittest.TestCase):
     def test_seuils_coherents(self):
         f = load("_meta.yaml")["freshness"]
