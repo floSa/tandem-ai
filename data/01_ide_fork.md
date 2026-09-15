@@ -16,8 +16,6 @@
 - **Forfait Hobby :** gratuit — 0,00 € HT · 0,00 € TTC
 - **Forfait Individual :** $20 — 17,33 € HT · 20,80 € TTC
 - **Forfait Teams :** $40/u — 34,66 € HT · 41,60 € TTC
-- **Vérification :** 2026-09-15 (official_pricing_page)
-- **Constat :** Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente ne figurent plus.
 
 Fork VS Code. Composer agentique, indexation sémantique du dépôt.
 
@@ -33,8 +31,6 @@ Fork VS Code. Composer agentique, indexation sémantique du dépôt.
 - **Forfait Pro :** $10 — 8,67 € HT · 10,40 € TTC
 - **Forfait Pro+ :** $30 — 26,00 € HT · 31,20 € TTC
 - **Forfait Ultra :** $100 — 86,66 € HT · 103,99 € TTC
-- **Vérification :** 2026-09-15 (official_pricing_page)
-- **Constat :** Cinq paliers confirmés, identiques à l'édition précédente. Les quotas sont désormais libellés en dollars d'usage (5 $ sur Lite, 20 $ sur Pro).
 
 Fork VS Code, mode SOLO autonome.
 
@@ -45,8 +41,6 @@ Fork VS Code, mode SOLO autonome.
 - **Dépôt :** [https://github.com/voideditor/void](https://github.com/voideditor/void)
 - **Statut :** retired
 - **Capacités :** BYOK, modèles locaux
-- **Vérification :** 2026-09-15 (official_docs)
-- **Constat :** Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente est dépassé.
 
 Fork open-source de VS Code. Développement principal ralenti.
 
@@ -57,9 +51,8 @@ Fork open-source de VS Code. Développement principal ralenti.
 - **Tarifs :** [https://devin.ai/pricing](https://devin.ai/pricing)
 - **Statut :** unknown
 - **Capacités :** BYOK, MCP
-- **Vérification :** fiche non re-contrôlée à cette édition
 
-Fork VS Code, moteur Cascade. Intégration Devin Cloud.
+Fork VS Code, moteur Cascade, intégration Devin Cloud. Depuis le rachat par Cognition, windsurf.com redirige (308) vers devin.ai : les deux produits ne forment plus qu'une seule ligne commerciale.
 
 ## ZCode
 
@@ -71,8 +64,6 @@ Fork VS Code, moteur Cascade. Intégration Devin Cloud.
 - **Forfait Lite :** $12.6 — 10,92 € HT · 13,10 € TTC
 - **Forfait Pro :** $56 — 48,53 € HT · 58,24 € TTC
 - **Forfait Max :** $117.6 — 101,91 € HT · 122,29 € TTC
-- **Vérification :** 2026-09-15 (official_pricing_page)
-- **Constat :** Absent de l'édition précédente, et écarté à tort au relevé précédent sur des sources contradictoires. La doc API de Z.ai ne le mentionne pas — il a son propre domaine, zcode.z.ai. Contrairement à ce que laissaient entendre les sources secondaires, il n'est PAS gratuit.
 
 Environnement de développement agentique (ADE) présenté par l'éditeur comme le harnais officiel de GLM-5.3. macOS (Apple Silicon et Intel), Windows (x64 et ARM64), Linux x64 et ARM64 en bêta. Gestion de tâches longues par « Goals », pilotage à distance depuis WeChat, Feishu ou Telegram, collaboration multi-agents. Version 3.11.2 au moment du relevé.
 
@@ -86,8 +77,6 @@ Environnement de développement agentique (ADE) présenté par l'éditeur comme 
 - **Forfait Personal :** gratuit — 0,00 € HT · 0,00 € TTC
 - **Forfait Pro :** $10 — 8,67 € HT · 10,40 € TTC
 - **Forfait Business :** $30/u — 26,00 € HT · 31,20 € TTC
-- **Vérification :** 2026-09-15 (official_pricing_page)
-- **Constat :** Paliers actuels : Personal gratuit (BYOK illimité), Pro à 10 $, Business à 30 $/siège. Le palier Business n'était pas chiffré dans l'édition précédente.
 
 Éditeur natif en Rust, non dérivé de VS Code. Edit Predictions.
 

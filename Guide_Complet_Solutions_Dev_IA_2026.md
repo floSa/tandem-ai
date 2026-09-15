@@ -11,10 +11,10 @@
 | Couche | Couverture |
 | :-- | :-- |
 | Mesures de benchmark | 1 275 sur 18 benchmarks |
-| Modèles au catalogue | 194 |
-| Tarifs API relevés sur page officielle | 25 / 194 |
-| Forfaits d'abonnement relevés | 24 |
-| Harnais re-vérifiés | 22 / 25 |
+| Modèles au catalogue | 207 |
+| Tarifs API relevés sur page officielle | 132 / 207 |
+| Forfaits d'abonnement relevés | 29 |
+| Harnais re-vérifiés | 30 / 30 |
 | Taux de change USD→EUR | 0.8666 — vérifié |
 
 ---
@@ -112,9 +112,13 @@ L'interface développeur : le logiciel avec lequel on travaille, et qui exécute
 | Outil | Éditeur | Capacités | Forfaits |
 | :-- | :-- | :-- | :-- |
 | [Aider](https://aider.chat) *(maintenance)* | Aider-AI (open-source) | BYOK, modèles locaux, gratuit | — |
+| [Antigravity CLI](https://antigravity.google/) | Google | gratuit | Individuel |
 | [Claude Code](https://docs.claude.com/en/docs/claude-code) | Anthropic, PBC | MCP | Pro, Max |
 | [Codex CLI](https://developers.openai.com/codex) | OpenAI | MCP, gratuit | — |
+| [Grok Build](https://x.ai/build) | xAI | BYOK | — |
 | [Kimi Code CLI](https://platform.kimi.ai) | Moonshot AI | — | — |
+| [Mistral Vibe](https://mistral.ai/products/vibe) | Mistral AI | — | Free, Pro, Team, Enterprise |
+| [Muse Code](https://developer.meta.com/ai/products/muse-code/) | Meta | — | Everyday Usage, High Usage, Power Usage |
 | [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) | Alibaba | BYOK, gratuit | — |
 
@@ -124,6 +128,7 @@ L'interface développeur : le logiciel avec lequel on travaille, et qui exécute
 | :-- | :-- | :-- | :-- |
 | [ChatGPT Desktop](https://openai.com/chatgpt/desktop) | OpenAI | MCP | — |
 | [Claude Desktop](https://claude.ai/download) | Anthropic, PBC | MCP | Free, Pro, Max |
+| [Google Antigravity](https://antigravity.google/) | Google | gratuit | Individuel |
 | [Kimi Work](https://kimi.com) | Moonshot AI | — | — |
 | [LM Studio Bionic](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — |
 | [Qwen Studio](https://chat.qwen.ai) | Alibaba | gratuit | — |
@@ -170,7 +175,12 @@ Montants calculés au taux de 0.8666 $/€ et à une TVA de 20%. La colonne **�
 | GitHub | GitHub Copilot | **Pro** | $10 | 8,67 € | 10,40 € | Complétion et next-edit illimitées, 15 $ de crédits mensuels. | [page](https://github.com/features/copilot/plans) |
 | GitHub | GitHub Copilot | **Pro+** | $39 | 33,80 € | 40,56 € | 70 $ de crédits mensuels, 4x+ l'usage de Pro. | [page](https://github.com/features/copilot/plans) |
 | GitHub | GitHub Copilot | **Max** | $100 | 86,66 € | 103,99 € | 200 $ de crédits mensuels, 2,9x+ l'usage de Pro+. | [page](https://github.com/features/copilot/plans) |
+| Google | Antigravity | **Individuel** | gratuit | 0,00 € | 0,00 € | Application de bureau et CLI sans abonnement. Offre organisation via Google Cloud, tarif non publié. | [page](https://antigravity.google/pricing) |
+| Meta | Muse Code | **Everyday Usage** | $5 | 4,33 € | 5,20 € | 10 à 50 requêtes par tranche de 5 heures, mode vocal, recherche web. | [page](https://developer.meta.com/ai/products/muse-code/) |
+| Meta | Muse Code | **High Usage** | $15 | 13,00 € | 15,60 € | 5x l'usage de l'offre de base. | [page](https://developer.meta.com/ai/products/muse-code/) |
+| Meta | Muse Code | **Power Usage** | $50 | 43,33 € | 52,00 € | 20x l'usage de l'offre de base, accès anticipé aux nouveautés, quotas de fichiers supérieurs. | [page](https://developer.meta.com/ai/products/muse-code/) |
 | Mistral AI | Mistral Vibe | **Free** | gratuit | 0,00 € | 0,00 € | Messages et recherches limités, 10 $/mois de crédits API. | [page](https://mistral.ai/pricing) |
+| Mistral AI | Vibe | **Enterprise** | — | — | — | Tarif sur devis. Modèles et agents personnalisés, journaux d'audit, SSO SAML, marque blanche. | [page](https://mistral.ai/pricing) |
 | Mistral AI | Mistral Vibe | **Pro** | $14.99 | 12,99 € | 15,59 € | Capacité de code étendue, 15 $/mois de crédits API. 5,99 $ pour les étudiants vérifiés. | [page](https://mistral.ai/pricing) |
 | Mistral AI | Mistral Vibe | **Team** | $24.99/u | 21,66 € | 25,99 € | Minimum 50 $/mois, 30 Go de stockage par utilisateur, vérification de domaine. | [page](https://mistral.ai/pricing) |
 | Z.ai (Zhipu AI) | ZCode | **Lite** | $12.6 | 10,92 € | 13,10 € | 10 000 crédits hebdomadaires. GLM-5.3 et GLM-5.3-Flash. | [page](https://zcode.z.ai/en) |
@@ -189,37 +199,178 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 | Fournisseur | Modèle | Rôle | Contexte | Entrée $ | Cache $ | Sortie $ | Entrée € HT | Sortie € HT | Relevé le |
 | :-- | :-- | :-- | --: | --: | --: | --: | --: | --: | :-- |
 | Z.ai (Zhipu AI) | **GLM-4.7-Flash** | Gratuit avec limites de débit | — | gratuit | gratuit | gratuit | 0,00 € | 0,00 € | 2026-09-15 |
+| Alibaba | **Qwen3.7-Flash** | Flash économique | — | $0.03 | — | $0.13 | 0,03 € | 0,11 € | 2026-09-15 |
+| Alibaba | **Qwen3.7 Flash** | Flash économique | — | $0.03 | — | $0.13 | 0,03 € | 0,11 € | 2026-09-15 |
+| OpenAI | **GPT-5 nano** | Ultra-économique | — | $0.05 | $0.005 | $0.4 | 0,04 € | 0,35 € | 2026-09-15 |
+| OpenAI | **GPT-5 nano (high)** | Ultra-économique | — | $0.05 | $0.005 | $0.4 | 0,04 € | 0,35 € | 2026-09-15 |
+| Alibaba | **Qwen3.5-Flash** | — | — | $0.1 | — | $0.4 | 0,09 € | 0,35 € | 2026-09-15 |
 | Z.ai (Zhipu AI) | **GLM-5.3-Flash** | Flash économique | — | $0.15 | $0.03 | $0.5 | 0,13 € | 0,43 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 nano** | — | — | $0.2 | $0.02 | $1.25 | 0,17 € | 1,08 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 nano (high)** | — | — | $0.2 | $0.02 | $1.25 | 0,17 € | 1,08 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 nano (no thinking)** | — | — | $0.2 | $0.02 | $1.25 | 0,17 € | 1,08 € | 2026-09-15 |
 | OpenAI | **GPT-5.6 Luna** | Flash / économique | — | $0.2 | $0.02 | $1.2 | 0,17 € | 1,04 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Luna (none)** | Flash / économique | — | $0.2 | $0.02 | $1.2 | 0,17 € | 1,04 € | 2026-09-15 |
+| Alibaba | **Qwen3.6-Flash** | — | — | $0.25 | — | $1.5 | 0,22 € | 1,30 € | 2026-09-15 |
+| OpenAI | **GPT-5 mini** | — | — | $0.25 | $0.025 | $2 | 0,22 € | 1,73 € | 2026-09-15 |
+| OpenAI | **GPT-5 mini (high)** | — | — | $0.25 | $0.025 | $2 | 0,22 € | 1,73 € | 2026-09-15 |
 | DeepSeek | **DeepSeek Flash** | Flash ultra-économique | 1000k | $0.3 | $0.006 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
+| Google DeepMind | **Gemini 2.5 Flash** | — | 1048k | $0.3 | — | $2.5 | 0,26 € | 2,17 € | 2026-09-15 |
+| Google DeepMind | **gemini-2.5-flash-preview-09-2025** | — | 1048k | $0.3 | — | $2.5 | 0,26 € | 2,17 € | 2026-09-15 |
 | Google DeepMind | **Gemini 3.5 Flash-Lite** | Ultra-économique | — | $0.3 | $0.03 | $2.5 | 0,26 € | 2,17 € | 2026-09-15 |
+| MiniMax | **MiniMax-M2** | — | — | $0.3 | $0.03 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
+| MiniMax | **MiniMax-M2.1** | — | — | $0.3 | $0.03 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
+| MiniMax | **MiniMax-M2.5** | — | — | $0.3 | $0.03 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
+| MiniMax | **MiniMax-M2.7** | — | — | $0.3 | $0.06 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
+| MiniMax | **MiniMax-M3** | Flagship agentique | 1000k | $0.3 | $0.06 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
+| MiniMax | **MiniMax-M3_none** | Flagship agentique | 1000k | $0.3 | $0.06 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
+| Alibaba | **Qwen3.5-Plus** | — | — | $0.4 | — | $2.4 | 0,35 € | 2,08 € | 2026-09-15 |
+| Alibaba | **Qwen3.7-Plus** | Généraliste équilibré | — | $0.4 | — | $1.6 | 0,35 € | 1,39 € | 2026-09-15 |
+| Alibaba | **Qwen3.7 Plus** | Généraliste équilibré | — | $0.4 | — | $1.6 | 0,35 € | 1,39 € | 2026-09-15 |
+| Alibaba | **Qwen3.6-Plus** | — | — | $0.5 | — | $3 | 0,43 € | 2,60 € | 2026-09-15 |
+| Mistral AI | **Mistral Large 3** | Flagship | — | $0.5 | — | $1.5 | 0,43 € | 1,30 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-4.7** | — | — | $0.6 | — | $2.2 | 0,52 € | 1,91 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.6 Flash** | — | — | $0.75 | $0.075 | $3.75 | 0,65 € | 3,25 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.7 Flash** | — | — | $0.75 | $0.075 | $3.75 | 0,65 € | 3,25 € | 2026-09-15 |
 | Google DeepMind | **Gemini 3.8 Flash** | Flash génération courante | — | $0.75 | $0.075 | $3.75 | 0,65 € | 3,25 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 mini** | — | — | $0.75 | $0.075 | $4.5 | 0,65 € | 3,90 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 mini (high)** | — | — | $0.75 | $0.075 | $4.5 | 0,65 € | 3,90 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 mini (none)** | — | — | $0.75 | $0.075 | $4.5 | 0,65 € | 3,90 € | 2026-09-15 |
 | Moonshot | **Kimi K2.6** | — | 262k | $0.95 | $0.16 | $4 | 0,82 € | 3,47 € | 2026-09-15 |
 | Moonshot | **Kimi K2.7 Code** | Dédié développement logiciel | 262k | $0.95 | $0.19 | $4 | 0,82 € | 3,47 € | 2026-09-15 |
 | Anthropic | **Claude Haiku 4.5** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,87 € | 4,33 € | 2026-09-15 |
+| Anthropic | **claude-haiku-4-5-20251001** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,87 € | 4,33 € | 2026-09-15 |
+| Anthropic | **claude-haiku-4-5-20251001_16K** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,87 € | 4,33 € | 2026-09-15 |
+| Anthropic | **claude-haiku-4-5-20251001_1K** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,87 € | 4,33 € | 2026-09-15 |
+| Anthropic | **claude-haiku-4-5-20251001_32K** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,87 € | 4,33 € | 2026-09-15 |
+| Anthropic | **claude-haiku-4-5-20251001_8K** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,87 € | 4,33 € | 2026-09-15 |
+| xAI | **Grok Build 0.1** | Dédié développement logiciel | — | $1 | — | $2 | 0,87 € | 1,73 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-5** | — | — | $1 | — | $3.2 | 0,87 € | 2,77 € | 2026-09-15 |
+| Alibaba | **Qwen3-Max** | — | — | $1.2 | — | $6 | 1,04 € | 5,20 € | 2026-09-15 |
+| Alibaba | **Qwen3-Max-Instruct** | — | — | $1.2 | — | $6 | 1,04 € | 5,20 € | 2026-09-15 |
+| Google DeepMind | **Gemini 2.5 Pro** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| Google DeepMind | **Gemini 2.5 Pro Preview (Jun 2025)** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| Google DeepMind | **Gemini 2.5 Pro Preview (Jun 2025)** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| Google DeepMind | **Gemini 2.5 Pro Preview (Jun 2025)** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| Google DeepMind | **gemini-2.5-pro_16K** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| Google DeepMind | **gemini-2.5-pro_32K** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| Google DeepMind | **gemini-2.5-pro_8K** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| OpenAI | **GPT-5** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| OpenAI | **GPT-5 (high)** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| OpenAI | **GPT-5.1** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| OpenAI | **GPT-5.1 (high)** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| OpenAI | **GPT-5.1 (no thinking)** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
+| xAI | **Grok 4.20 (raisonnement)** | — | — | $1.25 | — | $2.5 | 1,08 € | 2,17 € | 2026-09-15 |
+| xAI | **Grok 4.3** | — | — | $1.25 | — | $2.5 | 1,08 € | 2,17 € | 2026-09-15 |
+| Alibaba | **Qwen3.6-Max (preview)** | — | — | $1.3 | — | $7.8 | 1,13 € | 6,76 € | 2026-09-15 |
 | DeepSeek | **DeepSeek V4-Pro** | Flagship raisonnement | 1000k | $1.32 | $0.044 | $3.96 | 1,14 € | 3,43 € | 2026-09-15 |
+| DeepSeek | **DeepSeek V4 Pro 0813 (high)** | Flagship raisonnement | 1000k | $1.32 | $0.044 | $3.96 | 1,14 € | 3,43 € | 2026-09-15 |
+| DeepSeek | **DeepSeek V4 Pro 0813 (none)** | Flagship raisonnement | 1000k | $1.32 | $0.044 | $3.96 | 1,14 € | 3,43 € | 2026-09-15 |
+| DeepSeek | **DeepSeek v4 Pro (unknown thinking)** | Flagship raisonnement | 1000k | $1.32 | $0.044 | $3.96 | 1,14 € | 3,43 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-5.1** | — | — | $1.4 | — | $4.4 | 1,21 € | 3,81 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-5.2** | — | — | $1.4 | — | $4.4 | 1,21 € | 3,81 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-5.2** | — | — | $1.4 | — | $4.4 | 1,21 € | 3,81 € | 2026-09-15 |
 | Z.ai (Zhipu AI) | **GLM-5.3** | Flagship raisonnement et code | — | $1.4 | $0.26 | $4.4 | 1,21 € | 3,81 € | 2026-09-15 |
 | Google DeepMind | **Gemini 3.5 Flash** | — | — | $1.5 | $0.15 | $9 | 1,30 € | 7,80 € | 2026-09-15 |
+| Mistral AI | **Mistral Medium 3.5** | Généraliste équilibré | — | $1.5 | — | $7.5 | 1,30 € | 6,50 € | 2026-09-15 |
+| OpenAI | **GPT-5.2** | — | — | $1.75 | $0.175 | $14 | 1,52 € | 12,13 € | 2026-09-15 |
+| OpenAI | **GPT-5.2 (high)** | — | — | $1.75 | $0.175 | $14 | 1,52 € | 12,13 € | 2026-09-15 |
+| OpenAI | **GPT-5.2 (none)** | — | — | $1.75 | $0.175 | $14 | 1,52 € | 12,13 € | 2026-09-15 |
+| OpenAI | **GPT-5.3-Codex** | Dédié développement logiciel | — | $1.75 | $0.175 | $14 | 1,52 € | 12,13 € | 2026-09-15 |
+| Alibaba | **Qwen3.8-Max** | Flagship | — | $2 | — | $6 | 1,73 € | 5,20 € | 2026-09-15 |
+| Alibaba | **Qwen3.8 Max (0902) (xhigh)** | Flagship | — | $2 | — | $6 | 1,73 € | 5,20 € | 2026-09-15 |
 | Anthropic | **Claude Sonnet 5** | Référence ingénierie logicielle | 200k | $2 | $0.2 | $10 | 1,73 € | 8,67 € | 2026-09-15 |
 | Google DeepMind | **Gemini 3.1 Pro** | Flagship raisonnement | 200k | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.1 Pro Preview** | Flagship raisonnement | 200k | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
 | OpenAI | **GPT-5.6 Terra** | Équilibré développeur | — | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Terra (none)** | Équilibré développeur | — | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
 | OpenAI | **o3** | Raisonnement algorithmique | — | $2 | $0.5 | $8 | 1,73 € | 6,93 € | 2026-09-15 |
+| xAI | **Grok 4.5** | — | — | $2 | — | $6 | 1,73 € | 5,20 € | 2026-09-15 |
+| xAI | **Grok 4.6** | Flagship | — | $2 | — | $6 | 1,73 € | 5,20 € | 2026-09-15 |
+| Alibaba | **Qwen3.7-Max** | — | — | $2.5 | — | $7.5 | 2,17 € | 6,50 € | 2026-09-15 |
 | OpenAI | **GPT-5.4** | — | — | $2.5 | $0.25 | $15 | 2,17 € | 13,00 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 (high)** | — | — | $2.5 | $0.25 | $15 | 2,17 € | 13,00 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 (none)** | — | — | $2.5 | $0.25 | $15 | 2,17 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.5** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.5 (no thinking)** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.5 (16k thinking)** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.5 (1k thinking)** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.5 (32k thinking)** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.5 (59k thinking)** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.5 (8k thinking)** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.6** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 4.6 (32k thinking)** | — | 200k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
 | Moonshot | **Kimi K3** | Flagship multimodal | 1048k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
 | OpenAI | **GPT-5.6 Sol** | Haute capacité multimodal | — | $4 | $0.4 | $20 | 3,47 € | 17,33 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Sol (none)** | Haute capacité multimodal | — | $4 | $0.4 | $20 | 3,47 € | 17,33 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Sol (pro, max)** | Haute capacité multimodal | — | $4 | $0.4 | $20 | 3,47 € | 17,33 € | 2026-09-15 |
+| Anthropic | **Claude Opus 4.6** | — | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
+| Anthropic | **Claude Opus 4.6 (120k thinking)** | — | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
+| Anthropic | **Claude Opus 4.6 (32k thinking)** | — | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
+| Anthropic | **Claude Opus 4.6 (64k thinking)** | — | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
+| Anthropic | **Claude Opus 4.7** | — | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
+| Anthropic | **Claude Opus 4.8** | — | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
+| Anthropic | **Claude Opus 4.8** | — | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
 | Anthropic | **Claude Opus 5** | Flagship architecture et cas complexes | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
 | OpenAI | **GPT-5.5** | — | — | $5 | $0.5 | $30 | 4,33 € | 26,00 € | 2026-09-15 |
+| OpenAI | **GPT-5.5 (no thinking)** | — | — | $5 | $0.5 | $30 | 4,33 € | 26,00 € | 2026-09-15 |
+| Anthropic | **Claude Fable 5** | — | 200k | $10 | $1 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
 | Anthropic | **Claude Fable 5.1** | Flagship raisonnement étendu | 200k | $10 | $0.25 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
 | OpenAI | **GPT-6 Astra** | Flagship nouvelle génération | — | $10 | $1 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
+| OpenAI | **GPT-6 Astra (none)** | Flagship nouvelle génération | — | $10 | $1 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
+| Anthropic | **Claude Opus 4.1** | — | 200k | $15 | $1.5 | $75 | 13,00 € | 65,00 € | 2026-09-15 |
+| Anthropic | **claude-opus-4-1-20250805** | — | 200k | $15 | $1.5 | $75 | 13,00 € | 65,00 € | 2026-09-15 |
+| Anthropic | **claude-opus-4-1-20250805_16K** | — | 200k | $15 | $1.5 | $75 | 13,00 € | 65,00 € | 2026-09-15 |
+| Anthropic | **claude-opus-4-1-20250805_27K** | — | 200k | $15 | $1.5 | $75 | 13,00 € | 65,00 € | 2026-09-15 |
+| OpenAI | **GPT-5 Pro** | — | — | $15 | — | $120 | 13,00 € | 103,99 € | 2026-09-15 |
+| OpenAI | **GPT-5 Pro** | — | — | $15 | — | $120 | 13,00 € | 103,99 € | 2026-09-15 |
 | OpenAI | **o3-pro** | Raisonnement extrême | — | $20 | — | $80 | 17,33 € | 69,33 € | 2026-09-15 |
+| OpenAI | **o3-pro-2025-06-10** | Raisonnement extrême | — | $20 | — | $80 | 17,33 € | 69,33 € | 2026-09-15 |
+| OpenAI | **GPT-5.2 Pro** | — | — | $21 | — | $168 | 18,20 € | 145,59 € | 2026-09-15 |
+| OpenAI | **GPT-5.2 Pro** | — | — | $21 | — | $168 | 18,20 € | 145,59 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 Pro** | Raisonnement extrême | — | $30 | — | $180 | 26,00 € | 155,99 € | 2026-09-15 |
+| OpenAI | **GPT-5.4 Pro** | Raisonnement extrême | — | $30 | — | $180 | 26,00 € | 155,99 € | 2026-09-15 |
 | OpenAI | **GPT-5.5 Pro** | — | — | $30 | — | $180 | 26,00 € | 155,99 € | 2026-09-15 |
 
 **Particularités tarifaires**
 
+- **Qwen3-Max** — Tarif 0-32k tokens. 32k-128k : 2,40 / 12,00. 128k-256k : 3,00 / 15,00.
+- **Qwen3-Max-Instruct** — Tarif 0-32k tokens. 32k-128k : 2,40 / 12,00. 128k-256k : 3,00 / 15,00.
+- **Qwen3.5-Plus** — Tarif 0-256k tokens. 256k-1M : 0,50 / 3,00.
+- **Qwen3.6-Flash** — Tarif 0-256k tokens. 256k-1M : 1,00 / 4,00.
+- **Qwen3.6-Max (preview)** — Tarif 0-128k tokens. 128k-256k : 2,00 / 12,00.
+- **Qwen3.6-Plus** — Tarif 0-256k tokens. 256k-1M : 2,00 / 6,00.
+- **Qwen3.7-Flash** — Tarif 0-32k tokens. 32k-256k : 0,10 / 0,40. 256k-1M : 0,20 / 0,80.
+- **Qwen3.7 Flash** — Tarif 0-32k tokens. 32k-256k : 0,10 / 0,40. 256k-1M : 0,20 / 0,80.
+- **Qwen3.7-Plus** — Tarif 0-256k tokens. 256k-1M : 1,20 / 4,80.
+- **Qwen3.7 Plus** — Tarif 0-256k tokens. 256k-1M : 1,20 / 4,80.
 - **DeepSeek Flash** — heures creuses : $0.15 en entrée, $0.6 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
 - **DeepSeek V4-Pro** — heures creuses : $0.66 en entrée, $1.98 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
+- **DeepSeek V4 Pro 0813 (high)** — heures creuses : $0.66 en entrée, $1.98 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
+- **DeepSeek V4 Pro 0813 (none)** — heures creuses : $0.66 en entrée, $1.98 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
+- **DeepSeek v4 Pro (unknown thinking)** — heures creuses : $0.66 en entrée, $1.98 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
+- **Gemini 2.5 Flash** — Entrée audio facturée 1,00.
+- **gemini-2.5-flash-preview-09-2025** — Entrée audio facturée 1,00.
+- **Gemini 2.5 Pro** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
+- **Gemini 2.5 Pro Preview (Jun 2025)** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
+- **Gemini 2.5 Pro Preview (Jun 2025)** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
+- **Gemini 2.5 Pro Preview (Jun 2025)** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
+- **gemini-2.5-pro_16K** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
+- **gemini-2.5-pro_32K** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
+- **gemini-2.5-pro_8K** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
 - **Gemini 3.1 Pro** — Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00.
+- **Gemini 3.1 Pro Preview** — Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00.
+- **Gemini 3.6 Flash** — Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50. (jusqu'au 2026-12-31).
+- **Gemini 3.7 Flash** — Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50. (jusqu'au 2026-12-31).
 - **Gemini 3.8 Flash** — Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50. (jusqu'au 2026-12-31).
+- **MiniMax-M3** — MiniMax affiche « permanent 50% off » : ce tarif est promotionnel. (jusqu'au ?).
+- **MiniMax-M3** — Tarif ≤512k tokens d'entrée. Au-delà : 0,60 / 0,12 / 2,40.
+- **MiniMax-M3_none** — MiniMax affiche « permanent 50% off » : ce tarif est promotionnel. (jusqu'au ?).
+- **MiniMax-M3_none** — Tarif ≤512k tokens d'entrée. Au-delà : 0,60 / 0,12 / 2,40.
+- **Grok 4.20 (raisonnement)** — Tarif <200k tokens. Au-delà : 2,50 / 5,00.
+- **Grok 4.3** — Tarif <200k tokens. Au-delà : 2,50 / 5,00.
+- **Grok 4.5** — Tarif <200k tokens. Au-delà : 4,00 / 12,00.
+- **Grok 4.6** — Tarif <200k tokens. Au-delà : 4,00 / 12,00.
+- **Grok Build 0.1** — Tarif <200k tokens. Au-delà : 2,00 / 4,00.
 
 ---
 

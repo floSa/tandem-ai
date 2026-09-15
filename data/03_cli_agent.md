@@ -3,7 +3,7 @@
 
 # Agents CLI
 
-6 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
+10 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
 
 ## Aider
 
@@ -12,10 +12,18 @@
 - **Dépôt :** [https://github.com/Aider-AI/aider](https://github.com/Aider-AI/aider)
 - **Statut :** maintenance
 - **Capacités :** BYOK, modèles locaux, gratuit
-- **Vérification :** 2026-09-15 (official_docs)
-- **Constat :** Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti. Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l'URL de l'édition précédente redirige.
 
 Pair programming en terminal. Repo map via tree-sitter, commits Git automatiques.
+
+## Antigravity CLI
+
+- **Éditeur :** Google
+- **Site :** [https://antigravity.google/](https://antigravity.google/)
+- **Statut :** active
+- **Capacités :** gratuit
+- **Forfait Individuel :** gratuit — 0,00 € HT · 0,00 € TTC
+
+Agent de terminal écrit en Go, orchestrant plusieurs agents en arrière-plan. Remplace Gemini CLI, qui a cessé de servir les requêtes le 18/06/2026 pour les offres grand public (les licences Gemini Code Assist entreprise conservent l'accès). Même harnais d'agent que l'application Antigravity : les améliorations du cœur profitent aux deux surfaces.
 
 ## Claude Code
 
@@ -25,8 +33,6 @@ Pair programming en terminal. Repo map via tree-sitter, commits Git automatiques
 - **Capacités :** MCP
 - **Forfait Pro :** $20 — 17,33 € HT · 20,80 € TTC
 - **Forfait Max :** $100 — 86,66 € HT · 103,99 € TTC
-- **Vérification :** 2026-09-15 (official_pricing_page)
-- **Constat :** Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
 
 Inclus dans Claude Pro et Max, ou facturé à l'usage via clé API.
 
@@ -37,20 +43,56 @@ Inclus dans Claude Pro et Max, ou facturé à l'usage via clé API.
 - **Dépôt :** [https://github.com/openai/codex](https://github.com/openai/codex)
 - **Statut :** active
 - **Capacités :** MCP, gratuit
-- **Vérification :** 2026-09-15 (official_docs)
-- **Constat :** Remplace la fiche 'ChatGPT Desktop' de l'edition precedente, qui designait une application de chat et non un harnais de developpement. 124 380 etoiles, commit le jour du releve.
 
 Agent de codage en terminal, open-source sous Apache-2.0. Depuis juillet 2026, Codex est aussi un des trois espaces de l'application ChatGPT Desktop. Utilisable via un abonnement ChatGPT ou une clé API.
+
+## Grok Build
+
+- **Éditeur :** xAI
+- **Site :** [https://x.ai/build](https://x.ai/build)
+- **Documentation :** [https://docs.x.ai/build/overview](https://docs.x.ai/build/overview)
+- **Dépôt :** [https://github.com/xai-org/grok-build](https://github.com/xai-org/grok-build)
+- **Statut :** active
+- **Capacités :** BYOK
+
+Agent de codage et TUI plein écran de xAI, écrit en Rust. Sessions interactives ou headless, connexion par Agent Client Protocol, modèles personnalisés via fichier de configuration. Code de première partie sous Apache-2.0. Authentification par navigateur au premier lancement, ou clé XAI_API_KEY. macOS, Linux, Windows.
 
 ## Kimi Code CLI
 
 - **Éditeur :** Moonshot AI
 - **Site :** [https://platform.kimi.ai](https://platform.kimi.ai)
-- **Statut :** unknown
+- **Dépôt :** [https://github.com/MoonshotAI/kimi-code](https://github.com/MoonshotAI/kimi-code)
+- **Statut :** active
 - **Capacités :** —
-- **Vérification :** fiche non re-contrôlée à cette édition
 
-Binaire autonome, protocole ACP.
+Agent de terminal de Moonshot, binaire autonome, protocole ACP. Node.js ≥ 24.15 et pnpm 10.33. Le projet d'origine MoonshotAI/kimi-cli est absorbé par kimi-code : l'installation migre automatiquement configuration et sessions, l'ancien dépôt est progressivement arrêté.
+
+## Mistral Vibe
+
+- **Éditeur :** Mistral AI
+- **Site :** [https://mistral.ai/products/vibe](https://mistral.ai/products/vibe)
+- **Tarifs :** [https://mistral.ai/pricing](https://mistral.ai/pricing)
+- **Statut :** active
+- **Capacités :** —
+- **Forfait Free :** gratuit — 0,00 € HT · 0,00 € TTC
+- **Forfait Pro :** $14.99 — 12,99 € HT · 15,59 € TTC
+- **Forfait Team :** $24.99/u — 21,66 € HT · 25,99 € TTC
+- **Forfait Enterprise :** — — — HT · — TTC
+
+Successeur du Chat, renommé Vibe le 28/05/2026. Plusieurs surfaces pour un même agent : ligne de commande, extensions VS Code, JetBrains et Zed via Agent Client Protocol, web et mobile. Agents distants : sessions de codage exécutées dans le cloud, en parallèle, lancées depuis le CLI ou le web. Tourne sur Mistral Medium 3.5.
+
+## Muse Code
+
+- **Éditeur :** Meta
+- **Site :** [https://developer.meta.com/ai/products/muse-code/](https://developer.meta.com/ai/products/muse-code/)
+- **Tarifs :** [https://developer.meta.com/ai/products/muse-code/](https://developer.meta.com/ai/products/muse-code/)
+- **Statut :** active
+- **Capacités :** —
+- **Forfait Everyday Usage :** $5 — 4,33 € HT · 5,20 € TTC
+- **Forfait High Usage :** $15 — 13,00 € HT · 15,60 € TTC
+- **Forfait Power Usage :** $50 — 43,33 € HT · 52,00 € TTC
+
+Agent de codage en terminal de Meta, installé par une commande bash unique. Plusieurs agents se coordonnent sur une même tâche, avec traçabilité complète du code produit. Tourne sur Muse Spark 1.3 et 1.2, co-entraînés avec le harnais.
 
 ## OpenHands
 
@@ -59,8 +101,6 @@ Binaire autonome, protocole ACP.
 - **Dépôt :** [https://github.com/OpenHands/OpenHands](https://github.com/OpenHands/OpenHands)
 - **Statut :** active
 - **Capacités :** BYOK, gratuit
-- **Vérification :** 2026-09-15 (official_docs)
-- **Constat :** Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands vers OpenHands/OpenHands.
 
 Agent d'ingénierie autonome en sandbox Docker. Offre cloud managée payante.
 
@@ -71,8 +111,6 @@ Agent d'ingénierie autonome en sandbox Docker. Offre cloud managée payante.
 - **Dépôt :** [https://github.com/QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)
 - **Statut :** active
 - **Capacités :** BYOK, gratuit
-- **Vérification :** 2026-09-15 (official_docs)
-- **Constat :** Absent de l'édition précédente. Dépôt vérifié directement : 27 882 étoiles, Apache-2.0, commit le jour du relevé.
 
 Agent de codage en terminal, open-source sous Apache-2.0, qui édite directement les fichiers d'un projet réel.
 

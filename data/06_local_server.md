@@ -12,7 +12,6 @@
 - **Statut :** active
 - **Capacités :** modèles locaux, gratuit
 - **Endpoint local :** `http://localhost:1234/v1`
-- **Vérification :** 2026-09-15 (official_docs)
 
 Charge des modeles GGUF et expose un serveur HTTP compatible API OpenAI, auquel se branchent les harnais de la couche 1.
 
@@ -23,8 +22,6 @@ Charge des modeles GGUF et expose un serveur HTTP compatible API OpenAI, auquel 
 - **Statut :** active
 - **Capacités :** modèles locaux, gratuit
 - **Endpoint local :** `http://localhost:11434/v1`
-- **Vérification :** 2026-09-15 (official_docs)
-- **Constat :** Très actif, 181 039 étoiles — la passerelle locale la plus adoptée.
 
 Serveur local compatible OpenAI.
 

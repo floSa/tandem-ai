@@ -4,81 +4,237 @@ Comparaison avec l'instantané `2026-09-15.json`.
 
 ## Modèles entrants
 
-- `claude-haiku-4-5` (anthropic)
-- `deepseek-flash` (deepseek)
-- `glm-4.7-flash` (zhipu)
-- `gpt-5.4` (openai)
-- `o3` (openai)
-- `o3-pro` (openai)
+- `claude-opus-4-1` (anthropic)
+- `claude-sonnet-4-5` (anthropic)
+- `gpt-5` (openai)
+- `gpt-5-mini` (openai)
+- `gpt-5-nano` (openai)
+- `gpt-5-pro` (openai)
+- `gpt-5.1` (openai)
+- `gpt-5.2` (openai)
+- `gpt-5.2-pro` (openai)
+- `gpt-5.4-mini` (openai)
+- `gpt-5.4-nano` (openai)
+- `gpt-5.4-pro` (openai)
+- `qwen3-max` (alibaba)
 
 ## Mouvements tarifaires et de statut
 
-- `claude-fable-5-1` entrée : — → $10 •
-- `claude-fable-5-1` sortie : — → $50 •
-- `claude-opus-5` entrée : — → $5 •
-- `claude-opus-5` sortie : — → $25 •
-- `claude-sonnet-5` entrée : — → $2 •
-- `claude-sonnet-5` sortie : — → $10 •
-- `deepseek-v4-pro` entrée : — → $1.32 •
-- `deepseek-v4-pro` sortie : — → $3.96 •
-- `gemini-3.1-pro-preview` entrée : — → $2 •
-- `gemini-3.1-pro-preview` sortie : — → $12 •
-- `gemini-3.5-flash` entrée : — → $1.5 •
-- `gemini-3.5-flash` sortie : — → $9 •
-- `gemini-3.5-flash-lite` entrée : — → $0.3 •
-- `gemini-3.5-flash-lite` sortie : — → $2.5 •
-- `gemini-3.8-flash` entrée : — → $0.75 •
-- `gemini-3.8-flash` sortie : — → $3.75 •
-- `glm-5.3` entrée : — → $1.4 •
-- `glm-5.3` sortie : — → $4.4 •
-- `glm-5.3-flash` entrée : — → $0.15 •
-- `glm-5.3-flash` sortie : — → $0.5 •
-- `gpt-5.5` entrée : — → $5 •
-- `gpt-5.5` sortie : — → $30 •
-- `gpt-5.5-pro` entrée : — → $30 •
-- `gpt-5.5-pro` sortie : — → $180 •
-- `gpt-5.6-luna` entrée : — → $0.2 •
-- `gpt-5.6-luna` sortie : — → $1.2 •
-- `gpt-5.6-sol` entrée : — → $4 •
-- `gpt-5.6-sol` sortie : — → $20 •
-- `gpt-5.6-terra` entrée : — → $2 •
-- `gpt-5.6-terra` sortie : — → $12 •
-- `gpt-6-astra` entrée : — → $10 •
-- `gpt-6-astra` sortie : — → $50 •
-- `kimi-k2.6` entrée : — → $0.95 •
-- `kimi-k2.6` sortie : — → $4 •
-- `kimi-k2.7-code` entrée : — → $0.95 •
-- `kimi-k2.7-code` sortie : — → $4 •
-- `kimi-k3` entrée : — → $3 •
-- `kimi-k3` sortie : — → $15 •
+- `MiniMax-M2` entrée : — → $0.3 •
+- `MiniMax-M2` sortie : — → $1.2 •
+- `MiniMax-M2.1` entrée : — → $0.3 •
+- `MiniMax-M2.1` sortie : — → $1.2 •
+- `MiniMax-M2.5` entrée : — → $0.3 •
+- `MiniMax-M2.5` sortie : — → $1.2 •
+- `MiniMax-M2.7` entrée : — → $0.3 •
+- `MiniMax-M2.7` sortie : — → $1.2 •
+- `MiniMax-M3` entrée : — → $0.3 •
+- `MiniMax-M3` sortie : — → $1.2 •
+- `MiniMax-M3_none` entrée : — → $0.3 •
+- `MiniMax-M3_none` sortie : — → $1.2 •
+- `claude-fable-5` entrée : — → $10 •
+- `claude-fable-5` sortie : — → $50 •
+- `claude-haiku-4-5-20251001` entrée : — → $1 •
+- `claude-haiku-4-5-20251001` sortie : — → $5 •
+- `claude-haiku-4-5-20251001_16K` entrée : — → $1 •
+- `claude-haiku-4-5-20251001_16K` sortie : — → $5 •
+- `claude-haiku-4-5-20251001_1K` entrée : — → $1 •
+- `claude-haiku-4-5-20251001_1K` sortie : — → $5 •
+- `claude-haiku-4-5-20251001_32K` entrée : — → $1 •
+- `claude-haiku-4-5-20251001_32K` sortie : — → $5 •
+- `claude-haiku-4-5-20251001_8K` entrée : — → $1 •
+- `claude-haiku-4-5-20251001_8K` sortie : — → $5 •
+- `claude-opus-4-1-20250805` entrée : — → $15 •
+- `claude-opus-4-1-20250805` sortie : — → $75 •
+- `claude-opus-4-1-20250805_16K` entrée : — → $15 •
+- `claude-opus-4-1-20250805_16K` sortie : — → $75 •
+- `claude-opus-4-1-20250805_27K` entrée : — → $15 •
+- `claude-opus-4-1-20250805_27K` sortie : — → $75 •
+- `claude-opus-4-6` entrée : — → $5 •
+- `claude-opus-4-6` sortie : — → $25 •
+- `claude-opus-4-6_120K` entrée : — → $5 •
+- `claude-opus-4-6_120K` sortie : — → $25 •
+- `claude-opus-4-6_32K` entrée : — → $5 •
+- `claude-opus-4-6_32K` sortie : — → $25 •
+- `claude-opus-4-6_64K` entrée : — → $5 •
+- `claude-opus-4-6_64K` sortie : — → $25 •
+- `claude-opus-4-7` entrée : — → $5 •
+- `claude-opus-4-7` sortie : — → $25 •
+- `claude-opus-4-8` entrée : — → $5 •
+- `claude-opus-4-8` sortie : — → $25 •
+- `claude-opus-4-8_none` entrée : — → $5 •
+- `claude-opus-4-8_none` sortie : — → $25 •
+- `claude-sonnet-4-5-20250929` entrée : — → $3 •
+- `claude-sonnet-4-5-20250929` sortie : — → $15 •
+- `claude-sonnet-4-5-20250929_16K` entrée : — → $3 •
+- `claude-sonnet-4-5-20250929_16K` sortie : — → $15 •
+- `claude-sonnet-4-5-20250929_1K` entrée : — → $3 •
+- `claude-sonnet-4-5-20250929_1K` sortie : — → $15 •
+- `claude-sonnet-4-5-20250929_32K` entrée : — → $3 •
+- `claude-sonnet-4-5-20250929_32K` sortie : — → $15 •
+- `claude-sonnet-4-5-20250929_59K` entrée : — → $3 •
+- `claude-sonnet-4-5-20250929_59K` sortie : — → $15 •
+- `claude-sonnet-4-5-20250929_8K` entrée : — → $3 •
+- `claude-sonnet-4-5-20250929_8K` sortie : — → $15 •
+- `claude-sonnet-4-6` entrée : — → $3 •
+- `claude-sonnet-4-6` sortie : — → $15 •
+- `claude-sonnet-4-6_32K` entrée : — → $3 •
+- `claude-sonnet-4-6_32K` sortie : — → $15 •
+- `deepseek-v4-pro-0813` entrée : — → $1.32 •
+- `deepseek-v4-pro-0813` sortie : — → $3.96 •
+- `deepseek-v4-pro-0813_none` entrée : — → $1.32 •
+- `deepseek-v4-pro-0813_none` sortie : — → $3.96 •
+- `deepseek-v4-pro_none` entrée : — → $1.32 •
+- `deepseek-v4-pro_none` sortie : — → $3.96 •
+- `gemini-2.5-flash` entrée : — → $0.3 •
+- `gemini-2.5-flash` sortie : — → $2.5 •
+- `gemini-2.5-flash-preview-09-2025` entrée : — → $0.3 •
+- `gemini-2.5-flash-preview-09-2025` sortie : — → $2.5 •
+- `gemini-2.5-pro` entrée : — → $1.25 •
+- `gemini-2.5-pro` sortie : — → $10 •
+- `gemini-2.5-pro-preview-06-05` entrée : — → $1.25 •
+- `gemini-2.5-pro-preview-06-05` sortie : — → $10 •
+- `gemini-2.5-pro-preview-06-05_1K` entrée : — → $1.25 •
+- `gemini-2.5-pro-preview-06-05_1K` sortie : — → $10 •
+- `gemini-2.5-pro-preview-06-05_32K` entrée : — → $1.25 •
+- `gemini-2.5-pro-preview-06-05_32K` sortie : — → $10 •
+- `gemini-2.5-pro_16K` entrée : — → $1.25 •
+- `gemini-2.5-pro_16K` sortie : — → $10 •
+- `gemini-2.5-pro_32K` entrée : — → $1.25 •
+- `gemini-2.5-pro_32K` sortie : — → $10 •
+- `gemini-2.5-pro_8K` entrée : — → $1.25 •
+- `gemini-2.5-pro_8K` sortie : — → $10 •
+- `gemini-3.1-pro-preview-customtools` entrée : — → $2 •
+- `gemini-3.1-pro-preview-customtools` sortie : — → $12 •
+- `gemini-3.6-flash` entrée : — → $0.75 •
+- `gemini-3.6-flash` sortie : — → $3.75 •
+- `gemini-3.7-flash` entrée : — → $0.75 •
+- `gemini-3.7-flash` sortie : — → $3.75 •
+- `glm-4.7` entrée : — → $0.6 •
+- `glm-4.7` sortie : — → $2.2 •
+- `glm-5` entrée : — → $1 •
+- `glm-5` sortie : — → $3.2 •
+- `glm-5.1` entrée : — → $1.4 •
+- `glm-5.1` sortie : — → $4.4 •
+- `glm-5.2` entrée : — → $1.4 •
+- `glm-5.2` sortie : — → $4.4 •
+- `glm-5.2_none` entrée : — → $1.4 •
+- `glm-5.2_none` sortie : — → $4.4 •
+- `gpt-5-2025-08-07` entrée : — → $1.25 •
+- `gpt-5-2025-08-07` sortie : — → $10 •
+- `gpt-5-mini-2025-08-07` entrée : — → $0.25 •
+- `gpt-5-mini-2025-08-07` sortie : — → $2 •
+- `gpt-5-nano-2025-08-07` entrée : — → $0.05 •
+- `gpt-5-nano-2025-08-07` sortie : — → $0.4 •
+- `gpt-5-pro-2025-10-06` entrée : — → $15 •
+- `gpt-5-pro-2025-10-06` sortie : — → $120 •
+- `gpt-5.1-2025-11-13` entrée : — → $1.25 •
+- `gpt-5.1-2025-11-13` sortie : — → $10 •
+- `gpt-5.1-2025-11-13_none` entrée : — → $1.25 •
+- `gpt-5.1-2025-11-13_none` sortie : — → $10 •
+- `gpt-5.2-2025-12-11` entrée : — → $1.75 •
+- `gpt-5.2-2025-12-11` sortie : — → $14 •
+- `gpt-5.2-2025-12-11_none` entrée : — → $1.75 •
+- `gpt-5.2-2025-12-11_none` sortie : — → $14 •
+- `gpt-5.2-pro-2025-12-11` entrée : — → $21 •
+- `gpt-5.2-pro-2025-12-11` sortie : — → $168 •
+- `gpt-5.3-codex` entrée : — → $1.75 •
+- `gpt-5.3-codex` sortie : — → $14 •
+- `gpt-5.4-2026-03-05` entrée : — → $2.5 •
+- `gpt-5.4-2026-03-05` sortie : — → $15 •
+- `gpt-5.4-2026-03-05_none` entrée : — → $2.5 •
+- `gpt-5.4-2026-03-05_none` sortie : — → $15 •
+- `gpt-5.4-mini-2026-03-17` entrée : — → $0.75 •
+- `gpt-5.4-mini-2026-03-17` sortie : — → $4.5 •
+- `gpt-5.4-mini-2026-03-17_none` entrée : — → $0.75 •
+- `gpt-5.4-mini-2026-03-17_none` sortie : — → $4.5 •
+- `gpt-5.4-nano-2026-03-17` entrée : — → $0.2 •
+- `gpt-5.4-nano-2026-03-17` sortie : — → $1.25 •
+- `gpt-5.4-nano-2026-03-17_none` entrée : — → $0.2 •
+- `gpt-5.4-nano-2026-03-17_none` sortie : — → $1.25 •
+- `gpt-5.4-pro-2026-03-05` entrée : — → $30 •
+- `gpt-5.4-pro-2026-03-05` sortie : — → $180 •
+- `gpt-5.5_none` entrée : — → $5 •
+- `gpt-5.5_none` sortie : — → $30 •
+- `gpt-5.6-luna_none` entrée : — → $0.2 •
+- `gpt-5.6-luna_none` sortie : — → $1.2 •
+- `gpt-5.6-sol_none` entrée : — → $4 •
+- `gpt-5.6-sol_none` sortie : — → $20 •
+- `gpt-5.6-sol_promax` entrée : — → $4 •
+- `gpt-5.6-sol_promax` sortie : — → $20 •
+- `gpt-5.6-terra_none` entrée : — → $2 •
+- `gpt-5.6-terra_none` sortie : — → $12 •
+- `gpt-6-astra_none` entrée : — → $10 •
+- `gpt-6-astra_none` sortie : — → $50 •
+- `grok-4.20-0309-reasoning` entrée : — → $1.25 •
+- `grok-4.20-0309-reasoning` sortie : — → $2.5 •
+- `grok-4.3` entrée : — → $1.25 •
+- `grok-4.3` sortie : — → $2.5 •
+- `grok-4.5` entrée : — → $2 •
+- `grok-4.5` sortie : — → $6 •
+- `grok-4.6` entrée : — → $2 •
+- `grok-4.6` sortie : — → $6 •
+- `grok-build-0.1` entrée : — → $1 •
+- `grok-build-0.1` sortie : — → $2 •
+- `mistral-large-2512` entrée : — → $0.5 •
+- `mistral-large-2512` sortie : — → $1.5 •
+- `mistral-medium-2604` entrée : — → $1.5 •
+- `mistral-medium-2604` sortie : — → $7.5 •
+- `o3-pro-2025-06-10` entrée : — → $20 •
+- `o3-pro-2025-06-10` sortie : — → $80 •
+- `qwen3-max-2025-09-23` entrée : — → $1.2 •
+- `qwen3-max-2025-09-23` sortie : — → $6 •
+- `qwen3.5-flash` entrée : — → $0.1 •
+- `qwen3.5-flash` sortie : — → $0.4 •
+- `qwen3.5-plus` entrée : — → $0.4 •
+- `qwen3.5-plus` sortie : — → $2.4 •
+- `qwen3.6-flash` entrée : — → $0.25 •
+- `qwen3.6-flash` sortie : — → $1.5 •
+- `qwen3.6-max-preview` entrée : — → $1.3 •
+- `qwen3.6-max-preview` sortie : — → $7.8 •
+- `qwen3.6-plus` entrée : — → $0.5 •
+- `qwen3.6-plus` sortie : — → $3 •
+- `qwen3.7-flash` entrée : — → $0.03 •
+- `qwen3.7-flash` sortie : — → $0.13 •
+- `qwen3.7-flash_none` entrée : — → $0.03 •
+- `qwen3.7-flash_none` sortie : — → $0.13 •
+- `qwen3.7-max` entrée : — → $2.5 •
+- `qwen3.7-max` sortie : — → $7.5 •
+- `qwen3.7-plus` entrée : — → $0.4 •
+- `qwen3.7-plus` sortie : — → $1.6 •
+- `qwen3.7-plus_none` entrée : — → $0.4 •
+- `qwen3.7-plus_none` sortie : — → $1.6 •
+- `qwen3.8-max` entrée : — → $2 •
+- `qwen3.8-max` sortie : — → $6 •
+- `qwen3.8-max-0902` entrée : — → $2 •
+- `qwen3.8-max-0902` sortie : — → $6 •
 
 ## Harnais
 
-- entrant : `aider`
-- entrant : `chatgpt-desktop`
-- entrant : `claude-code`
-- entrant : `claude-desktop`
-- entrant : `cline`
-- entrant : `continue`
-- entrant : `cursor`
-- entrant : `github-copilot`
-- entrant : `kimi-cli`
-- entrant : `lm-studio`
-- entrant : `ollama`
-- entrant : `openhands`
-- entrant : `openrouter`
-- entrant : `roo-code`
-- entrant : `trae`
-- entrant : `void`
-- entrant : `windsurf`
-- entrant : `zed`
+- entrant : `antigravity`
+- entrant : `antigravity-cli`
+- entrant : `codex-cli`
+- entrant : `codex-ide`
+- entrant : `grok-build`
+- entrant : `kimi-work`
+- entrant : `lm-studio-bionic`
+- entrant : `lm-studio-server`
+- entrant : `mistral-vibe`
+- entrant : `muse-code`
+- entrant : `qwen-code`
+- entrant : `qwen-studio`
+- entrant : `zcode`
+- sorti du catalogue : `lm-studio`
+- `chatgpt-desktop` : unknown → active
+- `kimi-cli` : unknown → active
+- `openrouter` : unknown → active
 
 ## Volumétrie
 
 | | précédent | courant |
 | :-- | --: | --: |
-| Modèles | 188 | 194 |
-| Harnais | 0 | 18 |
+| Modèles | 194 | 207 |
+| Harnais | 18 | 30 |
 | Mesures | 1275 | 1275 |
 
 ---

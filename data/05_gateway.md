@@ -10,9 +10,9 @@
 - **Éditeur :** OpenRouter, Inc.
 - **Site :** [https://openrouter.ai](https://openrouter.ai)
 - **Documentation :** [https://openrouter.ai/docs](https://openrouter.ai/docs)
-- **Statut :** unknown
+- **Tarifs :** [https://openrouter.ai/docs/faq](https://openrouter.ai/docs/faq)
+- **Statut :** active
 - **Capacités :** —
-- **Vérification :** fiche non re-contrôlée à cette édition
 
-Passerelle universelle au format OpenAI. Une clé pour tous les labs.
+Passerelle universelle au format OpenAI : une clé pour tous les laboratoires. Aucune marge sur l'inférence — le tarif du fournisseur est répercuté tel quel. La facturation porte sur l'achat de crédits : 5,5 % par carte (0,80 $ minimum), 5 % en USDC. En BYOK, 5 % sur l'usage au-delà de 25 000 $/mois (200 000 $ en entreprise). Pas d'abonnement.
 
