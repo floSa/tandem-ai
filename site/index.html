@@ -36,9 +36,8 @@ body{background:var(--bg);color:var(--ink);
 header{padding:38px 0 20px;border-bottom:1px solid var(--line)}
 h1{font-family:"IBM Plex Serif",Georgia,serif;font-size:27px;margin:0 0 7px;
  letter-spacing:-.015em;font-weight:600;text-wrap:balance}
-.sub{color:var(--ink);font-size:15px;margin:0;max-width:76ch;line-height:1.5}
-.sub2{color:var(--ink-2);font-size:13.5px;margin:10px 0 0;max-width:76ch}
-.meta{color:var(--ink-3);font-size:12px;margin-top:12px;font-variant-numeric:tabular-nums}
+.sub{color:var(--ink);font-size:15px;margin:18px 0 0;max-width:78ch;line-height:1.5}
+.meta{color:var(--ink-3);font-size:12.5px;margin:8px 0 0;font-variant-numeric:tabular-nums}
 h2{font-family:"IBM Plex Serif",Georgia,serif;font-size:19px;margin:36px 0 4px;
  letter-spacing:-.01em;font-weight:600;text-wrap:balance}
 h2 .n{color:var(--ink-3);font-weight:400;font-size:13px;margin-left:8px}
@@ -59,22 +58,19 @@ h2 .en-h{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)
 .note b{color:var(--ink)}
 .note.bad{border-left-color:var(--bad)}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:18px;margin:14px 0}
-nav.tabs{display:flex;width:100%;margin:14px 0 8px;border:1px solid var(--line-strong);
- border-radius:10px;overflow:hidden;background:var(--panel)}
-nav.tabs button{flex:1 1 0;background:none;border:0;border-right:1px solid var(--line);
- color:var(--ink-2);padding:12px 8px;font:inherit;cursor:pointer;text-align:center;
- display:flex;flex-direction:column;gap:2px;align-items:center;transition:background .12s}
-nav.tabs button:last-child{border-right:0}
-nav.tabs button .fr{font-size:14px;font-weight:550;letter-spacing:-.01em}
-nav.tabs button .en{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;
+nav.tabs{display:flex;width:100%;margin:22px 0 4px;border-bottom:1px solid var(--line)}
+nav.tabs button{flex:1 1 0;background:none;border:0;border-bottom:2px solid transparent;
+ color:var(--ink-3);padding:9px 6px 8px;font:inherit;cursor:pointer;text-align:center;
+ display:flex;flex-direction:column;gap:1px;align-items:center;margin-bottom:-1px}
+nav.tabs button .fr{font-size:14px;font-weight:500;letter-spacing:-.01em}
+nav.tabs button .en{font-size:10px;text-transform:uppercase;letter-spacing:.1em;
  color:var(--ink-3);font-weight:400}
-nav.tabs button:hover{background:var(--grid)}
-nav.tabs button[aria-selected="true"]{background:var(--s1);color:#fff}
-nav.tabs button[aria-selected="true"] .en{color:rgba(255,255,255,.82)}
-nav.tabs button:focus-visible{outline:2px solid var(--s1);outline-offset:-3px}
-nav.tabs .cnt{font-variant-numeric:tabular-nums;opacity:.85}
-@media(max-width:760px){nav.tabs{flex-wrap:wrap}
- nav.tabs button{flex:1 1 33%;border-bottom:1px solid var(--line)}}
+nav.tabs button:hover{color:var(--ink-2)}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--s1)}
+nav.tabs button[aria-selected="true"] .fr{font-weight:600}
+nav.tabs button[aria-selected="true"] .en{color:var(--s1)}
+nav.tabs button:focus-visible{outline:2px solid var(--s1);outline-offset:-2px;border-radius:4px}
+@media(max-width:700px){nav.tabs{flex-wrap:wrap}nav.tabs button{flex:1 1 33%}}
 h3.grp{font-family:"IBM Plex Serif",Georgia,serif;font-size:15.5px;font-weight:600;
  margin:26px 0 3px;letter-spacing:-.01em}
 h3.grp .c{color:var(--ink-3);font-weight:400;font-size:12px;font-family:"IBM Plex Sans",sans-serif;
@@ -87,12 +83,13 @@ label.f{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--in
 select{background:var(--bg);color:var(--ink);border:1px solid var(--line-strong);
  border-radius:7px;padding:6px 9px;font:inherit;font-size:13px;min-width:150px;cursor:pointer}
 select:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
-.seg{display:flex;gap:2px;background:var(--bg);border:1px solid var(--line-strong);
- border-radius:7px;padding:2px}
-.seg button{background:none;border:0;color:var(--ink-2);padding:5px 11px;border-radius:5px;
- font:inherit;font-size:12.5px;cursor:pointer;white-space:nowrap}
-.seg button[aria-pressed="true"]{background:var(--s1);color:#fff}
-.seg button:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
+.seg{display:flex;gap:7px;flex-wrap:wrap;background:none;border:0;padding:0}
+.seg button{background:var(--panel);border:1px solid var(--line-strong);border-radius:999px;
+ color:var(--ink-2);padding:7px 15px;font:inherit;font-size:13px;cursor:pointer;
+ white-space:nowrap;transition:border-color .12s,color .12s}
+.seg button:hover{border-color:var(--s1);color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--s1);border-color:var(--s1);color:#fff}
+.seg button:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
 .chart{width:100%;overflow-x:auto}
 svg{display:block;max-width:100%;height:auto;font:inherit}
 .gl{stroke:var(--grid);stroke-width:1}
@@ -136,26 +133,24 @@ a{color:var(--s1)}
 <div class="wrap">
 <header>
   <h1>Modèles et harnais de développement IA</h1>
-  <p class="sub"><b>Comparer la performance, le coût réel et les tarifs des modèles de
-     fondation et des outils qui les exécutent</b> — sur des mesures sourcées, datées
-     et reproductibles.</p>
-  <p class="sub2">Un score n'appartient jamais à un modèle seul : il dépend aussi du
-     <b>harnais</b> qui l'exécute et du budget de raisonnement accordé. C'est ce couple
-     que ce référentiel mesure.</p>
   <p class="meta" id="meta"></p>
 </header>
 
 <div class="strip" id="strip"></div>
 
+<p class="sub"><b>Comparer la performance, le coût réel et les tarifs des modèles de
+   fondation et des outils qui les exécutent</b> — sur des mesures sourcées, datées
+   et reproductibles.</p>
+
 <nav class="tabs" id="nav" role="tablist" aria-label="Sections">
   <button data-s="mesures" role="tab" aria-selected="true">
     <span class="fr">Benchmarks</span><span class="en">performance</span></button>
   <button data-s="modeles" role="tab" aria-selected="false">
-    <span class="fr">Tarifs <span class="cnt" id="c-mod"></span></span><span class="en">pricing</span></button>
+    <span class="fr">Tarifs</span><span class="en">pricing</span></button>
   <button data-s="harnais" role="tab" aria-selected="false">
-    <span class="fr">Harnais <span class="cnt" id="c-har"></span></span><span class="en">harness</span></button>
+    <span class="fr">Harnais</span><span class="en">harness</span></button>
   <button data-s="passerelles" role="tab" aria-selected="false">
-    <span class="fr">Passerelles <span class="cnt" id="c-pas"></span></span><span class="en">gateways</span></button>
+    <span class="fr">Passerelles</span><span class="en">gateways</span></button>
   <button data-s="methode" role="tab" aria-selected="false">
     <span class="fr">Méthode</span><span class="en">methodology</span></button>
 </nav>
@@ -261,8 +256,7 @@ const pct=(v,u)=>u==='minutes'?v.toFixed(2):(v*100).toFixed(1)+'%';
 let K='rank';
 
 // ── bandeau ────────────────────────────────────────────────────────────────
-$('#meta').textContent=`${D.edition} · données arrêtées au ${D.generated} · `+
-  `prochaine révision mars 2027`;
+$('#meta').textContent=`${D.edition} · données arrêtées au ${D.generated}`;
 const C=D.counts;
 $('#strip').innerHTML=[
  [C.scores.toLocaleString('fr-FR'),'mesures sourcées'],
@@ -873,8 +867,6 @@ function rendreCouche(cible,couche,ordre){
 }
 rendreCouche('#har',1,['ide_fork','vscode_extension','cli_agent','desktop_app']);
 rendreCouche('#pas',2,['gateway','local_server']);
-const nH=D.tools.filter(t=>t.layer===1).length,nP=D.tools.filter(t=>t.layer===2).length;
-$('#c-har').textContent=nH;$('#c-pas').textContent=nP;
 
 // ── modèles & tarifs ──────────────────────────────────────────────────────
 (function(){
@@ -915,7 +907,6 @@ $('#c-har').textContent=nH;$('#c-pas').textContent=nP;
     Euros calculés au taux de ${D.fx.usd_eur} $/€${D.fx.status==='verified'?', vérifié':
     ', <b>non vérifié</b>'}.</div>`+html;
   $('#mod').innerHTML=html;
-  $('#c-mod').textContent=D.counts.priced;
 })();
 
 // ── méthode ───────────────────────────────────────────────────────────────
