@@ -10,8 +10,9 @@ le catalogue recense 52 harnais distincts, et l'écart entre le meilleur et le
 moins bon dépasse souvent l'écart entre deux modèles. Ce référentiel est construit
 pour rendre cet effet visible plutôt que pour le masquer derrière un classement.
 
-État actuel : **11 fournisseurs · 194 modèles · 18 benchmarks · 1 263 mesures ·
-25 grilles tarifaires et 13 forfaits relevés sur sources officielles · 18 harnais.**
+État actuel : **11 fournisseurs · 194 modèles · 18 benchmarks · 1 263 mesures
+dont 286 avec coût réellement mesuré · 25 grilles tarifaires et 21 forfaits
+relevés sur sources officielles · 18 harnais dont 13 re-vérifiés.**
 
 ---
 
@@ -37,7 +38,14 @@ classements qui l'ignorent — c'est aujourd'hui le cas des deux premiers de
 SWE-bench Verified.
 
 **3. Ce que le référentiel ne mesure pas est dit explicitement.** La vue
-« Couverture » affiche les trous en pointillés plutôt que de les interpoler.
+« Couverture » affiche les trous en pointillés plutôt que de les interpoler, et
+le validateur distingue un modèle *pas encore mesuré* d'un modèle *dont le tarif
+reste à relever*.
+
+**4. Le coût se mesure, il ne se déduit pas.** Le prix au token ne permet pas de
+comparer deux niveaux d'effort d'un même modèle : le tarif est identique, seule
+la consommation change. Le référentiel exploite le coût réellement dépensé
+pendant les runs — 286 mesures — pour croiser performance et dépense.
 
 ---
 
@@ -48,17 +56,19 @@ catalog/        SOURCE DE VÉRITÉ — le seul endroit édité à la main
   _meta.yaml      taux de change, TVA, seuils de fraîcheur, hiérarchie de provenance
   labs.yaml       fournisseurs + URL de tarification officielles
   models.yaml     modèles + tarifs + provenance
-  tools.yaml      harnais (IDE, extensions, CLI, desktop, passerelles)
+  tools.yaml      harnais (IDE, extensions, CLI, desktop, passerelles) + conformité
   plans.yaml      forfaits d'abonnement SaaS
   pricing_verified.yaml  tarifs API relevés à la main (seul endroit de saisie)
   benchmarks.yaml registre raisonné des benchmarks        ← généré
   scores.yaml     mesures (modèle × harnais × protocole)  ← généré
 
-pipeline/       ingestion, validation, génération
+pipeline/       ingestion, validation, génération, recoupement
+tests/          34 tests des invariants du protocole
+content/        fragments narratifs du Guide (écrits à la main)
 site/           page interactive                          ← généré
+data/           fiches par catégorie                      ← généré
 protocol/       méthodologie (fait autorité)
 snapshots/      instantanés datés, base des changelogs
-data/           fiches Markdown par catégorie
 ```
 
 Le Guide Markdown et `site/index.html` sont **générés**. On ne les corrige pas à
@@ -79,12 +89,18 @@ python3 pipeline/seed_catalog.py                    # détecter les nouveaux mod
 python3 pipeline/apply_pricing.py                   # injecter les tarifs relevés
 python3 pipeline/validate.py                        # contrôle qualité (code 1 si erreur)
 python3 pipeline/build_site.py                      # régénérer la page
+python3 pipeline/apply_pricing.py                   # injecter les tarifs relevés
+python3 pipeline/crosscheck_aa.py                   # recouper avec une seconde source
+python3 pipeline/build_guide.py                     # régénérer le Guide et les fiches
 python3 pipeline/changelog.py                       # diff avec l'édition précédente
+python3 -m unittest discover -s tests               # tests du pipeline
 ```
 
-`validate.py` est la porte de sortie : tant qu'il échoue, on ne publie pas. Il
-tourne aussi en CI à chaque push et une fois par mois, pour détecter les données
-qui ont dépassé leur date de péremption.
+Deux portes avant publication : les **tests du pipeline** (34 tests sur le code
+qui produit la donnée) puis **`validate.py`** (la donnée elle-même). Tant que
+l'une échoue, on ne publie pas. Les deux tournent en CI à chaque push et une fois
+par mois, avec un contrôle que les sorties générées n'ont pas divergé du
+catalogue.
 
 `worklist.py` est le point d'entrée : il dit ce qui n'a jamais été vérifié, ce qui
 a dépassé sa date de péremption, avec l'URL à ouvrir et les pièges d'accès connus
@@ -108,10 +124,12 @@ Avec Claude Code, le skill `audit-referentiel` l'applique directement :
 | :-- | :-- |
 | Benchmarks | ✅ 1 263 mesures sourcées (Epoch AI, CC-BY) |
 | Identité des modèles | ✅ 194 modèles |
-| Tarifs API | 🟡 25 relevés sur page officielle (Anthropic, OpenAI, Google, DeepSeek, Moonshot, Z.ai) — Mistral, Alibaba, xAI restants |
-| Forfaits d'abonnement | 🟡 13 relevés (Anthropic, GitHub, Cursor, Mistral) |
-| Harnais | 🟡 4 re-vérifiés sur 18 |
-| Taux de change | ⚠️ non vérifié |
+| Taux de change | ✅ taux de référence BCE du 15/09/2026 |
+| Tarifs API | 🟡 25 relevés sur page officielle — Mistral, Alibaba, xAI, MiniMax, Meta restants |
+| Forfaits d'abonnement | 🟡 21 relevés (Anthropic, GitHub, Cursor, Mistral, Zed, Trae) |
+| Harnais | 🟡 13 re-vérifiés sur 18 |
+| Conformité | 🟡 6 harnais sur 18 |
+| Source de recoupement | ⚠️ Artificial Analysis implémenté, clé non configurée |
 
 Le [Guide 2026](./Guide_Complet_Solutions_Dev_IA_2026.md) et les fiches
 [`data/`](./data/) sont antérieurs à ce pipeline. La confrontation aux pages

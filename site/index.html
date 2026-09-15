@@ -737,7 +737,10 @@ const CATL={ide_fork:'IDE dérivé',vscode_extension:'Extension VS Code',
  desktop_app:'Application desktop',cli_agent:'Agent CLI',gateway:'Passerelle'};
 $('#tn').textContent=`${D.counts.tools} au catalogue, ${D.counts.tools_verified} re-vérifiés`;
 $('#tlist').innerHTML=D.tools.map(t=>{const v=t.verification||{},ok=v.status!=='unverified';
- return `<div class="bc"><h3>${esc(t.name)} <span class="tag${ok?' ref':''}">`+
+ const mort=t.status==='retired';
+ return `<div class="bc" ${mort?'style="opacity:.72"':''}><h3>${esc(t.name)} `+
+  (mort?`<span class="tag" style="border-color:var(--bad);color:var(--bad)">retiré</span> `:'')+
+  `<span class="tag${ok?' ref':''}">`+
   `${ok?'vérifié '+esc(v.verified_on):'non re-vérifié'}</span></h3>
   <p style="color:var(--ink-3);font-size:11.5px;margin:2px 0 6px">${esc(CATL[t.category]||t.category)}`+
   ` · ${esc(t.vendor)}</p><p>${esc(t.note||'')}</p>`+
@@ -745,6 +748,16 @@ $('#tlist').innerHTML=D.tools.map(t=>{const v=t.verification||{},ok=v.status!=='
   `<p style="margin-top:8px">${[t.byok&&'BYOK',t.local_models&&'modèles locaux',
     t.mcp&&'MCP',t.free&&'gratuit'].filter(Boolean)
     .map(x=>`<span class="tag">${x}</span>`).join(' ')}</p>`+
+  (()=>{const c=t.compliance||{};if(c.status==='unverified'||!c.note)return '';
+    const f=[c.zero_data_retention&&'rétention zéro',c.self_hosted&&'auto-hébergeable',
+      c.sso&&'SSO',c.audit_logs&&"journaux d'audit",
+      c.data_residency==='local'&&'données locales'].filter(Boolean);
+    return `<p style="margin-top:9px;padding-top:9px;border-top:1px solid var(--line)">`+
+      `<span style="color:var(--ink-3);font-size:10.5px;text-transform:uppercase;`+
+      `letter-spacing:.06em">Conformité</span><br>`+
+      f.map(x=>`<span class="tag">${x}</span>`).join(' ')+
+      `<span style="display:block;margin-top:5px;font-size:12px;color:var(--ink-2)">`+
+      `${esc(c.note)}</span></p>`;})()+
   (t.url?`<p style="margin-top:7px"><a href="${esc(t.url)}" rel="noopener">${esc(t.url)}</a></p>`:'')+
   `</div>`;}).join('');
 
