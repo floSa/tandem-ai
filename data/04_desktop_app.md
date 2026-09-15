@@ -3,17 +3,7 @@
 
 # Applications desktop
 
-3 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
-
-## ChatGPT Desktop
-
-- **Éditeur :** OpenAI, LLC
-- **Site :** [https://openai.com/chatgpt/desktop](https://openai.com/chatgpt/desktop)
-- **Statut :** unknown
-- **Capacités :** —
-- **Vérification :** fiche non re-contrôlée à cette édition
-
-Work with Apps : lecture du contexte VS Code, Xcode, Terminal.
+2 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
 
 ## Claude Desktop
 
@@ -28,14 +18,15 @@ Work with Apps : lecture du contexte VS Code, Xcode, Terminal.
 
 Windows et macOS. Serveurs MCP, accès fichiers et outils locaux.
 
-## LM Studio
+## LM Studio Bionic
 
 - **Éditeur :** Element Labs, Inc.
 - **Site :** [https://lmstudio.ai](https://lmstudio.ai)
-- **Statut :** unknown
+- **Documentation :** [https://lmstudio.ai/docs](https://lmstudio.ai/docs)
+- **Statut :** active
 - **Capacités :** modèles locaux, gratuit
-- **Endpoint local :** `http://localhost:1234/v1`
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** L'edition precedente confondait l'agent et le serveur local sous une seule fiche : ce sont deux couches differentes.
 
-Exécution locale de modèles GGUF + serveur compatible OpenAI.
+Agent pour le travail et le code, annonce par l'editeur comme couvrant les taches de developpement, l'automatisation et le controle de la machine.
 

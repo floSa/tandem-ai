@@ -3,7 +3,7 @@
 
 # Agents CLI
 
-4 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
+5 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
 
 ## Aider
 
@@ -29,6 +29,18 @@ Pair programming en terminal. Repo map via tree-sitter, commits Git automatiques
 - **Constat :** Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
 
 Inclus dans Claude Pro et Max, ou facturé à l'usage via clé API.
+
+## Codex CLI
+
+- **Éditeur :** OpenAI
+- **Site :** [https://developers.openai.com/codex](https://developers.openai.com/codex)
+- **Dépôt :** [https://github.com/openai/codex](https://github.com/openai/codex)
+- **Statut :** active
+- **Capacités :** MCP, gratuit
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Remplace la fiche 'ChatGPT Desktop' de l'edition precedente, qui designait une application de chat et non un harnais de developpement. 124 380 etoiles, commit le jour du releve.
+
+Agent de codage en terminal, open-source sous Apache-2.0. Utilisable via un abonnement ChatGPT ou une cle API.
 
 ## Kimi Code CLI
 

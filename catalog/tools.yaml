@@ -1,6 +1,150 @@
 _generated:
-  note: Fichier manuel. Les fiches `unverified` sont héritées et attendent un contrôle.
+  note: 'Fichier manuel. `layer` reprend la taxonomie : 1 = harnais d''execution (interface developpeur),
+    2 = passerelle (routage et service de modeles). Les fiches `unverified` sont heritees et attendent
+    un controle.'
 tools:
+- id: aider
+  name: Aider
+  vendor: Aider-AI (open-source)
+  category: cli_agent
+  status: maintenance
+  url: https://aider.chat
+  repo_url: https://github.com/Aider-AI/aider
+  byok: true
+  local_models: true
+  free: true
+  note: Pair programming en terminal. Repo map via tree-sitter, commits Git automatiques.
+  verification:
+    status: official_docs
+    verified_on: '2026-09-15'
+    finding: 'Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti.
+      Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l''URL de l''édition précédente redirige.'
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+  layer: 1
+- id: claude-code
+  name: Claude Code
+  vendor: Anthropic, PBC
+  category: cli_agent
+  status: active
+  url: https://docs.claude.com/en/docs/claude-code
+  install: npm install -g @anthropic-ai/claude-code
+  mcp: true
+  plans:
+  - claude-pro
+  - claude-max
+  note: Inclus dans Claude Pro et Max, ou facturé à l'usage via clé API.
+  verification:
+    status: official_pricing_page
+    verified_on: '2026-09-15'
+    finding: Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+  layer: 1
+- id: codex-cli
+  name: Codex CLI
+  vendor: OpenAI
+  category: cli_agent
+  status: active
+  url: https://developers.openai.com/codex
+  repo_url: https://github.com/openai/codex
+  free: true
+  mcp: true
+  note: Agent de codage en terminal, open-source sous Apache-2.0. Utilisable via un abonnement ChatGPT
+    ou une cle API.
+  verification:
+    status: official_docs
+    verified_on: '2026-09-15'
+    finding: Remplace la fiche 'ChatGPT Desktop' de l'edition precedente, qui designait une application
+      de chat et non un harnais de developpement. 124 380 etoiles, commit le jour du releve.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformite non relevee a cette edition.
+  layer: 1
+- id: kimi-cli
+  name: Kimi Code CLI
+  vendor: Moonshot AI
+  category: cli_agent
+  status: unknown
+  url: https://platform.kimi.ai
+  note: Binaire autonome, protocole ACP.
+  verification:
+    status: unverified
+    verified_on: null
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+  layer: 1
+- id: openhands
+  name: OpenHands
+  vendor: All-Hands-AI
+  category: cli_agent
+  status: active
+  url: https://all-hands.dev
+  repo_url: https://github.com/OpenHands/OpenHands
+  byok: true
+  free: true
+  note: Agent d'ingénierie autonome en sandbox Docker. Offre cloud managée payante.
+  verification:
+    status: official_docs
+    verified_on: '2026-09-15'
+    finding: Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands
+      vers OpenHands/OpenHands.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+  layer: 1
+- id: claude-desktop
+  name: Claude Desktop
+  vendor: Anthropic, PBC
+  category: desktop_app
+  status: active
+  url: https://claude.ai/download
+  mcp: true
+  plans:
+  - claude-free
+  - claude-pro
+  - claude-max
+  note: Windows et macOS. Serveurs MCP, accès fichiers et outils locaux.
+  verification:
+    status: official_pricing_page
+    verified_on: '2026-09-15'
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+  layer: 1
+- id: lm-studio-bionic
+  name: LM Studio Bionic
+  vendor: Element Labs, Inc.
+  category: desktop_app
+  status: active
+  url: https://lmstudio.ai
+  docs_url: https://lmstudio.ai/docs
+  local_models: true
+  free: true
+  note: Agent pour le travail et le code, annonce par l'editeur comme couvrant les taches de developpement,
+    l'automatisation et le controle de la machine.
+  verification:
+    status: official_docs
+    verified_on: '2026-09-15'
+    finding: 'L''edition precedente confondait l''agent et le serveur local sous une seule fiche : ce
+      sont deux couches differentes.'
+  compliance: &id001
+    zero_data_retention: true
+    self_hosted: true
+    data_residency: local
+    note: Exécution entièrement locale.
+    verified_on: null
+    status: unverified
+  layer: 1
 - id: cursor
   name: Cursor
   vendor: Anysphere, Inc.
@@ -30,23 +174,7 @@ tools:
       aux dépôts, modèles et MCP (Enterprise).
     verified_on: '2026-09-15'
     status: official_pricing_page
-- id: windsurf
-  name: Windsurf / Devin
-  vendor: Cognition AI
-  category: ide_fork
-  status: unknown
-  url: https://devin.ai
-  pricing_url: https://devin.ai/pricing
-  byok: true
-  mcp: true
-  note: Fork VS Code, moteur Cascade. Intégration Devin Cloud.
-  verification:
-    status: unverified
-    verified_on: null
-  compliance:
-    status: unverified
-    verified_on: null
-    note: Conformité non relevée à cette édition.
+  layer: 1
 - id: trae
   name: Trae
   vendor: ByteDance
@@ -71,6 +199,45 @@ tools:
     status: unverified
     verified_on: null
     note: Conformité non relevée à cette édition.
+  layer: 1
+- id: void
+  name: Void IDE
+  vendor: Communauté open-source
+  category: ide_fork
+  status: retired
+  url: https://voideditor.com
+  repo_url: https://github.com/voideditor/void
+  byok: true
+  local_models: true
+  note: Fork open-source de VS Code. Développement principal ralenti.
+  verification:
+    status: official_docs
+    verified_on: '2026-09-15'
+    finding: Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente
+      est dépassé.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+  layer: 1
+- id: windsurf
+  name: Windsurf / Devin
+  vendor: Cognition AI
+  category: ide_fork
+  status: unknown
+  url: https://devin.ai
+  pricing_url: https://devin.ai/pricing
+  byok: true
+  mcp: true
+  note: Fork VS Code, moteur Cascade. Intégration Devin Cloud.
+  verification:
+    status: unverified
+    verified_on: null
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+  layer: 1
 - id: zed
   name: Zed
   vendor: Zed Industries, Inc.
@@ -100,25 +267,70 @@ tools:
       choisi.'
     verified_on: '2026-09-15'
     status: official_pricing_page
-- id: void
-  name: Void IDE
-  vendor: Communauté open-source
-  category: ide_fork
-  status: retired
-  url: https://voideditor.com
-  repo_url: https://github.com/voideditor/void
+  layer: 1
+- id: cline
+  name: Cline
+  vendor: Collectif open-source
+  category: vscode_extension
+  status: active
+  repo_url: https://github.com/cline/cline
   byok: true
   local_models: true
-  note: Fork open-source de VS Code. Développement principal ralenti.
+  mcp: true
+  free: true
+  note: Agent autonome BYOK pur. Approbation humaine par action sensible.
   verification:
     status: official_docs
     verified_on: '2026-09-15'
-    finding: Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente
-      est dépassé.
+    finding: Très actif (commit le jour du relevé), 68 100 étoiles, licence Apache-2.0.
+  compliance:
+    zero_data_retention: true
+    self_hosted: true
+    note: 'BYOK pur : aucune donnée ne transite par un service tiers de l''éditeur. La politique de rétention
+      est celle du fournisseur de modèle choisi.'
+    verified_on: '2026-09-15'
+    status: official_docs
+  layer: 1
+- id: codex-ide
+  name: Codex (extension IDE)
+  vendor: OpenAI
+  category: vscode_extension
+  status: active
+  url: https://developers.openai.com/codex
+  note: 'Extension VS Code et JetBrains : completion en ligne, refactoring multi-fichiers et agent en
+    panneau lateral, partageant le compte et le modele de Codex CLI.'
+  verification:
+    status: community
+    verified_on: '2026-09-15'
+    finding: 'Existence confirmee par recherche, page produit officielle non ouverte : a re-verifier sur
+      developers.openai.com.'
   compliance:
     status: unverified
     verified_on: null
-    note: Conformité non relevée à cette édition.
+    note: Conformite non relevee a cette edition.
+  layer: 1
+- id: continue
+  name: Continue
+  vendor: Continue Dev, Inc.
+  category: vscode_extension
+  status: active
+  url: https://continue.dev
+  repo_url: https://github.com/continuedev/continue
+  byok: true
+  local_models: true
+  free: true
+  note: VS Code et JetBrains. Sépare le modèle d'autocomplétion du modèle de chat.
+  verification:
+    status: official_docs
+    verified_on: '2026-09-15'
+    finding: Très actif (commit le jour du relevé), 35 918 étoiles.
+  compliance:
+    zero_data_retention: true
+    self_hosted: true
+    note: 'BYOK et modèles locaux : la rétention dépend du fournisseur retenu.'
+    verified_on: '2026-09-15'
+    status: official_docs
+  layer: 1
 - id: github-copilot
   name: GitHub Copilot
   vendor: GitHub / Microsoft
@@ -146,28 +358,7 @@ tools:
       et Enterprise. Rétention non précisée sur la page tarifaire.
     verified_on: '2026-09-15'
     status: official_pricing_page
-- id: cline
-  name: Cline
-  vendor: Collectif open-source
-  category: vscode_extension
-  status: active
-  repo_url: https://github.com/cline/cline
-  byok: true
-  local_models: true
-  mcp: true
-  free: true
-  note: Agent autonome BYOK pur. Approbation humaine par action sensible.
-  verification:
-    status: official_docs
-    verified_on: '2026-09-15'
-    finding: Très actif (commit le jour du relevé), 68 100 étoiles, licence Apache-2.0.
-  compliance:
-    zero_data_retention: true
-    self_hosted: true
-    note: 'BYOK pur : aucune donnée ne transite par un service tiers de l''éditeur. La politique de rétention
-      est celle du fournisseur de modèle choisi.'
-    verified_on: '2026-09-15'
-    status: official_docs
+  layer: 1
 - id: roo-code
   name: Roo Code
   vendor: RooCodeInc (open-source)
@@ -188,153 +379,7 @@ tools:
     status: unverified
     verified_on: null
     note: Conformité non relevée à cette édition.
-- id: continue
-  name: Continue
-  vendor: Continue Dev, Inc.
-  category: vscode_extension
-  status: active
-  url: https://continue.dev
-  repo_url: https://github.com/continuedev/continue
-  byok: true
-  local_models: true
-  free: true
-  note: VS Code et JetBrains. Sépare le modèle d'autocomplétion du modèle de chat.
-  verification:
-    status: official_docs
-    verified_on: '2026-09-15'
-    finding: Très actif (commit le jour du relevé), 35 918 étoiles.
-  compliance:
-    zero_data_retention: true
-    self_hosted: true
-    note: 'BYOK et modèles locaux : la rétention dépend du fournisseur retenu.'
-    verified_on: '2026-09-15'
-    status: official_docs
-- id: claude-desktop
-  name: Claude Desktop
-  vendor: Anthropic, PBC
-  category: desktop_app
-  status: active
-  url: https://claude.ai/download
-  mcp: true
-  plans:
-  - claude-free
-  - claude-pro
-  - claude-max
-  note: Windows et macOS. Serveurs MCP, accès fichiers et outils locaux.
-  verification:
-    status: official_pricing_page
-    verified_on: '2026-09-15'
-  compliance:
-    status: unverified
-    verified_on: null
-    note: Conformité non relevée à cette édition.
-- id: lm-studio
-  name: LM Studio
-  vendor: Element Labs, Inc.
-  category: desktop_app
-  status: unknown
-  url: https://lmstudio.ai
-  local_models: true
-  free: true
-  serves_openai_api: http://localhost:1234/v1
-  note: Exécution locale de modèles GGUF + serveur compatible OpenAI.
-  verification:
-    status: unverified
-    verified_on: null
-  compliance:
-    zero_data_retention: true
-    self_hosted: true
-    data_residency: local
-    note: Exécution entièrement locale.
-    verified_on: null
-    status: unverified
-- id: chatgpt-desktop
-  name: ChatGPT Desktop
-  vendor: OpenAI, LLC
-  category: desktop_app
-  status: unknown
-  url: https://openai.com/chatgpt/desktop
-  note: 'Work with Apps : lecture du contexte VS Code, Xcode, Terminal.'
-  verification:
-    status: unverified
-    verified_on: null
-  compliance:
-    status: unverified
-    verified_on: null
-    note: Conformité non relevée à cette édition.
-- id: claude-code
-  name: Claude Code
-  vendor: Anthropic, PBC
-  category: cli_agent
-  status: active
-  url: https://docs.claude.com/en/docs/claude-code
-  install: npm install -g @anthropic-ai/claude-code
-  mcp: true
-  plans:
-  - claude-pro
-  - claude-max
-  note: Inclus dans Claude Pro et Max, ou facturé à l'usage via clé API.
-  verification:
-    status: official_pricing_page
-    verified_on: '2026-09-15'
-    finding: Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
-  compliance:
-    status: unverified
-    verified_on: null
-    note: Conformité non relevée à cette édition.
-- id: aider
-  name: Aider
-  vendor: Aider-AI (open-source)
-  category: cli_agent
-  status: maintenance
-  url: https://aider.chat
-  repo_url: https://github.com/Aider-AI/aider
-  byok: true
-  local_models: true
-  free: true
-  note: Pair programming en terminal. Repo map via tree-sitter, commits Git automatiques.
-  verification:
-    status: official_docs
-    verified_on: '2026-09-15'
-    finding: 'Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti.
-      Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l''URL de l''édition précédente redirige.'
-  compliance:
-    status: unverified
-    verified_on: null
-    note: Conformité non relevée à cette édition.
-- id: openhands
-  name: OpenHands
-  vendor: All-Hands-AI
-  category: cli_agent
-  status: active
-  url: https://all-hands.dev
-  repo_url: https://github.com/OpenHands/OpenHands
-  byok: true
-  free: true
-  note: Agent d'ingénierie autonome en sandbox Docker. Offre cloud managée payante.
-  verification:
-    status: official_docs
-    verified_on: '2026-09-15'
-    finding: Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands
-      vers OpenHands/OpenHands.
-  compliance:
-    status: unverified
-    verified_on: null
-    note: Conformité non relevée à cette édition.
-- id: kimi-cli
-  name: Kimi Code CLI
-  vendor: Moonshot AI
-  category: cli_agent
-  status: unknown
-  url: https://platform.kimi.ai
-  note: Binaire autonome, protocole ACP.
-  verification:
-    status: unverified
-    verified_on: null
-  compliance:
-    status: unverified
-    verified_on: null
-    note: Conformité non relevée à cette édition.
+  layer: 1
 - id: openrouter
   name: OpenRouter
   vendor: OpenRouter, Inc.
@@ -350,10 +395,27 @@ tools:
     status: unverified
     verified_on: null
     note: Conformité non relevée à cette édition.
+  layer: 2
+- id: lm-studio-server
+  name: LM Studio (serveur local)
+  vendor: Element Labs, Inc.
+  category: local_server
+  status: active
+  url: https://lmstudio.ai
+  local_models: true
+  free: true
+  serves_openai_api: http://localhost:1234/v1
+  note: Charge des modeles GGUF et expose un serveur HTTP compatible API OpenAI, auquel se branchent les
+    harnais de la couche 1.
+  verification:
+    status: official_docs
+    verified_on: '2026-09-15'
+  compliance: *id001
+  layer: 2
 - id: ollama
   name: Ollama
   vendor: Ollama
-  category: gateway
+  category: local_server
   status: active
   url: https://ollama.com
   local_models: true
@@ -371,3 +433,4 @@ tools:
     note: 'Exécution entièrement locale : aucune donnée ne quitte la machine.'
     verified_on: '2026-09-15'
     status: official_docs
+  layer: 2

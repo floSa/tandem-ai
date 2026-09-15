@@ -1,21 +1,9 @@
 <!-- FICHIER GÉNÉRÉ par pipeline/build_guide.py — ne pas éditer.
      Corriger dans catalog/, puis régénérer. -->
 
-# Passerelles
+# Agrégateurs cloud
 
-2 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
-
-## Ollama
-
-- **Éditeur :** Ollama
-- **Site :** [https://ollama.com](https://ollama.com)
-- **Statut :** active
-- **Capacités :** modèles locaux, gratuit
-- **Endpoint local :** `http://localhost:11434/v1`
-- **Vérification :** 2026-09-15 (official_docs)
-- **Constat :** Très actif, 181 039 étoiles — la passerelle locale la plus adoptée.
-
-Serveur local compatible OpenAI.
+1 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
 
 ## OpenRouter
 

@@ -14,7 +14,7 @@
 | Modèles au catalogue | 194 |
 | Tarifs API relevés sur page officielle | 25 / 194 |
 | Forfaits d'abonnement relevés | 21 |
-| Harnais re-vérifiés | 13 / 18 |
+| Harnais re-vérifiés | 17 / 20 |
 | Taux de change USD→EUR | 0.8666 — vérifié |
 
 ---
@@ -82,9 +82,9 @@ second passe à l'échelle d'une équipe.
 
 ---
 
-## 3. Panorama des harnais
+## 3. Couche 1 — Les harnais d'exécution
 
-La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édition. Une fiche non re-contrôlée est signalée comme telle plutôt que présentée comme à jour.
+L'interface développeur : le logiciel avec lequel on travaille, et qui exécute le modèle. Son effet sur la performance mesurée est loin d'être négligeable — sur Terminal-Bench, l'écart entre deux harnais dépasse souvent l'écart entre deux modèles. La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édition ; une fiche non re-contrôlée est signalée comme telle plutôt que présentée comme à jour.
 
 ### 3.1 IDE dérivés
 
@@ -100,62 +100,81 @@ La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édit
 
 > **Trae —** Cinq paliers confirmés, identiques à l'édition précédente. Les quotas sont désormais libellés en dollars d'usage (5 $ sur Lite, 20 $ sur Pro).
 
-> **Zed —** Paliers actuels : Personal gratuit (BYOK illimité), Pro à 10 $, Business à 30 $/siège. Le palier Business n'était pas chiffré dans l'édition précédente.
-
 > **Void IDE —** Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente est dépassé.
+
+> **Zed —** Paliers actuels : Personal gratuit (BYOK illimité), Pro à 10 $, Business à 30 $/siège. Le palier Business n'était pas chiffré dans l'édition précédente.
 
 ### 3.2 Extensions VS Code
 
 | Outil | Éditeur | Capacités | Forfaits | Vérifié |
 | :-- | :-- | :-- | :-- | :-- |
 | Cline | Collectif open-source | BYOK, modèles locaux, MCP, gratuit | — | 2026-09-15 |
+| [Codex (extension IDE)](https://developers.openai.com/codex) | OpenAI | — | — | 2026-09-15 |
 | [Continue](https://continue.dev) | Continue Dev, Inc. | BYOK, modèles locaux, gratuit | — | 2026-09-15 |
 | [GitHub Copilot](https://github.com/features/copilot) | GitHub / Microsoft | — | Free, Pro, Pro+, Max | 2026-09-15 |
 | Roo Code *(retired)* | RooCodeInc (open-source) | BYOK, modèles locaux, MCP, gratuit | — | 2026-09-15 |
 
-> **GitHub Copilot —** Modèle de crédits confirmé : 15 $ (Pro), 70 $ (Pro+), 200 $ (Max). Complétions illimitées sur tout forfait payant.
-
 > **Cline —** Très actif (commit le jour du relevé), 68 100 étoiles, licence Apache-2.0.
 
-> **Roo Code —** Dépôt ARCHIVÉ, dernier commit le 2026-05-15. Le projet a aussi changé d'organisation (RooVetGit → RooCodeInc) : l'URL de l'édition précédente était morte. 24 302 étoiles au moment du relevé.
+> **Codex (extension IDE) —** Existence confirmee par recherche, page produit officielle non ouverte : a re-verifier sur developers.openai.com.
 
 > **Continue —** Très actif (commit le jour du relevé), 35 918 étoiles.
 
-### 3.3 Applications desktop
+> **GitHub Copilot —** Modèle de crédits confirmé : 15 $ (Pro), 70 $ (Pro+), 200 $ (Max). Complétions illimitées sur tout forfait payant.
 
-| Outil | Éditeur | Capacités | Forfaits | Vérifié |
-| :-- | :-- | :-- | :-- | :-- |
-| [ChatGPT Desktop](https://openai.com/chatgpt/desktop) | OpenAI, LLC | — | — | non |
-| [Claude Desktop](https://claude.ai/download) | Anthropic, PBC | MCP | Free, Pro, Max | 2026-09-15 |
-| [LM Studio](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — | non |
+> **Roo Code —** Dépôt ARCHIVÉ, dernier commit le 2026-05-15. Le projet a aussi changé d'organisation (RooVetGit → RooCodeInc) : l'URL de l'édition précédente était morte. 24 302 étoiles au moment du relevé.
 
-### 3.4 Agents CLI
+### 3.3 Agents CLI
 
 | Outil | Éditeur | Capacités | Forfaits | Vérifié |
 | :-- | :-- | :-- | :-- | :-- |
 | [Aider](https://aider.chat) *(maintenance)* | Aider-AI (open-source) | BYOK, modèles locaux, gratuit | — | 2026-09-15 |
 | [Claude Code](https://docs.claude.com/en/docs/claude-code) | Anthropic, PBC | MCP | Pro, Max | 2026-09-15 |
+| [Codex CLI](https://developers.openai.com/codex) | OpenAI | MCP, gratuit | — | 2026-09-15 |
 | [Kimi Code CLI](https://platform.kimi.ai) | Moonshot AI | — | — | non |
 | [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — | 2026-09-15 |
 
+> **Aider —** Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti. Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l'URL de l'édition précédente redirige.
+
 > **Claude Code —** Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
 
-> **Aider —** Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti. Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l'URL de l'édition précédente redirige.
+> **Codex CLI —** Remplace la fiche 'ChatGPT Desktop' de l'edition precedente, qui designait une application de chat et non un harnais de developpement. 124 380 etoiles, commit le jour du releve.
 
 > **OpenHands —** Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands vers OpenHands/OpenHands.
 
-### 3.5 Passerelles
+### 3.4 Applications desktop
 
 | Outil | Éditeur | Capacités | Forfaits | Vérifié |
 | :-- | :-- | :-- | :-- | :-- |
-| [Ollama](https://ollama.com) | Ollama | modèles locaux, gratuit | — | 2026-09-15 |
+| [Claude Desktop](https://claude.ai/download) | Anthropic, PBC | MCP | Free, Pro, Max | 2026-09-15 |
+| [LM Studio Bionic](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — | 2026-09-15 |
+
+> **LM Studio Bionic —** L'edition precedente confondait l'agent et le serveur local sous une seule fiche : ce sont deux couches differentes.
+
+---
+
+## 4. Couche 2 — Les passerelles
+
+Une passerelle n'écrit pas de code : elle donne accès aux modèles. Elle se place entre le harnais et le fournisseur, soit en agrégeant plusieurs laboratoires derrière une clé unique, soit en servant des modèles depuis la machine locale. La confondre avec un harnais rend les deux illisibles.
+
+### 4.1 Agrégateurs cloud
+
+| Outil | Éditeur | Capacités | Forfaits | Vérifié |
+| :-- | :-- | :-- | :-- | :-- |
 | [OpenRouter](https://openrouter.ai) | OpenRouter, Inc. | — | — | non |
+
+### 4.2 Serveurs locaux
+
+| Outil | Éditeur | Capacités | Forfaits | Vérifié |
+| :-- | :-- | :-- | :-- | :-- |
+| [LM Studio (serveur local)](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — | 2026-09-15 |
+| [Ollama](https://ollama.com) | Ollama | modèles locaux, gratuit | — | 2026-09-15 |
 
 > **Ollama —** Très actif, 181 039 étoiles — la passerelle locale la plus adoptée.
 
 ---
 
-## 4. Forfaits d'abonnement
+## 5. Forfaits d'abonnement
 
 Montants calculés au taux de 0.8666 $/€ et à une TVA de 20%. La colonne **€ HT** est ce que débite un professionnel en autoliquidation ; la colonne **€ TTC** ce que débite un particulier.
 
@@ -185,7 +204,7 @@ Montants calculés au taux de 0.8666 $/€ et à une TVA de 20%. La colonne **�
 
 ---
 
-## 5. Tarifs API au million de tokens
+## 6. Tarifs API au million de tokens
 
 Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les modèles dont le tarif a été relevé sur la page officielle du fournisseur : un modèle absent de ce tableau n'est pas un modèle sans tarif, c'est un tarif non encore vérifié.
 
@@ -226,11 +245,11 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 
 ---
 
-## 6. Performance mesurée
+## 7. Performance mesurée
 
 18 benchmarks suivis, 14 écartés (saturés, obsolètes ou mesurant de la mémorisation). Chaque rejet est documenté avec son motif dans `catalog/benchmarks.yaml`.
 
-### 6.1 État de l'art par benchmark
+### 7.1 État de l'art par benchmark
 
 | Benchmark | Ce qu'il mesure | Meilleur score | Modèle | Harnais |
 | :-- | :-- | --: | :-- | :-- |
@@ -261,7 +280,7 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 > - **SWE-Bench verified** — `claude-opus-4-7_max` et `gpt-5.5-pre-release_xhigh` (écart 0.029, intervalle 0.048)
 > - **DeepSWE** — `gpt-6-astra_xhigh` et `gemini-3.8-flash_high` (écart 0.003, intervalle 0.032)
 
-### 6.2 Coût mesuré et effort de raisonnement
+### 7.2 Coût mesuré et effort de raisonnement
 
 Les suffixes `low` à `max` ne désignent pas des modèles différents mais le **budget de raisonnement** accordé au même modèle. Son effet dépasse souvent l'écart entre deux modèles concurrents, et il se paie. Le coût ci-dessous est celui **réellement mesuré pendant le run**, pas un prix au token.
 

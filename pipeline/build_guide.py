@@ -17,8 +17,13 @@ CATALOG, CONTENT = ROOT / "catalog", ROOT / "content"
 OUT = ROOT / "Guide_Complet_Solutions_Dev_IA_2026.md"
 
 CAT = {"ide_fork": "IDE dérivés", "vscode_extension": "Extensions VS Code",
-       "desktop_app": "Applications desktop", "cli_agent": "Agents CLI",
-       "gateway": "Passerelles"}
+       "cli_agent": "Agents CLI", "desktop_app": "Applications desktop",
+       "gateway": "Agrégateurs cloud", "local_server": "Serveurs locaux"}
+# Couche 1 = interface développeur, couche 2 = routage et service de modèles.
+# Les confondre dans une même section était la principale confusion de l'édition
+# précédente : une passerelle n'écrit pas de code.
+COUCHE1 = ["ide_fork", "vscode_extension", "cli_agent", "desktop_app"]
+COUCHE2 = ["gateway", "local_server"]
 
 
 def load(n):
@@ -207,44 +212,61 @@ def main() -> int:
     A(frag("02_facturation_france.md")); A(""); A("---"); A("")
 
     # ── Harnais ───────────────────────────────────────────────────────────
-    A("## 3. Panorama des harnais")
+    A("## 3. Couche 1 — Les harnais d\'exécution")
     A("")
-    A("La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édition. "
-      "Une fiche non re-contrôlée est signalée comme telle plutôt que présentée "
-      "comme à jour.")
+    A("L'interface développeur : le logiciel avec lequel on travaille, et qui exécute le "
+      "modèle. Son effet sur la performance mesurée est loin d'être négligeable — sur "
+      "Terminal-Bench, l'écart entre deux harnais dépasse souvent l'écart entre deux modèles. "
+      "La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édition ; une fiche "
+      "non re-contrôlée est signalée comme telle plutôt que présentée comme à jour.")
     A("")
     by_cat = collections.defaultdict(list)
     for t in tools:
         by_cat[t.get("category", "autre")].append(t)
-    for cat, items in sorted(by_cat.items(), key=lambda kv: list(CAT).index(kv[0])
-                             if kv[0] in CAT else 99):
-        A(f"### 3.{list(CAT).index(cat) + 1 if cat in CAT else 9} {CAT.get(cat, cat)}")
-        A("")
-        A("| Outil | Éditeur | Capacités | Forfaits | Vérifié |")
-        A("| :-- | :-- | :-- | :-- | :-- |")
-        for t in sorted(items, key=lambda x: x["name"]):
-            caps = ", ".join(filter(None, [
-                "BYOK" if t.get("byok") else None,
-                "modèles locaux" if t.get("local_models") else None,
-                "MCP" if t.get("mcp") else None,
-                "gratuit" if t.get("free") else None])) or "—"
-            pl = ", ".join(next((p["name"] for p in plans if p["id"] == pid), pid)
-                           for pid in (t.get("plans") or [])) or "—"
-            v = t.get("verification") or {}
-            vs = v.get("verified_on") if v.get("status") != "unverified" else "non"
-            name = f"[{t['name']}]({t['url']})" if t.get("url") else t["name"]
-            st = "" if t.get("status") in ("active", "unknown") else f" *({t['status']})*"
-            A(f"| {name}{st} | {t.get('vendor', '—')} | {caps} | {pl} | {vs or 'non'} |")
-        A("")
-        for t in items:
-            f_ = (t.get("verification") or {}).get("finding")
-            if f_:
-                A(f"> **{t['name']} —** {f_}")
-                A("")
+
+    def bloc(prefixe, cats):
+        for i, cat in enumerate(cats, start=1):
+            items = sorted(by_cat.get(cat, []), key=lambda x: x["name"])
+            if not items:
+                continue
+            A(f"### {prefixe}.{i} {CAT.get(cat, cat)}")
+            A("")
+            A("| Outil | Éditeur | Capacités | Forfaits | Vérifié |")
+            A("| :-- | :-- | :-- | :-- | :-- |")
+            for t in items:
+                caps = ", ".join(filter(None, [
+                    "BYOK" if t.get("byok") else None,
+                    "modèles locaux" if t.get("local_models") else None,
+                    "MCP" if t.get("mcp") else None,
+                    "gratuit" if t.get("free") else None])) or "—"
+                pl = ", ".join(next((p["name"] for p in plans if p["id"] == pid), pid)
+                               for pid in (t.get("plans") or [])) or "—"
+                v = t.get("verification") or {}
+                vs = v.get("verified_on") if v.get("status") != "unverified" else "non"
+                name = f"[{t['name']}]({t['url']})" if t.get("url") else t["name"]
+                st = "" if t.get("status") in ("active", "unknown") else f" *({t['status']})*"
+                A(f"| {name}{st} | {t.get('vendor', '—')} | {caps} | {pl} | {vs or 'non'} |")
+            A("")
+            for t in items:
+                f_ = (t.get("verification") or {}).get("finding")
+                if f_:
+                    A(f"> **{t['name']} —** {f_}")
+                    A("")
+
+    bloc(3, COUCHE1)
+    A("---"); A("")
+    A("## 4. Couche 2 — Les passerelles")
+    A("")
+    A("Une passerelle n'écrit pas de code : elle donne accès aux modèles. Elle se place entre "
+      "le harnais et le fournisseur, soit en agrégeant plusieurs laboratoires derrière une clé "
+      "unique, soit en servant des modèles depuis la machine locale. La confondre avec un "
+      "harnais rend les deux illisibles.")
+    A("")
+    bloc(4, COUCHE2)
     A("---"); A("")
 
     # ── Forfaits ──────────────────────────────────────────────────────────
-    A("## 4. Forfaits d'abonnement")
+    A("## 5. Forfaits d'abonnement")
     A("")
     A(f"Montants calculés au taux de {fx} $/€ et à une TVA de {vat:.0%}. "
       "La colonne **€ HT** est ce que débite un professionnel en autoliquidation ; "
@@ -263,7 +285,7 @@ def main() -> int:
     A("---"); A("")
 
     # ── Tarifs API ────────────────────────────────────────────────────────
-    A("## 5. Tarifs API au million de tokens")
+    A("## 6. Tarifs API au million de tokens")
     A("")
     A("Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les "
       "modèles dont le tarif a été relevé sur la page officielle du fournisseur : "
@@ -300,7 +322,7 @@ def main() -> int:
     A("---"); A("")
 
     # ── Benchmarks ────────────────────────────────────────────────────────
-    A("## 6. Performance mesurée")
+    A("## 7. Performance mesurée")
     A("")
     tracked = [b for b in bench.get("tracked", []) if b.get("track")]
     A(f"{len(tracked)} benchmarks suivis, {len(bench.get('rejected', []))} écartés "
@@ -313,7 +335,7 @@ def main() -> int:
         if s.get("score") is not None:
             by_b[s["benchmark"]].append(s)
 
-    A("### 6.1 État de l'art par benchmark")
+    A("### 7.1 État de l'art par benchmark")
     A("")
     A("| Benchmark | Ce qu'il mesure | Meilleur score | Modèle | Harnais |")
     A("| :-- | :-- | --: | :-- | :-- |")
@@ -352,7 +374,7 @@ def main() -> int:
     # Coût mesuré
     cost_rows = [s for s in scores if s.get("cost_usd") and s.get("effort")]
     if cost_rows:
-        A("### 6.2 Coût mesuré et effort de raisonnement")
+        A("### 7.2 Coût mesuré et effort de raisonnement")
         A("")
         A("Les suffixes `low` à `max` ne désignent pas des modèles différents mais le "
           "**budget de raisonnement** accordé au même modèle. Son effet dépasse souvent "

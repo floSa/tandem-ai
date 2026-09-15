@@ -3,7 +3,7 @@
 
 # Extensions VS Code
 
-4 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
+5 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
 
 ## Cline
 
@@ -15,6 +15,17 @@
 - **Constat :** Très actif (commit le jour du relevé), 68 100 étoiles, licence Apache-2.0.
 
 Agent autonome BYOK pur. Approbation humaine par action sensible.
+
+## Codex (extension IDE)
+
+- **Éditeur :** OpenAI
+- **Site :** [https://developers.openai.com/codex](https://developers.openai.com/codex)
+- **Statut :** active
+- **Capacités :** —
+- **Vérification :** 2026-09-15 (community)
+- **Constat :** Existence confirmee par recherche, page produit officielle non ouverte : a re-verifier sur developers.openai.com.
+
+Extension VS Code et JetBrains : completion en ligne, refactoring multi-fichiers et agent en panneau lateral, partageant le compte et le modele de Codex CLI.
 
 ## Continue
 
