@@ -9,9 +9,10 @@
 
 - **Éditeur :** Collectif open-source
 - **Dépôt :** [https://github.com/cline/cline](https://github.com/cline/cline)
-- **Statut :** unknown
+- **Statut :** active
 - **Capacités :** BYOK, modèles locaux, MCP, gratuit
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Très actif (commit le jour du relevé), 68 100 étoiles, licence Apache-2.0.
 
 Agent autonome BYOK pur. Approbation humaine par action sensible.
 
@@ -20,9 +21,10 @@ Agent autonome BYOK pur. Approbation humaine par action sensible.
 - **Éditeur :** Continue Dev, Inc.
 - **Site :** [https://continue.dev](https://continue.dev)
 - **Dépôt :** [https://github.com/continuedev/continue](https://github.com/continuedev/continue)
-- **Statut :** unknown
+- **Statut :** active
 - **Capacités :** BYOK, modèles locaux, gratuit
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Très actif (commit le jour du relevé), 35 918 étoiles.
 
 VS Code et JetBrains. Sépare le modèle d'autocomplétion du modèle de chat.
 
@@ -44,11 +46,12 @@ VS Code, Visual Studio, JetBrains, Neovim. Crédits mensuels libellés en dollar
 
 ## Roo Code
 
-- **Éditeur :** Collectif open-source
-- **Dépôt :** [https://github.com/RooVetGit/Roo-Code](https://github.com/RooVetGit/Roo-Code)
-- **Statut :** unknown
+- **Éditeur :** RooCodeInc (open-source)
+- **Dépôt :** [https://github.com/RooCodeInc/Roo-Code](https://github.com/RooCodeInc/Roo-Code)
+- **Statut :** retired
 - **Capacités :** BYOK, modèles locaux, MCP, gratuit
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Dépôt ARCHIVÉ, dernier commit le 2026-05-15. Le projet a aussi changé d'organisation (RooVetGit → RooCodeInc) : l'URL de l'édition précédente était morte. 24 302 étoiles au moment du relevé.
 
 Fork de Cline, modes spécialisés (Code, Architect, Ask, Debug, Custom).
 

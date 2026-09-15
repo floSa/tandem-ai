@@ -7,12 +7,13 @@
 
 ## Aider
 
-- **Éditeur :** Paul Gauthier (open-source)
+- **Éditeur :** Aider-AI (open-source)
 - **Site :** [https://aider.chat](https://aider.chat)
-- **Dépôt :** [https://github.com/paul-gauthier/aider](https://github.com/paul-gauthier/aider)
-- **Statut :** unknown
+- **Dépôt :** [https://github.com/Aider-AI/aider](https://github.com/Aider-AI/aider)
+- **Statut :** maintenance
 - **Capacités :** BYOK, modèles locaux, gratuit
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti. Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l'URL de l'édition précédente redirige.
 
 Pair programming en terminal. Repo map via tree-sitter, commits Git automatiques.
 
@@ -43,10 +44,11 @@ Binaire autonome, protocole ACP.
 
 - **Éditeur :** All-Hands-AI
 - **Site :** [https://all-hands.dev](https://all-hands.dev)
-- **Dépôt :** [https://github.com/All-Hands-AI/OpenHands](https://github.com/All-Hands-AI/OpenHands)
-- **Statut :** unknown
+- **Dépôt :** [https://github.com/OpenHands/OpenHands](https://github.com/OpenHands/OpenHands)
+- **Statut :** active
 - **Capacités :** BYOK, gratuit
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands vers OpenHands/OpenHands.
 
 Agent d'ingénierie autonome en sandbox Docker. Offre cloud managée payante.
 

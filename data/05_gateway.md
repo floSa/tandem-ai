@@ -9,10 +9,11 @@
 
 - **Éditeur :** Ollama
 - **Site :** [https://ollama.com](https://ollama.com)
-- **Statut :** unknown
+- **Statut :** active
 - **Capacités :** modèles locaux, gratuit
 - **Endpoint local :** `http://localhost:11434/v1`
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Très actif, 181 039 étoiles — la passerelle locale la plus adoptée.
 
 Serveur local compatible OpenAI.
 

@@ -26,9 +26,15 @@ Fork VS Code. Composer agentique, indexation sémantique du dépôt.
 - **Éditeur :** ByteDance
 - **Site :** [https://trae.ai](https://trae.ai)
 - **Tarifs :** [https://trae.ai/pricing](https://trae.ai/pricing)
-- **Statut :** unknown
+- **Statut :** active
 - **Capacités :** MCP
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Forfait Free :** gratuit — 0,00 € HT · 0,00 € TTC
+- **Forfait Lite :** $3 — 2,76 € HT · 3,31 € TTC
+- **Forfait Pro :** $10 — 9,20 € HT · 11,04 € TTC
+- **Forfait Pro+ :** $30 — 27,60 € HT · 33,12 € TTC
+- **Forfait Ultra :** $100 — 92,00 € HT · 110,40 € TTC
+- **Vérification :** 2026-09-15 (official_pricing_page)
+- **Constat :** Cinq paliers confirmés, identiques à l'édition précédente. Les quotas sont désormais libellés en dollars d'usage (5 $ sur Lite, 20 $ sur Pro).
 
 Fork VS Code, mode SOLO autonome.
 
@@ -37,9 +43,10 @@ Fork VS Code, mode SOLO autonome.
 - **Éditeur :** Communauté open-source
 - **Site :** [https://voideditor.com](https://voideditor.com)
 - **Dépôt :** [https://github.com/voideditor/void](https://github.com/voideditor/void)
-- **Statut :** maintenance
+- **Statut :** retired
 - **Capacités :** BYOK, modèles locaux
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente est dépassé.
 
 Fork open-source de VS Code. Développement principal ralenti.
 
@@ -59,9 +66,13 @@ Fork VS Code, moteur Cascade. Intégration Devin Cloud.
 - **Éditeur :** Zed Industries, Inc.
 - **Site :** [https://zed.dev](https://zed.dev)
 - **Tarifs :** [https://zed.dev/pricing](https://zed.dev/pricing)
-- **Statut :** unknown
+- **Statut :** active
 - **Capacités :** BYOK, modèles locaux
-- **Vérification :** fiche non re-contrôlée à cette édition
+- **Forfait Personal :** gratuit — 0,00 € HT · 0,00 € TTC
+- **Forfait Pro :** $10 — 9,20 € HT · 11,04 € TTC
+- **Forfait Business :** $30/u — 27,60 € HT · 33,12 € TTC
+- **Vérification :** 2026-09-15 (official_pricing_page)
+- **Constat :** Paliers actuels : Personal gratuit (BYOK illimité), Pro à 10 $, Business à 30 $/siège. Le palier Business n'était pas chiffré dans l'édition précédente.
 
 Éditeur natif en Rust, non dérivé de VS Code. Edit Predictions.
 

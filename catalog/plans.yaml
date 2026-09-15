@@ -1,126 +1,227 @@
-# Forfaits d'abonnement (SaaS) — édités à la main.
-#
-# price_usd_month : prix affiché mensuel, HORS TAXES, en USD.
-# La conversion en euros et l'application de la TVA française sont calculées
-# au build depuis catalog/_meta.yaml — ne jamais saisir d'euros ici.
-#
-# billing_currency : devise réellement débitée. Certaines plateformes affichent
-# un prix en euros TTC (OpenAI en Europe), d'autres facturent en USD via Stripe
-# avec TVA ajoutée pour les particuliers et autoliquidation pour les pros.
-
 _generated:
-  note: "Fichier manuel. Tarifs relevés en septembre 2026."
-
+  note: Fichier manuel. Tarifs relevés en septembre 2026.
 plans:
-
-  # ── Anthropic ───────────────────────────────────────────────────────────
-  - id: claude-free
-    vendor: Anthropic
-    product: Claude
-    name: Free
-    price_usd_month: 0
-    includes: "Chat web, iOS, Android et desktop. Claude Code non inclus."
-    claude_code: false
-    source: {url: "https://claude.com/pricing", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: claude-pro
-    vendor: Anthropic
-    product: Claude
-    name: Pro
-    price_usd_month: 20
-    price_usd_month_annual: 17
-    includes: "Usage étendu, accès Opus, projets étendus, Claude for Microsoft 365. Inclut Claude Code."
-    claude_code: true
-    source: {url: "https://claude.com/pricing", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: claude-max
-    vendor: Anthropic
-    product: Claude
-    name: Max
-    price_usd_month: 100
-    price_usd_month_max: 200
-    includes: "5x ou 20x l'usage de Pro, limites de sortie supérieures, accès prioritaire."
-    claude_code: true
-    source: {url: "https://claude.com/pricing", verified_on: "2026-09-15", status: official_pricing_page}
-
-  # ── GitHub Copilot ──────────────────────────────────────────────────────
-  # Le modèle a basculé vers des crédits mensuels libellés en dollars.
-  - id: copilot-free
-    vendor: GitHub
-    product: GitHub Copilot
-    name: Free
-    price_usd_month: 0
-    includes: "2 000 complétions/mois, 24+ modèles dont Haiku 4.5 et GPT-5 mini."
-    source: {url: "https://github.com/features/copilot/plans", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: copilot-pro
-    vendor: GitHub
-    product: GitHub Copilot
-    name: Pro
-    price_usd_month: 10
-    credits_usd_month: 15
-    includes: "Complétion et next-edit illimitées, 15 $ de crédits mensuels."
-    source: {url: "https://github.com/features/copilot/plans", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: copilot-pro-plus
-    vendor: GitHub
-    product: GitHub Copilot
-    name: Pro+
-    price_usd_month: 39
-    credits_usd_month: 70
-    includes: "70 $ de crédits mensuels, 4x+ l'usage de Pro."
-    source: {url: "https://github.com/features/copilot/plans", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: copilot-max
-    vendor: GitHub
-    product: GitHub Copilot
-    name: Max
-    price_usd_month: 100
-    credits_usd_month: 200
-    includes: "200 $ de crédits mensuels, 2,9x+ l'usage de Pro+."
-    source: {url: "https://github.com/features/copilot/plans", verified_on: "2026-09-15", status: official_pricing_page}
-
-  # ── Cursor ──────────────────────────────────────────────────────────────
-  # Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente
-  # n'apparaissent plus sur la page tarifaire.
-  - id: cursor-hobby
-    vendor: Anysphere
-    product: Cursor
-    name: Hobby
-    price_usd_month: 0
-    includes: "Requêtes Agent limitées, accès Composer."
-    source: {url: "https://cursor.com/pricing", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: cursor-individual
-    vendor: Anysphere
-    product: Cursor
-    name: Individual
-    price_usd_month: 20
-    includes: "Limites étendues sur Agent, modèles frontier, MCP, skills, hooks, agents cloud."
-    source: {url: "https://cursor.com/pricing", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: cursor-teams
-    vendor: Anysphere
-    product: Cursor
-    name: Teams
-    price_usd_month: 40
-    per_seat: true
-    includes: "Facturation centralisée, marketplace interne, SSO SAML/OIDC, mode privé."
-    source: {url: "https://cursor.com/pricing", verified_on: "2026-09-15", status: official_pricing_page}
-
-  # ── Mistral ─────────────────────────────────────────────────────────────
-  - id: mistral-free
-    vendor: Mistral AI
-    product: Mistral Vibe
-    name: Free
-    price_usd_month: 0
-    includes: "Messages et recherches limités, 10 $/mois de crédits API."
-    source: {url: "https://mistral.ai/pricing", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: mistral-pro
-    vendor: Mistral AI
-    product: Mistral Vibe
-    name: Pro
-    price_usd_month: 14.99
-    includes: "Capacité de code étendue, 15 $/mois de crédits API. 5,99 $ pour les étudiants vérifiés."
-    source: {url: "https://mistral.ai/pricing", verified_on: "2026-09-15", status: official_pricing_page}
-  - id: mistral-team
-    vendor: Mistral AI
-    product: Mistral Vibe
-    name: Team
-    price_usd_month: 24.99
-    per_seat: true
-    includes: "Minimum 50 $/mois, 30 Go de stockage par utilisateur, vérification de domaine."
-    source: {url: "https://mistral.ai/pricing", verified_on: "2026-09-15", status: official_pricing_page}
+- id: claude-free
+  vendor: Anthropic
+  product: Claude
+  name: Free
+  price_usd_month: 0
+  includes: Chat web, iOS, Android et desktop. Claude Code non inclus.
+  claude_code: false
+  source:
+    url: https://claude.com/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: claude-pro
+  vendor: Anthropic
+  product: Claude
+  name: Pro
+  price_usd_month: 20
+  price_usd_month_annual: 17
+  includes: Usage étendu, accès Opus, projets étendus, Claude for Microsoft 365. Inclut Claude Code.
+  claude_code: true
+  source:
+    url: https://claude.com/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: claude-max
+  vendor: Anthropic
+  product: Claude
+  name: Max
+  price_usd_month: 100
+  price_usd_month_max: 200
+  includes: 5x ou 20x l'usage de Pro, limites de sortie supérieures, accès prioritaire.
+  claude_code: true
+  source:
+    url: https://claude.com/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: copilot-free
+  vendor: GitHub
+  product: GitHub Copilot
+  name: Free
+  price_usd_month: 0
+  includes: 2 000 complétions/mois, 24+ modèles dont Haiku 4.5 et GPT-5 mini.
+  source:
+    url: https://github.com/features/copilot/plans
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: copilot-pro
+  vendor: GitHub
+  product: GitHub Copilot
+  name: Pro
+  price_usd_month: 10
+  credits_usd_month: 15
+  includes: Complétion et next-edit illimitées, 15 $ de crédits mensuels.
+  source:
+    url: https://github.com/features/copilot/plans
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: copilot-pro-plus
+  vendor: GitHub
+  product: GitHub Copilot
+  name: Pro+
+  price_usd_month: 39
+  credits_usd_month: 70
+  includes: 70 $ de crédits mensuels, 4x+ l'usage de Pro.
+  source:
+    url: https://github.com/features/copilot/plans
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: copilot-max
+  vendor: GitHub
+  product: GitHub Copilot
+  name: Max
+  price_usd_month: 100
+  credits_usd_month: 200
+  includes: 200 $ de crédits mensuels, 2,9x+ l'usage de Pro+.
+  source:
+    url: https://github.com/features/copilot/plans
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: cursor-hobby
+  vendor: Anysphere
+  product: Cursor
+  name: Hobby
+  price_usd_month: 0
+  includes: Requêtes Agent limitées, accès Composer.
+  source:
+    url: https://cursor.com/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: cursor-individual
+  vendor: Anysphere
+  product: Cursor
+  name: Individual
+  price_usd_month: 20
+  includes: Limites étendues sur Agent, modèles frontier, MCP, skills, hooks, agents cloud.
+  source:
+    url: https://cursor.com/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: cursor-teams
+  vendor: Anysphere
+  product: Cursor
+  name: Teams
+  price_usd_month: 40
+  per_seat: true
+  includes: Facturation centralisée, marketplace interne, SSO SAML/OIDC, mode privé.
+  source:
+    url: https://cursor.com/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: mistral-free
+  vendor: Mistral AI
+  product: Mistral Vibe
+  name: Free
+  price_usd_month: 0
+  includes: Messages et recherches limités, 10 $/mois de crédits API.
+  source:
+    url: https://mistral.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: mistral-pro
+  vendor: Mistral AI
+  product: Mistral Vibe
+  name: Pro
+  price_usd_month: 14.99
+  includes: Capacité de code étendue, 15 $/mois de crédits API. 5,99 $ pour les étudiants vérifiés.
+  source:
+    url: https://mistral.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: mistral-team
+  vendor: Mistral AI
+  product: Mistral Vibe
+  name: Team
+  price_usd_month: 24.99
+  per_seat: true
+  includes: Minimum 50 $/mois, 30 Go de stockage par utilisateur, vérification de domaine.
+  source:
+    url: https://mistral.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: zed-personal
+  vendor: Zed Industries
+  product: Zed
+  name: Personal
+  price_usd_month: 0
+  includes: 2 000 prédictions d'édition acceptées. BYOK et agents externes illimités.
+  source:
+    url: https://zed.dev/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: zed-pro
+  vendor: Zed Industries
+  product: Zed
+  name: Pro
+  price_usd_month: 10
+  credits_usd_month: 5
+  includes: Prédictions illimitées, 5 $ de tokens inclus, facturation à l'usage au-delà.
+  source:
+    url: https://zed.dev/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: zed-business
+  vendor: Zed Industries
+  product: Zed
+  name: Business
+  price_usd_month: 30
+  per_seat: true
+  includes: Politiques de modèles à l'échelle de l'organisation, gouvernance des données, RBAC.
+  source:
+    url: https://zed.dev/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: trae-free
+  vendor: ByteDance
+  product: Trae
+  name: Free
+  price_usd_month: 0
+  includes: 5 000 autocomplétions/mois, 2 tâches cloud simultanées.
+  source:
+    url: https://trae.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: trae-lite
+  vendor: ByteDance
+  product: Trae
+  name: Lite
+  price_usd_month: 3
+  credits_usd_month: 5
+  includes: Autocomplétion illimitée, 5 $ d'usage, 2 tâches simultanées.
+  source:
+    url: https://trae.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: trae-pro
+  vendor: ByteDance
+  product: Trae
+  name: Pro
+  price_usd_month: 10
+  credits_usd_month: 20
+  includes: 20 $ d'usage, 10 tâches simultanées, essai de 7 jours.
+  source:
+    url: https://trae.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: trae-pro-plus
+  vendor: ByteDance
+  product: Trae
+  name: Pro+
+  price_usd_month: 30
+  includes: 3,5× l'usage de Pro, 15 tâches simultanées.
+  source:
+    url: https://trae.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: trae-ultra
+  vendor: ByteDance
+  product: Trae
+  name: Ultra
+  price_usd_month: 100
+  includes: 20× l'usage de Pro, accès anticipé aux modèles, 20 tâches simultanées.
+  source:
+    url: https://trae.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page

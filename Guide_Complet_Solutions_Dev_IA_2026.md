@@ -13,8 +13,8 @@
 | Mesures de benchmark | 1 275 sur 18 benchmarks |
 | Modèles au catalogue | 194 |
 | Tarifs API relevés sur page officielle | 25 / 194 |
-| Forfaits d'abonnement relevés | 13 |
-| Harnais re-vérifiés | 4 / 18 |
+| Forfaits d'abonnement relevés | 21 |
+| Harnais re-vérifiés | 13 / 18 |
 | Taux de change USD→EUR | 0.92 — **non vérifié** |
 
 > [!WARNING]
@@ -94,23 +94,35 @@ La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édit
 | Outil | Éditeur | Capacités | Forfaits | Vérifié |
 | :-- | :-- | :-- | :-- | :-- |
 | [Cursor](https://cursor.com) | Anysphere, Inc. | BYOK, modèles locaux, MCP | Hobby, Individual, Teams | 2026-09-15 |
-| [Trae](https://trae.ai) | ByteDance | MCP | — | non |
-| [Void IDE](https://voideditor.com) *(maintenance)* | Communauté open-source | BYOK, modèles locaux | — | non |
+| [Trae](https://trae.ai) | ByteDance | MCP | Free, Lite, Pro, Pro+, Ultra | 2026-09-15 |
+| [Void IDE](https://voideditor.com) *(retired)* | Communauté open-source | BYOK, modèles locaux | — | 2026-09-15 |
 | [Windsurf / Devin](https://devin.ai) | Cognition AI | BYOK, MCP | — | non |
-| [Zed](https://zed.dev) | Zed Industries, Inc. | BYOK, modèles locaux | — | non |
+| [Zed](https://zed.dev) | Zed Industries, Inc. | BYOK, modèles locaux | Personal, Pro, Business | 2026-09-15 |
 
 > **Cursor —** Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente ne figurent plus.
+
+> **Trae —** Cinq paliers confirmés, identiques à l'édition précédente. Les quotas sont désormais libellés en dollars d'usage (5 $ sur Lite, 20 $ sur Pro).
+
+> **Zed —** Paliers actuels : Personal gratuit (BYOK illimité), Pro à 10 $, Business à 30 $/siège. Le palier Business n'était pas chiffré dans l'édition précédente.
+
+> **Void IDE —** Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente est dépassé.
 
 ### 3.2 Extensions VS Code
 
 | Outil | Éditeur | Capacités | Forfaits | Vérifié |
 | :-- | :-- | :-- | :-- | :-- |
-| Cline | Collectif open-source | BYOK, modèles locaux, MCP, gratuit | — | non |
-| [Continue](https://continue.dev) | Continue Dev, Inc. | BYOK, modèles locaux, gratuit | — | non |
+| Cline | Collectif open-source | BYOK, modèles locaux, MCP, gratuit | — | 2026-09-15 |
+| [Continue](https://continue.dev) | Continue Dev, Inc. | BYOK, modèles locaux, gratuit | — | 2026-09-15 |
 | [GitHub Copilot](https://github.com/features/copilot) | GitHub / Microsoft | — | Free, Pro, Pro+, Max | 2026-09-15 |
-| Roo Code | Collectif open-source | BYOK, modèles locaux, MCP, gratuit | — | non |
+| Roo Code *(retired)* | RooCodeInc (open-source) | BYOK, modèles locaux, MCP, gratuit | — | 2026-09-15 |
 
 > **GitHub Copilot —** Modèle de crédits confirmé : 15 $ (Pro), 70 $ (Pro+), 200 $ (Max). Complétions illimitées sur tout forfait payant.
+
+> **Cline —** Très actif (commit le jour du relevé), 68 100 étoiles, licence Apache-2.0.
+
+> **Roo Code —** Dépôt ARCHIVÉ, dernier commit le 2026-05-15. Le projet a aussi changé d'organisation (RooVetGit → RooCodeInc) : l'URL de l'édition précédente était morte. 24 302 étoiles au moment du relevé.
+
+> **Continue —** Très actif (commit le jour du relevé), 35 918 étoiles.
 
 ### 3.3 Applications desktop
 
@@ -124,19 +136,25 @@ La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édit
 
 | Outil | Éditeur | Capacités | Forfaits | Vérifié |
 | :-- | :-- | :-- | :-- | :-- |
-| [Aider](https://aider.chat) | Paul Gauthier (open-source) | BYOK, modèles locaux, gratuit | — | non |
+| [Aider](https://aider.chat) *(maintenance)* | Aider-AI (open-source) | BYOK, modèles locaux, gratuit | — | 2026-09-15 |
 | [Claude Code](https://docs.claude.com/en/docs/claude-code) | Anthropic, PBC | MCP | Pro, Max | 2026-09-15 |
 | [Kimi Code CLI](https://platform.kimi.ai) | Moonshot AI | — | — | non |
-| [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — | non |
+| [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — | 2026-09-15 |
 
 > **Claude Code —** Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
+
+> **Aider —** Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti. Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l'URL de l'édition précédente redirige.
+
+> **OpenHands —** Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands vers OpenHands/OpenHands.
 
 ### 3.5 Passerelles
 
 | Outil | Éditeur | Capacités | Forfaits | Vérifié |
 | :-- | :-- | :-- | :-- | :-- |
-| [Ollama](https://ollama.com) | Ollama | modèles locaux, gratuit | — | non |
+| [Ollama](https://ollama.com) | Ollama | modèles locaux, gratuit | — | 2026-09-15 |
 | [OpenRouter](https://openrouter.ai) | OpenRouter, Inc. | — | — | non |
+
+> **Ollama —** Très actif, 181 039 étoiles — la passerelle locale la plus adoptée.
 
 ---
 
@@ -152,6 +170,11 @@ Montants calculés au taux de 0.92 $/€ et à une TVA de 20%. La colonne **€ 
 | Anysphere | Cursor | **Hobby** | gratuit | 0,00 € | 0,00 € | Requêtes Agent limitées, accès Composer. | [page](https://cursor.com/pricing) |
 | Anysphere | Cursor | **Individual** | $20 | 18,40 € | 22,08 € | Limites étendues sur Agent, modèles frontier, MCP, skills, hooks, agents cloud. | [page](https://cursor.com/pricing) |
 | Anysphere | Cursor | **Teams** | $40/u | 36,80 € | 44,16 € | Facturation centralisée, marketplace interne, SSO SAML/OIDC, mode privé. | [page](https://cursor.com/pricing) |
+| ByteDance | Trae | **Free** | gratuit | 0,00 € | 0,00 € | 5 000 autocomplétions/mois, 2 tâches cloud simultanées. | [page](https://trae.ai/pricing) |
+| ByteDance | Trae | **Lite** | $3 | 2,76 € | 3,31 € | Autocomplétion illimitée, 5 $ d'usage, 2 tâches simultanées. | [page](https://trae.ai/pricing) |
+| ByteDance | Trae | **Pro** | $10 | 9,20 € | 11,04 € | 20 $ d'usage, 10 tâches simultanées, essai de 7 jours. | [page](https://trae.ai/pricing) |
+| ByteDance | Trae | **Pro+** | $30 | 27,60 € | 33,12 € | 3,5× l'usage de Pro, 15 tâches simultanées. | [page](https://trae.ai/pricing) |
+| ByteDance | Trae | **Ultra** | $100 | 92,00 € | 110,40 € | 20× l'usage de Pro, accès anticipé aux modèles, 20 tâches simultanées. | [page](https://trae.ai/pricing) |
 | GitHub | GitHub Copilot | **Free** | gratuit | 0,00 € | 0,00 € | 2 000 complétions/mois, 24+ modèles dont Haiku 4.5 et GPT-5 mini. | [page](https://github.com/features/copilot/plans) |
 | GitHub | GitHub Copilot | **Pro** | $10 | 9,20 € | 11,04 € | Complétion et next-edit illimitées, 15 $ de crédits mensuels. | [page](https://github.com/features/copilot/plans) |
 | GitHub | GitHub Copilot | **Pro+** | $39 | 35,88 € | 43,06 € | 70 $ de crédits mensuels, 4x+ l'usage de Pro. | [page](https://github.com/features/copilot/plans) |
@@ -159,6 +182,9 @@ Montants calculés au taux de 0.92 $/€ et à une TVA de 20%. La colonne **€ 
 | Mistral AI | Mistral Vibe | **Free** | gratuit | 0,00 € | 0,00 € | Messages et recherches limités, 10 $/mois de crédits API. | [page](https://mistral.ai/pricing) |
 | Mistral AI | Mistral Vibe | **Pro** | $14.99 | 13,79 € | 16,55 € | Capacité de code étendue, 15 $/mois de crédits API. 5,99 $ pour les étudiants vérifiés. | [page](https://mistral.ai/pricing) |
 | Mistral AI | Mistral Vibe | **Team** | $24.99/u | 22,99 € | 27,59 € | Minimum 50 $/mois, 30 Go de stockage par utilisateur, vérification de domaine. | [page](https://mistral.ai/pricing) |
+| Zed Industries | Zed | **Personal** | gratuit | 0,00 € | 0,00 € | 2 000 prédictions d'édition acceptées. BYOK et agents externes illimités. | [page](https://zed.dev/pricing) |
+| Zed Industries | Zed | **Pro** | $10 | 9,20 € | 11,04 € | Prédictions illimitées, 5 $ de tokens inclus, facturation à l'usage au-delà. | [page](https://zed.dev/pricing) |
+| Zed Industries | Zed | **Business** | $30/u | 27,60 € | 33,12 € | Politiques de modèles à l'échelle de l'organisation, gouvernance des données, RBAC. | [page](https://zed.dev/pricing) |
 
 ---
 
