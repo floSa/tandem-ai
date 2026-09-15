@@ -1,0 +1,232 @@
+# Harnais de développement — la Couche 1 de la taxonomie.
+#
+# category : ide_fork | vscode_extension | desktop_app | cli_agent | gateway
+# status   : active | maintenance | retired | unknown
+#
+# `verification.status` dit ce qui a été RÉELLEMENT contrôlé à cette édition.
+# `unverified` signifie : fiche héritée de l'édition précédente, non re-contrôlée.
+
+_generated:
+  note: "Fichier manuel. Les fiches `unverified` sont héritées et attendent un contrôle."
+
+tools:
+
+  # ── IDE dérivés ─────────────────────────────────────────────────────────
+  - id: cursor
+    name: Cursor
+    vendor: Anysphere, Inc.
+    category: ide_fork
+    status: active
+    url: "https://cursor.com"
+    docs_url: "https://docs.cursor.com"
+    pricing_url: "https://cursor.com/pricing"
+    byok: true
+    local_models: true
+    mcp: true
+    plans: [cursor-hobby, cursor-individual, cursor-teams]
+    note: "Fork VS Code. Composer agentique, indexation sémantique du dépôt."
+    verification: {status: official_pricing_page, verified_on: "2026-09-15",
+                   finding: "Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente ne figurent plus."}
+
+  - id: windsurf
+    name: Windsurf / Devin
+    vendor: Cognition AI
+    category: ide_fork
+    status: unknown
+    url: "https://devin.ai"
+    pricing_url: "https://devin.ai/pricing"
+    byok: true
+    mcp: true
+    note: "Fork VS Code, moteur Cascade. Intégration Devin Cloud."
+    verification: {status: unverified, verified_on: null}
+
+  - id: trae
+    name: Trae
+    vendor: ByteDance
+    category: ide_fork
+    status: unknown
+    url: "https://trae.ai"
+    pricing_url: "https://trae.ai/pricing"
+    mcp: true
+    note: "Fork VS Code, mode SOLO autonome."
+    verification: {status: unverified, verified_on: null}
+
+  - id: zed
+    name: Zed
+    vendor: Zed Industries, Inc.
+    category: ide_fork
+    status: unknown
+    url: "https://zed.dev"
+    pricing_url: "https://zed.dev/pricing"
+    byok: true
+    local_models: true
+    note: "Éditeur natif en Rust, non dérivé de VS Code. Edit Predictions."
+    verification: {status: unverified, verified_on: null}
+
+  - id: void
+    name: Void IDE
+    vendor: Communauté open-source
+    category: ide_fork
+    status: maintenance
+    url: "https://voideditor.com"
+    repo_url: "https://github.com/voideditor/void"
+    byok: true
+    local_models: true
+    note: "Fork open-source de VS Code. Développement principal ralenti."
+    verification: {status: unverified, verified_on: null}
+
+  # ── Extensions VS Code ──────────────────────────────────────────────────
+  - id: github-copilot
+    name: GitHub Copilot
+    vendor: GitHub / Microsoft
+    category: vscode_extension
+    status: active
+    url: "https://github.com/features/copilot"
+    pricing_url: "https://github.com/features/copilot/plans"
+    plans: [copilot-free, copilot-pro, copilot-pro-plus, copilot-max]
+    note: "VS Code, Visual Studio, JetBrains, Neovim. Crédits mensuels libellés en dollars."
+    verification: {status: official_pricing_page, verified_on: "2026-09-15",
+                   finding: "Modèle de crédits confirmé : 15 $ (Pro), 70 $ (Pro+), 200 $ (Max). Complétions illimitées sur tout forfait payant."}
+
+  - id: cline
+    name: Cline
+    vendor: Collectif open-source
+    category: vscode_extension
+    status: unknown
+    repo_url: "https://github.com/cline/cline"
+    byok: true
+    local_models: true
+    mcp: true
+    free: true
+    note: "Agent autonome BYOK pur. Approbation humaine par action sensible."
+    verification: {status: unverified, verified_on: null}
+
+  - id: roo-code
+    name: Roo Code
+    vendor: Collectif open-source
+    category: vscode_extension
+    status: unknown
+    repo_url: "https://github.com/RooVetGit/Roo-Code"
+    byok: true
+    local_models: true
+    mcp: true
+    free: true
+    note: "Fork de Cline, modes spécialisés (Code, Architect, Ask, Debug, Custom)."
+    verification: {status: unverified, verified_on: null}
+
+  - id: continue
+    name: Continue
+    vendor: Continue Dev, Inc.
+    category: vscode_extension
+    status: unknown
+    url: "https://continue.dev"
+    repo_url: "https://github.com/continuedev/continue"
+    byok: true
+    local_models: true
+    free: true
+    note: "VS Code et JetBrains. Sépare le modèle d'autocomplétion du modèle de chat."
+    verification: {status: unverified, verified_on: null}
+
+  # ── Applications desktop ────────────────────────────────────────────────
+  - id: claude-desktop
+    name: Claude Desktop
+    vendor: Anthropic, PBC
+    category: desktop_app
+    status: active
+    url: "https://claude.ai/download"
+    mcp: true
+    plans: [claude-free, claude-pro, claude-max]
+    note: "Windows et macOS. Serveurs MCP, accès fichiers et outils locaux."
+    verification: {status: official_pricing_page, verified_on: "2026-09-15"}
+
+  - id: lm-studio
+    name: LM Studio
+    vendor: Element Labs, Inc.
+    category: desktop_app
+    status: unknown
+    url: "https://lmstudio.ai"
+    local_models: true
+    free: true
+    serves_openai_api: "http://localhost:1234/v1"
+    note: "Exécution locale de modèles GGUF + serveur compatible OpenAI."
+    verification: {status: unverified, verified_on: null}
+
+  - id: chatgpt-desktop
+    name: ChatGPT Desktop
+    vendor: OpenAI, LLC
+    category: desktop_app
+    status: unknown
+    url: "https://openai.com/chatgpt/desktop"
+    note: "Work with Apps : lecture du contexte VS Code, Xcode, Terminal."
+    verification: {status: unverified, verified_on: null}
+
+  # ── Agents CLI ──────────────────────────────────────────────────────────
+  - id: claude-code
+    name: Claude Code
+    vendor: Anthropic, PBC
+    category: cli_agent
+    status: active
+    url: "https://docs.claude.com/en/docs/claude-code"
+    install: "npm install -g @anthropic-ai/claude-code"
+    mcp: true
+    plans: [claude-pro, claude-max]
+    note: "Inclus dans Claude Pro et Max, ou facturé à l'usage via clé API."
+    verification: {status: official_pricing_page, verified_on: "2026-09-15",
+                   finding: "Confirmé inclus dans Pro ; explicitement exclu du forfait Free."}
+
+  - id: aider
+    name: Aider
+    vendor: Paul Gauthier (open-source)
+    category: cli_agent
+    status: unknown
+    url: "https://aider.chat"
+    repo_url: "https://github.com/paul-gauthier/aider"
+    byok: true
+    local_models: true
+    free: true
+    note: "Pair programming en terminal. Repo map via tree-sitter, commits Git automatiques."
+    verification: {status: unverified, verified_on: null}
+
+  - id: openhands
+    name: OpenHands
+    vendor: All-Hands-AI
+    category: cli_agent
+    status: unknown
+    url: "https://all-hands.dev"
+    repo_url: "https://github.com/All-Hands-AI/OpenHands"
+    byok: true
+    free: true
+    note: "Agent d'ingénierie autonome en sandbox Docker. Offre cloud managée payante."
+    verification: {status: unverified, verified_on: null}
+
+  - id: kimi-cli
+    name: Kimi Code CLI
+    vendor: Moonshot AI
+    category: cli_agent
+    status: unknown
+    url: "https://platform.kimi.ai"
+    note: "Binaire autonome, protocole ACP."
+    verification: {status: unverified, verified_on: null}
+
+  # ── Passerelles ─────────────────────────────────────────────────────────
+  - id: openrouter
+    name: OpenRouter
+    vendor: OpenRouter, Inc.
+    category: gateway
+    status: unknown
+    url: "https://openrouter.ai"
+    docs_url: "https://openrouter.ai/docs"
+    note: "Passerelle universelle au format OpenAI. Une clé pour tous les labs."
+    verification: {status: unverified, verified_on: null}
+
+  - id: ollama
+    name: Ollama
+    vendor: Ollama
+    category: gateway
+    status: unknown
+    url: "https://ollama.com"
+    local_models: true
+    free: true
+    serves_openai_api: "http://localhost:11434/v1"
+    note: "Serveur local compatible OpenAI."
+    verification: {status: unverified, verified_on: null}

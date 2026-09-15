@@ -29,12 +29,31 @@ def build_payload() -> dict:
                "DeepSeek": "deepseek", "Alibaba": "alibaba", "Mistral AI": "mistral",
                "Moonshot": "moonshot", "Z.ai (Zhipu AI)": "zhipu", "xAI": "xai",
                "Meta AI": "meta", "MiniMax": "minimax"}
-    price = {}
+    # Les scores sont indexés par version Epoch, les tarifs par identifiant de
+    # modèle : on projette les tarifs sur toutes les versions connues du modèle
+    # pour que le croisement prix × performance puisse se faire.
+    price, priced_models = {}, []
     for m in models:
         p = m.get("pricing") or {}
-        if p.get("input_per_1m") is not None:
-            price[m["id"]] = {"in": p["input_per_1m"], "out": p.get("output_per_1m"),
-                              "cached": p.get("input_cached_per_1m")}
+        if p.get("input_per_1m") is None:
+            continue
+        rec = {"in": p["input_per_1m"], "out": p.get("output_per_1m"),
+               "cached": p.get("input_cached_per_1m"),
+               "src": (p.get("source") or {}).get("url"),
+               "on": (p.get("source") or {}).get("verified_on")}
+        price[m["id"]] = rec
+        for v in m.get("epoch_model_versions", []):
+            price[v] = rec
+        priced_models.append({
+            "id": m["id"], "name": m.get("display_name") or m["id"],
+            "lab": m.get("lab"), "role": m.get("role"),
+            "ctx": m.get("context_window"),
+            "api_id": m.get("api_model_id"),
+            **rec,
+            "offpeak": p.get("offpeak"), "promo": p.get("promo_note"),
+            "tier": p.get("tier_note"),
+        })
+    priced_models.sort(key=lambda x: x["in"])
 
     rows = []
     for s in scores:
@@ -61,6 +80,16 @@ def build_payload() -> dict:
                 "released": b.get("released_on")}
                for b in bench.get("tracked", []) if b.get("track")]
 
+    plans = load("plans.yaml").get("plans", [])
+    tools = load("tools.yaml").get("tools", [])
+    fx = (meta.get("fx") or {}).get("usd_eur", 0.92)
+    vat = (meta.get("vat") or {}).get("rate", 0.20)
+    for pl in plans:
+        u = pl.get("price_usd_month")
+        if u is not None:
+            pl["eur_ht"] = round(u * fx, 2)          # pro, autoliquidation
+            pl["eur_ttc"] = round(u * fx * (1 + vat), 2)  # particulier, TVA FR
+
     return {
         "edition": meta.get("audit", {}).get("label", ""),
         "generated": date.today().isoformat(),
@@ -71,9 +100,16 @@ def build_payload() -> dict:
                   "pricing_url": v["pricing_url"]} for v in labs.values()],
         "scores": rows,
         "prices": price,
+        "priced_models": priced_models,
+        "plans": plans,
+        "tools": tools,
+        "vat": vat,
         "counts": {"labs": len(labs), "models": len(models),
                    "benchmarks": len(benches), "scores": len(rows),
-                   "priced": len(price)},
+                   "priced": len(priced_models), "plans": len(plans),
+                   "tools": len(tools),
+                   "tools_verified": sum(1 for t in tools
+                       if (t.get("verification") or {}).get("status") != "unverified")},
     }
 
 
@@ -209,6 +245,8 @@ quand deux barres se chevauchent, l'écart n'est pas significatif.</p>
       <button data-k="time" aria-pressed="false">Progression</button>
       <button data-k="cover" aria-pressed="false">Couverture</button>
       <button data-k="price" aria-pressed="false">Prix × performance</button>
+      <button data-k="api" aria-pressed="false">Tarifs API</button>
+      <button data-k="plans" aria-pressed="false">Forfaits</button>
     </div>
     <label class="f">Benchmark<select id="bench"></select></label>
     <label class="f">Fournisseur<select id="lab"><option value="">Tous</option></select></label>
@@ -222,6 +260,12 @@ quand deux barres se chevauchent, l'écart n'est pas significatif.</p>
     <div class="tw"><table id="tbl"></table></div>
   </details>
 </div>
+
+<h2>Harnais<span class="n" id="tn"></span></h2>
+<p class="lede">La couche d'interface : c'est elle qui exécute le modèle, et son effet sur
+la performance mesurée est loin d'être négligeable. Une fiche non re-contrôlée à cette
+édition est signalée comme telle plutôt que présentée comme à jour.</p>
+<div class="bl" id="tlist"></div>
 
 <h2>Benchmarks suivis<span class="n" id="bn"></span></h2>
 <p class="lede">Sélection raisonnée. Un benchmark saturé ou remplacé est écarté explicitement :
@@ -250,10 +294,14 @@ $('#meta').textContent=`${D.edition} · généré le ${D.generated} · `+
 const C=D.counts;
 $('#strip').innerHTML=[['Fournisseurs',C.labs],['Modèles',C.models],
  ['Benchmarks',C.benchmarks],['Mesures',C.scores.toLocaleString('fr-FR')],
- ['Tarifs vérifiés',C.priced+' / '+C.models]]
+ ['Tarifs vérifiés',C.priced],['Forfaits',C.plans],['Harnais',C.tools]]
  .map(([k,v])=>`<div class="cell"><b>${v}</b><span>${k}</span></div>`).join('');
 
 const al=[];
+if(C.priced>0)al.push(['','Vérification tarifaire partielle.',
+ `<b>${C.priced}</b> modèles portent un tarif relevé sur la page officielle du fournisseur `+
+ `(sur ${C.models} au catalogue), et <b>${C.plans}</b> forfaits d'abonnement sont sourcés. `+
+ `Les modèles restants affichent un tarif vide plutôt qu'une valeur approchée.`]);
 if(C.priced===0)al.push(['bad','Aucun tarif vérifié.',
  'Les tarifs du catalogue sont vides et marqués <code>unverified</code> : ils doivent être relevés sur la page /pricing officielle de chaque fournisseur avant toute publication chiffrée. Le graphique « Prix × performance » reste vide jusque-là.']);
 if(D.fx&&D.fx.status!=='verified')al.push(['','Taux de change non vérifié.',
@@ -498,7 +546,106 @@ function render(sv,r,unit){
       `<td>${esc(s.p)}</td><td>${s.u?`<a href="${esc(s.u)}" rel="noopener">lien</a>`:'—'}</td></tr>`
     ).join('')+'</tbody>':'';
 }
-const DRAW={rank,harness,time,cover,price};
+function api(){
+  // Barres du coût d'entrée, avec le coût de sortie en repère secondaire.
+  let r=D.priced_models.slice();
+  if(lsel.value){const m={'Anthropic':'anthropic','OpenAI':'openai','Google DeepMind':'google',
+   'DeepSeek':'deepseek','Alibaba':'alibaba','Mistral AI':'mistral','Moonshot':'moonshot',
+   'Z.ai (Zhipu AI)':'zhipu','xAI':'xai','Meta AI':'meta','MiniMax':'minimax'}[lsel.value];
+   if(m)r=r.filter(x=>x.lab===m);}
+  const n=+$('#top').value; if(n)r=r.slice(0,n);
+  if(!r.length)return empty('Aucun modèle tarifé pour ce filtre.');
+  const W=940,L=250,R=132,BH=25,H=r.length*BH+56;
+  const max=Math.max(...r.map(x=>x.out||x.in))*1.06;
+  const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
+    'aria-label':'Tarifs API par million de tokens'});
+  const x=v=>L+v/max*(W-L-R);
+  for(let i=0;i<=4;i++){const v=max*i/4;
+    sv.append(mk('line',{x1:x(v),x2:x(v),y1:30,y2:H-20,class:'gl'}));
+    const t=mk('text',{x:x(v),y:22,'text-anchor':'middle',class:'ax'});
+    t.textContent='$'+v.toFixed(0);sv.append(t);}
+  [['entrée','--s1',0],['sortie','--s2',108]].forEach(([lb,c,off])=>{
+    sv.append(mk('circle',{cx:L+off,cy:12,r:4,fill:cv(c)}));
+    const t=mk('text',{x:L+off+8,y:16,class:'ax'});t.textContent=lb;sv.append(t);});
+  r.forEach((m,i)=>{const y=34+i*BH,g=mk('g');
+    const lb=mk('text',{x:L-9,y:y+14,'text-anchor':'end',class:'lbl'});
+    lb.textContent=(m.name||m.id).slice(0,34);g.append(lb);
+    g.append(mk('rect',{x:L,y:y+2,width:Math.max(2,x(m.in)-L),height:7,rx:3.5,fill:cv('--s1')}));
+    if(m.out)g.append(mk('rect',{x:L,y:y+11,width:Math.max(2,x(m.out)-L),height:7,rx:3.5,
+      fill:cv('--s2')}));
+    const vt=mk('text',{x:W-R+7,y:y+15,class:'val'});
+    vt.textContent=`$${m.in} / $${m.out??'—'}`;g.append(vt);
+    wire(g,`<b>${esc(m.name)}</b>${esc(m.api_id||m.id)}<br>`+
+      `entrée <b>$${m.in}</b> · cache $${m.cached??'—'} · sortie <b>$${m.out??'—'}</b> /1M`+
+      (m.ctx?`<br>contexte : ${(m.ctx/1000).toFixed(0)}k`:'')+
+      (m.offpeak?`<br>heures creuses : $${m.offpeak.input_per_1m} / $${m.offpeak.output_per_1m}`:'')+
+      (m.promo?`<br>${esc(m.promo)}`:'')+(m.tier?`<br>${esc(m.tier)}`:'')+
+      `<i>relevé le ${esc(m.on)} sur source officielle</i>`);
+    sv.append(g);});
+  $('#chart').innerHTML='';$('#chart').append(sv);
+  $('#caveat').innerHTML='<div class="note"><b>Lecture.</b> Le coût réel d\'une tâche dépend '+
+    'du ratio entrée/sortie et du taux de cache. Un modèle cher au token peut revenir moins '+
+    'cher s\'il réussit en un essai.</div>';
+  $('#tbl').innerHTML='<thead><tr><th>Modèle</th><th>Identifiant API</th>'+
+    '<th class="n">Entrée</th><th class="n">Cache</th><th class="n">Sortie</th>'+
+    '<th class="n">Contexte</th><th>Relevé le</th></tr></thead><tbody>'+
+    r.map(m=>`<tr><td>${esc(m.name)}</td><td>${esc(m.api_id||'—')}</td>`+
+      `<td class="n">$${m.in}</td><td class="n">${m.cached!=null?'$'+m.cached:'—'}</td>`+
+      `<td class="n">${m.out!=null?'$'+m.out:'—'}</td>`+
+      `<td class="n">${m.ctx?(m.ctx/1000).toFixed(0)+'k':'—'}</td>`+
+      `<td>${esc(m.on||'—')}</td></tr>`).join('')+'</tbody>';
+}
+
+function plans(){
+  const r=D.plans.filter(p=>p.price_usd_month!=null)
+                 .sort((a,b)=>a.price_usd_month-b.price_usd_month);
+  if(!r.length)return empty('Aucun forfait au catalogue.');
+  const W=940,L=250,R=176,BH=27,H=r.length*BH+56;
+  const max=Math.max(...r.map(p=>p.eur_ttc||0))*1.08||1;
+  const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
+    'aria-label':'Forfaits mensuels, montants débités en France'});
+  const x=v=>L+v/max*(W-L-R);
+  for(let i=0;i<=4;i++){const v=max*i/4;
+    sv.append(mk('line',{x1:x(v),x2:x(v),y1:30,y2:H-20,class:'gl'}));
+    const t=mk('text',{x:x(v),y:22,'text-anchor':'middle',class:'ax'});
+    t.textContent=v.toFixed(0)+' €';sv.append(t);}
+  [['HT (pro, autoliquidation)','--s3',0],['TTC (particulier)','--s1',196]]
+    .forEach(([lb,c,off])=>{
+    sv.append(mk('circle',{cx:L+off,cy:12,r:4,fill:cv(c)}));
+    const t=mk('text',{x:L+off+8,y:16,class:'ax'});t.textContent=lb;sv.append(t);});
+  r.forEach((p,i)=>{const y=34+i*BH,g=mk('g');
+    const lb=mk('text',{x:L-9,y:y+15,'text-anchor':'end',class:'lbl'});
+    lb.textContent=`${p.product} · ${p.name}`.slice(0,36);g.append(lb);
+    if(p.eur_ttc)g.append(mk('rect',{x:L,y:y+3,width:Math.max(2,x(p.eur_ttc)-L),height:16,
+      rx:4,fill:cv('--s1'),opacity:.28}));
+    if(p.eur_ht)g.append(mk('rect',{x:L,y:y+3,width:Math.max(2,x(p.eur_ht)-L),height:16,
+      rx:4,fill:cv('--s3')}));
+    const vt=mk('text',{x:W-R+7,y:y+15,class:'val'});
+    vt.textContent=p.price_usd_month===0?'gratuit':
+      `${p.eur_ht} € HT · ${p.eur_ttc} € TTC`;g.append(vt);
+    wire(g,`<b>${esc(p.vendor)} — ${esc(p.product)} ${esc(p.name)}</b>`+
+      `affiché ${p.price_usd_month} $/mois${p.per_seat?' par siège':''}<br>`+
+      `pro (autoliquidation) : <b>${p.eur_ht} € HT</b><br>`+
+      `particulier (TVA 20 %) : <b>${p.eur_ttc} € TTC</b>`+
+      (p.credits_usd_month?`<br>crédits inclus : ${p.credits_usd_month} $/mois`:'')+
+      (p.price_usd_month_annual?`<br>engagement annuel : ${p.price_usd_month_annual} $/mois`:'')+
+      `<br>${esc(p.includes||'')}<i>relevé le ${esc(p.source?.verified_on)}</i>`);
+    sv.append(g);});
+  $('#chart').innerHTML='';$('#chart').append(sv);
+  $('#caveat').innerHTML='<div class="note"><b>Deux régimes de facturation.</b> '+
+    'Un professionnel qui renseigne son numéro de TVA intracommunautaire est facturé '+
+    'en autoliquidation (0 % débité) : il paie le montant HT. Un particulier paie la '+
+    'TVA française de 20 %. Les euros sont calculés au taux de '+
+    `${D.fx.usd_eur} $/€, lui-même ${D.fx.status==='verified'?'vérifié':'NON vérifié'}.</div>`;
+  $('#tbl').innerHTML='<thead><tr><th>Éditeur</th><th>Forfait</th><th class="n">Affiché</th>'+
+    '<th class="n">€ HT (pro)</th><th class="n">€ TTC</th><th>Inclus</th></tr></thead><tbody>'+
+    r.map(p=>`<tr><td>${esc(p.vendor)}</td><td>${esc(p.product)} ${esc(p.name)}</td>`+
+      `<td class="n">$${p.price_usd_month}${p.per_seat?'/u':''}</td>`+
+      `<td class="n">${p.eur_ht} €</td><td class="n">${p.eur_ttc} €</td>`+
+      `<td>${esc(p.includes||'—')}</td></tr>`).join('')+'</tbody>';
+}
+
+const DRAW={rank,harness,time,cover,price,api,plans};
 function draw(){DRAW[K]();}
 $('#kind').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   K=b.dataset.k;[...$('#kind').children].forEach(x=>
@@ -516,6 +663,21 @@ $('#blist').innerHTML=D.benchmarks.map(b=>
 $('#rj').textContent=`Benchmarks écartés (${D.rejected.length}) — et pourquoi`;
 $('#rlist').innerHTML=D.rejected.map(b=>
  `<div class="bc"><h3>${esc(b.benchmark)}</h3><p>${esc(b.reason)}</p></div>`).join('');
+
+const CATL={ide_fork:'IDE dérivé',vscode_extension:'Extension VS Code',
+ desktop_app:'Application desktop',cli_agent:'Agent CLI',gateway:'Passerelle'};
+$('#tn').textContent=`${D.counts.tools} au catalogue, ${D.counts.tools_verified} re-vérifiés`;
+$('#tlist').innerHTML=D.tools.map(t=>{const v=t.verification||{},ok=v.status!=='unverified';
+ return `<div class="bc"><h3>${esc(t.name)} <span class="tag${ok?' ref':''}">`+
+  `${ok?'vérifié '+esc(v.verified_on):'non re-vérifié'}</span></h3>
+  <p style="color:var(--ink-3);font-size:11.5px;margin:2px 0 6px">${esc(CATL[t.category]||t.category)}`+
+  ` · ${esc(t.vendor)}</p><p>${esc(t.note||'')}</p>`+
+  (v.finding?`<span class="cv">▲ ${esc(v.finding)}</span>`:'')+
+  `<p style="margin-top:8px">${[t.byok&&'BYOK',t.local_models&&'modèles locaux',
+    t.mcp&&'MCP',t.free&&'gratuit'].filter(Boolean)
+    .map(x=>`<span class="tag">${x}</span>`).join(' ')}</p>`+
+  (t.url?`<p style="margin-top:7px"><a href="${esc(t.url)}" rel="noopener">${esc(t.url)}</a></p>`:'')+
+  `</div>`;}).join('');
 
 $('#foot').innerHTML=`Données de benchmark : <a href="https://epoch.ai/benchmarks" rel="noopener">`+
  `Epoch AI — Capabilities &amp; Benchmarking</a>, sous licence `+

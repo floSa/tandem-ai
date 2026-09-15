@@ -4,76 +4,702 @@ _generated:
   basis: Identités de modèles observées dans les données de benchmark Epoch AI (CC-BY).
   warning: 'AMORCE. Les champs tarifaires sont vides et marqués `unverified` : ils doivent être renseignés
     depuis la page /pricing officielle de chaque lab. Voir protocol/04_collecte_donnees.md.'
+  pricing_applied_on: '2026-09-15'
 models:
-- id: claude-fable-5-1
-  lab: anthropic
-  display_name: Claude Fable 5.1 (high)
+- id: Qwen3-235B-A22B-Instruct-2507
+  lab: alibaba
+  display_name: Qwen3-235B-A22B-Instruct-2507
+  released_on: '2025-07-25'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - Qwen3-235B-A22B-Instruct-2507
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: Qwen3-235B-A22B-Thinking-2507
+  lab: alibaba
+  display_name: Qwen3-235B-A22B-Thinking-2507
+  released_on: '2025-07-25'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - Qwen3-235B-A22B-Thinking-2507
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: Qwen3-Coder-480B-A35B-Instruct
+  lab: alibaba
+  display_name: Qwen3-Coder-480B-A35B-Instruct
+  released_on: '2025-07-31'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 6
+  epoch_model_versions:
+  - Qwen3-Coder-480B-A35B-Instruct
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen/qwen3-235b-a22b-thinking-2507
+  lab: alibaba
+  display_name: Qwen3-235B-A22B-Thinking-2507
+  released_on: '2025-07-25'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen/qwen3-235b-a22b-thinking-2507
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3-30b-a3b-instruct-2507
+  lab: alibaba
+  display_name: qwen3-30b-a3b-instruct-2507
+  released_on: '2025-07-29'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3-30b-a3b-instruct-2507
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3-30b-a3b-thinking-2507
+  lab: alibaba
+  display_name: qwen3-30b-a3b-thinking-2507
+  released_on: '2025-07-30'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - qwen3-30b-a3b-thinking-2507
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3-max-2025-09-23
+  lab: alibaba
+  display_name: Qwen3-Max-Instruct
+  released_on: '2025-09-24'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3-max-2025-09-23
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-122b-a10b_none
+  lab: alibaba
+  display_name: qwen3.5-122b-a10b_none
+  released_on: '2026-02-24'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.5-122b-a10b_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-35b-a3b
+  lab: alibaba
+  display_name: qwen3.5-35b-a3b
+  released_on: '2026-02-24'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.5-35b-a3b
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-35b-a3b_none
+  lab: alibaba
+  display_name: qwen3.5-35b-a3b_none
+  released_on: '2026-02-24'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - qwen3.5-35b-a3b_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-397b-a17b
+  lab: alibaba
+  display_name: Qwen3.5 397B-A17B
+  released_on: '2026-02-13'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.5-397b-a17b
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-397b-a17b_none
+  lab: alibaba
+  display_name: Qwen3.5 397B-A17B
+  released_on: '2026-02-13'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.5-397b-a17b_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-9B
+  lab: alibaba
+  display_name: Qwen3.5 9B
+  released_on: '2026-02-24'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 3
+  epoch_model_versions:
+  - qwen3.5-9B
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-9B_none
+  lab: alibaba
+  display_name: Qwen3.5 9B
+  released_on: '2026-02-24'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.5-9B_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-flash
+  lab: alibaba
+  display_name: Qwen3.5 Flash
+  released_on: '2026-02-25'
+  accessibility: null
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.5-flash
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.5-plus
+  lab: alibaba
+  display_name: Qwen3.5 Plus
+  released_on: '2026-02-16'
+  accessibility: null
+  benchmark_records: 2
+  epoch_model_versions:
+  - qwen3.5-plus
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.6-27b
+  lab: alibaba
+  display_name: Qwen3.6 27B
+  released_on: '2026-04-22'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.6-27b
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.6-27b_none
+  lab: alibaba
+  display_name: Qwen3.6 27B
+  released_on: '2026-04-22'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - qwen3.6-27b_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.6-35b-a3b
+  lab: alibaba
+  display_name: Qwen3.6 35B-A3B
+  released_on: '2026-04-14'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 3
+  epoch_model_versions:
+  - qwen3.6-35b-a3b
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.6-35b-a3b_none
+  lab: alibaba
+  display_name: Qwen3.6 35B-A3B
+  released_on: '2026-04-14'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - qwen3.6-35b-a3b_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.6-flash
+  lab: alibaba
+  display_name: Qwen 3.6 Flash (2026-04-16)
+  released_on: '2026-04-27'
+  accessibility: null
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.6-flash
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.6-max-preview
+  lab: alibaba
+  display_name: Qwen 3.6 Max (Preview)
+  released_on: '2026-04-20'
+  accessibility: null
+  benchmark_records: 2
+  epoch_model_versions:
+  - qwen3.6-max-preview
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.6-plus
+  lab: alibaba
+  display_name: Qwen 3.6 Plus (2026-04-02)
+  released_on: '2026-03-31'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - qwen3.6-plus
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.7-flash
+  lab: alibaba
+  display_name: Qwen3.7 Flash
+  released_on: '2026-07-27'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.7-flash
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.7-flash_none
+  lab: alibaba
+  display_name: Qwen3.7 Flash
+  released_on: '2026-07-27'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.7-flash_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.7-max
+  lab: alibaba
+  display_name: Qwen3.7 Max
+  released_on: '2026-05-19'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - qwen3.7-max
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.7-plus
+  lab: alibaba
+  display_name: Qwen3.7 Plus
+  released_on: '2026-06-02'
+  accessibility: API access
+  benchmark_records: 4
+  epoch_model_versions:
+  - qwen3.7-plus
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.7-plus_none
+  lab: alibaba
+  display_name: Qwen3.7 Plus
+  released_on: '2026-06-02'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.7-plus_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.8-27b
+  lab: alibaba
+  display_name: Qwen3.8 27B
+  released_on: '2026-08-14'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 3
+  epoch_model_versions:
+  - qwen3.8-27b
+  - qwen3.8-27b_low
+  - qwen3.8-27b_medium
+  - qwen3.8-27b_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.8-27b_none
+  lab: alibaba
+  display_name: Qwen3.8 27B (no thinking)
+  released_on: '2026-08-14'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.8-27b_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.8-max
+  lab: alibaba
+  display_name: Qwen3.8 Max (unknown)
+  released_on: '2026-08-02'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - qwen3.8-max_unknown
+  - qwen3.8-max_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: qwen3.8-max-0902
+  lab: alibaba
+  display_name: Qwen3.8 Max (0902) (xhigh)
   released_on: '2026-09-01'
   accessibility: API access
-  benchmark_records: 15
+  benchmark_records: 1
   epoch_model_versions:
-  - claude-fable-5-1_high
-  - claude-fable-5-1_low
-  - claude-fable-5-1_max
-  - claude-fable-5-1_medium
-  - claude-fable-5-1_unknown
-  - claude-fable-5-1_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-5
-  lab: anthropic
-  display_name: Claude Opus 5
-  released_on: '2026-07-24'
-  accessibility: API access
-  benchmark_records: 23
-  epoch_model_versions:
-  - claude-opus-5
-  - claude-opus-5_high
-  - claude-opus-5_low
-  - claude-opus-5_max
-  - claude-opus-5_medium
-  - claude-opus-5_unknown
-  - claude-opus-5_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-sonnet-5
-  lab: anthropic
-  display_name: Claude Sonnet 5 (no thinking)
-  released_on: '2026-06-30'
-  accessibility: API access
-  benchmark_records: 12
-  epoch_model_versions:
-  - claude-sonnet-5
-  - claude-sonnet-5_high
-  - claude-sonnet-5_low
-  - claude-sonnet-5_max
-  - claude-sonnet-5_medium
-  - claude-sonnet-5_unknown
-  - claude-sonnet-5_xhigh
+  - qwen3.8-max-0902_xhigh
   status: active
   api_model_id: null
   context_window: null
@@ -116,14 +742,66 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-8_none
+- id: claude-fable-5-1
   lab: anthropic
-  display_name: Claude Opus 4.8
-  released_on: '2026-05-28'
+  display_name: Claude Fable 5.1
+  released_on: '2026-09-01'
   accessibility: API access
-  benchmark_records: 1
+  benchmark_records: 15
   epoch_model_versions:
-  - claude-opus-4-8_none
+  - claude-fable-5-1_high
+  - claude-fable-5-1_low
+  - claude-fable-5-1_max
+  - claude-fable-5-1_medium
+  - claude-fable-5-1_unknown
+  - claude-fable-5-1_xhigh
+  status: active
+  api_model_id: claude-fable-5-1
+  context_window: 200000
+  role: Flagship raisonnement étendu
+  pricing:
+    input_per_1m: 10.0
+    input_cached_per_1m: 0.25
+    cache_write_per_1m: 12.5
+    output_per_1m: 50.0
+    currency: USD
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+- id: claude-haiku-4-5
+  lab: anthropic
+  display_name: Claude Haiku 4.5
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: claude-haiku-4-5-20251001
+  context_window: 200000
+  role: Flash / économique
+  pricing:
+    input_per_1m: 1.0
+    input_cached_per_1m: 0.1
+    cache_write_per_1m: 1.25
+    output_per_1m: 5.0
+    currency: USD
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+- id: claude-haiku-4-5-20251001
+  lab: anthropic
+  display_name: claude-haiku-4-5-20251001
+  released_on: '2025-10-15'
+  accessibility: API access
+  benchmark_records: 13
+  epoch_model_versions:
+  - claude-haiku-4-5-20251001
+  - claude-haiku-4-5-20251001_low
+  - claude-haiku-4-5-20251001_unknown
   status: active
   api_model_id: null
   context_window: null
@@ -138,19 +816,397 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-8
+- id: claude-haiku-4-5-20251001_16K
   lab: anthropic
-  display_name: Claude Opus 4.8
-  released_on: '2026-05-28'
+  display_name: claude-haiku-4-5-20251001_16K
+  released_on: '2025-10-15'
   accessibility: API access
-  benchmark_records: 17
+  benchmark_records: 1
   epoch_model_versions:
-  - claude-opus-4-8_high
-  - claude-opus-4-8_low
-  - claude-opus-4-8_max
-  - claude-opus-4-8_medium
-  - claude-opus-4-8_unknown
-  - claude-opus-4-8_xhigh
+  - claude-haiku-4-5-20251001_16K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-haiku-4-5-20251001_1K
+  lab: anthropic
+  display_name: claude-haiku-4-5-20251001_1K
+  released_on: '2025-10-15'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-haiku-4-5-20251001_1K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-haiku-4-5-20251001_32K
+  lab: anthropic
+  display_name: claude-haiku-4-5-20251001_32K
+  released_on: '2025-10-15'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - claude-haiku-4-5-20251001_32K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-haiku-4-5-20251001_8K
+  lab: anthropic
+  display_name: claude-haiku-4-5-20251001_8K
+  released_on: '2025-10-15'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-haiku-4-5-20251001_8K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-mythos-preview-early
+  lab: anthropic
+  display_name: Claude Mythos Preview (Early)
+  released_on: '2026-04-07'
+  accessibility: Unreleased
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-mythos-preview-early
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-1-20250805
+  lab: anthropic
+  display_name: claude-opus-4-1-20250805
+  released_on: '2025-08-05'
+  accessibility: API access
+  benchmark_records: 15
+  epoch_model_versions:
+  - claude-opus-4-1-20250805
+  - claude-opus-4-1-20250805_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-1-20250805_16K
+  lab: anthropic
+  display_name: claude-opus-4-1-20250805_16K
+  released_on: '2025-08-05'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - claude-opus-4-1-20250805_16K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-1-20250805_27K
+  lab: anthropic
+  display_name: claude-opus-4-1-20250805_27K
+  released_on: '2025-08-05'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-opus-4-1-20250805_27K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-5-20251101
+  lab: anthropic
+  display_name: Claude Opus 4.5 (no thinking)
+  released_on: '2025-11-24'
+  accessibility: API access
+  benchmark_records: 21
+  epoch_model_versions:
+  - claude-opus-4-5-20251101
+  - claude-opus-4-5-20251101_high
+  - claude-opus-4-5-20251101_low
+  - claude-opus-4-5-20251101_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-5-20251101_128K
+  lab: anthropic
+  display_name: Claude Opus 4.5 (128k thinking)
+  released_on: '2025-11-24'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-opus-4-5-20251101_128K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-5-20251101_16K
+  lab: anthropic
+  display_name: Claude Opus 4.5 (16k thinking)
+  released_on: '2025-11-24'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - claude-opus-4-5-20251101_16K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-5-20251101_32K
+  lab: anthropic
+  display_name: Claude Opus 4.5 (32k thinking)
+  released_on: '2025-11-24'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-opus-4-5-20251101_32K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-5-20251101_64K
+  lab: anthropic
+  display_name: Claude Opus 4.5 (64k thinking)
+  released_on: '2025-11-24'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-opus-4-5-20251101_64K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-5-20251101_8K
+  lab: anthropic
+  display_name: Claude Opus 4.5 (8k thinking)
+  released_on: '2025-11-24'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-opus-4-5-20251101_8K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-6
+  lab: anthropic
+  display_name: Claude Opus 4.6 (no thinking)
+  released_on: '2026-02-05'
+  accessibility: API access
+  benchmark_records: 26
+  epoch_model_versions:
+  - claude-opus-4-6
+  - claude-opus-4-6_high
+  - claude-opus-4-6_low
+  - claude-opus-4-6_max
+  - claude-opus-4-6_medium
+  - claude-opus-4-6_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-6_120K
+  lab: anthropic
+  display_name: Claude Opus 4.6 (120k thinking)
+  released_on: '2026-02-05'
+  accessibility: API access
+  benchmark_records: 4
+  epoch_model_versions:
+  - claude-opus-4-6_120K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-6_32K
+  lab: anthropic
+  display_name: Claude Opus 4.6 (32k thinking)
+  released_on: '2026-02-05'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-opus-4-6_32K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-4-6_64K
+  lab: anthropic
+  display_name: Claude Opus 4.6 (64k thinking)
+  released_on: '2026-02-05'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-opus-4-6_64K
   status: active
   api_model_id: null
   context_window: null
@@ -193,14 +1249,19 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-mythos-preview-early
+- id: claude-opus-4-8
   lab: anthropic
-  display_name: Claude Mythos Preview (Early)
-  released_on: '2026-04-07'
-  accessibility: Unreleased
-  benchmark_records: 1
+  display_name: Claude Opus 4.8
+  released_on: '2026-05-28'
+  accessibility: API access
+  benchmark_records: 17
   epoch_model_versions:
-  - claude-mythos-preview-early
+  - claude-opus-4-8_high
+  - claude-opus-4-8_low
+  - claude-opus-4-8_max
+  - claude-opus-4-8_medium
+  - claude-opus-4-8_unknown
+  - claude-opus-4-8_xhigh
   status: active
   api_model_id: null
   context_window: null
@@ -215,14 +1276,177 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-sonnet-4-6_32K
+- id: claude-opus-4-8_none
   lab: anthropic
-  display_name: Claude Sonnet 4.6 (32k thinking)
-  released_on: '2026-02-17'
+  display_name: Claude Opus 4.8
+  released_on: '2026-05-28'
   accessibility: API access
   benchmark_records: 1
   epoch_model_versions:
-  - claude-sonnet-4-6_32K
+  - claude-opus-4-8_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-opus-5
+  lab: anthropic
+  display_name: Claude Opus 5
+  released_on: '2026-07-24'
+  accessibility: API access
+  benchmark_records: 23
+  epoch_model_versions:
+  - claude-opus-5
+  - claude-opus-5_high
+  - claude-opus-5_low
+  - claude-opus-5_max
+  - claude-opus-5_medium
+  - claude-opus-5_unknown
+  - claude-opus-5_xhigh
+  status: active
+  api_model_id: claude-opus-5
+  context_window: 200000
+  role: Flagship architecture et cas complexes
+  pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
+    currency: USD
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+- id: claude-sonnet-4-5-20250929
+  lab: anthropic
+  display_name: Claude Sonnet 4.5 (no thinking)
+  released_on: '2025-09-29'
+  accessibility: API access
+  benchmark_records: 24
+  epoch_model_versions:
+  - claude-sonnet-4-5-20250929
+  - claude-sonnet-4-5-20250929_low
+  - claude-sonnet-4-5-20250929_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-sonnet-4-5-20250929_16K
+  lab: anthropic
+  display_name: Claude Sonnet 4.5 (16k thinking)
+  released_on: '2025-09-29'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - claude-sonnet-4-5-20250929_16K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-sonnet-4-5-20250929_1K
+  lab: anthropic
+  display_name: Claude Sonnet 4.5 (1k thinking)
+  released_on: '2025-09-29'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-sonnet-4-5-20250929_1K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-sonnet-4-5-20250929_32K
+  lab: anthropic
+  display_name: Claude Sonnet 4.5 (32k thinking)
+  released_on: '2025-09-29'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - claude-sonnet-4-5-20250929_32K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-sonnet-4-5-20250929_59K
+  lab: anthropic
+  display_name: Claude Sonnet 4.5 (59k thinking)
+  released_on: '2025-09-29'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-sonnet-4-5-20250929_59K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: claude-sonnet-4-5-20250929_8K
+  lab: anthropic
+  display_name: Claude Sonnet 4.5 (8k thinking)
+  released_on: '2025-09-29'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - claude-sonnet-4-5-20250929_8K
   status: active
   api_model_id: null
   context_window: null
@@ -264,14 +1488,14 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-6_64K
+- id: claude-sonnet-4-6_32K
   lab: anthropic
-  display_name: Claude Opus 4.6 (64k thinking)
-  released_on: '2026-02-05'
+  display_name: Claude Sonnet 4.6 (32k thinking)
+  released_on: '2026-02-17'
   accessibility: API access
   benchmark_records: 1
   epoch_model_versions:
-  - claude-opus-4-6_64K
+  - claude-sonnet-4-6_32K
   status: active
   api_model_id: null
   context_window: null
@@ -286,1568 +1510,43 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-6_32K
+- id: claude-sonnet-5
   lab: anthropic
-  display_name: Claude Opus 4.6 (32k thinking)
-  released_on: '2026-02-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-opus-4-6_32K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-6_120K
-  lab: anthropic
-  display_name: Claude Opus 4.6 (120k thinking)
-  released_on: '2026-02-05'
-  accessibility: API access
-  benchmark_records: 4
-  epoch_model_versions:
-  - claude-opus-4-6_120K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-6
-  lab: anthropic
-  display_name: Claude Opus 4.6 (no thinking)
-  released_on: '2026-02-05'
-  accessibility: API access
-  benchmark_records: 26
-  epoch_model_versions:
-  - claude-opus-4-6
-  - claude-opus-4-6_high
-  - claude-opus-4-6_low
-  - claude-opus-4-6_max
-  - claude-opus-4-6_medium
-  - claude-opus-4-6_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-5-20251101_8K
-  lab: anthropic
-  display_name: Claude Opus 4.5 (8k thinking)
-  released_on: '2025-11-24'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-opus-4-5-20251101_8K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-5-20251101_64K
-  lab: anthropic
-  display_name: Claude Opus 4.5 (64k thinking)
-  released_on: '2025-11-24'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-opus-4-5-20251101_64K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-5-20251101_32K
-  lab: anthropic
-  display_name: Claude Opus 4.5 (32k thinking)
-  released_on: '2025-11-24'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-opus-4-5-20251101_32K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-5-20251101_16K
-  lab: anthropic
-  display_name: Claude Opus 4.5 (16k thinking)
-  released_on: '2025-11-24'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - claude-opus-4-5-20251101_16K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-5-20251101_128K
-  lab: anthropic
-  display_name: Claude Opus 4.5 (128k thinking)
-  released_on: '2025-11-24'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-opus-4-5-20251101_128K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-5-20251101
-  lab: anthropic
-  display_name: Claude Opus 4.5 (no thinking)
-  released_on: '2025-11-24'
-  accessibility: API access
-  benchmark_records: 21
-  epoch_model_versions:
-  - claude-opus-4-5-20251101
-  - claude-opus-4-5-20251101_high
-  - claude-opus-4-5-20251101_low
-  - claude-opus-4-5-20251101_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-haiku-4-5-20251001_8K
-  lab: anthropic
-  display_name: claude-haiku-4-5-20251001_8K
-  released_on: '2025-10-15'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-haiku-4-5-20251001_8K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-haiku-4-5-20251001_32K
-  lab: anthropic
-  display_name: claude-haiku-4-5-20251001_32K
-  released_on: '2025-10-15'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - claude-haiku-4-5-20251001_32K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-haiku-4-5-20251001_1K
-  lab: anthropic
-  display_name: claude-haiku-4-5-20251001_1K
-  released_on: '2025-10-15'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-haiku-4-5-20251001_1K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-haiku-4-5-20251001_16K
-  lab: anthropic
-  display_name: claude-haiku-4-5-20251001_16K
-  released_on: '2025-10-15'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-haiku-4-5-20251001_16K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-haiku-4-5-20251001
-  lab: anthropic
-  display_name: claude-haiku-4-5-20251001
-  released_on: '2025-10-15'
-  accessibility: API access
-  benchmark_records: 13
-  epoch_model_versions:
-  - claude-haiku-4-5-20251001
-  - claude-haiku-4-5-20251001_low
-  - claude-haiku-4-5-20251001_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-sonnet-4-5-20250929_8K
-  lab: anthropic
-  display_name: Claude Sonnet 4.5 (8k thinking)
-  released_on: '2025-09-29'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-sonnet-4-5-20250929_8K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-sonnet-4-5-20250929_59K
-  lab: anthropic
-  display_name: Claude Sonnet 4.5 (59k thinking)
-  released_on: '2025-09-29'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-sonnet-4-5-20250929_59K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-sonnet-4-5-20250929_32K
-  lab: anthropic
-  display_name: Claude Sonnet 4.5 (32k thinking)
-  released_on: '2025-09-29'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - claude-sonnet-4-5-20250929_32K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-sonnet-4-5-20250929_1K
-  lab: anthropic
-  display_name: Claude Sonnet 4.5 (1k thinking)
-  released_on: '2025-09-29'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-sonnet-4-5-20250929_1K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-sonnet-4-5-20250929_16K
-  lab: anthropic
-  display_name: Claude Sonnet 4.5 (16k thinking)
-  released_on: '2025-09-29'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - claude-sonnet-4-5-20250929_16K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-sonnet-4-5-20250929
-  lab: anthropic
-  display_name: Claude Sonnet 4.5 (no thinking)
-  released_on: '2025-09-29'
-  accessibility: API access
-  benchmark_records: 24
-  epoch_model_versions:
-  - claude-sonnet-4-5-20250929
-  - claude-sonnet-4-5-20250929_low
-  - claude-sonnet-4-5-20250929_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-1-20250805_27K
-  lab: anthropic
-  display_name: claude-opus-4-1-20250805_27K
-  released_on: '2025-08-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - claude-opus-4-1-20250805_27K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-1-20250805_16K
-  lab: anthropic
-  display_name: claude-opus-4-1-20250805_16K
-  released_on: '2025-08-05'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - claude-opus-4-1-20250805_16K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: claude-opus-4-1-20250805
-  lab: anthropic
-  display_name: claude-opus-4-1-20250805
-  released_on: '2025-08-05'
-  accessibility: API access
-  benchmark_records: 15
-  epoch_model_versions:
-  - claude-opus-4-1-20250805
-  - claude-opus-4-1-20250805_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-6-astra_none
-  lab: openai
-  display_name: GPT-6 Astra (none)
-  released_on: '2026-09-03'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-6-astra_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-6-astra
-  lab: openai
-  display_name: GPT-6 Astra (high)
-  released_on: '2026-09-03'
-  accessibility: API access
-  benchmark_records: 19
-  epoch_model_versions:
-  - gpt-6-astra_high
-  - gpt-6-astra_low
-  - gpt-6-astra_max
-  - gpt-6-astra_medium
-  - gpt-6-astra_unknown
-  - gpt-6-astra_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.6-terra_none
-  lab: openai
-  display_name: GPT-5.6 Terra (none)
-  released_on: '2026-07-09'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.6-terra_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.6-terra
-  lab: openai
-  display_name: GPT-5.6 Terra (high)
-  released_on: '2026-07-09'
-  accessibility: API access
-  benchmark_records: 19
-  epoch_model_versions:
-  - gpt-5.6-terra_high
-  - gpt-5.6-terra_low
-  - gpt-5.6-terra_max
-  - gpt-5.6-terra_medium
-  - gpt-5.6-terra_unknown
-  - gpt-5.6-terra_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.6-sol_promax
-  lab: openai
-  display_name: GPT-5.6 Sol (pro, max)
-  released_on: '2026-07-09'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gpt-5.6-sol_promax
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.6-sol_none
-  lab: openai
-  display_name: GPT-5.6 Sol (none)
-  released_on: '2026-07-09'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.6-sol_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.6-sol
-  lab: openai
-  display_name: GPT-5.6 Sol (high)
-  released_on: '2026-07-09'
-  accessibility: API access
-  benchmark_records: 24
-  epoch_model_versions:
-  - gpt-5.6-sol_high
-  - gpt-5.6-sol_low
-  - gpt-5.6-sol_max
-  - gpt-5.6-sol_medium
-  - gpt-5.6-sol_unknown
-  - gpt-5.6-sol_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.6-luna_none
-  lab: openai
-  display_name: GPT-5.6 Luna (none)
-  released_on: '2026-07-09'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.6-luna_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.6-luna
-  lab: openai
-  display_name: GPT-5.6 Luna (high)
-  released_on: '2026-07-09'
-  accessibility: API access
-  benchmark_records: 19
-  epoch_model_versions:
-  - gpt-5.6-luna_high
-  - gpt-5.6-luna_low
-  - gpt-5.6-luna_max
-  - gpt-5.6-luna_medium
-  - gpt-5.6-luna_unknown
-  - gpt-5.6-luna_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.5-instant
-  lab: openai
-  display_name: GPT-5.5 Instant
-  released_on: '2026-05-05'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.5-instant
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.5_none
-  lab: openai
-  display_name: GPT-5.5 (no thinking)
-  released_on: '2026-04-23'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.5_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.5-pro-pre-release
-  lab: openai
-  display_name: GPT-5.5 Pro (high)
-  released_on: '2026-04-23'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gpt-5.5-pro-pre-release_high
-  - gpt-5.5-pro-pre-release_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.5-pro
-  lab: openai
-  display_name: GPT-5.5 Pro (high)
-  released_on: '2026-04-23'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - gpt-5.5-pro_high
-  - gpt-5.5-pro_unknown
-  - gpt-5.5-pro_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.5-pre-release
-  lab: openai
-  display_name: GPT-5.5 (xhigh)
-  released_on: '2026-04-23'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.5-pre-release_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.5
-  lab: openai
-  display_name: GPT-5.5 (high)
-  released_on: '2026-04-23'
-  accessibility: API access
-  benchmark_records: 26
-  epoch_model_versions:
-  - gpt-5.5_high
-  - gpt-5.5_low
-  - gpt-5.5_medium
-  - gpt-5.5_unknown
-  - gpt-5.5_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.4-nano-2026-03-17_none
-  lab: openai
-  display_name: GPT-5.4 nano (no thinking)
-  released_on: '2026-03-17'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gpt-5.4-nano-2026-03-17_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.4-nano-2026-03-17
-  lab: openai
-  display_name: GPT-5.4 nano (high)
-  released_on: '2026-03-17'
-  accessibility: API access
-  benchmark_records: 9
-  epoch_model_versions:
-  - gpt-5.4-nano-2026-03-17_high
-  - gpt-5.4-nano-2026-03-17_low
-  - gpt-5.4-nano-2026-03-17_medium
-  - gpt-5.4-nano-2026-03-17_unknown
-  - gpt-5.4-nano-2026-03-17_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.4-mini-2026-03-17_none
-  lab: openai
-  display_name: GPT-5.4 mini (none)
-  released_on: '2026-03-17'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gpt-5.4-mini-2026-03-17_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.4-mini-2026-03-17
-  lab: openai
-  display_name: GPT-5.4 mini (high)
-  released_on: '2026-03-17'
-  accessibility: API access
-  benchmark_records: 10
-  epoch_model_versions:
-  - gpt-5.4-mini-2026-03-17_high
-  - gpt-5.4-mini-2026-03-17_low
-  - gpt-5.4-mini-2026-03-17_medium
-  - gpt-5.4-mini-2026-03-17_unknown
-  - gpt-5.4-mini-2026-03-17_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.4-pro-2026-03-05
-  lab: openai
-  display_name: GPT-5.4 Pro
-  released_on: '2026-03-05'
-  accessibility: API access
-  benchmark_records: 4
-  epoch_model_versions:
-  - gpt-5.4-pro-2026-03-05_unknown
-  - gpt-5.4-pro-2026-03-05_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.4-2026-03-05_none
-  lab: openai
-  display_name: GPT-5.4 (none)
-  released_on: '2026-03-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gpt-5.4-2026-03-05_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.4-2026-03-05
-  lab: openai
-  display_name: GPT-5.4 (high)
-  released_on: '2026-03-05'
-  accessibility: API access
-  benchmark_records: 21
-  epoch_model_versions:
-  - gpt-5.4-2026-03-05_high
-  - gpt-5.4-2026-03-05_low
-  - gpt-5.4-2026-03-05_medium
-  - gpt-5.4-2026-03-05_unknown
-  - gpt-5.4-2026-03-05_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.3-codex
-  lab: openai
-  display_name: GPT-5.3 Codex
-  released_on: '2026-02-05'
-  accessibility: API access
-  benchmark_records: 13
-  epoch_model_versions:
-  - gpt-5.3-codex
-  - gpt-5.3-codex_high
-  - gpt-5.3-codex_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.2-codex
-  lab: openai
-  display_name: GPT-5.2 Codex
-  released_on: '2025-12-18'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.2-codex
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.2-pro-2025-12-11
-  lab: openai
-  display_name: GPT-5.2 Pro
-  released_on: '2025-12-11'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.2-pro-2025-12-11
-  - gpt-5.2-pro-2025-12-11_high
-  - gpt-5.2-pro-2025-12-11_medium
-  - gpt-5.2-pro-2025-12-11_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.2-2025-12-11_none
-  lab: openai
-  display_name: GPT-5.2 (none)
-  released_on: '2025-12-11'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.2-2025-12-11_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.2-2025-12-11
-  lab: openai
-  display_name: GPT-5.2 (high)
-  released_on: '2025-12-11'
-  accessibility: API access
-  benchmark_records: 26
-  epoch_model_versions:
-  - gpt-5.2-2025-12-11_high
-  - gpt-5.2-2025-12-11_low
-  - gpt-5.2-2025-12-11_medium
-  - gpt-5.2-2025-12-11_unknown
-  - gpt-5.2-2025-12-11_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.1-codex-max
-  lab: openai
-  display_name: GPT-5.1-Codex-Max
-  released_on: '2025-11-19'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5.1-codex-max
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.1-2025-11-13_none
-  lab: openai
-  display_name: GPT-5.1 (no thinking)
-  released_on: '2025-11-13'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - gpt-5.1-2025-11-13_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.1-2025-11-13
-  lab: openai
-  display_name: GPT-5.1 (high)
-  released_on: '2025-11-13'
-  accessibility: API access
-  benchmark_records: 16
-  epoch_model_versions:
-  - gpt-5.1-2025-11-13_high
-  - gpt-5.1-2025-11-13_low
-  - gpt-5.1-2025-11-13_medium
-  - gpt-5.1-2025-11-13_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.1-codex-mini
-  lab: openai
-  display_name: GPT-5.1 Codex Mini
-  released_on: '2025-11-12'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - gpt-5.1-codex-mini
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5.1-codex
-  lab: openai
-  display_name: GPT-5.1 Codex
-  released_on: '2025-11-12'
-  accessibility: API access
-  benchmark_records: 6
-  epoch_model_versions:
-  - gpt-5.1-codex
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5-pro-2025-10-06
-  lab: openai
-  display_name: GPT-5 Pro
-  released_on: '2025-10-07'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - gpt-5-pro-2025-10-06_high
-  - gpt-5-pro-2025-10-06_medium
-  - gpt-5-pro-2025-10-06_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5-codex
-  lab: openai
-  display_name: GPT-5-codex
-  released_on: '2025-09-15'
-  accessibility: API access
-  benchmark_records: 7
-  epoch_model_versions:
-  - gpt-5-codex
-  - gpt-5-codex_high
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5-nano-2025-08-07
-  lab: openai
-  display_name: GPT-5 nano (high)
-  released_on: '2025-08-07'
-  accessibility: API access
-  benchmark_records: 17
-  epoch_model_versions:
-  - gpt-5-nano-2025-08-07_high
-  - gpt-5-nano-2025-08-07_low
-  - gpt-5-nano-2025-08-07_medium
-  - gpt-5-nano-2025-08-07_minimal
-  - gpt-5-nano-2025-08-07_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5-mini-2025-08-07
-  lab: openai
-  display_name: GPT-5 mini (high)
-  released_on: '2025-08-07'
-  accessibility: API access
-  benchmark_records: 20
-  epoch_model_versions:
-  - gpt-5-mini-2025-08-07_high
-  - gpt-5-mini-2025-08-07_low
-  - gpt-5-mini-2025-08-07_medium
-  - gpt-5-mini-2025-08-07_minimal
-  - gpt-5-mini-2025-08-07_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-5-2025-08-07
-  lab: openai
-  display_name: GPT-5 (high)
-  released_on: '2025-08-07'
-  accessibility: API access
-  benchmark_records: 30
-  epoch_model_versions:
-  - gpt-5-2025-08-07_high
-  - gpt-5-2025-08-07_low
-  - gpt-5-2025-08-07_medium
-  - gpt-5-2025-08-07_minimal
-  - gpt-5-2025-08-07_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: openai/gpt-oss-120b
-  lab: openai
-  display_name: openai/gpt-oss-120b
-  released_on: '2025-08-05'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 4
-  epoch_model_versions:
-  - openai/gpt-oss-120b_high
-  - openai/gpt-oss-120b_low
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-oss-20b
-  lab: openai
-  display_name: gpt-oss-20b
-  released_on: '2025-08-05'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 8
-  epoch_model_versions:
-  - gpt-oss-20b
-  - gpt-oss-20b_high
-  - gpt-oss-20b_low
-  - gpt-oss-20b_medium
-  - gpt-oss-20b_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gpt-oss-120b
-  lab: openai
-  display_name: gpt-oss-120b
-  released_on: '2025-08-05'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 7
-  epoch_model_versions:
-  - gpt-oss-120b
-  - gpt-oss-120b_high
-  - gpt-oss-120b_low
-  - gpt-oss-120b_medium
-  - gpt-oss-120b_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: o3-pro-2025-06-10
-  lab: openai
-  display_name: o3-pro-2025-06-10
-  released_on: '2025-06-10'
-  accessibility: API access
-  benchmark_records: 4
-  epoch_model_versions:
-  - o3-pro-2025-06-10_high
-  - o3-pro-2025-06-10_low
-  - o3-pro-2025-06-10_medium
-  - o3-pro-2025-06-10_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-3.8-flash
-  lab: google
-  display_name: Gemini 3.8 Flash (high)
-  released_on: '2026-09-02'
-  accessibility: API access
-  benchmark_records: 6
-  epoch_model_versions:
-  - gemini-3.8-flash_high
-  - gemini-3.8-flash_low
-  - gemini-3.8-flash_medium
-  - gemini-3.8-flash_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-3.7-flash
-  lab: google
-  display_name: Gemini 3.7 Flash (high)
-  released_on: '2026-08-13'
+  display_name: Claude Sonnet 5
+  released_on: '2026-06-30'
   accessibility: API access
   benchmark_records: 12
   epoch_model_versions:
-  - gemini-3.7-flash_high
-  - gemini-3.7-flash_low
-  - gemini-3.7-flash_medium
-  - gemini-3.7-flash_unknown
+  - claude-sonnet-5
+  - claude-sonnet-5_high
+  - claude-sonnet-5_low
+  - claude-sonnet-5_max
+  - claude-sonnet-5_medium
+  - claude-sonnet-5_unknown
+  - claude-sonnet-5_xhigh
   status: active
-  api_model_id: null
-  context_window: null
-  role: null
+  api_model_id: claude-sonnet-5
+  context_window: 200000
+  role: Référence ingénierie logicielle
   pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    cache_write_per_1m: 2.5
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-3.6-flash
-  lab: google
-  display_name: Gemini 3.6 Flash
-  released_on: '2026-07-21'
-  accessibility: API access
-  benchmark_records: 10
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+- id: DeepSeek-V3.1-Terminus
+  lab: deepseek
+  display_name: DeepSeek-V3.1-Terminus
+  released_on: '2025-09-22'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
   epoch_model_versions:
-  - gemini-3.6-flash_high
-  - gemini-3.6-flash_low
-  - gemini-3.6-flash_medium
-  - gemini-3.6-flash_minimal
-  - gemini-3.6-flash_unknown
+  - DeepSeek-V3.1-Terminus
   status: active
   api_model_id: null
   context_window: null
@@ -1862,67 +1561,16 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-3.5-flash-lite
-  lab: google
-  display_name: Gemini 3.5 Flash-Lite
-  released_on: '2026-07-21'
-  accessibility: API access
-  benchmark_records: 8
-  epoch_model_versions:
-  - gemini-3.5-flash-lite
-  - gemini-3.5-flash-lite_high
-  - gemini-3.5-flash-lite_low
-  - gemini-3.5-flash-lite_medium
-  - gemini-3.5-flash-lite_minimal
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-3.5-flash
-  lab: google
-  display_name: Gemini 3.5 Flash
-  released_on: '2026-05-19'
-  accessibility: API access
-  benchmark_records: 9
-  epoch_model_versions:
-  - gemini-3.5-flash_high
-  - gemini-3.5-flash_low
-  - gemini-3.5-flash_medium
-  - gemini-3.5-flash_minimal
-  - gemini-3.5-flash_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemma-4-31b-it
-  lab: google
-  display_name: Gemma 4 31B IT
-  released_on: '2026-04-02'
-  accessibility: Open weights (restricted use)
+- id: DeepSeek-V3.2-Exp
+  lab: deepseek
+  display_name: DeepSeek-V3.2-Exp
+  released_on: '2025-09-29'
+  accessibility: Open weights (unrestricted)
   benchmark_records: 2
   epoch_model_versions:
-  - gemma-4-31b-it
-  - gemma-4-31b-it_minimal
+  - DeepSeek-V3.2-Exp
+  - DeepSeek-V3.2-Exp_high
+  - DeepSeek-V3.2-Exp_unknown
   status: active
   api_model_id: null
   context_window: null
@@ -1937,14 +1585,155 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemma-4-26b-a4b-it
-  lab: google
-  display_name: Gemma 4 26B A4B
-  released_on: '2026-04-02'
+- id: DeepSeek-V3.2-Exp_thinking
+  lab: deepseek
+  display_name: DeepSeek-V3.2-Exp_thinking
+  released_on: '2025-09-29'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - DeepSeek-V3.2-Exp_thinking
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: deepseek-chat
+  lab: deepseek
+  display_name: deepseek-chat
+  released_on: '2025-12-01'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - deepseek-chat
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: deepseek-flash
+  lab: deepseek
+  display_name: DeepSeek Flash
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: deepseek-flash
+  context_window: 1000000
+  role: Flash ultra-économique
+  pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.006
+    output_per_1m: 1.2
+    currency: USD
+    source:
+      url: https://api-docs.deepseek.com/quick_start/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
+    offpeak:
+      input_per_1m: 0.15
+      input_cached_per_1m: 0.003
+      output_per_1m: 0.6
+    peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
+- id: deepseek-reasoner
+  lab: deepseek
+  display_name: DeepSeek-V3.2 (Thinking)
+  released_on: '2025-12-01'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - deepseek-reasoner
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: deepseek-v4-flash
+  lab: deepseek
+  display_name: DeepSeek v4 Flash (high)
+  released_on: '2026-04-24'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 3
+  epoch_model_versions:
+  - deepseek-v4-flash_high
+  - deepseek-v4-flash_max
+  - deepseek-v4-flash_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: deepseek-v4-flash-0731
+  lab: deepseek
+  display_name: DeepSeek V4 Flash 0731 (high)
+  released_on: '2026-07-31'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 6
+  epoch_model_versions:
+  - deepseek-v4-flash-0731_high
+  - deepseek-v4-flash-0731_low
+  - deepseek-v4-flash-0731_max
+  - deepseek-v4-flash-0731_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: deepseek-v4-flash-0731_none
+  lab: deepseek
+  display_name: DeepSeek V4 Flash 0731 (none)
+  released_on: '2026-07-31'
   accessibility: Open weights (unrestricted)
   benchmark_records: 1
   epoch_model_versions:
-  - gemma-4-26b-a4b-it_minimal
+  - deepseek-v4-flash-0731_none
   status: active
   api_model_id: null
   context_window: null
@@ -1959,15 +1748,68 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemma-4-26b-a4b
-  lab: google
-  display_name: Gemma 4 26B A4B
-  released_on: '2026-04-02'
+- id: deepseek-v4-pro
+  lab: deepseek
+  display_name: DeepSeek V4-Pro
+  released_on: '2026-04-24'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 7
+  epoch_model_versions:
+  - deepseek-v4-pro_high
+  - deepseek-v4-pro_max
+  - deepseek-v4-pro_unknown
+  status: active
+  api_model_id: deepseek-v4-pro
+  context_window: 1000000
+  role: Flagship raisonnement
+  pricing:
+    input_per_1m: 1.32
+    input_cached_per_1m: 0.044
+    output_per_1m: 3.96
+    currency: USD
+    source:
+      url: https://api-docs.deepseek.com/quick_start/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
+    offpeak:
+      input_per_1m: 0.66
+      input_cached_per_1m: 0.022
+      output_per_1m: 1.98
+    peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
+- id: deepseek-v4-pro-0813
+  lab: deepseek
+  display_name: DeepSeek V4 Pro 0813 (high)
+  released_on: '2026-08-13'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 5
+  epoch_model_versions:
+  - deepseek-v4-pro-0813_high
+  - deepseek-v4-pro-0813_low
+  - deepseek-v4-pro-0813_max
+  - deepseek-v4-pro-0813_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: deepseek-v4-pro-0813_none
+  lab: deepseek
+  display_name: DeepSeek V4 Pro 0813 (none)
+  released_on: '2026-08-13'
   accessibility: Open weights (unrestricted)
   benchmark_records: 1
   epoch_model_versions:
-  - gemma-4-26b-a4b
-  - gemma-4-26b-a4b_minimal
+  - deepseek-v4-pro-0813_none
   status: active
   api_model_id: null
   context_window: null
@@ -1982,14 +1824,146 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-3.1-pro-preview-customtools
+- id: deepseek-v4-pro_none
+  lab: deepseek
+  display_name: DeepSeek v4 Pro (unknown thinking)
+  released_on: '2026-04-24'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - deepseek-v4-pro_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: deepseek/deepseek-v3.2
+  lab: deepseek
+  display_name: DeepSeek-V3.2 (Thinking; Novita)
+  released_on: '2025-12-01'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 3
+  epoch_model_versions:
+  - deepseek/deepseek-v3.2
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-2.5-flash
   lab: google
-  display_name: Gemini 3.1 Pro Preview
-  released_on: '2026-02-19'
+  display_name: gemini-2.5-flash
+  released_on: '2025-06-17'
+  accessibility: API access
+  benchmark_records: 5
+  epoch_model_versions:
+  - gemini-2.5-flash
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-2.5-flash-preview-09-2025
+  lab: google
+  display_name: gemini-2.5-flash-preview-09-2025
+  released_on: '2025-09-25'
+  accessibility: API access
+  benchmark_records: 5
+  epoch_model_versions:
+  - gemini-2.5-flash-preview-09-2025
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-2.5-pro
+  lab: google
+  display_name: gemini-2.5-pro
+  released_on: '2025-06-05'
+  accessibility: API access
+  benchmark_records: 14
+  epoch_model_versions:
+  - gemini-2.5-pro
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-2.5-pro-preview-06-05
+  lab: google
+  display_name: Gemini 2.5 Pro Preview (Jun 2025)
+  released_on: '2025-06-05'
+  accessibility: API access
+  benchmark_records: 6
+  epoch_model_versions:
+  - gemini-2.5-pro-preview-06-05
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-2.5-pro-preview-06-05_1K
+  lab: google
+  display_name: Gemini 2.5 Pro Preview (Jun 2025)
+  released_on: '2025-06-05'
   accessibility: API access
   benchmark_records: 1
   epoch_model_versions:
-  - gemini-3.1-pro-preview-customtools
+  - gemini-2.5-pro-preview-06-05_1K
   status: active
   api_model_id: null
   context_window: null
@@ -2004,17 +1978,80 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-3.1-pro-preview
+- id: gemini-2.5-pro-preview-06-05_32K
   lab: google
-  display_name: Gemini 3.1 Pro Preview
-  released_on: '2026-02-19'
+  display_name: Gemini 2.5 Pro Preview (Jun 2025)
+  released_on: '2025-06-05'
   accessibility: API access
-  benchmark_records: 16
+  benchmark_records: 1
   epoch_model_versions:
-  - gemini-3.1-pro-preview
-  - gemini-3.1-pro-preview_high
-  - gemini-3.1-pro-preview_low
-  - gemini-3.1-pro-preview_medium
+  - gemini-2.5-pro-preview-06-05_32K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-2.5-pro_16K
+  lab: google
+  display_name: gemini-2.5-pro_16K
+  released_on: '2025-06-05'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - gemini-2.5-pro_16K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-2.5-pro_32K
+  lab: google
+  display_name: gemini-2.5-pro_32K
+  released_on: '2025-06-05'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - gemini-2.5-pro_32K
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-2.5-pro_8K
+  lab: google
+  display_name: gemini-2.5-pro_8K
+  released_on: '2025-06-05'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - gemini-2.5-pro_8K
   status: active
   api_model_id: null
   context_window: null
@@ -2099,36 +2136,40 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-flash-preview-09-2025
+- id: gemini-3.1-pro-preview
   lab: google
-  display_name: gemini-2.5-flash-preview-09-2025
-  released_on: '2025-09-25'
+  display_name: Gemini 3.1 Pro
+  released_on: '2026-02-19'
   accessibility: API access
-  benchmark_records: 5
+  benchmark_records: 16
   epoch_model_versions:
-  - gemini-2.5-flash-preview-09-2025
+  - gemini-3.1-pro-preview
+  - gemini-3.1-pro-preview_high
+  - gemini-3.1-pro-preview_low
+  - gemini-3.1-pro-preview_medium
   status: active
-  api_model_id: null
-  context_window: null
-  role: null
+  api_model_id: gemini-3.1-pro-preview
+  context_window: 200000
+  role: Flagship raisonnement
   pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    output_per_1m: 12.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-flash
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00.'
+- id: gemini-3.1-pro-preview-customtools
   lab: google
-  display_name: gemini-2.5-flash
-  released_on: '2025-06-17'
+  display_name: Gemini 3.1 Pro Preview
+  released_on: '2026-02-19'
   accessibility: API access
-  benchmark_records: 5
+  benchmark_records: 1
   epoch_model_versions:
-  - gemini-2.5-flash
+  - gemini-3.1-pro-preview-customtools
   status: active
   api_model_id: null
   context_window: null
@@ -2143,1020 +2184,70 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-pro_8K
+- id: gemini-3.5-flash
   lab: google
-  display_name: gemini-2.5-pro_8K
-  released_on: '2025-06-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gemini-2.5-pro_8K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-pro_32K
-  lab: google
-  display_name: gemini-2.5-pro_32K
-  released_on: '2025-06-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gemini-2.5-pro_32K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-pro_16K
-  lab: google
-  display_name: gemini-2.5-pro_16K
-  released_on: '2025-06-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gemini-2.5-pro_16K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-pro-preview-06-05_32K
-  lab: google
-  display_name: Gemini 2.5 Pro Preview (Jun 2025)
-  released_on: '2025-06-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gemini-2.5-pro-preview-06-05_32K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-pro-preview-06-05_1K
-  lab: google
-  display_name: Gemini 2.5 Pro Preview (Jun 2025)
-  released_on: '2025-06-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gemini-2.5-pro-preview-06-05_1K
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-pro-preview-06-05
-  lab: google
-  display_name: Gemini 2.5 Pro Preview (Jun 2025)
-  released_on: '2025-06-05'
-  accessibility: API access
-  benchmark_records: 6
-  epoch_model_versions:
-  - gemini-2.5-pro-preview-06-05
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: gemini-2.5-pro
-  lab: google
-  display_name: gemini-2.5-pro
-  released_on: '2025-06-05'
-  accessibility: API access
-  benchmark_records: 14
-  epoch_model_versions:
-  - gemini-2.5-pro
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-v4-pro-0813_none
-  lab: deepseek
-  display_name: DeepSeek V4 Pro 0813 (none)
-  released_on: '2026-08-13'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - deepseek-v4-pro-0813_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-v4-pro-0813
-  lab: deepseek
-  display_name: DeepSeek V4 Pro 0813 (high)
-  released_on: '2026-08-13'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 5
-  epoch_model_versions:
-  - deepseek-v4-pro-0813_high
-  - deepseek-v4-pro-0813_low
-  - deepseek-v4-pro-0813_max
-  - deepseek-v4-pro-0813_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-v4-flash-0731_none
-  lab: deepseek
-  display_name: DeepSeek V4 Flash 0731 (none)
-  released_on: '2026-07-31'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - deepseek-v4-flash-0731_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-v4-flash-0731
-  lab: deepseek
-  display_name: DeepSeek V4 Flash 0731 (high)
-  released_on: '2026-07-31'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 6
-  epoch_model_versions:
-  - deepseek-v4-flash-0731_high
-  - deepseek-v4-flash-0731_low
-  - deepseek-v4-flash-0731_max
-  - deepseek-v4-flash-0731_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-v4-pro_none
-  lab: deepseek
-  display_name: DeepSeek v4 Pro (unknown thinking)
-  released_on: '2026-04-24'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - deepseek-v4-pro_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-v4-pro
-  lab: deepseek
-  display_name: DeepSeek v4 Pro (high)
-  released_on: '2026-04-24'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 7
-  epoch_model_versions:
-  - deepseek-v4-pro_high
-  - deepseek-v4-pro_max
-  - deepseek-v4-pro_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-v4-flash
-  lab: deepseek
-  display_name: DeepSeek v4 Flash (high)
-  released_on: '2026-04-24'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 3
-  epoch_model_versions:
-  - deepseek-v4-flash_high
-  - deepseek-v4-flash_max
-  - deepseek-v4-flash_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek/deepseek-v3.2
-  lab: deepseek
-  display_name: DeepSeek-V3.2 (Thinking; Novita)
-  released_on: '2025-12-01'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 3
-  epoch_model_versions:
-  - deepseek/deepseek-v3.2
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-reasoner
-  lab: deepseek
-  display_name: DeepSeek-V3.2 (Thinking)
-  released_on: '2025-12-01'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - deepseek-reasoner
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: deepseek-chat
-  lab: deepseek
-  display_name: deepseek-chat
-  released_on: '2025-12-01'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - deepseek-chat
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: DeepSeek-V3.2-Exp_thinking
-  lab: deepseek
-  display_name: DeepSeek-V3.2-Exp_thinking
-  released_on: '2025-09-29'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - DeepSeek-V3.2-Exp_thinking
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: DeepSeek-V3.2-Exp
-  lab: deepseek
-  display_name: DeepSeek-V3.2-Exp
-  released_on: '2025-09-29'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - DeepSeek-V3.2-Exp
-  - DeepSeek-V3.2-Exp_high
-  - DeepSeek-V3.2-Exp_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: DeepSeek-V3.1-Terminus
-  lab: deepseek
-  display_name: DeepSeek-V3.1-Terminus
-  released_on: '2025-09-22'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - DeepSeek-V3.1-Terminus
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.8-max-0902
-  lab: alibaba
-  display_name: Qwen3.8 Max (0902) (xhigh)
-  released_on: '2026-09-01'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.8-max-0902_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.8-27b_none
-  lab: alibaba
-  display_name: Qwen3.8 27B (no thinking)
-  released_on: '2026-08-14'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.8-27b_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.8-27b
-  lab: alibaba
-  display_name: Qwen3.8 27B
-  released_on: '2026-08-14'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 3
-  epoch_model_versions:
-  - qwen3.8-27b
-  - qwen3.8-27b_low
-  - qwen3.8-27b_medium
-  - qwen3.8-27b_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.8-max
-  lab: alibaba
-  display_name: Qwen3.8 Max (unknown)
-  released_on: '2026-08-02'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - qwen3.8-max_unknown
-  - qwen3.8-max_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.7-flash_none
-  lab: alibaba
-  display_name: Qwen3.7 Flash
-  released_on: '2026-07-27'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.7-flash_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.7-flash
-  lab: alibaba
-  display_name: Qwen3.7 Flash
-  released_on: '2026-07-27'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.7-flash
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.7-plus_none
-  lab: alibaba
-  display_name: Qwen3.7 Plus
-  released_on: '2026-06-02'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.7-plus_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.7-plus
-  lab: alibaba
-  display_name: Qwen3.7 Plus
-  released_on: '2026-06-02'
-  accessibility: API access
-  benchmark_records: 4
-  epoch_model_versions:
-  - qwen3.7-plus
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.7-max
-  lab: alibaba
-  display_name: Qwen3.7 Max
+  display_name: Gemini 3.5 Flash
   released_on: '2026-05-19'
   accessibility: API access
-  benchmark_records: 3
+  benchmark_records: 9
   epoch_model_versions:
-  - qwen3.7-max
+  - gemini-3.5-flash_high
+  - gemini-3.5-flash_low
+  - gemini-3.5-flash_medium
+  - gemini-3.5-flash_minimal
+  - gemini-3.5-flash_unknown
   status: active
-  api_model_id: null
+  api_model_id: gemini-3.5-flash
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.5
+    input_cached_per_1m: 0.15
+    output_per_1m: 9.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.6-flash
-  lab: alibaba
-  display_name: Qwen 3.6 Flash (2026-04-16)
-  released_on: '2026-04-27'
-  accessibility: null
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.6-flash
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.6-27b_none
-  lab: alibaba
-  display_name: Qwen3.6 27B
-  released_on: '2026-04-22'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - qwen3.6-27b_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.6-27b
-  lab: alibaba
-  display_name: Qwen3.6 27B
-  released_on: '2026-04-22'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.6-27b
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.6-max-preview
-  lab: alibaba
-  display_name: Qwen 3.6 Max (Preview)
-  released_on: '2026-04-20'
-  accessibility: null
-  benchmark_records: 2
-  epoch_model_versions:
-  - qwen3.6-max-preview
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.6-35b-a3b_none
-  lab: alibaba
-  display_name: Qwen3.6 35B-A3B
-  released_on: '2026-04-14'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - qwen3.6-35b-a3b_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.6-35b-a3b
-  lab: alibaba
-  display_name: Qwen3.6 35B-A3B
-  released_on: '2026-04-14'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 3
-  epoch_model_versions:
-  - qwen3.6-35b-a3b
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.6-plus
-  lab: alibaba
-  display_name: Qwen 3.6 Plus (2026-04-02)
-  released_on: '2026-03-31'
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+- id: gemini-3.5-flash-lite
+  lab: google
+  display_name: Gemini 3.5 Flash-Lite
+  released_on: '2026-07-21'
   accessibility: API access
-  benchmark_records: 3
+  benchmark_records: 8
   epoch_model_versions:
-  - qwen3.6-plus
+  - gemini-3.5-flash-lite
+  - gemini-3.5-flash-lite_high
+  - gemini-3.5-flash-lite_low
+  - gemini-3.5-flash-lite_medium
+  - gemini-3.5-flash-lite_minimal
   status: active
-  api_model_id: null
+  api_model_id: gemini-3.5-flash-lite
   context_window: null
-  role: null
+  role: Ultra-économique
   pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.03
+    output_per_1m: 2.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-flash
-  lab: alibaba
-  display_name: Qwen3.5 Flash
-  released_on: '2026-02-25'
-  accessibility: null
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.5-flash
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-9B_none
-  lab: alibaba
-  display_name: Qwen3.5 9B
-  released_on: '2026-02-24'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.5-9B_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-9B
-  lab: alibaba
-  display_name: Qwen3.5 9B
-  released_on: '2026-02-24'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 3
-  epoch_model_versions:
-  - qwen3.5-9B
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-35b-a3b_none
-  lab: alibaba
-  display_name: qwen3.5-35b-a3b_none
-  released_on: '2026-02-24'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - qwen3.5-35b-a3b_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-35b-a3b
-  lab: alibaba
-  display_name: qwen3.5-35b-a3b
-  released_on: '2026-02-24'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.5-35b-a3b
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-122b-a10b_none
-  lab: alibaba
-  display_name: qwen3.5-122b-a10b_none
-  released_on: '2026-02-24'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.5-122b-a10b_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-plus
-  lab: alibaba
-  display_name: Qwen3.5 Plus
-  released_on: '2026-02-16'
-  accessibility: null
-  benchmark_records: 2
-  epoch_model_versions:
-  - qwen3.5-plus
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-397b-a17b_none
-  lab: alibaba
-  display_name: Qwen3.5 397B-A17B
-  released_on: '2026-02-13'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.5-397b-a17b_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3.5-397b-a17b
-  lab: alibaba
-  display_name: Qwen3.5 397B-A17B
-  released_on: '2026-02-13'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - qwen3.5-397b-a17b
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3-max-2025-09-23
-  lab: alibaba
-  display_name: Qwen3-Max-Instruct
-  released_on: '2025-09-24'
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+- id: gemini-3.6-flash
+  lab: google
+  display_name: Gemini 3.6 Flash
+  released_on: '2026-07-21'
   accessibility: API access
-  benchmark_records: 1
+  benchmark_records: 10
   epoch_model_versions:
-  - qwen3-max-2025-09-23
+  - gemini-3.6-flash_high
+  - gemini-3.6-flash_low
+  - gemini-3.6-flash_medium
+  - gemini-3.6-flash_minimal
+  - gemini-3.6-flash_unknown
   status: active
   api_model_id: null
   context_window: null
@@ -3171,58 +2262,67 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: Qwen3-Coder-480B-A35B-Instruct
-  lab: alibaba
-  display_name: Qwen3-Coder-480B-A35B-Instruct
-  released_on: '2025-07-31'
-  accessibility: Open weights (unrestricted)
+- id: gemini-3.7-flash
+  lab: google
+  display_name: Gemini 3.7 Flash (high)
+  released_on: '2026-08-13'
+  accessibility: API access
+  benchmark_records: 12
+  epoch_model_versions:
+  - gemini-3.7-flash_high
+  - gemini-3.7-flash_low
+  - gemini-3.7-flash_medium
+  - gemini-3.7-flash_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gemini-3.8-flash
+  lab: google
+  display_name: Gemini 3.8 Flash
+  released_on: '2026-09-02'
+  accessibility: API access
   benchmark_records: 6
   epoch_model_versions:
-  - Qwen3-Coder-480B-A35B-Instruct
+  - gemini-3.8-flash_high
+  - gemini-3.8-flash_low
+  - gemini-3.8-flash_medium
+  - gemini-3.8-flash_unknown
   status: active
-  api_model_id: null
+  api_model_id: gemini-3.8-flash
   context_window: null
-  role: null
+  role: Flash génération courante
   pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 3.75
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3-30b-a3b-thinking-2507
-  lab: alibaba
-  display_name: qwen3-30b-a3b-thinking-2507
-  released_on: '2025-07-30'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - qwen3-30b-a3b-thinking-2507
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen3-30b-a3b-instruct-2507
-  lab: alibaba
-  display_name: qwen3-30b-a3b-instruct-2507
-  released_on: '2025-07-29'
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+    promo_until: '2026-12-31'
+    promo_note: 'Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50.'
+- id: gemma-4-26b-a4b
+  lab: google
+  display_name: Gemma 4 26B A4B
+  released_on: '2026-04-02'
   accessibility: Open weights (unrestricted)
   benchmark_records: 1
   epoch_model_versions:
-  - qwen3-30b-a3b-instruct-2507
+  - gemma-4-26b-a4b
+  - gemma-4-26b-a4b_minimal
   status: active
   api_model_id: null
   context_window: null
@@ -3237,14 +2337,14 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: qwen/qwen3-235b-a22b-thinking-2507
-  lab: alibaba
-  display_name: Qwen3-235B-A22B-Thinking-2507
-  released_on: '2025-07-25'
+- id: gemma-4-26b-a4b-it
+  lab: google
+  display_name: Gemma 4 26B A4B
+  released_on: '2026-04-02'
   accessibility: Open weights (unrestricted)
   benchmark_records: 1
   epoch_model_versions:
-  - qwen/qwen3-235b-a22b-thinking-2507
+  - gemma-4-26b-a4b-it_minimal
   status: active
   api_model_id: null
   context_window: null
@@ -3259,58 +2359,216 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: Qwen3-235B-A22B-Thinking-2507
-  lab: alibaba
-  display_name: Qwen3-235B-A22B-Thinking-2507
-  released_on: '2025-07-25'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - Qwen3-235B-A22B-Thinking-2507
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: Qwen3-235B-A22B-Instruct-2507
-  lab: alibaba
-  display_name: Qwen3-235B-A22B-Instruct-2507
-  released_on: '2025-07-25'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - Qwen3-235B-A22B-Instruct-2507
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: mistral-medium-2604
-  lab: mistral
-  display_name: Mistral Medium 3.5
-  released_on: '2026-04-28'
+- id: gemma-4-31b-it
+  lab: google
+  display_name: Gemma 4 31B IT
+  released_on: '2026-04-02'
   accessibility: Open weights (restricted use)
   benchmark_records: 2
   epoch_model_versions:
-  - mistral-medium-2604
+  - gemma-4-31b-it
+  - gemma-4-31b-it_minimal
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: muse-spark
+  lab: meta
+  display_name: Muse Spark
+  released_on: '2026-04-08'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - muse-spark
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: muse-spark-1.1
+  lab: meta
+  display_name: Muse Spark 1.1
+  released_on: '2026-07-09'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - muse-spark-1.1
+  - muse-spark-1.1_high
+  - muse-spark-1.1_medium
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: muse-spark-1.2
+  lab: meta
+  display_name: Muse Spark 1.2
+  released_on: '2026-08-05'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - muse-spark-1.2
+  - muse-spark-1.2_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: MiniMax-M2
+  lab: minimax
+  display_name: MiniMax-M2
+  released_on: '2025-10-27'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - MiniMax-M2
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: MiniMax-M2.1
+  lab: minimax
+  display_name: MiniMax-M2.1
+  released_on: '2025-12-23'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 2
+  epoch_model_versions:
+  - MiniMax-M2.1
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: MiniMax-M2.5
+  lab: minimax
+  display_name: MiniMax-M2.5
+  released_on: '2026-02-12'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 4
+  epoch_model_versions:
+  - MiniMax-M2.5
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: MiniMax-M2.7
+  lab: minimax
+  display_name: MiniMax-M2.7
+  released_on: '2026-03-18'
+  accessibility: Open weights (non-commercial)
+  benchmark_records: 3
+  epoch_model_versions:
+  - MiniMax-M2.7
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: MiniMax-M3
+  lab: minimax
+  display_name: MiniMax-M3
+  released_on: '2026-06-01'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 4
+  epoch_model_versions:
+  - MiniMax-M3
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: MiniMax-M3_none
+  lab: minimax
+  display_name: MiniMax-M3_none
+  released_on: '2026-06-01'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 1
+  epoch_model_versions:
+  - MiniMax-M3_none
   status: active
   api_model_id: null
   context_window: null
@@ -3347,36 +2605,14 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: mistral-large-2512
+- id: magistral-medium-2506
   lab: mistral
-  display_name: Mistral Large 3
-  released_on: '2025-12-02'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - mistral-large-2512
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: magistral-small-2509
-  lab: mistral
-  display_name: Magistral Small 1.2
-  released_on: '2025-09-18'
-  accessibility: Open weights (unrestricted)
+  display_name: magistral-medium-2506
+  released_on: '2025-06-10'
+  accessibility: API access
   benchmark_records: 2
   epoch_model_versions:
-  - magistral-small-2509
+  - magistral-medium-2506
   status: active
   api_model_id: null
   context_window: null
@@ -3413,6 +2649,72 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
+- id: magistral-small-2506
+  lab: mistral
+  display_name: magistral-small-2506
+  released_on: '2025-06-10'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - magistral-small-2506
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: magistral-small-2509
+  lab: mistral
+  display_name: Magistral Small 1.2
+  released_on: '2025-09-18'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 2
+  epoch_model_versions:
+  - magistral-small-2509
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: mistral-large-2512
+  lab: mistral
+  display_name: Mistral Large 3
+  released_on: '2025-12-02'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - mistral-large-2512
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
 - id: mistral-medium-2508
   lab: mistral
   display_name: mistral-medium-2508
@@ -3435,14 +2737,14 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: mistral-small-3.2-2506
+- id: mistral-medium-2604
   lab: mistral
-  display_name: mistral-small-3.2-2506
-  released_on: '2025-06-20'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
+  display_name: Mistral Medium 3.5
+  released_on: '2026-04-28'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 2
   epoch_model_versions:
-  - mistral-small-3.2-2506
+  - mistral-medium-2604
   status: active
   api_model_id: null
   context_window: null
@@ -3479,215 +2781,14 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: magistral-small-2506
+- id: mistral-small-3.2-2506
   lab: mistral
-  display_name: magistral-small-2506
-  released_on: '2025-06-10'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - magistral-small-2506
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: magistral-medium-2506
-  lab: mistral
-  display_name: magistral-medium-2506
-  released_on: '2025-06-10'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - magistral-medium-2506
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: kimi-k3
-  lab: moonshot
-  display_name: Kimi K3 (high)
-  released_on: '2026-07-16'
-  accessibility: Open weights (non-commercial)
-  benchmark_records: 12
-  epoch_model_versions:
-  - kimi-k3_high
-  - kimi-k3_low
-  - kimi-k3_max
-  - kimi-k3_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: kimi-k2.7-code
-  lab: moonshot
-  display_name: Kimi K2.7 Code
-  released_on: '2026-06-12'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 5
-  epoch_model_versions:
-  - kimi-k2.7-code
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: kimi-k2.6
-  lab: moonshot
-  display_name: Kimi K2.6
-  released_on: '2026-04-20'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 5
-  epoch_model_versions:
-  - kimi-k2.6
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: kimi-k2.5
-  lab: moonshot
-  display_name: Kimi K2.5
-  released_on: '2026-01-27'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 6
-  epoch_model_versions:
-  - kimi-k2.5
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: fireworks/kimi-k2p5
-  lab: moonshot
-  display_name: Kimi K2.5 (Fireworks)
-  released_on: '2026-01-27'
+  display_name: mistral-small-3.2-2506
+  released_on: '2025-06-20'
   accessibility: Open weights (unrestricted)
   benchmark_records: 1
   epoch_model_versions:
-  - fireworks/kimi-k2p5
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: kimi-k2-thinking-turbo
-  lab: moonshot
-  display_name: Kimi K2 Thinking Turbo
-  released_on: '2025-11-06'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 1
-  epoch_model_versions:
-  - kimi-k2-thinking-turbo
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: kimi-k2-thinking
-  lab: moonshot
-  display_name: Kimi K2 Thinking
-  released_on: '2025-11-06'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 4
-  epoch_model_versions:
-  - kimi-k2-thinking
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: moonshotai/kimi-k2-0905
-  lab: moonshot
-  display_name: Kimi K2 0905 (Novita)
-  released_on: '2025-09-05'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 1
-  epoch_model_versions:
-  - moonshotai/kimi-k2-0905
+  - mistral-small-3.2-2506
   status: active
   api_model_id: null
   context_window: null
@@ -3724,16 +2825,14 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: glm-5.3-flash
-  lab: zhipu
-  display_name: GLM-5.3-Flash (high)
-  released_on: '2026-08-20'
+- id: fireworks/kimi-k2p5
+  lab: moonshot
+  display_name: Kimi K2.5 (Fireworks)
+  released_on: '2026-01-27'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 3
+  benchmark_records: 1
   epoch_model_versions:
-  - glm-5.3-flash_high
-  - glm-5.3-flash_max
-  - glm-5.3-flash_unknown
+  - fireworks/kimi-k2p5
   status: active
   api_model_id: null
   context_window: null
@@ -3748,16 +2847,321 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: glm-5.3
-  lab: zhipu
-  display_name: GLM-5.3 (high)
-  released_on: '2026-08-14'
+- id: kimi-k2-thinking
+  lab: moonshot
+  display_name: Kimi K2 Thinking
+  released_on: '2025-11-06'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 4
+  epoch_model_versions:
+  - kimi-k2-thinking
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: kimi-k2-thinking-turbo
+  lab: moonshot
+  display_name: Kimi K2 Thinking Turbo
+  released_on: '2025-11-06'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 1
+  epoch_model_versions:
+  - kimi-k2-thinking-turbo
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: kimi-k2.5
+  lab: moonshot
+  display_name: Kimi K2.5
+  released_on: '2026-01-27'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 6
+  epoch_model_versions:
+  - kimi-k2.5
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: kimi-k2.6
+  lab: moonshot
+  display_name: Kimi K2.6
+  released_on: '2026-04-20'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 5
+  epoch_model_versions:
+  - kimi-k2.6
+  status: active
+  api_model_id: kimi-k2.6
+  context_window: 262144
+  role: null
+  pricing:
+    input_per_1m: 0.95
+    input_cached_per_1m: 0.16
+    output_per_1m: 4.0
+    currency: USD
+    source:
+      url: https://platform.kimi.ai/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.moonshot.ai redirige vers platform.kimi.ai.
+- id: kimi-k2.7-code
+  lab: moonshot
+  display_name: Kimi K2.7 Code
+  released_on: '2026-06-12'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 5
+  epoch_model_versions:
+  - kimi-k2.7-code
+  status: active
+  api_model_id: kimi-k2.7-code
+  context_window: 262144
+  role: Dédié développement logiciel
+  pricing:
+    input_per_1m: 0.95
+    input_cached_per_1m: 0.19
+    output_per_1m: 4.0
+    currency: USD
+    source:
+      url: https://platform.kimi.ai/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.moonshot.ai redirige vers platform.kimi.ai.
+- id: kimi-k3
+  lab: moonshot
+  display_name: Kimi K3
+  released_on: '2026-07-16'
+  accessibility: Open weights (non-commercial)
+  benchmark_records: 12
+  epoch_model_versions:
+  - kimi-k3_high
+  - kimi-k3_low
+  - kimi-k3_max
+  - kimi-k3_unknown
+  status: active
+  api_model_id: kimi-k3
+  context_window: 1048576
+  role: Flagship multimodal
+  pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    output_per_1m: 15.0
+    currency: USD
+    source:
+      url: https://platform.kimi.ai/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.moonshot.ai redirige vers platform.kimi.ai.
+- id: moonshotai/kimi-k2-0905
+  lab: moonshot
+  display_name: Kimi K2 0905 (Novita)
+  released_on: '2025-09-05'
+  accessibility: Open weights (restricted use)
+  benchmark_records: 1
+  epoch_model_versions:
+  - moonshotai/kimi-k2-0905
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5-2025-08-07
+  lab: openai
+  display_name: GPT-5 (high)
+  released_on: '2025-08-07'
+  accessibility: API access
+  benchmark_records: 30
+  epoch_model_versions:
+  - gpt-5-2025-08-07_high
+  - gpt-5-2025-08-07_low
+  - gpt-5-2025-08-07_medium
+  - gpt-5-2025-08-07_minimal
+  - gpt-5-2025-08-07_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5-codex
+  lab: openai
+  display_name: GPT-5-codex
+  released_on: '2025-09-15'
+  accessibility: API access
+  benchmark_records: 7
+  epoch_model_versions:
+  - gpt-5-codex
+  - gpt-5-codex_high
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5-mini-2025-08-07
+  lab: openai
+  display_name: GPT-5 mini (high)
+  released_on: '2025-08-07'
+  accessibility: API access
+  benchmark_records: 20
+  epoch_model_versions:
+  - gpt-5-mini-2025-08-07_high
+  - gpt-5-mini-2025-08-07_low
+  - gpt-5-mini-2025-08-07_medium
+  - gpt-5-mini-2025-08-07_minimal
+  - gpt-5-mini-2025-08-07_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5-nano-2025-08-07
+  lab: openai
+  display_name: GPT-5 nano (high)
+  released_on: '2025-08-07'
+  accessibility: API access
+  benchmark_records: 17
+  epoch_model_versions:
+  - gpt-5-nano-2025-08-07_high
+  - gpt-5-nano-2025-08-07_low
+  - gpt-5-nano-2025-08-07_medium
+  - gpt-5-nano-2025-08-07_minimal
+  - gpt-5-nano-2025-08-07_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5-pro-2025-10-06
+  lab: openai
+  display_name: GPT-5 Pro
+  released_on: '2025-10-07'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5-pro-2025-10-06_high
+  - gpt-5-pro-2025-10-06_medium
+  - gpt-5-pro-2025-10-06_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.1-2025-11-13
+  lab: openai
+  display_name: GPT-5.1 (high)
+  released_on: '2025-11-13'
+  accessibility: API access
+  benchmark_records: 16
+  epoch_model_versions:
+  - gpt-5.1-2025-11-13_high
+  - gpt-5.1-2025-11-13_low
+  - gpt-5.1-2025-11-13_medium
+  - gpt-5.1-2025-11-13_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.1-2025-11-13_none
+  lab: openai
+  display_name: GPT-5.1 (no thinking)
+  released_on: '2025-11-13'
   accessibility: API access
   benchmark_records: 3
   epoch_model_versions:
-  - glm-5.3_high
-  - glm-5.3_max
-  - glm-5.3_unknown
+  - gpt-5.1-2025-11-13_none
   status: active
   api_model_id: null
   context_window: null
@@ -3772,14 +3176,1179 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: glm-5.2_none
+- id: gpt-5.1-codex
+  lab: openai
+  display_name: GPT-5.1 Codex
+  released_on: '2025-11-12'
+  accessibility: API access
+  benchmark_records: 6
+  epoch_model_versions:
+  - gpt-5.1-codex
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.1-codex-max
+  lab: openai
+  display_name: GPT-5.1-Codex-Max
+  released_on: '2025-11-19'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.1-codex-max
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.1-codex-mini
+  lab: openai
+  display_name: GPT-5.1 Codex Mini
+  released_on: '2025-11-12'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - gpt-5.1-codex-mini
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.2-2025-12-11
+  lab: openai
+  display_name: GPT-5.2 (high)
+  released_on: '2025-12-11'
+  accessibility: API access
+  benchmark_records: 26
+  epoch_model_versions:
+  - gpt-5.2-2025-12-11_high
+  - gpt-5.2-2025-12-11_low
+  - gpt-5.2-2025-12-11_medium
+  - gpt-5.2-2025-12-11_unknown
+  - gpt-5.2-2025-12-11_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.2-2025-12-11_none
+  lab: openai
+  display_name: GPT-5.2 (none)
+  released_on: '2025-12-11'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.2-2025-12-11_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.2-codex
+  lab: openai
+  display_name: GPT-5.2 Codex
+  released_on: '2025-12-18'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.2-codex
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.2-pro-2025-12-11
+  lab: openai
+  display_name: GPT-5.2 Pro
+  released_on: '2025-12-11'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.2-pro-2025-12-11
+  - gpt-5.2-pro-2025-12-11_high
+  - gpt-5.2-pro-2025-12-11_medium
+  - gpt-5.2-pro-2025-12-11_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.3-codex
+  lab: openai
+  display_name: GPT-5.3 Codex
+  released_on: '2026-02-05'
+  accessibility: API access
+  benchmark_records: 13
+  epoch_model_versions:
+  - gpt-5.3-codex
+  - gpt-5.3-codex_high
+  - gpt-5.3-codex_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.4
+  lab: openai
+  display_name: GPT-5.4
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5.4
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 2.5
+    input_cached_per_1m: 0.25
+    output_per_1m: 15.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: gpt-5.4-2026-03-05
+  lab: openai
+  display_name: GPT-5.4 (high)
+  released_on: '2026-03-05'
+  accessibility: API access
+  benchmark_records: 21
+  epoch_model_versions:
+  - gpt-5.4-2026-03-05_high
+  - gpt-5.4-2026-03-05_low
+  - gpt-5.4-2026-03-05_medium
+  - gpt-5.4-2026-03-05_unknown
+  - gpt-5.4-2026-03-05_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.4-2026-03-05_none
+  lab: openai
+  display_name: GPT-5.4 (none)
+  released_on: '2026-03-05'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - gpt-5.4-2026-03-05_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.4-mini-2026-03-17
+  lab: openai
+  display_name: GPT-5.4 mini (high)
+  released_on: '2026-03-17'
+  accessibility: API access
+  benchmark_records: 10
+  epoch_model_versions:
+  - gpt-5.4-mini-2026-03-17_high
+  - gpt-5.4-mini-2026-03-17_low
+  - gpt-5.4-mini-2026-03-17_medium
+  - gpt-5.4-mini-2026-03-17_unknown
+  - gpt-5.4-mini-2026-03-17_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.4-mini-2026-03-17_none
+  lab: openai
+  display_name: GPT-5.4 mini (none)
+  released_on: '2026-03-17'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - gpt-5.4-mini-2026-03-17_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.4-nano-2026-03-17
+  lab: openai
+  display_name: GPT-5.4 nano (high)
+  released_on: '2026-03-17'
+  accessibility: API access
+  benchmark_records: 9
+  epoch_model_versions:
+  - gpt-5.4-nano-2026-03-17_high
+  - gpt-5.4-nano-2026-03-17_low
+  - gpt-5.4-nano-2026-03-17_medium
+  - gpt-5.4-nano-2026-03-17_unknown
+  - gpt-5.4-nano-2026-03-17_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.4-nano-2026-03-17_none
+  lab: openai
+  display_name: GPT-5.4 nano (no thinking)
+  released_on: '2026-03-17'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - gpt-5.4-nano-2026-03-17_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.4-pro-2026-03-05
+  lab: openai
+  display_name: GPT-5.4 Pro
+  released_on: '2026-03-05'
+  accessibility: API access
+  benchmark_records: 4
+  epoch_model_versions:
+  - gpt-5.4-pro-2026-03-05_unknown
+  - gpt-5.4-pro-2026-03-05_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.5
+  lab: openai
+  display_name: GPT-5.5
+  released_on: '2026-04-23'
+  accessibility: API access
+  benchmark_records: 26
+  epoch_model_versions:
+  - gpt-5.5_high
+  - gpt-5.5_low
+  - gpt-5.5_medium
+  - gpt-5.5_unknown
+  - gpt-5.5_xhigh
+  status: active
+  api_model_id: gpt-5.5
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    output_per_1m: 30.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: gpt-5.5-instant
+  lab: openai
+  display_name: GPT-5.5 Instant
+  released_on: '2026-05-05'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.5-instant
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.5-pre-release
+  lab: openai
+  display_name: GPT-5.5 (xhigh)
+  released_on: '2026-04-23'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.5-pre-release_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.5-pro
+  lab: openai
+  display_name: GPT-5.5 Pro
+  released_on: '2026-04-23'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - gpt-5.5-pro_high
+  - gpt-5.5-pro_unknown
+  - gpt-5.5-pro_xhigh
+  status: active
+  api_model_id: gpt-5.5-pro
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 30.0
+    output_per_1m: 180.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: gpt-5.5-pro-pre-release
+  lab: openai
+  display_name: GPT-5.5 Pro (high)
+  released_on: '2026-04-23'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - gpt-5.5-pro-pre-release_high
+  - gpt-5.5-pro-pre-release_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.5_none
+  lab: openai
+  display_name: GPT-5.5 (no thinking)
+  released_on: '2026-04-23'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.5_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.6-luna
+  lab: openai
+  display_name: GPT-5.6 Luna
+  released_on: '2026-07-09'
+  accessibility: API access
+  benchmark_records: 19
+  epoch_model_versions:
+  - gpt-5.6-luna_high
+  - gpt-5.6-luna_low
+  - gpt-5.6-luna_max
+  - gpt-5.6-luna_medium
+  - gpt-5.6-luna_unknown
+  - gpt-5.6-luna_xhigh
+  status: active
+  api_model_id: gpt-5.6-luna
+  context_window: null
+  role: Flash / économique
+  pricing:
+    input_per_1m: 0.2
+    input_cached_per_1m: 0.02
+    output_per_1m: 1.2
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: gpt-5.6-luna_none
+  lab: openai
+  display_name: GPT-5.6 Luna (none)
+  released_on: '2026-07-09'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.6-luna_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.6-sol
+  lab: openai
+  display_name: GPT-5.6 Sol
+  released_on: '2026-07-09'
+  accessibility: API access
+  benchmark_records: 24
+  epoch_model_versions:
+  - gpt-5.6-sol_high
+  - gpt-5.6-sol_low
+  - gpt-5.6-sol_max
+  - gpt-5.6-sol_medium
+  - gpt-5.6-sol_unknown
+  - gpt-5.6-sol_xhigh
+  status: active
+  api_model_id: gpt-5.6-sol
+  context_window: null
+  role: Haute capacité multimodal
+  pricing:
+    input_per_1m: 4.0
+    input_cached_per_1m: 0.4
+    output_per_1m: 20.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: gpt-5.6-sol_none
+  lab: openai
+  display_name: GPT-5.6 Sol (none)
+  released_on: '2026-07-09'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.6-sol_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.6-sol_promax
+  lab: openai
+  display_name: GPT-5.6 Sol (pro, max)
+  released_on: '2026-07-09'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - gpt-5.6-sol_promax
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-5.6-terra
+  lab: openai
+  display_name: GPT-5.6 Terra
+  released_on: '2026-07-09'
+  accessibility: API access
+  benchmark_records: 19
+  epoch_model_versions:
+  - gpt-5.6-terra_high
+  - gpt-5.6-terra_low
+  - gpt-5.6-terra_max
+  - gpt-5.6-terra_medium
+  - gpt-5.6-terra_unknown
+  - gpt-5.6-terra_xhigh
+  status: active
+  api_model_id: gpt-5.6-terra
+  context_window: null
+  role: Équilibré développeur
+  pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    output_per_1m: 12.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: gpt-5.6-terra_none
+  lab: openai
+  display_name: GPT-5.6 Terra (none)
+  released_on: '2026-07-09'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-5.6-terra_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-6-astra
+  lab: openai
+  display_name: GPT-6 Astra
+  released_on: '2026-09-03'
+  accessibility: API access
+  benchmark_records: 19
+  epoch_model_versions:
+  - gpt-6-astra_high
+  - gpt-6-astra_low
+  - gpt-6-astra_max
+  - gpt-6-astra_medium
+  - gpt-6-astra_unknown
+  - gpt-6-astra_xhigh
+  status: active
+  api_model_id: gpt-6-astra
+  context_window: null
+  role: Flagship nouvelle génération
+  pricing:
+    input_per_1m: 10.0
+    input_cached_per_1m: 1.0
+    output_per_1m: 50.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: gpt-6-astra_none
+  lab: openai
+  display_name: GPT-6 Astra (none)
+  released_on: '2026-09-03'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - gpt-6-astra_none
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-oss-120b
+  lab: openai
+  display_name: gpt-oss-120b
+  released_on: '2025-08-05'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 7
+  epoch_model_versions:
+  - gpt-oss-120b
+  - gpt-oss-120b_high
+  - gpt-oss-120b_low
+  - gpt-oss-120b_medium
+  - gpt-oss-120b_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: gpt-oss-20b
+  lab: openai
+  display_name: gpt-oss-20b
+  released_on: '2025-08-05'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 8
+  epoch_model_versions:
+  - gpt-oss-20b
+  - gpt-oss-20b_high
+  - gpt-oss-20b_low
+  - gpt-oss-20b_medium
+  - gpt-oss-20b_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: o3
+  lab: openai
+  display_name: o3
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: o3
+  context_window: null
+  role: Raisonnement algorithmique
+  pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.5
+    output_per_1m: 8.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: o3-pro
+  lab: openai
+  display_name: o3-pro
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: o3-pro
+  context_window: null
+  role: Raisonnement extrême
+  pricing:
+    input_per_1m: 20.0
+    output_per_1m: 80.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: o3-pro-2025-06-10
+  lab: openai
+  display_name: o3-pro-2025-06-10
+  released_on: '2025-06-10'
+  accessibility: API access
+  benchmark_records: 4
+  epoch_model_versions:
+  - o3-pro-2025-06-10_high
+  - o3-pro-2025-06-10_low
+  - o3-pro-2025-06-10_medium
+  - o3-pro-2025-06-10_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: openai/gpt-oss-120b
+  lab: openai
+  display_name: openai/gpt-oss-120b
+  released_on: '2025-08-05'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 4
+  epoch_model_versions:
+  - openai/gpt-oss-120b_high
+  - openai/gpt-oss-120b_low
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-3-mini
+  lab: xai
+  display_name: Grok 3 mini
+  released_on: '2025-06-24'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - grok-3-mini_high
+  - grok-3-mini_low
+  - grok-3-mini_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-4-0709
+  lab: xai
+  display_name: grok-4-0709
+  released_on: '2025-07-09'
+  accessibility: API access
+  benchmark_records: 14
+  epoch_model_versions:
+  - grok-4-0709
+  - grok-4-0709_high
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-4-1
+  lab: xai
+  display_name: grok-4-1
+  released_on: '2025-11-17'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - grok-4-1
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-4-20
+  lab: xai
+  display_name: grok-4-20
+  released_on: '2026-02-17'
+  accessibility: API access
+  benchmark_records: 3
+  epoch_model_versions:
+  - grok-4-20
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-4-fast
+  lab: xai
+  display_name: grok-4-fast
+  released_on: '2025-09-19'
+  accessibility: API access
+  benchmark_records: 2
+  epoch_model_versions:
+  - grok-4-fast
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-4.20-0309-reasoning
+  lab: xai
+  display_name: grok-4.20-0309-reasoning
+  released_on: '2026-02-17'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - grok-4.20-0309-reasoning
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-4.3
+  lab: xai
+  display_name: grok-4.3
+  released_on: '2026-04-17'
+  accessibility: Hosted access (no API)
+  benchmark_records: 2
+  epoch_model_versions:
+  - grok-4.3_high
+  - grok-4.3_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-4.5
+  lab: xai
+  display_name: Grok 4.5 (high)
+  released_on: '2026-07-08'
+  accessibility: API access
+  benchmark_records: 8
+  epoch_model_versions:
+  - grok-4.5_high
+  - grok-4.5_low
+  - grok-4.5_medium
+  - grok-4.5_unknown
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-4.6
+  lab: xai
+  display_name: Grok 4.6 (high)
+  released_on: '2026-08-12'
+  accessibility: API access
+  benchmark_records: 16
+  epoch_model_versions:
+  - grok-4.6_high
+  - grok-4.6_low
+  - grok-4.6_medium
+  - grok-4.6_unknown
+  - grok-4.6_xhigh
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: grok-build-0.1
+  lab: xai
+  display_name: Grok Build 0.1
+  released_on: '2026-05-29'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - grok-build-0.1
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: glm-4.7
   lab: zhipu
-  display_name: GLM-5.2
-  released_on: '2026-06-16'
+  display_name: GLM-4.7
+  released_on: '2025-12-22'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 5
+  epoch_model_versions:
+  - glm-4.7
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: glm-4.7-flash
+  lab: zhipu
+  display_name: GLM-4.7-Flash
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: glm-4.7-flash
+  context_window: null
+  role: Gratuit avec limites de débit
+  pricing:
+    input_per_1m: 0.0
+    input_cached_per_1m: 0.0
+    output_per_1m: 0.0
+    currency: USD
+    source:
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+- id: glm-5
+  lab: zhipu
+  display_name: GLM-5
+  released_on: '2026-02-11'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 5
+  epoch_model_versions:
+  - glm-5
+  status: active
+  api_model_id: null
+  context_window: null
+  role: null
+  pricing:
+    currency: USD
+    input_per_1m: null
+    input_cached_per_1m: null
+    output_per_1m: null
+    source:
+      url: null
+      verified_on: null
+      status: unverified
+      note: À renseigner depuis la page /pricing officielle du lab.
+- id: glm-5.1
+  lab: zhipu
+  display_name: GLM-5.1
+  released_on: '2026-04-07'
   accessibility: Open weights (unrestricted)
   benchmark_records: 3
   epoch_model_versions:
-  - glm-5.2_none
+  - glm-5.1
   status: active
   api_model_id: null
   context_window: null
@@ -3821,14 +4390,14 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: glm-5.1
+- id: glm-5.2_none
   lab: zhipu
-  display_name: GLM-5.1
-  released_on: '2026-04-07'
+  display_name: GLM-5.2
+  released_on: '2026-06-16'
   accessibility: Open weights (unrestricted)
   benchmark_records: 3
   epoch_model_versions:
-  - glm-5.1
+  - glm-5.2_none
   status: active
   api_model_id: null
   context_window: null
@@ -3843,28 +4412,52 @@ models:
       verified_on: null
       status: unverified
       note: À renseigner depuis la page /pricing officielle du lab.
-- id: glm-5
+- id: glm-5.3
   lab: zhipu
-  display_name: GLM-5
-  released_on: '2026-02-11'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 5
+  display_name: GLM-5.3
+  released_on: '2026-08-14'
+  accessibility: API access
+  benchmark_records: 3
   epoch_model_versions:
-  - glm-5
+  - glm-5.3_high
+  - glm-5.3_max
+  - glm-5.3_unknown
   status: active
-  api_model_id: null
+  api_model_id: glm-5.3
   context_window: null
-  role: null
+  role: Flagship raisonnement et code
   pricing:
+    input_per_1m: 1.4
+    input_cached_per_1m: 0.26
+    output_per_1m: 4.4
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+- id: glm-5.3-flash
+  lab: zhipu
+  display_name: GLM-5.3-Flash
+  released_on: '2026-08-20'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 3
+  epoch_model_versions:
+  - glm-5.3-flash_high
+  - glm-5.3-flash_max
+  - glm-5.3-flash_unknown
+  status: active
+  api_model_id: glm-5.3-flash
+  context_window: null
+  role: Flash économique
+  pricing:
+    input_per_1m: 0.15
+    input_cached_per_1m: 0.03
+    output_per_1m: 0.5
+    currency: USD
+    source:
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
 - id: zai-org/glm-4.7
   lab: zhipu
   display_name: GLM-4.7 (Novita)
@@ -3873,460 +4466,6 @@ models:
   benchmark_records: 1
   epoch_model_versions:
   - zai-org/glm-4.7
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: glm-4.7
-  lab: zhipu
-  display_name: GLM-4.7
-  released_on: '2025-12-22'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 5
-  epoch_model_versions:
-  - glm-4.7
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-4.6
-  lab: xai
-  display_name: Grok 4.6 (high)
-  released_on: '2026-08-12'
-  accessibility: API access
-  benchmark_records: 16
-  epoch_model_versions:
-  - grok-4.6_high
-  - grok-4.6_low
-  - grok-4.6_medium
-  - grok-4.6_unknown
-  - grok-4.6_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-4.5
-  lab: xai
-  display_name: Grok 4.5 (high)
-  released_on: '2026-07-08'
-  accessibility: API access
-  benchmark_records: 8
-  epoch_model_versions:
-  - grok-4.5_high
-  - grok-4.5_low
-  - grok-4.5_medium
-  - grok-4.5_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-build-0.1
-  lab: xai
-  display_name: Grok Build 0.1
-  released_on: '2026-05-29'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - grok-build-0.1
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-4.3
-  lab: xai
-  display_name: grok-4.3
-  released_on: '2026-04-17'
-  accessibility: Hosted access (no API)
-  benchmark_records: 2
-  epoch_model_versions:
-  - grok-4.3_high
-  - grok-4.3_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-4.20-0309-reasoning
-  lab: xai
-  display_name: grok-4.20-0309-reasoning
-  released_on: '2026-02-17'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - grok-4.20-0309-reasoning
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-4-20
-  lab: xai
-  display_name: grok-4-20
-  released_on: '2026-02-17'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - grok-4-20
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-4-1
-  lab: xai
-  display_name: grok-4-1
-  released_on: '2025-11-17'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - grok-4-1
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-4-fast
-  lab: xai
-  display_name: grok-4-fast
-  released_on: '2025-09-19'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - grok-4-fast
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-4-0709
-  lab: xai
-  display_name: grok-4-0709
-  released_on: '2025-07-09'
-  accessibility: API access
-  benchmark_records: 14
-  epoch_model_versions:
-  - grok-4-0709
-  - grok-4-0709_high
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: grok-3-mini
-  lab: xai
-  display_name: Grok 3 mini
-  released_on: '2025-06-24'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - grok-3-mini_high
-  - grok-3-mini_low
-  - grok-3-mini_unknown
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: muse-spark-1.2
-  lab: meta
-  display_name: Muse Spark 1.2
-  released_on: '2026-08-05'
-  accessibility: API access
-  benchmark_records: 2
-  epoch_model_versions:
-  - muse-spark-1.2
-  - muse-spark-1.2_xhigh
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: muse-spark-1.1
-  lab: meta
-  display_name: Muse Spark 1.1
-  released_on: '2026-07-09'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - muse-spark-1.1
-  - muse-spark-1.1_high
-  - muse-spark-1.1_medium
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: muse-spark
-  lab: meta
-  display_name: Muse Spark
-  released_on: '2026-04-08'
-  accessibility: API access
-  benchmark_records: 3
-  epoch_model_versions:
-  - muse-spark
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: MiniMax-M3_none
-  lab: minimax
-  display_name: MiniMax-M3_none
-  released_on: '2026-06-01'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 1
-  epoch_model_versions:
-  - MiniMax-M3_none
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: MiniMax-M3
-  lab: minimax
-  display_name: MiniMax-M3
-  released_on: '2026-06-01'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 4
-  epoch_model_versions:
-  - MiniMax-M3
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: MiniMax-M2.7
-  lab: minimax
-  display_name: MiniMax-M2.7
-  released_on: '2026-03-18'
-  accessibility: Open weights (non-commercial)
-  benchmark_records: 3
-  epoch_model_versions:
-  - MiniMax-M2.7
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: MiniMax-M2.5
-  lab: minimax
-  display_name: MiniMax-M2.5
-  released_on: '2026-02-12'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 4
-  epoch_model_versions:
-  - MiniMax-M2.5
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: MiniMax-M2.1
-  lab: minimax
-  display_name: MiniMax-M2.1
-  released_on: '2025-12-23'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 2
-  epoch_model_versions:
-  - MiniMax-M2.1
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
-- id: MiniMax-M2
-  lab: minimax
-  display_name: MiniMax-M2
-  released_on: '2025-10-27'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - MiniMax-M2
   status: active
   api_model_id: null
   context_window: null

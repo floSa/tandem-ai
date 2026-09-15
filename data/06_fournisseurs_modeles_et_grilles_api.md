@@ -1,7 +1,7 @@
-> [!WARNING]
-> Fiche antérieure à la mise en place du pipeline de sourçage. Les chiffres qu'elle
-> contient n'ont pas de source vérifiable et sont en attente de re-vérification.
-> Données validées : [`catalog/`](../catalog/).
+> [!NOTE]
+> Fiche antérieure au pipeline de sourçage : ses chiffres n'ont pas de source
+> attachée et n'ont pas tous été re-vérifiés. Certains restent exacts, d'autres
+> non — la distinction est faite dans [`catalog/`](../catalog/), qui fait foi.
 
 # Référentiel Data : Fournisseurs de Modèles (Labs IA) & Grilles Tarifaires API Détaillées (Août 2026)
 

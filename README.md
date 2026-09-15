@@ -10,7 +10,8 @@ le catalogue recense 52 harnais distincts, et l'écart entre le meilleur et le
 moins bon dépasse souvent l'écart entre deux modèles. Ce référentiel est construit
 pour rendre cet effet visible plutôt que pour le masquer derrière un classement.
 
-État actuel : **11 fournisseurs · 188 modèles · 18 benchmarks · 1 263 mesures.**
+État actuel : **11 fournisseurs · 194 modèles · 18 benchmarks · 1 263 mesures ·
+25 grilles tarifaires et 13 forfaits relevés sur sources officielles · 18 harnais.**
 
 ---
 
@@ -47,7 +48,9 @@ catalog/        SOURCE DE VÉRITÉ — le seul endroit édité à la main
   _meta.yaml      taux de change, TVA, seuils de fraîcheur, hiérarchie de provenance
   labs.yaml       fournisseurs + URL de tarification officielles
   models.yaml     modèles + tarifs + provenance
-  tools.yaml      harnais (IDE, extensions, CLI, desktop)
+  tools.yaml      harnais (IDE, extensions, CLI, desktop, passerelles)
+  plans.yaml      forfaits d'abonnement SaaS
+  pricing_verified.yaml  tarifs API relevés à la main (seul endroit de saisie)
   benchmarks.yaml registre raisonné des benchmarks        ← généré
   scores.yaml     mesures (modèle × harnais × protocole)  ← généré
 
@@ -72,6 +75,7 @@ pip install pyyaml
 ```bash
 python3 pipeline/epoch_ingest.py --force-download   # rafraîchir les benchmarks
 python3 pipeline/seed_catalog.py                    # détecter les nouveaux modèles
+python3 pipeline/apply_pricing.py                   # injecter les tarifs relevés
 python3 pipeline/validate.py                        # contrôle qualité (code 1 si erreur)
 python3 pipeline/build_site.py                      # régénérer la page
 python3 pipeline/changelog.py                       # diff avec l'édition précédente
@@ -92,15 +96,18 @@ Les autres agents lisent [`AGENTS.md`](./AGENTS.md).
 | Couche | État |
 | :-- | :-- |
 | Benchmarks | ✅ 1 263 mesures sourcées (Epoch AI, CC-BY) |
-| Identité des modèles | ✅ 188 modèles, tous adossés à une mesure réelle |
-| **Tarifs** | ⚠️ **0 / 188 vérifiés** — à relever sur les pages `/pricing` officielles |
+| Identité des modèles | ✅ 194 modèles |
+| Tarifs API | 🟡 25 relevés sur page officielle (Anthropic, OpenAI, Google, DeepSeek, Moonshot, Z.ai) — Mistral, Alibaba, xAI restants |
+| Forfaits d'abonnement | 🟡 13 relevés (Anthropic, GitHub, Cursor, Mistral) |
+| Harnais | 🟡 4 re-vérifiés sur 18 |
 | Taux de change | ⚠️ non vérifié |
-| Harnais | ⚠️ fiches héritées, en attente de re-vérification |
 
 Le [Guide 2026](./Guide_Complet_Solutions_Dev_IA_2026.md) et les fiches
-[`data/`](./data/) sont antérieurs à ce pipeline et portent un avertissement :
-plusieurs de leurs affirmations ne résistent pas à la vérification sur sources
-primaires. Ils seront régénérés depuis le catalogue.
+[`data/`](./data/) sont antérieurs à ce pipeline. La confrontation aux pages
+officielles donne un bilan nuancé : les noms de modèles sont réels et plusieurs
+grilles tarifaires (Anthropic, Moonshot, Codestral) sont exactes, mais les prix
+de mise en cache sont fréquemment faux et certains tarifs ont été attribués à la
+mauvaise génération de modèle. Le détail figure en tête du Guide.
 
 ---
 

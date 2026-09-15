@@ -1,16 +1,26 @@
-> [!WARNING]
-> **Document en cours de re-vérification — ne pas utiliser pour une décision d'achat.**
+> [!IMPORTANT]
+> **Document en cours de régénération — vérification tarifaire de septembre 2026.**
 >
-> La mise en place du pipeline de sourçage (septembre 2026) a établi que plusieurs
-> affirmations de ce document ne résistent pas à la vérification sur sources
-> primaires : des modèles qui n'apparaissent dans aucune source de benchmark
-> (`GPT-5.6 Sol/Terra/Luna`, `Kimi K3`, `Qwen3.8-Max`, `GLM-5.3`, `Claude 5.0`),
-> et des grilles tarifaires sans source vérifiable.
+> Ce Guide a été confronté aux pages officielles des fournisseurs. Le bilan est
+> nuancé et mérite d'être dit précisément :
 >
-> Les données réellement vérifiées vivent désormais dans [`catalog/`](./catalog/)
-> et se consultent via [`site/index.html`](./site/index.html).
-> Ce Guide sera régénéré depuis le catalogue une fois les tarifs relevés sur les
-> pages officielles. Voir [`protocol/04_sources_et_collecte.md`](./protocol/04_sources_et_collecte.md).
+> **Ce qui tient.** Les noms de modèles sont réels (`gpt-5.6-sol/terra/luna`,
+> `Kimi K3`, `GLM-5.3` figurent bien aux catalogues officiels). Les tarifs
+> Anthropic, Moonshot et Codestral sont exacts au centime. Les prix d'entrée et de
+> sortie de GLM-5.3 et DeepSeek V4-Pro sont corrects.
+>
+> **Ce qui ne tient pas.** Les prix de mise en cache sont fréquemment faux
+> (GLM-5.3 : 0,26 $ et non 0,14 $ ; DeepSeek V4-Pro : 0,022 $ et non 0,16 $). Les
+> tarifs attribués à GPT-5.6 sont en réalité ceux de GPT-5.5 et GPT-5.4. Mistral
+> Large 2 est remplacé par Large 3 à un tarif très différent. Les paliers Cursor
+> Pro+ et Ultra n'existent plus. Aucun de ces chiffres n'était sourcé.
+>
+> **Ce qui manquait.** Google/Gemini n'a aucune fiche, alors que le lab est au
+> premier rang sur plusieurs benchmarks.
+>
+> Les données vérifiées vivent désormais dans [`catalog/`](./catalog/) et se
+> consultent via [`site/index.html`](./site/index.html). Ce Guide sera régénéré
+> depuis le catalogue.
 
 ---
 
