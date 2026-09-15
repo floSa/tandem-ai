@@ -3,7 +3,7 @@
 
 # Agents CLI
 
-5 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
+6 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
 
 ## Aider
 
@@ -40,7 +40,7 @@ Inclus dans Claude Pro et Max, ou facturé à l'usage via clé API.
 - **Vérification :** 2026-09-15 (official_docs)
 - **Constat :** Remplace la fiche 'ChatGPT Desktop' de l'edition precedente, qui designait une application de chat et non un harnais de developpement. 124 380 etoiles, commit le jour du releve.
 
-Agent de codage en terminal, open-source sous Apache-2.0. Utilisable via un abonnement ChatGPT ou une cle API.
+Agent de codage en terminal, open-source sous Apache-2.0. Depuis juillet 2026, Codex est aussi un des trois espaces de l'application ChatGPT Desktop. Utilisable via un abonnement ChatGPT ou une clé API.
 
 ## Kimi Code CLI
 
@@ -63,4 +63,16 @@ Binaire autonome, protocole ACP.
 - **Constat :** Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands vers OpenHands/OpenHands.
 
 Agent d'ingénierie autonome en sandbox Docker. Offre cloud managée payante.
+
+## Qwen Code
+
+- **Éditeur :** Alibaba
+- **Site :** [https://github.com/QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)
+- **Dépôt :** [https://github.com/QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)
+- **Statut :** active
+- **Capacités :** BYOK, gratuit
+- **Vérification :** 2026-09-15 (official_docs)
+- **Constat :** Absent de l'édition précédente. Dépôt vérifié directement : 27 882 étoiles, Apache-2.0, commit le jour du relevé.
+
+Agent de codage en terminal, open-source sous Apache-2.0, qui édite directement les fichiers d'un projet réel.
 

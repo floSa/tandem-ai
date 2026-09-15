@@ -155,7 +155,29 @@ benchmark vérifiable**. On n'ajoute pas un modèle sur la foi d'une annonce.
 
 ### Harnais et outils
 
-Requêtes de veille, en anglais, à relancer à chaque édition :
+**Balayage fournisseur par fournisseur — obligatoire, et à faire en premier.**
+
+La veille par mots-clés ne suffit pas : elle trouve les outils dont on parle, pas ceux
+qui existent. En septembre 2026, elle avait manqué **Qwen Studio**, **Qwen Code** et
+**Kimi Work**, et laissé supprimer à tort **ChatGPT Desktop** — quatre outils de
+laboratoires pourtant déjà au catalogue.
+
+Pour **chaque lab** de `catalog/labs.yaml`, poser les quatre mêmes questions :
+
+| Question | Où chercher |
+| :-- | :-- |
+| Une application desktop officielle ? | page produit du lab, section « download » |
+| Un agent CLI officiel ? | dépôt GitHub de l'organisation du lab |
+| Une extension IDE officielle ? | marketplace VS Code, plugins JetBrains |
+| Un forfait couvrant ces outils ? | page `/pricing` déjà consultée pour les tarifs |
+
+Une réponse négative se consigne aussi : « Z.ai — aucune application desktop officielle
+confirmée en septembre 2026, sources contradictoires » évite de reposer la question.
+
+`pipeline/worklist.py` signale automatiquement les labs dont aucun outil ne figure au
+catalogue.
+
+Requêtes complémentaires, en anglais, pour les nouveaux entrants :
 
 ```
 "AI code editor" OR "VS Code fork" 2026

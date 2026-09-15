@@ -14,7 +14,7 @@
 | Modèles au catalogue | 194 |
 | Tarifs API relevés sur page officielle | 25 / 194 |
 | Forfaits d'abonnement relevés | 21 |
-| Harnais re-vérifiés | 17 / 20 |
+| Harnais re-vérifiés | 21 / 24 |
 | Taux de change USD→EUR | 0.8666 — vérifié |
 
 ---
@@ -133,6 +133,7 @@ L'interface développeur : le logiciel avec lequel on travaille, et qui exécute
 | [Codex CLI](https://developers.openai.com/codex) | OpenAI | MCP, gratuit | — | 2026-09-15 |
 | [Kimi Code CLI](https://platform.kimi.ai) | Moonshot AI | — | — | non |
 | [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — | 2026-09-15 |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) | Alibaba | BYOK, gratuit | — | 2026-09-15 |
 
 > **Aider —** Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti. Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l'URL de l'édition précédente redirige.
 
@@ -142,14 +143,25 @@ L'interface développeur : le logiciel avec lequel on travaille, et qui exécute
 
 > **OpenHands —** Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands vers OpenHands/OpenHands.
 
+> **Qwen Code —** Absent de l'édition précédente. Dépôt vérifié directement : 27 882 étoiles, Apache-2.0, commit le jour du relevé.
+
 ### 3.4 Applications desktop
 
 | Outil | Éditeur | Capacités | Forfaits | Vérifié |
 | :-- | :-- | :-- | :-- | :-- |
+| [ChatGPT Desktop](https://openai.com/chatgpt/desktop) | OpenAI | MCP | — | 2026-09-15 |
 | [Claude Desktop](https://claude.ai/download) | Anthropic, PBC | MCP | Free, Pro, Max | 2026-09-15 |
+| [Kimi Work](https://kimi.com) | Moonshot AI | — | — | 2026-09-15 |
 | [LM Studio Bionic](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — | 2026-09-15 |
+| [Qwen Studio](https://chat.qwen.ai) | Alibaba | gratuit | — | 2026-09-15 |
+
+> **ChatGPT Desktop —** Fiche RESTAURÉE : l'édition précédente l'avait supprimée à tort en la remplaçant par Codex. Les deux coexistent — OpenAI a fusionné les applications Chat et Codex en une seule le 9 juillet 2026. La page d'aide officielle renvoie un 403 : provenance secondaire, à re-vérifier.
+
+> **Kimi Work —** Absente de l'édition précédente alors qu'elle figurait dans les fiches de l'audit d'août. Provenance secondaire, à re-vérifier sur kimi.com.
 
 > **LM Studio Bionic —** L'edition precedente confondait l'agent et le serveur local sous une seule fiche : ce sont deux couches differentes.
+
+> **Qwen Studio —** Absente de l'édition précédente. Page officielle de téléchargement non ouverte : provenance secondaire, à re-vérifier.
 
 ---
 

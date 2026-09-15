@@ -144,6 +144,22 @@ def main() -> int:
                           t.get("pricing_url"),
                           "l'outil est payant mais ses paliers ne sont pas relevés"))
 
+    # ── 3 bis. Couverture fournisseur ─────────────────────────────────────
+    # La veille par mots-clés trouve les outils dont on parle, pas ceux qui
+    # existent. Le balayage lab par lab attrape ce qu'elle manque.
+    vendeurs = {(t.get("vendor") or "").lower() for t in tools}
+    sans_outil = []
+    for lab in labs.values():
+        nom = lab["name"].split(" (")[0].split(" /")[0].lower()
+        if not any(nom in v for v in vendeurs if v):
+            sans_outil.append(lab)
+    if sans_outil:
+        tasks.append((1, "OUTILS",
+                      f"{len(sans_outil)} fournisseurs sans aucun outil au catalogue", None,
+                      ", ".join(l["name"] for l in sans_outil)
+                      + "\n    ⓘ pour chacun : application desktop officielle ? agent CLI ? "
+                        "extension IDE ? Voir protocol/04 §5."))
+
     # ── 4. Harnais ────────────────────────────────────────────────────────
     never, old = [], []
     for t in tools:
