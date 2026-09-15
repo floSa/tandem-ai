@@ -255,3 +255,54 @@ plans:
     url: https://zcode.z.ai/en
     verified_on: '2026-09-15'
     status: official_pricing_page
+- id: antigravity-free
+  vendor: Google
+  product: Antigravity
+  name: Individuel
+  price_usd_month: 0
+  includes: Application de bureau et CLI sans abonnement. Offre organisation via Google Cloud, tarif non
+    publié.
+  source:
+    url: https://antigravity.google/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: mistral-enterprise
+  vendor: Mistral AI
+  product: Vibe
+  name: Enterprise
+  price_usd_month: null
+  includes: Tarif sur devis. Modèles et agents personnalisés, journaux d'audit, SSO SAML, marque blanche.
+  source:
+    url: https://mistral.ai/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: muse-code-everyday
+  vendor: Meta
+  product: Muse Code
+  name: Everyday Usage
+  price_usd_month: 5
+  includes: 10 à 50 requêtes par tranche de 5 heures, mode vocal, recherche web.
+  source:
+    url: https://developer.meta.com/ai/products/muse-code/
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: muse-code-high
+  vendor: Meta
+  product: Muse Code
+  name: High Usage
+  price_usd_month: 15
+  includes: 5x l'usage de l'offre de base.
+  source:
+    url: https://developer.meta.com/ai/products/muse-code/
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: muse-code-power
+  vendor: Meta
+  product: Muse Code
+  name: Power Usage
+  price_usd_month: 50
+  includes: 20x l'usage de l'offre de base, accès anticipé aux nouveautés, quotas de fichiers supérieurs.
+  source:
+    url: https://developer.meta.com/ai/products/muse-code/
+    verified_on: '2026-09-15'
+    status: official_pricing_page

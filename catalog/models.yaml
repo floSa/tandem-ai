@@ -20,14 +20,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: Qwen3-235B-A22B-Thinking-2507
   lab: alibaba
   display_name: Qwen3-235B-A22B-Thinking-2507
@@ -42,14 +40,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: Qwen3-Coder-480B-A35B-Instruct
   lab: alibaba
   display_name: Qwen3-Coder-480B-A35B-Instruct
@@ -64,14 +60,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen/qwen3-235b-a22b-thinking-2507
   lab: alibaba
   display_name: Qwen3-235B-A22B-Thinking-2507
@@ -86,14 +80,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
+        Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'
 - id: qwen3-30b-a3b-instruct-2507
   lab: alibaba
   display_name: qwen3-30b-a3b-instruct-2507
@@ -108,14 +100,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3-30b-a3b-thinking-2507
   lab: alibaba
   display_name: qwen3-30b-a3b-thinking-2507
@@ -130,14 +120,34 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
+- id: qwen3-max
+  lab: alibaba
+  display_name: Qwen3-Max
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: qwen3-max
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 1.2
+    output_per_1m: 6.0
+    currency: USD
+    source:
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+    tier_note: 'Tarif 0-32k tokens. 32k-128k : 2,40 / 12,00. 128k-256k : 3,00 / 15,00.'
 - id: qwen3-max-2025-09-23
   lab: alibaba
   display_name: Qwen3-Max-Instruct
@@ -151,15 +161,17 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.2
+    output_per_1m: 6.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+      priced_as: qwen3-max
+    tier_note: 'Tarif 0-32k tokens. 32k-128k : 2,40 / 12,00. 128k-256k : 3,00 / 15,00.'
 - id: qwen3.5-122b-a10b_none
   lab: alibaba
   display_name: qwen3.5-122b-a10b_none
@@ -174,14 +186,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.5-35b-a3b
   lab: alibaba
   display_name: qwen3.5-35b-a3b
@@ -196,14 +206,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.5-35b-a3b_none
   lab: alibaba
   display_name: qwen3.5-35b-a3b_none
@@ -218,14 +226,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.5-397b-a17b
   lab: alibaba
   display_name: Qwen3.5 397B-A17B
@@ -240,14 +246,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.5-397b-a17b_none
   lab: alibaba
   display_name: Qwen3.5 397B-A17B
@@ -262,14 +266,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.5-9B
   lab: alibaba
   display_name: Qwen3.5 9B
@@ -284,14 +286,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.5-9B_none
   lab: alibaba
   display_name: Qwen3.5 9B
@@ -306,58 +306,57 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.5-flash
   lab: alibaba
-  display_name: Qwen3.5 Flash
+  display_name: Qwen3.5-Flash
   released_on: '2026-02-25'
   accessibility: null
   benchmark_records: 1
   epoch_model_versions:
   - qwen3.5-flash
   status: active
-  api_model_id: null
+  api_model_id: qwen3.5-flash
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.1
+    output_per_1m: 0.4
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
 - id: qwen3.5-plus
   lab: alibaba
-  display_name: Qwen3.5 Plus
+  display_name: Qwen3.5-Plus
   released_on: '2026-02-16'
   accessibility: null
   benchmark_records: 2
   epoch_model_versions:
   - qwen3.5-plus
   status: active
-  api_model_id: null
+  api_model_id: qwen3.5-plus
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.4
+    output_per_1m: 2.4
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+    tier_note: 'Tarif 0-256k tokens. 256k-1M : 0,50 / 3,00.'
 - id: qwen3.6-27b
   lab: alibaba
   display_name: Qwen3.6 27B
@@ -372,14 +371,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.6-27b_none
   lab: alibaba
   display_name: Qwen3.6 27B
@@ -394,14 +391,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.6-35b-a3b
   lab: alibaba
   display_name: Qwen3.6 35B-A3B
@@ -416,14 +411,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.6-35b-a3b_none
   lab: alibaba
   display_name: Qwen3.6 35B-A3B
@@ -438,102 +431,104 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.6-flash
   lab: alibaba
-  display_name: Qwen 3.6 Flash (2026-04-16)
+  display_name: Qwen3.6-Flash
   released_on: '2026-04-27'
   accessibility: null
   benchmark_records: 1
   epoch_model_versions:
   - qwen3.6-flash
   status: active
-  api_model_id: null
+  api_model_id: qwen3.6-flash
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.25
+    output_per_1m: 1.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+    tier_note: 'Tarif 0-256k tokens. 256k-1M : 1,00 / 4,00.'
 - id: qwen3.6-max-preview
   lab: alibaba
-  display_name: Qwen 3.6 Max (Preview)
+  display_name: Qwen3.6-Max (preview)
   released_on: '2026-04-20'
   accessibility: null
   benchmark_records: 2
   epoch_model_versions:
   - qwen3.6-max-preview
   status: active
-  api_model_id: null
+  api_model_id: qwen3.6-max-preview
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.3
+    output_per_1m: 7.8
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+    tier_note: 'Tarif 0-128k tokens. 128k-256k : 2,00 / 12,00.'
 - id: qwen3.6-plus
   lab: alibaba
-  display_name: Qwen 3.6 Plus (2026-04-02)
+  display_name: Qwen3.6-Plus
   released_on: '2026-03-31'
   accessibility: API access
   benchmark_records: 3
   epoch_model_versions:
   - qwen3.6-plus
   status: active
-  api_model_id: null
+  api_model_id: qwen3.6-plus
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.5
+    output_per_1m: 3.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+    tier_note: 'Tarif 0-256k tokens. 256k-1M : 2,00 / 6,00.'
 - id: qwen3.7-flash
   lab: alibaba
-  display_name: Qwen3.7 Flash
+  display_name: Qwen3.7-Flash
   released_on: '2026-07-27'
   accessibility: API access
   benchmark_records: 1
   epoch_model_versions:
   - qwen3.7-flash
   status: active
-  api_model_id: null
+  api_model_id: qwen3.7-flash
   context_window: null
-  role: null
+  role: Flash économique
   pricing:
+    input_per_1m: 0.03
+    output_per_1m: 0.13
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+    tier_note: 'Tarif 0-32k tokens. 32k-256k : 0,10 / 0,40. 256k-1M : 0,20 / 0,80.'
 - id: qwen3.7-flash_none
   lab: alibaba
   display_name: Qwen3.7 Flash
@@ -543,63 +538,68 @@ models:
   epoch_model_versions:
   - qwen3.7-flash_none
   status: active
-  api_model_id: null
+  api_model_id: qwen3.7-flash
   context_window: null
-  role: null
+  role: Flash économique
   pricing:
+    input_per_1m: 0.03
+    output_per_1m: 0.13
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    tier_note: 'Tarif 0-32k tokens. 32k-256k : 0,10 / 0,40. 256k-1M : 0,20 / 0,80.'
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+      variant_of: qwen3.7-flash
+      variant_note: '`none` est un réglage d''exécution du modèle `qwen3.7-flash`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: qwen3.7-max
   lab: alibaba
-  display_name: Qwen3.7 Max
+  display_name: Qwen3.7-Max
   released_on: '2026-05-19'
   accessibility: API access
   benchmark_records: 3
   epoch_model_versions:
   - qwen3.7-max
   status: active
-  api_model_id: null
+  api_model_id: qwen3.7-max
   context_window: null
   role: null
   pricing:
+    input_per_1m: 2.5
+    output_per_1m: 7.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
 - id: qwen3.7-plus
   lab: alibaba
-  display_name: Qwen3.7 Plus
+  display_name: Qwen3.7-Plus
   released_on: '2026-06-02'
   accessibility: API access
   benchmark_records: 4
   epoch_model_versions:
   - qwen3.7-plus
   status: active
-  api_model_id: null
+  api_model_id: qwen3.7-plus
   context_window: null
-  role: null
+  role: Généraliste équilibré
   pricing:
+    input_per_1m: 0.4
+    output_per_1m: 1.6
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+    tier_note: 'Tarif 0-256k tokens. 256k-1M : 1,20 / 4,80.'
 - id: qwen3.7-plus_none
   lab: alibaba
   display_name: Qwen3.7 Plus
@@ -609,19 +609,23 @@ models:
   epoch_model_versions:
   - qwen3.7-plus_none
   status: active
-  api_model_id: null
+  api_model_id: qwen3.7-plus
   context_window: null
-  role: null
+  role: Généraliste équilibré
   pricing:
+    input_per_1m: 0.4
+    output_per_1m: 1.6
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    tier_note: 'Tarif 0-256k tokens. 256k-1M : 1,20 / 4,80.'
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+      variant_of: qwen3.7-plus
+      variant_note: '`none` est un réglage d''exécution du modèle `qwen3.7-plus`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: qwen3.8-27b
   lab: alibaba
   display_name: Qwen3.8 27B
@@ -639,14 +643,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.8-27b_none
   lab: alibaba
   display_name: Qwen3.8 27B (no thinking)
@@ -661,17 +663,15 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: qwen3.8-max
   lab: alibaba
-  display_name: Qwen3.8 Max (unknown)
+  display_name: Qwen3.8-Max
   released_on: '2026-08-02'
   accessibility: API access
   benchmark_records: 3
@@ -679,19 +679,19 @@ models:
   - qwen3.8-max_unknown
   - qwen3.8-max_xhigh
   status: active
-  api_model_id: null
+  api_model_id: qwen3.8-max
   context_window: null
-  role: null
+  role: Flagship
   pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
 - id: qwen3.8-max-0902
   lab: alibaba
   display_name: Qwen3.8 Max (0902) (xhigh)
@@ -703,17 +703,18 @@ models:
   status: active
   api_model_id: null
   context_window: null
-  role: null
+  role: Flagship
   pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
+      priced_as: qwen3.8-max
 - id: claude-fable-5
   lab: anthropic
   display_name: Claude Fable 5
@@ -729,19 +730,20 @@ models:
   - claude-fable-5_unknown
   - claude-fable-5_xhigh
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-fable-5
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 10.0
+    input_cached_per_1m: 1.0
+    cache_write_per_1m: 12.5
+    output_per_1m: 50.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
 - id: claude-fable-5-1
   lab: anthropic
   display_name: Claude Fable 5.1
@@ -804,18 +806,20 @@ models:
   - claude-haiku-4-5-20251001_unknown
   status: active
   api_model_id: null
-  context_window: null
-  role: null
+  context_window: 200000
+  role: Flash / économique
   pricing:
+    input_per_1m: 1.0
+    input_cached_per_1m: 0.1
+    cache_write_per_1m: 1.25
+    output_per_1m: 5.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-haiku-4-5
 - id: claude-haiku-4-5-20251001_16K
   lab: anthropic
   display_name: claude-haiku-4-5-20251001_16K
@@ -826,18 +830,23 @@ models:
   - claude-haiku-4-5-20251001_16K
   status: active
   api_model_id: null
-  context_window: null
-  role: null
+  context_window: 200000
+  role: Flash / économique
   pricing:
+    input_per_1m: 1.0
+    input_cached_per_1m: 0.1
+    cache_write_per_1m: 1.25
+    output_per_1m: 5.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-haiku-4-5
+      variant_of: claude-haiku-4-5-20251001
+      variant_note: '`16K` est un réglage d''exécution du modèle `claude-haiku-4-5-20251001`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: claude-haiku-4-5-20251001_1K
   lab: anthropic
   display_name: claude-haiku-4-5-20251001_1K
@@ -848,18 +857,23 @@ models:
   - claude-haiku-4-5-20251001_1K
   status: active
   api_model_id: null
-  context_window: null
-  role: null
+  context_window: 200000
+  role: Flash / économique
   pricing:
+    input_per_1m: 1.0
+    input_cached_per_1m: 0.1
+    cache_write_per_1m: 1.25
+    output_per_1m: 5.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-haiku-4-5
+      variant_of: claude-haiku-4-5-20251001
+      variant_note: '`1K` est un réglage d''exécution du modèle `claude-haiku-4-5-20251001`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-haiku-4-5-20251001_32K
   lab: anthropic
   display_name: claude-haiku-4-5-20251001_32K
@@ -870,18 +884,23 @@ models:
   - claude-haiku-4-5-20251001_32K
   status: active
   api_model_id: null
-  context_window: null
-  role: null
+  context_window: 200000
+  role: Flash / économique
   pricing:
+    input_per_1m: 1.0
+    input_cached_per_1m: 0.1
+    cache_write_per_1m: 1.25
+    output_per_1m: 5.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-haiku-4-5
+      variant_of: claude-haiku-4-5-20251001
+      variant_note: '`32K` est un réglage d''exécution du modèle `claude-haiku-4-5-20251001`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: claude-haiku-4-5-20251001_8K
   lab: anthropic
   display_name: claude-haiku-4-5-20251001_8K
@@ -892,18 +911,23 @@ models:
   - claude-haiku-4-5-20251001_8K
   status: active
   api_model_id: null
-  context_window: null
-  role: null
+  context_window: 200000
+  role: Flash / économique
   pricing:
+    input_per_1m: 1.0
+    input_cached_per_1m: 0.1
+    cache_write_per_1m: 1.25
+    output_per_1m: 5.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-haiku-4-5
+      variant_of: claude-haiku-4-5-20251001
+      variant_note: '`8K` est un réglage d''exécution du modèle `claude-haiku-4-5-20251001`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-mythos-preview-early
   lab: anthropic
   display_name: Claude Mythos Preview (Early)
@@ -918,14 +942,34 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Version de pré-lancement ou d''évaluation, jamais commercialisée : elle a été mesurée par
+        une source indépendante mais n''a pas de grille tarifaire.'
+- id: claude-opus-4-1
+  lab: anthropic
+  display_name: Claude Opus 4.1
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: claude-opus-4-1-20250805
+  context_window: 200000
+  role: null
+  pricing:
+    input_per_1m: 15.0
+    input_cached_per_1m: 1.5
+    cache_write_per_1m: 18.75
+    output_per_1m: 75.0
+    currency: USD
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
 - id: claude-opus-4-1-20250805
   lab: anthropic
   display_name: claude-opus-4-1-20250805
@@ -937,18 +981,20 @@ models:
   - claude-opus-4-1-20250805_unknown
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 15.0
+    input_cached_per_1m: 1.5
+    cache_write_per_1m: 18.75
+    output_per_1m: 75.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-opus-4-1
 - id: claude-opus-4-1-20250805_16K
   lab: anthropic
   display_name: claude-opus-4-1-20250805_16K
@@ -959,18 +1005,23 @@ models:
   - claude-opus-4-1-20250805_16K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 15.0
+    input_cached_per_1m: 1.5
+    cache_write_per_1m: 18.75
+    output_per_1m: 75.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-opus-4-1
+      variant_of: claude-opus-4-1-20250805
+      variant_note: '`16K` est un réglage d''exécution du modèle `claude-opus-4-1-20250805`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-1-20250805_27K
   lab: anthropic
   display_name: claude-opus-4-1-20250805_27K
@@ -981,18 +1032,23 @@ models:
   - claude-opus-4-1-20250805_27K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 15.0
+    input_cached_per_1m: 1.5
+    cache_write_per_1m: 18.75
+    output_per_1m: 75.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-opus-4-1
+      variant_of: claude-opus-4-1-20250805
+      variant_note: '`27K` est un réglage d''exécution du modèle `claude-opus-4-1-20250805`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-5-20251101
   lab: anthropic
   display_name: Claude Opus 4.5 (no thinking)
@@ -1010,14 +1066,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: claude-opus-4-5-20251101_128K
   lab: anthropic
   display_name: Claude Opus 4.5 (128k thinking)
@@ -1032,14 +1087,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
+    source: &id001
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: claude-opus-4-5-20251101_16K
   lab: anthropic
   display_name: Claude Opus 4.5 (16k thinking)
@@ -1054,14 +1108,7 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+    source: *id001
 - id: claude-opus-4-5-20251101_32K
   lab: anthropic
   display_name: Claude Opus 4.5 (32k thinking)
@@ -1076,14 +1123,7 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+    source: *id001
 - id: claude-opus-4-5-20251101_64K
   lab: anthropic
   display_name: Claude Opus 4.5 (64k thinking)
@@ -1098,14 +1138,7 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+    source: *id001
 - id: claude-opus-4-5-20251101_8K
   lab: anthropic
   display_name: Claude Opus 4.5 (8k thinking)
@@ -1120,17 +1153,10 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
-    source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+    source: *id001
 - id: claude-opus-4-6
   lab: anthropic
-  display_name: Claude Opus 4.6 (no thinking)
+  display_name: Claude Opus 4.6
   released_on: '2026-02-05'
   accessibility: API access
   benchmark_records: 26
@@ -1142,19 +1168,20 @@ models:
   - claude-opus-4-6_medium
   - claude-opus-4-6_unknown
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-opus-4-6
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
 - id: claude-opus-4-6_120K
   lab: anthropic
   display_name: Claude Opus 4.6 (120k thinking)
@@ -1164,19 +1191,23 @@ models:
   epoch_model_versions:
   - claude-opus-4-6_120K
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-opus-4-6
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      variant_of: claude-opus-4-6
+      variant_note: '`120K` est un réglage d''exécution du modèle `claude-opus-4-6`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-6_32K
   lab: anthropic
   display_name: Claude Opus 4.6 (32k thinking)
@@ -1186,19 +1217,23 @@ models:
   epoch_model_versions:
   - claude-opus-4-6_32K
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-opus-4-6
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      variant_of: claude-opus-4-6
+      variant_note: '`32K` est un réglage d''exécution du modèle `claude-opus-4-6`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-6_64K
   lab: anthropic
   display_name: Claude Opus 4.6 (64k thinking)
@@ -1208,22 +1243,26 @@ models:
   epoch_model_versions:
   - claude-opus-4-6_64K
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-opus-4-6
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      variant_of: claude-opus-4-6
+      variant_note: '`64K` est un réglage d''exécution du modèle `claude-opus-4-6`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-7
   lab: anthropic
-  display_name: Claude Opus 4.7 (no thinking)
+  display_name: Claude Opus 4.7
   released_on: '2026-04-16'
   accessibility: API access
   benchmark_records: 19
@@ -1236,19 +1275,20 @@ models:
   - claude-opus-4-7_unknown
   - claude-opus-4-7_xhigh
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-opus-4-7
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
 - id: claude-opus-4-8
   lab: anthropic
   display_name: Claude Opus 4.8
@@ -1263,19 +1303,20 @@ models:
   - claude-opus-4-8_unknown
   - claude-opus-4-8_xhigh
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-opus-4-8
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
 - id: claude-opus-4-8_none
   lab: anthropic
   display_name: Claude Opus 4.8
@@ -1285,19 +1326,23 @@ models:
   epoch_model_versions:
   - claude-opus-4-8_none
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-opus-4-8
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      variant_of: claude-opus-4-8
+      variant_note: '`none` est un réglage d''exécution du modèle `claude-opus-4-8`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-5
   lab: anthropic
   display_name: Claude Opus 5
@@ -1327,6 +1372,28 @@ models:
       verified_on: '2026-09-15'
       status: official_pricing_page
       note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+- id: claude-sonnet-4-5
+  lab: anthropic
+  display_name: Claude Sonnet 4.5
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: claude-sonnet-4-5-20250929
+  context_window: 200000
+  role: null
+  pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
+    currency: USD
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
 - id: claude-sonnet-4-5-20250929
   lab: anthropic
   display_name: Claude Sonnet 4.5 (no thinking)
@@ -1339,18 +1406,20 @@ models:
   - claude-sonnet-4-5-20250929_unknown
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-sonnet-4-5
 - id: claude-sonnet-4-5-20250929_16K
   lab: anthropic
   display_name: Claude Sonnet 4.5 (16k thinking)
@@ -1361,18 +1430,23 @@ models:
   - claude-sonnet-4-5-20250929_16K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-sonnet-4-5
+      variant_of: claude-sonnet-4-5-20250929
+      variant_note: '`16K` est un réglage d''exécution du modèle `claude-sonnet-4-5-20250929`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: claude-sonnet-4-5-20250929_1K
   lab: anthropic
   display_name: Claude Sonnet 4.5 (1k thinking)
@@ -1383,18 +1457,23 @@ models:
   - claude-sonnet-4-5-20250929_1K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-sonnet-4-5
+      variant_of: claude-sonnet-4-5-20250929
+      variant_note: '`1K` est un réglage d''exécution du modèle `claude-sonnet-4-5-20250929`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: claude-sonnet-4-5-20250929_32K
   lab: anthropic
   display_name: Claude Sonnet 4.5 (32k thinking)
@@ -1405,18 +1484,23 @@ models:
   - claude-sonnet-4-5-20250929_32K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-sonnet-4-5
+      variant_of: claude-sonnet-4-5-20250929
+      variant_note: '`32K` est un réglage d''exécution du modèle `claude-sonnet-4-5-20250929`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: claude-sonnet-4-5-20250929_59K
   lab: anthropic
   display_name: Claude Sonnet 4.5 (59k thinking)
@@ -1427,18 +1511,23 @@ models:
   - claude-sonnet-4-5-20250929_59K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-sonnet-4-5
+      variant_of: claude-sonnet-4-5-20250929
+      variant_note: '`59K` est un réglage d''exécution du modèle `claude-sonnet-4-5-20250929`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: claude-sonnet-4-5-20250929_8K
   lab: anthropic
   display_name: Claude Sonnet 4.5 (8k thinking)
@@ -1449,21 +1538,26 @@ models:
   - claude-sonnet-4-5-20250929_8K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-sonnet-4-5
+      variant_of: claude-sonnet-4-5-20250929
+      variant_note: '`8K` est un réglage d''exécution du modèle `claude-sonnet-4-5-20250929`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: claude-sonnet-4-6
   lab: anthropic
-  display_name: Claude Sonnet 4.6 (no thinking)
+  display_name: Claude Sonnet 4.6
   released_on: '2026-02-17'
   accessibility: API access
   benchmark_records: 14
@@ -1475,19 +1569,20 @@ models:
   - claude-sonnet-4-6_medium
   - claude-sonnet-4-6_unknown
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-sonnet-4-6
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
 - id: claude-sonnet-4-6_32K
   lab: anthropic
   display_name: Claude Sonnet 4.6 (32k thinking)
@@ -1497,19 +1592,23 @@ models:
   epoch_model_versions:
   - claude-sonnet-4-6_32K
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: claude-sonnet-4-6
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      variant_of: claude-sonnet-4-6
+      variant_note: '`32K` est un réglage d''exécution du modèle `claude-sonnet-4-6`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-sonnet-5
   lab: anthropic
   display_name: Claude Sonnet 5
@@ -1553,14 +1652,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: DeepSeek-V3.2-Exp
   lab: deepseek
   display_name: DeepSeek-V3.2-Exp
@@ -1577,14 +1675,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: DeepSeek-V3.2-Exp_thinking
   lab: deepseek
   display_name: DeepSeek-V3.2-Exp_thinking
@@ -1599,14 +1696,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: deepseek-chat
   lab: deepseek
   display_name: deepseek-chat
@@ -1621,14 +1717,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: deepseek-flash
   lab: deepseek
   display_name: DeepSeek Flash
@@ -1669,14 +1764,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: deepseek-v4-flash
   lab: deepseek
   display_name: DeepSeek v4 Flash (high)
@@ -1693,14 +1787,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: deepseek-v4-flash-0731
   lab: deepseek
   display_name: DeepSeek V4 Flash 0731 (high)
@@ -1718,14 +1811,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: deepseek-v4-flash-0731_none
   lab: deepseek
   display_name: DeepSeek V4 Flash 0731 (none)
@@ -1740,14 +1832,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: deepseek-v4-pro
   lab: deepseek
   display_name: DeepSeek V4-Pro
@@ -1772,7 +1863,7 @@ models:
       verified_on: '2026-09-15'
       status: official_pricing_page
       note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
-    offpeak:
+    offpeak: &id002
       input_per_1m: 0.66
       input_cached_per_1m: 0.022
       output_per_1m: 1.98
@@ -1790,18 +1881,21 @@ models:
   - deepseek-v4-pro-0813_unknown
   status: active
   api_model_id: null
-  context_window: null
-  role: null
+  context_window: 1000000
+  role: Flagship raisonnement
   pricing:
+    input_per_1m: 1.32
+    input_cached_per_1m: 0.044
+    output_per_1m: 3.96
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://api-docs.deepseek.com/quick_start/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
+      priced_as: deepseek-v4-pro
+    offpeak: *id002
+    peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
 - id: deepseek-v4-pro-0813_none
   lab: deepseek
   display_name: DeepSeek V4 Pro 0813 (none)
@@ -1812,18 +1906,27 @@ models:
   - deepseek-v4-pro-0813_none
   status: active
   api_model_id: null
-  context_window: null
-  role: null
+  context_window: 1000000
+  role: Flagship raisonnement
   pricing:
+    input_per_1m: 1.32
+    input_cached_per_1m: 0.044
+    output_per_1m: 3.96
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    offpeak: &id003
+      input_per_1m: 0.66
+      input_cached_per_1m: 0.022
+      output_per_1m: 1.98
+    peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://api-docs.deepseek.com/quick_start/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
+      priced_as: deepseek-v4-pro
+      variant_of: deepseek-v4-pro-0813
+      variant_note: '`none` est un réglage d''exécution du modèle `deepseek-v4-pro-0813`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: deepseek-v4-pro_none
   lab: deepseek
   display_name: DeepSeek v4 Pro (unknown thinking)
@@ -1833,19 +1936,24 @@ models:
   epoch_model_versions:
   - deepseek-v4-pro_none
   status: active
-  api_model_id: null
-  context_window: null
-  role: null
+  api_model_id: deepseek-v4-pro
+  context_window: 1000000
+  role: Flagship raisonnement
   pricing:
+    input_per_1m: 1.32
+    input_cached_per_1m: 0.044
+    output_per_1m: 3.96
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    offpeak: *id003
+    peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://api-docs.deepseek.com/quick_start/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
+      variant_of: deepseek-v4-pro
+      variant_note: '`none` est un réglage d''exécution du modèle `deepseek-v4-pro`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: deepseek/deepseek-v3.2
   lab: deepseek
   display_name: DeepSeek-V3.2 (Thinking; Novita)
@@ -1860,36 +1968,34 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
+        Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'
 - id: gemini-2.5-flash
   lab: google
-  display_name: gemini-2.5-flash
+  display_name: Gemini 2.5 Flash
   released_on: '2025-06-17'
   accessibility: API access
   benchmark_records: 5
   epoch_model_versions:
   - gemini-2.5-flash
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: gemini-2.5-flash
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 0.3
+    output_per_1m: 2.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+    tier_note: Entrée audio facturée 1,00.
 - id: gemini-2.5-flash-preview-09-2025
   lab: google
   display_name: gemini-2.5-flash-preview-09-2025
@@ -1900,40 +2006,41 @@ models:
   - gemini-2.5-flash-preview-09-2025
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 0.3
+    output_per_1m: 2.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+      priced_as: gemini-2.5-flash
+    tier_note: Entrée audio facturée 1,00.
 - id: gemini-2.5-pro
   lab: google
-  display_name: gemini-2.5-pro
+  display_name: Gemini 2.5 Pro
   released_on: '2025-06-05'
   accessibility: API access
   benchmark_records: 14
   epoch_model_versions:
   - gemini-2.5-pro
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: gemini-2.5-pro
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.'
 - id: gemini-2.5-pro-preview-06-05
   lab: google
   display_name: Gemini 2.5 Pro Preview (Jun 2025)
@@ -1944,18 +2051,19 @@ models:
   - gemini-2.5-pro-preview-06-05
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+      priced_as: gemini-2.5-pro
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.'
 - id: gemini-2.5-pro-preview-06-05_1K
   lab: google
   display_name: Gemini 2.5 Pro Preview (Jun 2025)
@@ -1966,18 +2074,22 @@ models:
   - gemini-2.5-pro-preview-06-05_1K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.'
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+      priced_as: gemini-2.5-pro
+      variant_of: gemini-2.5-pro-preview-06-05
+      variant_note: '`1K` est un réglage d''exécution du modèle `gemini-2.5-pro-preview-06-05`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: gemini-2.5-pro-preview-06-05_32K
   lab: google
   display_name: Gemini 2.5 Pro Preview (Jun 2025)
@@ -1988,18 +2100,22 @@ models:
   - gemini-2.5-pro-preview-06-05_32K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.'
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+      priced_as: gemini-2.5-pro
+      variant_of: gemini-2.5-pro-preview-06-05
+      variant_note: '`32K` est un réglage d''exécution du modèle `gemini-2.5-pro-preview-06-05`, pas une
+        référence facturée distincte : même tarif unitaire.'
 - id: gemini-2.5-pro_16K
   lab: google
   display_name: gemini-2.5-pro_16K
@@ -2009,19 +2125,22 @@ models:
   epoch_model_versions:
   - gemini-2.5-pro_16K
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: gemini-2.5-pro
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.'
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+      variant_of: gemini-2.5-pro
+      variant_note: '`16K` est un réglage d''exécution du modèle `gemini-2.5-pro`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gemini-2.5-pro_32K
   lab: google
   display_name: gemini-2.5-pro_32K
@@ -2031,19 +2150,22 @@ models:
   epoch_model_versions:
   - gemini-2.5-pro_32K
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: gemini-2.5-pro
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.'
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+      variant_of: gemini-2.5-pro
+      variant_note: '`32K` est un réglage d''exécution du modèle `gemini-2.5-pro`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gemini-2.5-pro_8K
   lab: google
   display_name: gemini-2.5-pro_8K
@@ -2053,19 +2175,22 @@ models:
   epoch_model_versions:
   - gemini-2.5-pro_8K
   status: active
-  api_model_id: null
-  context_window: null
+  api_model_id: gemini-2.5-pro
+  context_window: 1048576
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.'
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+      variant_of: gemini-2.5-pro
+      variant_note: '`8K` est un réglage d''exécution du modèle `gemini-2.5-pro`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gemini-3-deep-think-preview
   lab: google
   display_name: Gemini 3 Deep Think
@@ -2080,14 +2205,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Version de pré-lancement ou d''évaluation, jamais commercialisée : elle a été mesurée par
+        une source indépendante mais n''a pas de grille tarifaire.'
 - id: gemini-3-flash-preview
   lab: google
   display_name: Gemini 3 Flash Preview
@@ -2105,14 +2228,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: gemini-3-pro-preview
   lab: google
   display_name: Gemini 3 Pro Preview
@@ -2128,14 +2250,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: gemini-3.1-pro-preview
   lab: google
   display_name: Gemini 3.1 Pro
@@ -2172,18 +2293,20 @@ models:
   - gemini-3.1-pro-preview-customtools
   status: active
   api_model_id: null
-  context_window: null
-  role: null
+  context_window: 200000
+  role: Flagship raisonnement
   pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    output_per_1m: 12.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+      priced_as: gemini-3.1-pro-preview
+    tier_note: 'Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00.'
 - id: gemini-3.5-flash
   lab: google
   display_name: Gemini 3.5 Flash
@@ -2249,22 +2372,24 @@ models:
   - gemini-3.6-flash_minimal
   - gemini-3.6-flash_unknown
   status: active
-  api_model_id: null
+  api_model_id: gemini-3.6-flash
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 3.75
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+    promo_until: '2026-12-31'
+    promo_note: 'Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50.'
 - id: gemini-3.7-flash
   lab: google
-  display_name: Gemini 3.7 Flash (high)
+  display_name: Gemini 3.7 Flash
   released_on: '2026-08-13'
   accessibility: API access
   benchmark_records: 12
@@ -2274,19 +2399,21 @@ models:
   - gemini-3.7-flash_medium
   - gemini-3.7-flash_unknown
   status: active
-  api_model_id: null
+  api_model_id: gemini-3.7-flash
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 3.75
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Plusieurs modèles en tarif promotionnel jusqu'au 31/12/2026.
+    promo_until: '2026-12-31'
+    promo_note: 'Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50.'
 - id: gemini-3.8-flash
   lab: google
   display_name: Gemini 3.8 Flash
@@ -2329,14 +2456,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: gemma-4-26b-a4b-it
   lab: google
   display_name: Gemma 4 26B A4B
@@ -2351,14 +2476,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: gemma-4-31b-it
   lab: google
   display_name: Gemma 4 31B IT
@@ -2374,14 +2497,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: muse-spark
   lab: meta
   display_name: Muse Spark
@@ -2396,14 +2517,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: muse-spark-1.1
   lab: meta
   display_name: Muse Spark 1.1
@@ -2420,14 +2540,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: muse-spark-1.2
   lab: meta
   display_name: Muse Spark 1.2
@@ -2443,14 +2562,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: MiniMax-M2
   lab: minimax
   display_name: MiniMax-M2
@@ -2460,19 +2578,20 @@ models:
   epoch_model_versions:
   - MiniMax-M2
   status: active
-  api_model_id: null
+  api_model_id: MiniMax-M2
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.03
+    cache_write_per_1m: 0.375
+    output_per_1m: 1.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://platform.minimax.io/docs/guides/pricing-paygo
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
 - id: MiniMax-M2.1
   lab: minimax
   display_name: MiniMax-M2.1
@@ -2482,19 +2601,20 @@ models:
   epoch_model_versions:
   - MiniMax-M2.1
   status: active
-  api_model_id: null
+  api_model_id: MiniMax-M2.1
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.03
+    cache_write_per_1m: 0.375
+    output_per_1m: 1.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://platform.minimax.io/docs/guides/pricing-paygo
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
 - id: MiniMax-M2.5
   lab: minimax
   display_name: MiniMax-M2.5
@@ -2504,19 +2624,20 @@ models:
   epoch_model_versions:
   - MiniMax-M2.5
   status: active
-  api_model_id: null
+  api_model_id: MiniMax-M2.5
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.03
+    cache_write_per_1m: 0.375
+    output_per_1m: 1.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://platform.minimax.io/docs/guides/pricing-paygo
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
 - id: MiniMax-M2.7
   lab: minimax
   display_name: MiniMax-M2.7
@@ -2526,19 +2647,20 @@ models:
   epoch_model_versions:
   - MiniMax-M2.7
   status: active
-  api_model_id: null
+  api_model_id: MiniMax-M2.7
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.06
+    cache_write_per_1m: 0.375
+    output_per_1m: 1.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://platform.minimax.io/docs/guides/pricing-paygo
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
 - id: MiniMax-M3
   lab: minimax
   display_name: MiniMax-M3
@@ -2548,19 +2670,21 @@ models:
   epoch_model_versions:
   - MiniMax-M3
   status: active
-  api_model_id: null
-  context_window: null
-  role: null
+  api_model_id: MiniMax-M3
+  context_window: 1000000
+  role: Flagship agentique
   pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.06
+    output_per_1m: 1.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://platform.minimax.io/docs/guides/pricing-paygo
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
+    promo_note: 'MiniMax affiche « permanent 50% off » : ce tarif est promotionnel.'
+    tier_note: 'Tarif ≤512k tokens d''entrée. Au-delà : 0,60 / 0,12 / 2,40.'
 - id: MiniMax-M3_none
   lab: minimax
   display_name: MiniMax-M3_none
@@ -2570,19 +2694,24 @@ models:
   epoch_model_versions:
   - MiniMax-M3_none
   status: active
-  api_model_id: null
-  context_window: null
-  role: null
+  api_model_id: MiniMax-M3
+  context_window: 1000000
+  role: Flagship agentique
   pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.06
+    output_per_1m: 1.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
+    promo_note: 'MiniMax affiche « permanent 50% off » : ce tarif est promotionnel.'
+    tier_note: 'Tarif ≤512k tokens d''entrée. Au-delà : 0,60 / 0,12 / 2,40.'
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://platform.minimax.io/docs/guides/pricing-paygo
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
+      variant_of: MiniMax-M3
+      variant_note: '`none` est un réglage d''exécution du modèle `MiniMax-M3`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: devstral-small-2512
   lab: mistral
   display_name: Devstral Small 2
@@ -2597,14 +2726,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle reste appelable un
+        temps mais a quitté la grille tarifaire.'
 - id: magistral-medium-2506
   lab: mistral
   display_name: magistral-medium-2506
@@ -2619,14 +2746,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle reste appelable un
+        temps mais a quitté la grille tarifaire.'
 - id: magistral-medium-2509
   lab: mistral
   display_name: Magistral Medium 1.2
@@ -2641,14 +2766,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle reste appelable un
+        temps mais a quitté la grille tarifaire.'
 - id: magistral-small-2506
   lab: mistral
   display_name: magistral-small-2506
@@ -2663,14 +2786,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle reste appelable un
+        temps mais a quitté la grille tarifaire.'
 - id: magistral-small-2509
   lab: mistral
   display_name: Magistral Small 1.2
@@ -2685,14 +2806,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle reste appelable un
+        temps mais a quitté la grille tarifaire.'
 - id: mistral-large-2512
   lab: mistral
   display_name: Mistral Large 3
@@ -2702,19 +2821,19 @@ models:
   epoch_model_versions:
   - mistral-large-2512
   status: active
-  api_model_id: null
+  api_model_id: mistral-large-2512
   context_window: null
-  role: null
+  role: Flagship
   pricing:
+    input_per_1m: 0.5
+    output_per_1m: 1.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.mistral.ai/inference/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: mistral.ai/pricing ne porte pas la grille par modèle ; elle vit dans la doc. Les identifiants
+        versionnés viennent de docs.mistral.ai/models/overview.
 - id: mistral-medium-2508
   lab: mistral
   display_name: mistral-medium-2508
@@ -2729,14 +2848,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: mistral-medium-2604
   lab: mistral
   display_name: Mistral Medium 3.5
@@ -2746,19 +2864,19 @@ models:
   epoch_model_versions:
   - mistral-medium-2604
   status: active
-  api_model_id: null
+  api_model_id: mistral-medium-2604
   context_window: null
-  role: null
+  role: Généraliste équilibré
   pricing:
+    input_per_1m: 1.5
+    output_per_1m: 7.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.mistral.ai/inference/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: mistral.ai/pricing ne porte pas la grille par modèle ; elle vit dans la doc. Les identifiants
+        versionnés viennent de docs.mistral.ai/models/overview.
 - id: mistral-small-2506
   lab: mistral
   display_name: Mistral Small 3.2
@@ -2773,14 +2891,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: mistral-small-3.2-2506
   lab: mistral
   display_name: mistral-small-3.2-2506
@@ -2795,14 +2912,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: Kimi-K2-Instruct
   lab: moonshot
   display_name: Kimi K2 Instruct
@@ -2817,14 +2933,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: fireworks/kimi-k2p5
   lab: moonshot
   display_name: Kimi K2.5 (Fireworks)
@@ -2839,14 +2954,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
+        Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'
 - id: kimi-k2-thinking
   lab: moonshot
   display_name: Kimi K2 Thinking
@@ -2861,14 +2974,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: kimi-k2-thinking-turbo
   lab: moonshot
   display_name: Kimi K2 Thinking Turbo
@@ -2883,14 +2995,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: kimi-k2.5
   lab: moonshot
   display_name: Kimi K2.5
@@ -2905,14 +3016,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: kimi-k2.6
   lab: moonshot
   display_name: Kimi K2.6
@@ -2996,14 +3106,33 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
+        Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'
+- id: gpt-5
+  lab: openai
+  display_name: GPT-5
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 1.25
+    input_cached_per_1m: 0.125
+    output_per_1m: 10.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5-2025-08-07
   lab: openai
   display_name: GPT-5 (high)
@@ -3021,15 +3150,16 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.25
+    input_cached_per_1m: 0.125
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5
 - id: gpt-5-codex
   lab: openai
   display_name: GPT-5-codex
@@ -3045,14 +3175,34 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
+- id: gpt-5-mini
+  lab: openai
+  display_name: GPT-5 mini
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5-mini
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 0.25
+    input_cached_per_1m: 0.025
+    output_per_1m: 2.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5-mini-2025-08-07
   lab: openai
   display_name: GPT-5 mini (high)
@@ -3070,15 +3220,37 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.25
+    input_cached_per_1m: 0.025
+    output_per_1m: 2.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5-mini
+- id: gpt-5-nano
+  lab: openai
+  display_name: GPT-5 nano
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5-nano
+  context_window: null
+  role: Ultra-économique
+  pricing:
+    input_per_1m: 0.05
+    input_cached_per_1m: 0.005
+    output_per_1m: 0.4
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5-nano-2025-08-07
   lab: openai
   display_name: GPT-5 nano (high)
@@ -3094,17 +3266,38 @@ models:
   status: active
   api_model_id: null
   context_window: null
+  role: Ultra-économique
+  pricing:
+    input_per_1m: 0.05
+    input_cached_per_1m: 0.005
+    output_per_1m: 0.4
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5-nano
+- id: gpt-5-pro
+  lab: openai
+  display_name: GPT-5 Pro
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5-pro
+  context_window: null
   role: null
   pricing:
+    input_per_1m: 15.0
+    output_per_1m: 120.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5-pro-2025-10-06
   lab: openai
   display_name: GPT-5 Pro
@@ -3120,15 +3313,36 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 15.0
+    output_per_1m: 120.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5-pro
+- id: gpt-5.1
+  lab: openai
+  display_name: GPT-5.1
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5.1
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 1.25
+    input_cached_per_1m: 0.125
+    output_per_1m: 10.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5.1-2025-11-13
   lab: openai
   display_name: GPT-5.1 (high)
@@ -3145,15 +3359,16 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.25
+    input_cached_per_1m: 0.125
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.1
 - id: gpt-5.1-2025-11-13_none
   lab: openai
   display_name: GPT-5.1 (no thinking)
@@ -3167,15 +3382,19 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.25
+    input_cached_per_1m: 0.125
+    output_per_1m: 10.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.1
+      variant_of: gpt-5.1-2025-11-13
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.1-2025-11-13`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: gpt-5.1-codex
   lab: openai
   display_name: GPT-5.1 Codex
@@ -3190,14 +3409,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: gpt-5.1-codex-max
   lab: openai
   display_name: GPT-5.1-Codex-Max
@@ -3212,14 +3430,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: gpt-5.1-codex-mini
   lab: openai
   display_name: GPT-5.1 Codex Mini
@@ -3234,14 +3451,34 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
+- id: gpt-5.2
+  lab: openai
+  display_name: GPT-5.2
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5.2
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 1.75
+    input_cached_per_1m: 0.175
+    output_per_1m: 14.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5.2-2025-12-11
   lab: openai
   display_name: GPT-5.2 (high)
@@ -3259,15 +3496,16 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.75
+    input_cached_per_1m: 0.175
+    output_per_1m: 14.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.2
 - id: gpt-5.2-2025-12-11_none
   lab: openai
   display_name: GPT-5.2 (none)
@@ -3281,15 +3519,19 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.75
+    input_cached_per_1m: 0.175
+    output_per_1m: 14.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.2
+      variant_of: gpt-5.2-2025-12-11
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.2-2025-12-11`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: gpt-5.2-codex
   lab: openai
   display_name: GPT-5.2 Codex
@@ -3304,14 +3546,33 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
+- id: gpt-5.2-pro
+  lab: openai
+  display_name: GPT-5.2 Pro
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5.2-pro
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 21.0
+    output_per_1m: 168.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5.2-pro-2025-12-11
   lab: openai
   display_name: GPT-5.2 Pro
@@ -3328,18 +3589,18 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 21.0
+    output_per_1m: 168.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.2-pro
 - id: gpt-5.3-codex
   lab: openai
-  display_name: GPT-5.3 Codex
+  display_name: GPT-5.3-Codex
   released_on: '2026-02-05'
   accessibility: API access
   benchmark_records: 13
@@ -3348,19 +3609,19 @@ models:
   - gpt-5.3-codex_high
   - gpt-5.3-codex_xhigh
   status: active
-  api_model_id: null
+  api_model_id: gpt-5.3-codex
   context_window: null
-  role: null
+  role: Dédié développement logiciel
   pricing:
+    input_per_1m: 1.75
+    input_cached_per_1m: 0.175
+    output_per_1m: 14.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5.4
   lab: openai
   display_name: GPT-5.4
@@ -3399,15 +3660,16 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 2.5
+    input_cached_per_1m: 0.25
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.4
 - id: gpt-5.4-2026-03-05_none
   lab: openai
   display_name: GPT-5.4 (none)
@@ -3421,15 +3683,40 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 2.5
+    input_cached_per_1m: 0.25
+    output_per_1m: 15.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.4
+      variant_of: gpt-5.4-2026-03-05
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.4-2026-03-05`, pas une référence
+        facturée distincte : même tarif unitaire.'
+- id: gpt-5.4-mini
+  lab: openai
+  display_name: GPT-5.4 mini
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5.4-mini
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 4.5
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5.4-mini-2026-03-17
   lab: openai
   display_name: GPT-5.4 mini (high)
@@ -3447,15 +3734,16 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 4.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.4-mini
 - id: gpt-5.4-mini-2026-03-17_none
   lab: openai
   display_name: GPT-5.4 mini (none)
@@ -3469,15 +3757,40 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 4.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.4-mini
+      variant_of: gpt-5.4-mini-2026-03-17
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.4-mini-2026-03-17`, pas une référence
+        facturée distincte : même tarif unitaire.'
+- id: gpt-5.4-nano
+  lab: openai
+  display_name: GPT-5.4 nano
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5.4-nano
+  context_window: null
+  role: null
+  pricing:
+    input_per_1m: 0.2
+    input_cached_per_1m: 0.02
+    output_per_1m: 1.25
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5.4-nano-2026-03-17
   lab: openai
   display_name: GPT-5.4 nano (high)
@@ -3495,15 +3808,16 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.2
+    input_cached_per_1m: 0.02
+    output_per_1m: 1.25
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.4-nano
 - id: gpt-5.4-nano-2026-03-17_none
   lab: openai
   display_name: GPT-5.4 nano (no thinking)
@@ -3517,15 +3831,39 @@ models:
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.2
+    input_cached_per_1m: 0.02
+    output_per_1m: 1.25
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.4-nano
+      variant_of: gpt-5.4-nano-2026-03-17
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.4-nano-2026-03-17`, pas une référence
+        facturée distincte : même tarif unitaire.'
+- id: gpt-5.4-pro
+  lab: openai
+  display_name: GPT-5.4 Pro
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-5.4-pro
+  context_window: null
+  role: Raisonnement extrême
+  pricing:
+    input_per_1m: 30.0
+    output_per_1m: 180.0
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5.4-pro-2026-03-05
   lab: openai
   display_name: GPT-5.4 Pro
@@ -3538,17 +3876,17 @@ models:
   status: active
   api_model_id: null
   context_window: null
-  role: null
+  role: Raisonnement extrême
   pricing:
+    input_per_1m: 30.0
+    output_per_1m: 180.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: gpt-5.4-pro
 - id: gpt-5.5
   lab: openai
   display_name: GPT-5.5
@@ -3589,14 +3927,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: gpt-5.5-pre-release
   lab: openai
   display_name: GPT-5.5 (xhigh)
@@ -3611,14 +3948,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Version de pré-lancement ou d''évaluation, jamais commercialisée : elle a été mesurée par
+        une source indépendante mais n''a pas de grille tarifaire.'
 - id: gpt-5.5-pro
   lab: openai
   display_name: GPT-5.5 Pro
@@ -3657,14 +3992,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Version de pré-lancement ou d''évaluation, jamais commercialisée : elle a été mesurée par
+        une source indépendante mais n''a pas de grille tarifaire.'
 - id: gpt-5.5_none
   lab: openai
   display_name: GPT-5.5 (no thinking)
@@ -3674,19 +4007,22 @@ models:
   epoch_model_versions:
   - gpt-5.5_none
   status: active
-  api_model_id: null
+  api_model_id: gpt-5.5
   context_window: null
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    output_per_1m: 30.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      variant_of: gpt-5.5
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.5`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gpt-5.6-luna
   lab: openai
   display_name: GPT-5.6 Luna
@@ -3723,19 +4059,22 @@ models:
   epoch_model_versions:
   - gpt-5.6-luna_none
   status: active
-  api_model_id: null
+  api_model_id: gpt-5.6-luna
   context_window: null
-  role: null
+  role: Flash / économique
   pricing:
+    input_per_1m: 0.2
+    input_cached_per_1m: 0.02
+    output_per_1m: 1.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      variant_of: gpt-5.6-luna
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.6-luna`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gpt-5.6-sol
   lab: openai
   display_name: GPT-5.6 Sol
@@ -3772,19 +4111,22 @@ models:
   epoch_model_versions:
   - gpt-5.6-sol_none
   status: active
-  api_model_id: null
+  api_model_id: gpt-5.6-sol
   context_window: null
-  role: null
+  role: Haute capacité multimodal
   pricing:
+    input_per_1m: 4.0
+    input_cached_per_1m: 0.4
+    output_per_1m: 20.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      variant_of: gpt-5.6-sol
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.6-sol`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gpt-5.6-sol_promax
   lab: openai
   display_name: GPT-5.6 Sol (pro, max)
@@ -3794,19 +4136,22 @@ models:
   epoch_model_versions:
   - gpt-5.6-sol_promax
   status: active
-  api_model_id: null
+  api_model_id: gpt-5.6-sol
   context_window: null
-  role: null
+  role: Haute capacité multimodal
   pricing:
+    input_per_1m: 4.0
+    input_cached_per_1m: 0.4
+    output_per_1m: 20.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      variant_of: gpt-5.6-sol
+      variant_note: '`promax` est un réglage d''exécution du modèle `gpt-5.6-sol`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gpt-5.6-terra
   lab: openai
   display_name: GPT-5.6 Terra
@@ -3843,19 +4188,22 @@ models:
   epoch_model_versions:
   - gpt-5.6-terra_none
   status: active
-  api_model_id: null
+  api_model_id: gpt-5.6-terra
   context_window: null
-  role: null
+  role: Équilibré développeur
   pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    output_per_1m: 12.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      variant_of: gpt-5.6-terra
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.6-terra`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gpt-6-astra
   lab: openai
   display_name: GPT-6 Astra
@@ -3892,19 +4240,22 @@ models:
   epoch_model_versions:
   - gpt-6-astra_none
   status: active
-  api_model_id: null
+  api_model_id: gpt-6-astra
   context_window: null
-  role: null
+  role: Flagship nouvelle génération
   pricing:
+    input_per_1m: 10.0
+    input_cached_per_1m: 1.0
+    output_per_1m: 50.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      variant_of: gpt-6-astra
+      variant_note: '`none` est un réglage d''exécution du modèle `gpt-6-astra`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: gpt-oss-120b
   lab: openai
   display_name: gpt-oss-120b
@@ -3923,14 +4274,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: gpt-oss-20b
   lab: openai
   display_name: gpt-oss-20b
@@ -3949,14 +4298,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût
+        dépend entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
 - id: o3
   lab: openai
   display_name: o3
@@ -4012,17 +4359,17 @@ models:
   status: active
   api_model_id: null
   context_window: null
-  role: null
+  role: Raisonnement extrême
   pricing:
+    input_per_1m: 20.0
+    output_per_1m: 80.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      priced_as: o3-pro
 - id: openai/gpt-oss-120b
   lab: openai
   display_name: openai/gpt-oss-120b
@@ -4038,14 +4385,12 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
+        Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'
 - id: grok-3-mini
   lab: xai
   display_name: Grok 3 mini
@@ -4062,14 +4407,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: grok-4-0709
   lab: xai
   display_name: grok-4-0709
@@ -4085,14 +4429,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: grok-4-1
   lab: xai
   display_name: grok-4-1
@@ -4107,14 +4450,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: grok-4-20
   lab: xai
   display_name: grok-4-20
@@ -4129,14 +4471,13 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: grok-4-fast
   lab: xai
   display_name: grok-4-fast
@@ -4151,39 +4492,38 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
+        aucun autre.'
 - id: grok-4.20-0309-reasoning
   lab: xai
-  display_name: grok-4.20-0309-reasoning
+  display_name: Grok 4.20 (raisonnement)
   released_on: '2026-02-17'
   accessibility: API access
   benchmark_records: 1
   epoch_model_versions:
   - grok-4.20-0309-reasoning
   status: active
-  api_model_id: null
+  api_model_id: grok-4.20-0309-reasoning
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 2.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.x.ai/docs/models
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double.'
+    tier_note: 'Tarif <200k tokens. Au-delà : 2,50 / 5,00.'
 - id: grok-4.3
   lab: xai
-  display_name: grok-4.3
+  display_name: Grok 4.3
   released_on: '2026-04-17'
   accessibility: Hosted access (no API)
   benchmark_records: 2
@@ -4191,22 +4531,22 @@ models:
   - grok-4.3_high
   - grok-4.3_unknown
   status: active
-  api_model_id: null
+  api_model_id: grok-4.3
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.25
+    output_per_1m: 2.5
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.x.ai/docs/models
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double.'
+    tier_note: 'Tarif <200k tokens. Au-delà : 2,50 / 5,00.'
 - id: grok-4.5
   lab: xai
-  display_name: Grok 4.5 (high)
+  display_name: Grok 4.5
   released_on: '2026-07-08'
   accessibility: API access
   benchmark_records: 8
@@ -4216,22 +4556,22 @@ models:
   - grok-4.5_medium
   - grok-4.5_unknown
   status: active
-  api_model_id: null
+  api_model_id: grok-4.5
   context_window: null
   role: null
   pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.x.ai/docs/models
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double.'
+    tier_note: 'Tarif <200k tokens. Au-delà : 4,00 / 12,00.'
 - id: grok-4.6
   lab: xai
-  display_name: Grok 4.6 (high)
+  display_name: Grok 4.6
   released_on: '2026-08-12'
   accessibility: API access
   benchmark_records: 16
@@ -4242,19 +4582,19 @@ models:
   - grok-4.6_unknown
   - grok-4.6_xhigh
   status: active
-  api_model_id: null
+  api_model_id: grok-4.6
   context_window: null
-  role: null
+  role: Flagship
   pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.x.ai/docs/models
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double.'
+    tier_note: 'Tarif <200k tokens. Au-delà : 4,00 / 12,00.'
 - id: grok-build-0.1
   lab: xai
   display_name: Grok Build 0.1
@@ -4264,19 +4604,19 @@ models:
   epoch_model_versions:
   - grok-build-0.1
   status: active
-  api_model_id: null
+  api_model_id: grok-build-0.1
   context_window: null
-  role: null
+  role: Dédié développement logiciel
   pricing:
+    input_per_1m: 1.0
+    output_per_1m: 2.0
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.x.ai/docs/models
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double.'
+    tier_note: 'Tarif <200k tokens. Au-delà : 2,00 / 4,00.'
 - id: glm-4.7
   lab: zhipu
   display_name: GLM-4.7
@@ -4286,19 +4626,17 @@ models:
   epoch_model_versions:
   - glm-4.7
   status: active
-  api_model_id: null
+  api_model_id: glm-4.7
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.6
+    output_per_1m: 2.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
 - id: glm-4.7-flash
   lab: zhipu
   display_name: GLM-4.7-Flash
@@ -4328,19 +4666,17 @@ models:
   epoch_model_versions:
   - glm-5
   status: active
-  api_model_id: null
+  api_model_id: glm-5
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.0
+    output_per_1m: 3.2
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
 - id: glm-5.1
   lab: zhipu
   display_name: GLM-5.1
@@ -4350,19 +4686,17 @@ models:
   epoch_model_versions:
   - glm-5.1
   status: active
-  api_model_id: null
+  api_model_id: glm-5.1
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.4
+    output_per_1m: 4.4
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
 - id: glm-5.2
   lab: zhipu
   display_name: GLM-5.2
@@ -4377,19 +4711,17 @@ models:
   - glm-5.2_minimal
   - glm-5.2_unknown
   status: active
-  api_model_id: null
+  api_model_id: glm-5.2
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.4
+    output_per_1m: 4.4
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
 - id: glm-5.2_none
   lab: zhipu
   display_name: GLM-5.2
@@ -4399,19 +4731,20 @@ models:
   epoch_model_versions:
   - glm-5.2_none
   status: active
-  api_model_id: null
+  api_model_id: glm-5.2
   context_window: null
   role: null
   pricing:
+    input_per_1m: 1.4
+    output_per_1m: 4.4
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
-      url: null
-      verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      variant_of: glm-5.2
+      variant_note: '`none` est un réglage d''exécution du modèle `glm-5.2`, pas une référence facturée
+        distincte : même tarif unitaire.'
 - id: glm-5.3
   lab: zhipu
   display_name: GLM-5.3
@@ -4472,11 +4805,9 @@ models:
   role: null
   pricing:
     currency: USD
-    input_per_1m: null
-    input_cached_per_1m: null
-    output_per_1m: null
     source:
       url: null
       verified_on: null
-      status: unverified
-      note: À renseigner depuis la page /pricing officielle du lab.
+      status: no_public_price
+      note: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
+        Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'

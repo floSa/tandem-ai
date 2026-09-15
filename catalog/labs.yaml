@@ -8,27 +8,31 @@ labs:
 - id: anthropic
   name: Anthropic
   country: US
-  pricing_url: https://www.anthropic.com/pricing
+  pricing_url: https://claude.com/pricing
   api_docs_url: https://docs.claude.com/en/docs/about-claude/models
   console_url: https://console.anthropic.com
   model_count_tracked: 34
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://claude.com/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: Claude Code, application Claude Desktop.
 - id: openai
   name: OpenAI
   country: US
-  pricing_url: https://openai.com/api/pricing/
+  pricing_url: https://developers.openai.com/api/docs/pricing
   api_docs_url: https://platform.openai.com/docs/models
   console_url: https://platform.openai.com
   model_count_tracked: 41
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://developers.openai.com/api/docs/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: Codex CLI, extension IDE Codex, application ChatGPT Desktop.
 - id: google
   name: Google DeepMind
   country: US
@@ -37,10 +41,13 @@ labs:
   console_url: https://aistudio.google.com
   model_count_tracked: 22
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://ai.google.dev/gemini-api/docs/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: Antigravity (application) et Antigravity CLI. Gemini CLI a cessé de servir les requêtes grand
+      public le 18/06/2026.
 - id: deepseek
   name: DeepSeek
   country: CN
@@ -49,46 +56,55 @@ labs:
   console_url: https://platform.deepseek.com
   model_count_tracked: 13
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://api-docs.deepseek.com/quick_start/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: AUCUN harnais officiel. Les agents DeepSeek en circulation (deepseek-cli, DeepSeek-TUI, Deep
+      Code CLI) sont communautaires ; la doc d'intégration de DeepSeek ne référence que des outils tiers.
 - id: alibaba
   name: Alibaba
   country: CN
-  pricing_url: https://www.alibabacloud.com/help/en/model-studio/models
+  pricing_url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
   api_docs_url: https://www.alibabacloud.com/help/en/model-studio
   console_url: https://modelstudio.console.alibabacloud.com
   model_count_tracked: 32
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: Qwen Code (CLI), Qwen Studio (application).
 - id: mistral
   name: Mistral AI
   country: FR
-  pricing_url: https://mistral.ai/pricing
+  pricing_url: https://docs.mistral.ai/inference/pricing
   api_docs_url: https://docs.mistral.ai/getting-started/models/models_overview/
   console_url: https://console.mistral.ai
   model_count_tracked: 10
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://docs.mistral.ai/inference/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: 'Mistral Vibe : CLI, extensions VS Code / JetBrains / Zed, web et mobile.'
 - id: moonshot
   name: Moonshot
   country: CN
-  pricing_url: https://platform.moonshot.ai/docs/pricing
+  pricing_url: https://platform.kimi.ai/docs/pricing
   api_docs_url: https://platform.moonshot.ai/docs
   console_url: https://platform.moonshot.ai
   model_count_tracked: 9
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://platform.kimi.ai/docs/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: Kimi CLI, Kimi Work.
 - id: zhipu
   name: Z.ai (Zhipu AI)
   country: CN
@@ -97,10 +113,12 @@ labs:
   console_url: https://z.ai
   model_count_tracked: 8
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://docs.z.ai/guides/overview/pricing
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: ZCode.
 - id: xai
   name: xAI
   country: US
@@ -109,31 +127,39 @@ labs:
   console_url: https://console.x.ai
   model_count_tracked: 10
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://docs.x.ai/docs/models
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: Grok Build (CLI / TUI).
 - id: meta
   name: Meta AI
   country: US
-  pricing_url: https://llama.developer.meta.com/docs/pricing
+  pricing_url: https://developer.meta.com/ai/models/muse-spark/
   api_docs_url: https://llama.developer.meta.com/docs
   console_url: https://llama.developer.meta.com
   model_count_tracked: 3
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://developer.meta.com/ai/models/muse-spark/
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: Muse Code (CLI).
 - id: minimax
   name: MiniMax
   country: CN
-  pricing_url: https://platform.minimax.io/docs/price
+  pricing_url: https://platform.minimax.io/docs/guides/pricing-paygo
   api_docs_url: https://platform.minimax.io/docs
   console_url: https://platform.minimax.io
   model_count_tracked: 6
   source:
-    url: null
-    verified_on: null
-    status: unverified
-    note: À renseigner depuis la page /pricing officielle du lab.
+    url: https://platform.minimax.io/docs/guides/pricing-paygo
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+  tooling:
+    checked_on: '2026-09-15'
+    note: AUCUN harnais de développement officiel. MMX-CLI (github.com/MiniMax-AI/cli) est un client de
+      génération multimodale, pas un agent de codage ; la doc MiniMax renvoie explicitement vers des outils
+      tiers via ses API compatibles OpenAI et Anthropic.
