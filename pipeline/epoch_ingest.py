@@ -20,6 +20,7 @@ import argparse
 import csv
 import io
 import json
+import re
 import sys
 import urllib.request
 import zipfile
@@ -130,21 +131,23 @@ REJECTED = {
 COLUMN_MAP = {
     "SWE-Bench verified":  dict(score="mean_score", se="stderr"),
     "Terminal Bench":      dict(score="Accuracy mean", se="Accuracy SE", harness="Agent"),
-    "Aider polyglot":      dict(score="Percent correct"),
+    "Aider polyglot":      dict(score="Percent correct", cost="Cost"),
     "SciCode":             dict(score="Score"),
     "FrontierCode":        dict(score="Main score", harness="Harness", protocol=["Reasoning effort"]),
-    "DeepSWE":             dict(score="Pass@1", harness="Harness", protocol=["Reasoning effort", "Pass@4"]),
+    "DeepSWE":             dict(score="Pass@1", harness="Harness", cost="Mean cost (USD)",
+                                effort="Reasoning effort", se="95% CI half-width", se_is_ci=True,
+                                protocol=["Pass@4", "Mean output tokens", "Mean agent steps", "Runs"]),
     "GSO-Bench":           dict(score="Score OPT@1", harness="Scaffold"),
     "MirrorCode":          dict(score="Best score (across scorers)", se="stderr"),
-    "The Agent Company":   dict(score="% Score"),
+    "The Agent Company":   dict(score="% Score", cost="Average costs"),
     "APEX-Agents":         dict(score="Pass@1 score"),
-    "OSWorld 2.0":         dict(score="Binary accuracy",
+    "OSWorld 2.0":         dict(score="Binary accuracy", cost="Estimated cost (USD)",
                                 protocol=["Reasoning", "Tool setting", "Step budget", "Partial score"]),
     "METR Time Horizons":  dict(score="average_score", unit="minutes", protocol=["Time horizon"]),
     "Cybench":             dict(score="Unguided % Solved"),
     "GPQA diamond":        dict(score="Best score (across scorers)", se="stderr"),
     "HLE":                 dict(score="Accuracy"),
-    "ARC-AGI-2":           dict(score="Score"),
+    "ARC-AGI-2":           dict(score="Score", cost="Cost per task"),
     "GDPval":              dict(score="Win Rate (%)", protocol=["Win + tie rate (%)"]),
     "Remote Labor Index":  dict(score="Score"),
 }
@@ -235,6 +238,11 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
         harness_col = cm.get("harness") if cm.get("harness") in cols else (
             "Agent" if "Agent" in cols else None)
         protocol_cols = [c for c in cm.get("protocol", []) if c in cols]
+        cost_col = cm.get("cost") if cm.get("cost") in cols else None
+        effort_col = cm.get("effort") if cm.get("effort") in cols else None
+        # Certains benchmarks publient une demi-largeur d'IC95 plutôt qu'une
+        # erreur-type : on ramène à l'erreur-type pour rester homogène.
+        se_div = 1.96 if cm.get("se_is_ci") else 1.0
         unit = cm.get("unit", "fraction")
         # Certains benchmarks publient en % (0-100), d'autres en fraction (0-1).
         # `scale` ramène tout à une fraction comparable.
@@ -253,9 +261,24 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
                 continue
             # Le protocole exact sous lequel le score a été obtenu.
             protocol = {c: r[c] for c in protocol_cols if (r.get(c) or "").strip()}
+            mv = r.get("Model version") or r.get("Model") or None
+            effort = (r.get(effort_col) or "").strip() if effort_col else ""
+            if not effort and mv:
+                m_ = re.search(r"_(max|xhigh|high|medium|low|minimal)$", mv)
+                effort = m_.group(1) if m_ else ""
+            cost = None
+            if cost_col and (r.get(cost_col) or "").strip():
+                try:
+                    cost = round(float(str(r[cost_col]).replace("$", "").replace(",", "")), 4)
+                except ValueError:
+                    cost = None
             rows.append({
                 "benchmark": bench["name"],
-                "model_version": r.get("Model version") or r.get("Model") or None,
+                "model_version": mv,
+                "model_base": re.sub(r"_(max|xhigh|high|medium|low|minimal|none|unknown)$", "", mv)
+                               if mv else None,
+                "effort": effort or None,
+                "cost_usd": cost,
                 "model_display": r.get("Name") or None,
                 "organization": r.get("Organization") or r.get("Model Org") or None,
                 "harness": (r.get(harness_col) or None) if harness_col else None,
@@ -263,7 +286,8 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
                 "score": round(val * scale, 4),
                 "unit": unit,
                 "raw_score": round(val, 4) if scale != 1.0 else None,
-                "stderr": round(float(r[se_col]) * scale, 4) if se_col and (r.get(se_col) or "").strip() else None,
+                "stderr": round(float(r[se_col]) * scale / se_div, 4)
+                          if se_col and (r.get(se_col) or "").strip() else None,
                 "protocol": protocol or None,
                 "model_released_on": rel or None,
                 "run_date": (r.get("Run date") or r.get("Started at") or "")[:10] or None,

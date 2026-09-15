@@ -66,6 +66,9 @@ def build_payload() -> dict:
             "o": s.get("organization") or "—",
             "l": org2lab.get(s.get("organization") or "", "autre"),
             "h": s.get("harness"),
+            "mb": s.get("model_base"),
+            "ef": s.get("effort"),
+            "c": s.get("cost_usd"),
             "s": s["score"],
             "e": s.get("stderr"),
             "r": s.get("model_released_on"),
@@ -241,6 +244,7 @@ quand deux barres se chevauchent, l'écart n'est pas significatif.</p>
   <div class="ctrl">
     <div class="seg" id="kind" role="group" aria-label="Type de graphique">
       <button data-k="rank" aria-pressed="true">Classement</button>
+      <button data-k="frontier" aria-pressed="false">Coût × performance</button>
       <button data-k="harness" aria-pressed="false">Effet du harnais</button>
       <button data-k="time" aria-pressed="false">Progression</button>
       <button data-k="cover" aria-pressed="false">Couverture</button>
@@ -546,6 +550,107 @@ function render(sv,r,unit){
       `<td>${esc(s.p)}</td><td>${s.u?`<a href="${esc(s.u)}" rel="noopener">lien</a>`:'—'}</td></tr>`
     ).join('')+'</tbody>':'';
 }
+
+const EFF=['low','medium','high','xhigh','max'];
+function frontier(){
+  // Coût RÉELLEMENT MESURÉ (pas le prix catalogue) contre score, avec les
+  // points d'un même modèle reliés par son échelle d'effort de raisonnement.
+  // Axe des coûts inversé : moins cher vers la droite, donc « mieux » = haut-droite.
+  let r=rows().filter(s=>s.c!=null&&s.c>0);
+  if(!r.length)return empty(
+    "Ce benchmark ne publie pas de coût mesuré. Les benchmarks qui le font : "+
+    "DeepSWE (le plus complet — 5 niveaux d'effort par modèle, harnais unique), "+
+    "Aider polyglot, ARC-AGI-2, OSWorld 2.0, The Agent Company.");
+  const by=new Map();
+  r.forEach(s=>{const k=s.mb||s.m;if(!by.has(k))by.set(k,[]);by.get(k).push(s);});
+  let g=[...by.entries()].map(([k,v])=>({k,d:v[0].d,o:v[0].o,l:v[0].l,
+    v:v.sort((a,b)=>(EFF.indexOf(a.ef)-EFF.indexOf(b.ef))||a.c-b.c)}));
+  g.sort((a,b)=>Math.max(...b.v.map(x=>x.s))-Math.max(...a.v.map(x=>x.s)));
+  const n=+$('#top').value; if(n)g=g.slice(0,n);
+  const pts=g.flatMap(x=>x.v);
+  if(!pts.length)return empty('Aucun point exploitable.');
+
+  const W=940,H=560,L=62,R=188,T=34,B=54;
+  const cmin=Math.min(...pts.map(p=>p.c)),cmax=Math.max(...pts.map(p=>p.c));
+  const smax=Math.max(...pts.map(p=>p.s))*1.08,smin=Math.max(0,Math.min(...pts.map(p=>p.s))-0.05);
+  const lo=Math.log10(cmin*0.8),hi=Math.log10(cmax*1.25);
+  // Inversion : le coût le plus BAS est à droite.
+  const x=c=>W-R-(Math.log10(c)-lo)/(hi-lo)*(W-L-R);
+  const y=v=>H-B-(v-smin)/(smax-smin)*(H-B-T);
+  const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
+    'aria-label':'Coût mesuré contre performance, par niveau d\'effort'});
+
+  // grille + graduations de coût (décades)
+  for(let i=0;i<=4;i++){const v=smin+(smax-smin)*i/4;
+    sv.append(mk('line',{x1:L,x2:W-R,y1:y(v),y2:y(v),class:'gl'}));
+    const t=mk('text',{x:L-8,y:y(v)+4,'text-anchor':'end',class:'ax'});
+    t.textContent=(v*100).toFixed(0)+'%';sv.append(t);}
+  const decs=[];
+  for(let e=Math.floor(lo);e<=Math.ceil(hi);e++)
+    for(const m of [1,2,5]){const v=m*Math.pow(10,e);
+      if(v>=cmin*0.8&&v<=cmax*1.25)decs.push(v);}
+  decs.forEach(v=>{
+    sv.append(mk('line',{x1:x(v),x2:x(v),y1:T,y2:H-B,class:'gl'}));
+    const t=mk('text',{x:x(v),y:H-B+16,'text-anchor':'middle',class:'ax'});
+    t.textContent='$'+(v<1?v.toFixed(2):v.toFixed(0));sv.append(t);});
+
+  // Front de Pareto : rien n'est à la fois moins cher ET meilleur.
+  const par=pts.filter(p=>!pts.some(q=>q!==p&&q.c<=p.c&&q.s>=p.s&&(q.c<p.c||q.s>p.s)))
+               .sort((a,b)=>a.c-b.c);
+  if(par.length>1){
+    let d=`M${x(par[0].c)},${y(par[0].s)}`;
+    for(let i=1;i<par.length;i++)d+=` L${x(par[i].c)},${y(par[i-1].s)} L${x(par[i].c)},${y(par[i].s)}`;
+    sv.append(mk('path',{d,fill:'none',stroke:cv('--ink-3'),'stroke-width':1.5,
+      'stroke-dasharray':'5 4',opacity:.55}));
+    const t=mk('text',{x:x(par.at(-1).c)+6,y:y(par.at(-1).s)-8,class:'ax'});
+    t.textContent='front de Pareto';sv.append(t);}
+
+  // Une polyligne par modèle : son échelle d'effort.
+  g.forEach(row=>{const c=cv(LABC[row.l]||'--ink-3');
+    if(row.v.length>1){
+      const d='M'+row.v.map(p=>`${x(p.c)},${y(p.s)}`).join(' L');
+      sv.append(mk('path',{d,fill:'none',stroke:c,'stroke-width':2,opacity:.55,
+        'stroke-linejoin':'round'}));}
+    row.v.forEach((p,i)=>{const gg=mk('g');
+      // Taille croissante avec l'effort : la position dans l'échelle se lit sans légende.
+      const rad=row.v.length>1?3+2.4*i/Math.max(1,row.v.length-1):4.6;
+      gg.append(mk('circle',{cx:x(p.c),cy:y(p.s),r:rad,fill:c,
+        stroke:cv('--panel'),'stroke-width':1.8}));
+      wire(gg,`<b>${esc(p.d||p.m)}</b>${esc(p.o)}`+
+        (p.ef?`<br>effort : <b>${esc(p.ef)}</b>`:'')+
+        `<br>score <b>${(p.s*100).toFixed(1)}%</b> pour <b>$${p.c.toFixed(2)}</b> par tâche`+
+        (p.h?`<br>harnais : ${esc(p.h)}`:'')+
+        `<i>coût mesuré lors du run, pas un prix catalogue</i>`);
+      sv.append(gg);});
+    // Étiquette directe au meilleur point : l'identité ne repose pas sur la couleur.
+    const bst=row.v.reduce((a,b)=>b.s>a.s?b:a);
+    const t=mk('text',{x:x(bst.c)+9,y:y(bst.s)+4,class:'lbl','font-size':'11'});
+    t.textContent=(row.d||row.k).slice(0,26);sv.append(t);});
+
+  const xt=mk('text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle',class:'ax'});
+  xt.textContent='◀ plus cher      coût mesuré par tâche (échelle log)      moins cher ▶';
+  sv.append(xt);
+  const yt=mk('text',{x:14,y:H/2,'text-anchor':'middle',class:'ax',
+    transform:`rotate(-90 14 ${H/2})`});
+  yt.textContent='score';sv.append(yt);
+
+  $('#chart').innerHTML='';$('#chart').append(sv);
+  $('#caveat').innerHTML='<div class="note"><b>Comment lire.</b> Chaque polyligne est '+
+    "un modèle, chaque point un niveau d'effort de raisonnement (du plus petit cercle, "+
+    "<code>low</code>, au plus grand, <code>max</code>). L'axe des coûts est inversé : "+
+    "<b>en haut à droite = meilleur et moins cher</b>. Le coût affiché est celui "+
+    "<b>réellement mesuré pendant le run</b>, pas un prix au token — c'est ce qui rend "+
+    "les niveaux d'effort comparables. Une courbe qui s'aplatit signale que l'effort "+
+    "supplémentaire ne s'achète plus : le point <code>max</code> coûte souvent le double "+
+    "du <code>xhigh</code> pour un gain nul, voire négatif.</div>";
+  $('#tbl').innerHTML='<thead><tr><th>Modèle</th><th>Effort</th><th class="n">Score</th>'+
+    '<th class="n">Coût/tâche</th><th class="n">$ par point</th><th>Harnais</th></tr></thead><tbody>'+
+    pts.sort((a,b)=>b.s-a.s).map(p=>`<tr><td>${esc(p.d||p.m)}</td><td>${esc(p.ef||'—')}</td>`+
+      `<td class="n">${(p.s*100).toFixed(1)}%</td><td class="n">$${p.c.toFixed(2)}</td>`+
+      `<td class="n">$${(p.c/(p.s*100)).toFixed(3)}</td><td>${esc(p.h||'—')}</td></tr>`
+    ).join('')+'</tbody>';
+}
+
 function api(){
   // Barres du coût d'entrée, avec le coût de sortie en repère secondaire.
   let r=D.priced_models.slice();
@@ -645,11 +750,16 @@ function plans(){
       `<td>${esc(p.includes||'—')}</td></tr>`).join('')+'</tbody>';
 }
 
-const DRAW={rank,harness,time,cover,price,api,plans};
+const DRAW={rank,frontier,harness,time,cover,price,api,plans};
 function draw(){DRAW[K]();}
 $('#kind').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   K=b.dataset.k;[...$('#kind').children].forEach(x=>
-    x.setAttribute('aria-pressed',String(x===b)));draw();});
+    x.setAttribute('aria-pressed',String(x===b)));
+  // La vue coût n'a de sens que sur un benchmark qui publie un coût mesuré.
+  if(K==='frontier'&&!D.scores.some(s=>s.b===bsel.value&&s.c!=null)){
+    const alt=D.benchmarks.find(x=>D.scores.some(s=>s.b===x.name&&s.c!=null&&s.ef));
+    if(alt)bsel.value=alt.name;}
+  draw();});
 [bsel,lsel,$('#top')].forEach(el=>el.addEventListener('change',draw));
 
 // ── fiches benchmarks ──────────────────────────────────────────────────────

@@ -125,3 +125,52 @@ erreur.
 - la **conformité** : rétention des données, résidence, engagements contractuels.
 
 Un référentiel honnête dit aussi ce qu'il ne mesure pas.
+
+---
+
+## 8. Coût mesuré contre prix catalogue
+
+Deux grandeurs portent le mot « coût » et **ne se substituent jamais l'une à
+l'autre** :
+
+| | Ce que c'est | Où c'est |
+| :-- | :-- | :-- |
+| **Prix catalogue** | $ par million de tokens, affiché par le fournisseur | `catalog/models.yaml` |
+| **Coût mesuré** | $ réellement dépensés pour accomplir une tâche du benchmark | `catalog/scores.yaml`, champ `cost_usd` |
+
+Le prix catalogue ne permet pas de comparer deux niveaux d'effort d'un même
+modèle : le tarif au token est identique, seule la consommation change. Seul le
+coût mesuré rend la comparaison possible — c'est pourquoi la vue
+« Coût × performance » n'accepte que les benchmarks qui le publient.
+
+Benchmarks fournissant un coût mesuré : **DeepSWE** (le plus complet — jusqu'à 5
+niveaux d'effort par modèle, sous un harnais unique, donc comparaison contrôlée),
+**Aider polyglot**, **ARC-AGI-2**, **OSWorld 2.0**, **The Agent Company**.
+
+### L'effort de raisonnement est une variable de décision
+
+Les suffixes `_low`, `_medium`, `_high`, `_xhigh`, `_max` ne sont pas des
+variantes de modèle : c'est le **budget de raisonnement** accordé au même modèle.
+Son effet dépasse souvent l'écart entre deux modèles concurrents, et il se paie.
+
+Ce que la donnée de septembre 2026 établit :
+
+- l'effort peut transformer un modèle de bout en bout — un même modèle passe de
+  1,5 % à 67,2 % de `low` à `max`, pour un coût multiplié par plus de 40 ;
+- **le rendement s'effondre au sommet** : le palier `max` coûte fréquemment le
+  double du `xhigh` pour un gain nul, et parfois négatif (un modèle perd 0,2
+  point en passant de `xhigh` à `max`) ;
+- un modèle plus modeste à effort élevé bat souvent un modèle plus prestigieux à
+  effort faible, à coût égal.
+
+**Règle de publication : ne jamais citer un score sans son niveau d'effort.**
+« Ce modèle fait 73 % » est une affirmation incomplète tant que le budget de
+raisonnement et le coût par tâche ne sont pas donnés.
+
+### Lecture de la vue
+
+L'axe des coûts est **inversé** : moins cher vers la droite. Le coin
+**haut-droite** est donc la zone strictement préférable — meilleur et moins cher.
+Le front de Pareto relie les points qu'aucun autre ne domine sur les deux axes à
+la fois ; tout ce qui est en dessous est dominé, c'est-à-dire qu'il existe une
+option à la fois meilleure et moins chère.
