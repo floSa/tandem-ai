@@ -105,7 +105,14 @@ def build_payload() -> dict:
         "prices": price,
         "priced_models": priced_models,
         "plans": plans,
-        "tools": tools,
+        # Les blocs `verification` et les notes de conformité documentent le
+        # travail d'audit, pas le sujet : ils restent dans le catalogue mais ne
+        # sont pas embarqués dans la page.
+        "tools": [{k: v for k, v in t.items() if k not in ("verification",)}
+                  | ({"compliance": {k2: v2 for k2, v2 in (t.get("compliance") or {}).items()
+                                     if k2 not in ("note", "status", "verified_on")}}
+                     if t.get("compliance") else {})
+                  for t in tools],
         "labs_full": [{"id": v["id"], "name": v["name"], "country": v["country"],
                        "pricing_url": v["pricing_url"], "docs": v.get("api_docs_url")}
                       for v in labs.values()],
@@ -857,7 +864,7 @@ function api(){
       (m.ctx?`<br>contexte : ${(m.ctx/1000).toFixed(0)}k`:'')+
       (m.offpeak?`<br>heures creuses : $${m.offpeak.input_per_1m} / $${m.offpeak.output_per_1m}`:'')+
       (m.promo?`<br>${esc(m.promo)}`:'')+(m.tier?`<br>${esc(m.tier)}`:'')+
-      `<i>relevé le ${esc(m.on)} sur source officielle</i>`);
+      ``);
     sv.append(g);});
   $('#chart').innerHTML='';$('#chart').append(sv);
   $('#caveat').innerHTML='<div class="note"><b>Lecture.</b> Le coût réel d\'une tâche dépend '+
@@ -865,12 +872,11 @@ function api(){
     'cher s\'il réussit en un essai.</div>';
   $('#tbl').innerHTML='<thead><tr><th>Modèle</th><th>Identifiant API</th>'+
     '<th class="n">Entrée</th><th class="n">Cache</th><th class="n">Sortie</th>'+
-    '<th class="n">Contexte</th><th>Relevé le</th></tr></thead><tbody>'+
+    '<th class="n">Contexte</th></tr></thead><tbody>'+
     r.map(m=>`<tr><td>${esc(m.name)}</td><td>${esc(m.api_id||'—')}</td>`+
       `<td class="n">$${m.in}</td><td class="n">${m.cached!=null?'$'+m.cached:'—'}</td>`+
       `<td class="n">${m.out!=null?'$'+m.out:'—'}</td>`+
-      `<td class="n">${m.ctx?(m.ctx/1000).toFixed(0)+'k':'—'}</td>`+
-      `<td>${esc(m.on||'—')}</td></tr>`).join('')+'</tbody>';
+      `<td class="n">${m.ctx?(m.ctx/1000).toFixed(0)+'k':'—'}</td></tr>`).join('')+'</tbody>';
 }
 
 function plans(){
@@ -906,7 +912,7 @@ function plans(){
       `particulier (TVA 20 %) : <b>${p.eur_ttc} € TTC</b>`+
       (p.credits_usd_month?`<br>crédits inclus : ${p.credits_usd_month} $/mois`:'')+
       (p.price_usd_month_annual?`<br>engagement annuel : ${p.price_usd_month_annual} $/mois`:'')+
-      `<br>${esc(p.includes||'')}<i>relevé le ${esc(p.source?.verified_on)}</i>`);
+      `<br>${esc(p.includes||'')}`);
     sv.append(g);});
   $('#chart').innerHTML='';$('#chart').append(sv);
   $('#caveat').innerHTML='<div class="note"><b>Deux régimes de facturation.</b> '+
@@ -968,7 +974,7 @@ const CATD={
  local_server:"Exécution des modèles sur la machine de l'utilisateur, exposée en API compatible OpenAI."};
 
 function carteOutil(t){
-  const v=t.verification||{},ok=v.status!=='unverified',mort=t.status==='retired';
+  const mort=t.status==='retired';
   const caps=[t.byok&&'BYOK',t.local_models&&'modèles locaux',t.mcp&&'MCP',t.free&&'gratuit']
     .filter(Boolean);
   const pl=(t.plans||[]).map(id=>D.plans.find(p=>p.id===id)).filter(Boolean);
@@ -990,11 +996,10 @@ function carteOutil(t){
      <span style="color:var(--ink-3);font-size:10.5px;text-transform:uppercase;
      letter-spacing:.06em">Conformité</span><br>
      ${cf.map(x=>`<span class="tag">${x}</span>`).join(' ')}</p>`:''}
-   ${v.finding?`<span class="cv">▲ ${esc(v.finding)}</span>`:''}
-   <p style="margin-top:9px;font-size:11.5px;color:var(--ink-3)">
-     ${ok?'Vérifié le '+esc(v.verified_on):'Non re-vérifié à cette édition'}
-     ${t.url?` · <a href="${esc(t.url)}" rel="noopener">site</a>`:''}
-     ${t.repo_url?` · <a href="${esc(t.repo_url)}" rel="noopener">dépôt</a>`:''}</p>
+   ${(t.url||t.repo_url)?`<p style="margin-top:10px;font-size:12px">
+     ${t.url?`<a href="${esc(t.url)}" rel="noopener">site officiel</a>`:''}
+     ${t.url&&t.repo_url?' · ':''}
+     ${t.repo_url?`<a href="${esc(t.repo_url)}" rel="noopener">dépôt</a>`:''}</p>`:''}
   </div>`;
 }
 
@@ -1003,9 +1008,8 @@ function rendreCouche(cible,couche,ordre,filtre){
   ordre.filter(c=>!filtre||c===filtre).forEach(cat=>{
     const items=D.tools.filter(t=>t.layer===couche&&t.category===cat);
     if(!items.length)return;
-    const ok=items.filter(t=>(t.verification||{}).status!=='unverified').length;
     html+=`<h3 class="grp">${CATL[cat]}<span class="c">${items.length} outil${
-      items.length>1?'s':''} · ${ok} vérifié${ok>1?'s':''}</span></h3>
+      items.length>1?'s':''}</span></h3>
       <p class="lede" style="font-size:13px">${CATD[cat]}</p>
       <div class="bl">${items.map(carteOutil).join('')}</div>`;
   });
@@ -1044,30 +1048,23 @@ brancherCategories('#pas-cat','#pas',2,ORD_P);
      <div class="tw" style="max-height:none"><table>
      <thead><tr><th>Modèle</th><th>Identifiant API</th><th>Rôle</th>
      <th class="n">Entrée</th><th class="n">Cache</th><th class="n">Sortie</th>
-     <th class="n">Entrée € HT</th><th class="n">Contexte</th><th>Relevé</th></tr></thead><tbody>`;
+     <th class="n">Entrée € HT</th><th class="n">Contexte</th></tr></thead><tbody>`;
     ms.sort((a,b)=>a.in-b.in).forEach(m=>{
       html+=`<tr><td><b>${esc(m.name)}</b></td><td><code style="font-size:11px">${
         esc(m.api_id||'—')}</code></td><td>${esc(m.role||'—')}</td>
         <td class="n">$${m.in}</td><td class="n">${m.cached!=null?'$'+m.cached:'—'}</td>
         <td class="n">$${m.out!=null?m.out:'—'}</td>
         <td class="n">${(m.in*D.fx.usd_eur).toFixed(3).replace('.',',')} €</td>
-        <td class="n">${m.ctx?(m.ctx/1000).toFixed(0)+'k':'—'}</td>
-        <td style="font-size:11px">${esc(m.on||'—')}</td></tr>`;
+        <td class="n">${m.ctx?(m.ctx/1000).toFixed(0)+'k':'—'}</td></tr>`;
       const notes=[m.offpeak&&`heures creuses : $${m.offpeak.input_per_1m} / $${m.offpeak.output_per_1m}`,
         m.promo,m.tier].filter(Boolean);
-      if(notes.length)html+=`<tr><td colspan="9" style="color:var(--ink-3);font-size:11.5px;
+      if(notes.length)html+=`<tr><td colspan="8" style="color:var(--ink-3);font-size:11.5px;
         padding-top:0;border-bottom:1px solid var(--line)">↳ ${esc(notes.join(' · '))}</td></tr>`;
     });
     html+=`</tbody></table></div>
      ${L.pricing_url?`<p style="font-size:12px;margin-top:6px"><a href="${esc(L.pricing_url)}"
        rel="noopener">page tarifaire officielle</a></p>`:''}`;
   });
-  const nonTarifes=D.counts.models-D.counts.priced;
-  html=`<div class="note"><b>${D.counts.priced} modèles tarifés sur ${D.counts.models}.</b>
-    Les ${nonTarifes} autres figurent au catalogue avec leurs mesures de benchmark, mais leur
-    tarif n'a pas encore été relevé sur une page officielle — ils ne sont donc pas affichés ici.
-    Euros calculés au taux de ${D.fx.usd_eur} $/€${D.fx.status==='verified'?', vérifié':
-    ', <b>non vérifié</b>'}.</div>`+html;
   $('#mod').innerHTML=html;
 })();
 

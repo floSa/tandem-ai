@@ -84,87 +84,49 @@ second passe à l'échelle d'une équipe.
 
 ## 3. Couche 1 — Les harnais d'exécution
 
-L'interface développeur : le logiciel avec lequel on travaille, et qui exécute le modèle. Son effet sur la performance mesurée est loin d'être négligeable — sur Terminal-Bench, l'écart entre deux harnais dépasse souvent l'écart entre deux modèles. La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édition ; une fiche non re-contrôlée est signalée comme telle plutôt que présentée comme à jour.
+L'interface développeur : le logiciel avec lequel on travaille, et qui exécute le modèle. Son effet sur la performance mesurée est loin d'être négligeable — sur Terminal-Bench, l'écart entre deux harnais dépasse souvent l'écart entre deux modèles.
 
 ### 3.1 IDE dérivés
 
-| Outil | Éditeur | Capacités | Forfaits | Vérifié |
-| :-- | :-- | :-- | :-- | :-- |
-| [Cursor](https://cursor.com) | Anysphere, Inc. | BYOK, modèles locaux, MCP | Hobby, Individual, Teams | 2026-09-15 |
-| [Trae](https://trae.ai) | ByteDance | MCP | Free, Lite, Pro, Pro+, Ultra | 2026-09-15 |
-| [Void IDE](https://voideditor.com) *(retired)* | Communauté open-source | BYOK, modèles locaux | — | 2026-09-15 |
-| [Windsurf / Devin](https://devin.ai) | Cognition AI | BYOK, MCP | — | non |
-| [ZCode](https://zcode.z.ai/en) | Z.ai (Zhipu AI) | — | Lite, Pro, Max | 2026-09-15 |
-| [Zed](https://zed.dev) | Zed Industries, Inc. | BYOK, modèles locaux | Personal, Pro, Business | 2026-09-15 |
-
-> **Cursor —** Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente ne figurent plus.
-
-> **Trae —** Cinq paliers confirmés, identiques à l'édition précédente. Les quotas sont désormais libellés en dollars d'usage (5 $ sur Lite, 20 $ sur Pro).
-
-> **Void IDE —** Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente est dépassé.
-
-> **ZCode —** Absent de l'édition précédente, et écarté à tort au relevé précédent sur des sources contradictoires. La doc API de Z.ai ne le mentionne pas — il a son propre domaine, zcode.z.ai. Contrairement à ce que laissaient entendre les sources secondaires, il n'est PAS gratuit.
-
-> **Zed —** Paliers actuels : Personal gratuit (BYOK illimité), Pro à 10 $, Business à 30 $/siège. Le palier Business n'était pas chiffré dans l'édition précédente.
+| Outil | Éditeur | Capacités | Forfaits |
+| :-- | :-- | :-- | :-- |
+| [Cursor](https://cursor.com) | Anysphere, Inc. | BYOK, modèles locaux, MCP | Hobby, Individual, Teams |
+| [Trae](https://trae.ai) | ByteDance | MCP | Free, Lite, Pro, Pro+, Ultra |
+| [Void IDE](https://voideditor.com) *(retired)* | Communauté open-source | BYOK, modèles locaux | — |
+| [Windsurf / Devin](https://devin.ai) | Cognition AI | BYOK, MCP | — |
+| [ZCode](https://zcode.z.ai/en) | Z.ai (Zhipu AI) | — | Lite, Pro, Max |
+| [Zed](https://zed.dev) | Zed Industries, Inc. | BYOK, modèles locaux | Personal, Pro, Business |
 
 ### 3.2 Extensions VS Code
 
-| Outil | Éditeur | Capacités | Forfaits | Vérifié |
-| :-- | :-- | :-- | :-- | :-- |
-| Cline | Collectif open-source | BYOK, modèles locaux, MCP, gratuit | — | 2026-09-15 |
-| [Codex (extension IDE)](https://developers.openai.com/codex) | OpenAI | — | — | 2026-09-15 |
-| [Continue](https://continue.dev) | Continue Dev, Inc. | BYOK, modèles locaux, gratuit | — | 2026-09-15 |
-| [GitHub Copilot](https://github.com/features/copilot) | GitHub / Microsoft | — | Free, Pro, Pro+, Max | 2026-09-15 |
-| Roo Code *(retired)* | RooCodeInc (open-source) | BYOK, modèles locaux, MCP, gratuit | — | 2026-09-15 |
-
-> **Cline —** Très actif (commit le jour du relevé), 68 100 étoiles, licence Apache-2.0.
-
-> **Codex (extension IDE) —** Existence confirmee par recherche, page produit officielle non ouverte : a re-verifier sur developers.openai.com.
-
-> **Continue —** Très actif (commit le jour du relevé), 35 918 étoiles.
-
-> **GitHub Copilot —** Modèle de crédits confirmé : 15 $ (Pro), 70 $ (Pro+), 200 $ (Max). Complétions illimitées sur tout forfait payant.
-
-> **Roo Code —** Dépôt ARCHIVÉ, dernier commit le 2026-05-15. Le projet a aussi changé d'organisation (RooVetGit → RooCodeInc) : l'URL de l'édition précédente était morte. 24 302 étoiles au moment du relevé.
+| Outil | Éditeur | Capacités | Forfaits |
+| :-- | :-- | :-- | :-- |
+| Cline | Collectif open-source | BYOK, modèles locaux, MCP, gratuit | — |
+| [Codex (extension IDE)](https://developers.openai.com/codex) | OpenAI | — | — |
+| [Continue](https://continue.dev) | Continue Dev, Inc. | BYOK, modèles locaux, gratuit | — |
+| [GitHub Copilot](https://github.com/features/copilot) | GitHub / Microsoft | — | Free, Pro, Pro+, Max |
+| Roo Code *(retired)* | RooCodeInc (open-source) | BYOK, modèles locaux, MCP, gratuit | — |
 
 ### 3.3 Agents CLI
 
-| Outil | Éditeur | Capacités | Forfaits | Vérifié |
-| :-- | :-- | :-- | :-- | :-- |
-| [Aider](https://aider.chat) *(maintenance)* | Aider-AI (open-source) | BYOK, modèles locaux, gratuit | — | 2026-09-15 |
-| [Claude Code](https://docs.claude.com/en/docs/claude-code) | Anthropic, PBC | MCP | Pro, Max | 2026-09-15 |
-| [Codex CLI](https://developers.openai.com/codex) | OpenAI | MCP, gratuit | — | 2026-09-15 |
-| [Kimi Code CLI](https://platform.kimi.ai) | Moonshot AI | — | — | non |
-| [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — | 2026-09-15 |
-| [Qwen Code](https://github.com/QwenLM/qwen-code) | Alibaba | BYOK, gratuit | — | 2026-09-15 |
-
-> **Aider —** Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti. Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l'URL de l'édition précédente redirige.
-
-> **Claude Code —** Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
-
-> **Codex CLI —** Remplace la fiche 'ChatGPT Desktop' de l'edition precedente, qui designait une application de chat et non un harnais de developpement. 124 380 etoiles, commit le jour du releve.
-
-> **OpenHands —** Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands vers OpenHands/OpenHands.
-
-> **Qwen Code —** Absent de l'édition précédente. Dépôt vérifié directement : 27 882 étoiles, Apache-2.0, commit le jour du relevé.
+| Outil | Éditeur | Capacités | Forfaits |
+| :-- | :-- | :-- | :-- |
+| [Aider](https://aider.chat) *(maintenance)* | Aider-AI (open-source) | BYOK, modèles locaux, gratuit | — |
+| [Claude Code](https://docs.claude.com/en/docs/claude-code) | Anthropic, PBC | MCP | Pro, Max |
+| [Codex CLI](https://developers.openai.com/codex) | OpenAI | MCP, gratuit | — |
+| [Kimi Code CLI](https://platform.kimi.ai) | Moonshot AI | — | — |
+| [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) | Alibaba | BYOK, gratuit | — |
 
 ### 3.4 Applications desktop
 
-| Outil | Éditeur | Capacités | Forfaits | Vérifié |
-| :-- | :-- | :-- | :-- | :-- |
-| [ChatGPT Desktop](https://openai.com/chatgpt/desktop) | OpenAI | MCP | — | 2026-09-15 |
-| [Claude Desktop](https://claude.ai/download) | Anthropic, PBC | MCP | Free, Pro, Max | 2026-09-15 |
-| [Kimi Work](https://kimi.com) | Moonshot AI | — | — | 2026-09-15 |
-| [LM Studio Bionic](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — | 2026-09-15 |
-| [Qwen Studio](https://chat.qwen.ai) | Alibaba | gratuit | — | 2026-09-15 |
-
-> **ChatGPT Desktop —** Fiche RESTAURÉE : l'édition précédente l'avait supprimée à tort en la remplaçant par Codex. Les deux coexistent — OpenAI a fusionné les applications Chat et Codex en une seule le 9 juillet 2026. La page d'aide officielle renvoie un 403 : provenance secondaire, à re-vérifier.
-
-> **Kimi Work —** Absente de l'édition précédente alors qu'elle figurait dans les fiches de l'audit d'août. Provenance secondaire, à re-vérifier sur kimi.com.
-
-> **LM Studio Bionic —** L'edition precedente confondait l'agent et le serveur local sous une seule fiche : ce sont deux couches differentes.
-
-> **Qwen Studio —** Absente de l'édition précédente. Page officielle de téléchargement non ouverte : provenance secondaire, à re-vérifier.
+| Outil | Éditeur | Capacités | Forfaits |
+| :-- | :-- | :-- | :-- |
+| [ChatGPT Desktop](https://openai.com/chatgpt/desktop) | OpenAI | MCP | — |
+| [Claude Desktop](https://claude.ai/download) | Anthropic, PBC | MCP | Free, Pro, Max |
+| [Kimi Work](https://kimi.com) | Moonshot AI | — | — |
+| [LM Studio Bionic](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — |
+| [Qwen Studio](https://chat.qwen.ai) | Alibaba | gratuit | — |
 
 ---
 
@@ -174,18 +136,16 @@ Une passerelle n'écrit pas de code : elle donne accès aux modèles. Elle se pl
 
 ### 4.1 Agrégateurs cloud
 
-| Outil | Éditeur | Capacités | Forfaits | Vérifié |
-| :-- | :-- | :-- | :-- | :-- |
-| [OpenRouter](https://openrouter.ai) | OpenRouter, Inc. | — | — | non |
+| Outil | Éditeur | Capacités | Forfaits |
+| :-- | :-- | :-- | :-- |
+| [OpenRouter](https://openrouter.ai) | OpenRouter, Inc. | — | — |
 
 ### 4.2 Serveurs locaux
 
-| Outil | Éditeur | Capacités | Forfaits | Vérifié |
-| :-- | :-- | :-- | :-- | :-- |
-| [LM Studio (serveur local)](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — | 2026-09-15 |
-| [Ollama](https://ollama.com) | Ollama | modèles locaux, gratuit | — | 2026-09-15 |
-
-> **Ollama —** Très actif, 181 039 étoiles — la passerelle locale la plus adoptée.
+| Outil | Éditeur | Capacités | Forfaits |
+| :-- | :-- | :-- | :-- |
+| [LM Studio (serveur local)](https://lmstudio.ai) | Element Labs, Inc. | modèles locaux, gratuit | — |
+| [Ollama](https://ollama.com) | Ollama | modèles locaux, gratuit | — |
 
 ---
 

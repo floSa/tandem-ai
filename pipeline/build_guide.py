@@ -216,9 +216,7 @@ def main() -> int:
     A("")
     A("L'interface développeur : le logiciel avec lequel on travaille, et qui exécute le "
       "modèle. Son effet sur la performance mesurée est loin d'être négligeable — sur "
-      "Terminal-Bench, l'écart entre deux harnais dépasse souvent l'écart entre deux modèles. "
-      "La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édition ; une fiche "
-      "non re-contrôlée est signalée comme telle plutôt que présentée comme à jour.")
+      "Terminal-Bench, l'écart entre deux harnais dépasse souvent l'écart entre deux modèles.")
     A("")
     by_cat = collections.defaultdict(list)
     for t in tools:
@@ -231,8 +229,8 @@ def main() -> int:
                 continue
             A(f"### {prefixe}.{i} {CAT.get(cat, cat)}")
             A("")
-            A("| Outil | Éditeur | Capacités | Forfaits | Vérifié |")
-            A("| :-- | :-- | :-- | :-- | :-- |")
+            A("| Outil | Éditeur | Capacités | Forfaits |")
+            A("| :-- | :-- | :-- | :-- |")
             for t in items:
                 caps = ", ".join(filter(None, [
                     "BYOK" if t.get("byok") else None,
@@ -241,17 +239,10 @@ def main() -> int:
                     "gratuit" if t.get("free") else None])) or "—"
                 pl = ", ".join(next((p["name"] for p in plans if p["id"] == pid), pid)
                                for pid in (t.get("plans") or [])) or "—"
-                v = t.get("verification") or {}
-                vs = v.get("verified_on") if v.get("status") != "unverified" else "non"
                 name = f"[{t['name']}]({t['url']})" if t.get("url") else t["name"]
                 st = "" if t.get("status") in ("active", "unknown") else f" *({t['status']})*"
-                A(f"| {name}{st} | {t.get('vendor', '—')} | {caps} | {pl} | {vs or 'non'} |")
+                A(f"| {name}{st} | {t.get('vendor', '—')} | {caps} | {pl} |")
             A("")
-            for t in items:
-                f_ = (t.get("verification") or {}).get("finding")
-                if f_:
-                    A(f"> **{t['name']} —** {f_}")
-                    A("")
 
     bloc(3, COUCHE1)
     A("---"); A("")
