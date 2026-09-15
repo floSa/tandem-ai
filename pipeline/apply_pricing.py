@@ -7,6 +7,7 @@ date de consultation, et le niveau de provenance. Un modèle tarifé mais absent
 du catalogue est ajouté (un modèle peut être commercialisé avant d'être mesuré).
 """
 from __future__ import annotations
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -29,7 +30,91 @@ SOURCES = {
     "moonshot":  ("https://platform.kimi.ai/docs/pricing", "official_pricing_page",
                   "platform.moonshot.ai redirige vers platform.kimi.ai."),
     "zhipu":     ("https://docs.z.ai/guides/overview/pricing", "official_pricing_page", None),
+    "alibaba":   ("https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+                  "official_pricing_page",
+                  "Grille région Singapour (International). La région Chine continentale "
+                  "est sensiblement moins chère — elle n'est pas relevée ici."),
+    "mistral":   ("https://docs.mistral.ai/inference/pricing", "official_pricing_page",
+                  "mistral.ai/pricing ne porte pas la grille par modèle ; elle vit dans la doc. "
+                  "Les identifiants versionnés viennent de docs.mistral.ai/models/overview."),
+    "minimax":   ("https://platform.minimax.io/docs/guides/pricing-paygo", "official_pricing_page",
+                  "platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/."),
+    "xai":       ("https://docs.x.ai/docs/models", "official_pricing_page",
+                  "Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double."),
 }
+
+# Suffixe de variante de protocole ajouté par Epoch à l'identifiant d'un modèle :
+# effort de raisonnement (`_high`), budget de réflexion (`_32K`), mode (`_thinking`).
+# Ce suffixe décrit un RÉGLAGE D'EXÉCUTION, pas une référence facturée distincte :
+# la variante consomme plus de tokens, au même tarif unitaire. Elle hérite donc du
+# tarif de son modèle de base — ce n'est pas une extrapolation, c'est le même SKU.
+VARIANT_SUFFIX = re.compile(
+    r"^(?P<base>.+)_(?P<variant>none|minimal|low|medium|high|xhigh|max|promax"
+    r"|thinking|nonthinking|unknown|\d+K)$"
+)
+
+
+def mark_no_public_price(models: list[dict], groups: list[dict]) -> int:
+    """Classe les modèles qui n'auront jamais de tarif éditeur, avec leur raison.
+
+    Sans cette distinction, un modèle à poids ouverts resterait indéfiniment
+    « tarif à relever » — alors qu'il n'y a rien à relever.
+    """
+    idx = {m["id"]: m for m in models}
+    n = 0
+    for g in groups or []:
+        reason = " ".join((g.get("reason") or "").split())
+        for mid in g.get("models") or []:
+            m = idx.get(mid)
+            if m is None:
+                print(f"  ⚠  `no_public_price` inconnu du catalogue : {mid}")
+                continue
+            if (m.get("pricing") or {}).get("input_per_1m") is not None:
+                print(f"  ⚠  `{mid}` est classé sans tarif mais en porte un — conflit à trancher")
+                continue
+            m["pricing"] = {"currency": "USD", "source": {
+                "url": None, "verified_on": None,
+                "status": "no_public_price", "note": reason}}
+            n += 1
+    return n
+
+
+def propagate_variants(models: list[dict]) -> int:
+    """Étend le tarif d'un modèle de base à ses variantes d'effort de raisonnement."""
+    idx = {m["id"]: m for m in models}
+    n = 0
+    for m in models:
+        pr = m.get("pricing") or {}
+        if pr.get("input_per_1m") is not None or pr.get("source", {}).get("status") == "no_public_price":
+            continue
+        mt = VARIANT_SUFFIX.match(m["id"])
+        if not mt:
+            continue
+        base = idx.get(mt.group("base"))
+        if base is None:
+            continue
+        # Un réglage d'exécution ne change pas le statut commercial du modèle :
+        # si la base n'a pas de tarif éditeur, la variante non plus.
+        if (base.get("pricing") or {}).get("source", {}).get("status") == "no_public_price":
+            m["pricing"] = dict(base["pricing"])
+            n += 1
+            continue
+        if (base.get("pricing") or {}).get("input_per_1m") is None:
+            continue
+        p = {k: v for k, v in base["pricing"].items() if k != "source"}
+        src = dict(base["pricing"]["source"])
+        src["variant_of"] = base["id"]
+        src["variant_note"] = (
+            f"`{mt.group('variant')}` est un réglage d'exécution du modèle "
+            f"`{base['id']}`, pas une référence facturée distincte : même tarif unitaire."
+        )
+        p["source"] = src
+        m["pricing"] = p
+        for k in ("api_model_id", "context_window", "role"):
+            if base.get(k) is not None and m.get(k) is None:
+                m[k] = base[k]
+        n += 1
+    return n
 
 
 def main() -> int:
@@ -59,6 +144,20 @@ def main() -> int:
             if v.get(k) is not None:
                 p[k] = v[k]
 
+        # `applies_to` : identifiants du catalogue qui désignent LE MÊME modèle
+        # facturé (instantané daté, alias de passerelle). Le tarif y est recopié tel
+        # quel, avec la même provenance.
+        for alias in v.get("applies_to") or []:
+            if alias not in idx:
+                print(f"  ⚠  `applies_to` inconnu du catalogue : {alias} (depuis {v['id']})")
+                continue
+            a = idx[alias]
+            a["pricing"] = {**p, "source": {**p["source"], "priced_as": v["id"]}}
+            for k in ("context_window", "role"):
+                if v.get(k) is not None and a.get(k) is None:
+                    a[k] = v[k]
+            updated += 1
+
         if v["id"] in idx:
             m = idx[v["id"]]
             m["pricing"] = p
@@ -80,6 +179,9 @@ def main() -> int:
             })
             added += 1
 
+    excluded = mark_no_public_price(models, vp.get("no_public_price") or [])
+    propagated = propagate_variants(models)
+
     doc["models"] = sorted(models, key=lambda m: (m["lab"], m["id"]))
     doc.setdefault("_generated", {})["pricing_applied_on"] = today
     (CATALOG / "models.yaml").write_text(
@@ -88,6 +190,8 @@ def main() -> int:
     total = len(doc["models"])
     priced = sum(1 for m in doc["models"] if (m.get("pricing") or {}).get("input_per_1m") is not None)
     print(f"✓ {updated} tarifs mis à jour, {added} modèles ajoutés, {skipped} ignorés")
+    print(f"  {propagated} variantes d'effort alignées sur le statut de leur modèle de base")
+    print(f"  {excluded} modèles classés sans tarif éditeur (poids ouverts, retirés, alias…)")
     print(f"  catalogue : {priced}/{total} modèles tarifés")
     return 0
 

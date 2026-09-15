@@ -28,11 +28,27 @@ GOTCHAS = {
     "anthropic": "anthropic.com/pricing renvoie une 301 vers claude.com/pricing.",
     "openai": "openai.com/api/pricing renvoie 403. Utiliser developers.openai.com/api/docs/pricing.",
     "moonshot": "platform.moonshot.ai/docs/pricing redirige vers platform.kimi.ai/docs/pricing.",
-    "mistral": "mistral.ai/inference/pricing renvoie 404. La page tarifaire API n'a pas été "
-               "localisée en septembre 2026 — chercher depuis docs.mistral.ai.",
+    "mistral": "mistral.ai/pricing ne porte que les abonnements Vibe. La grille API par modèle "
+               "vit sur docs.mistral.ai/inference/pricing, et la correspondance nom commercial → "
+               "identifiant versionné sur docs.mistral.ai/models/overview.",
     "google": "Tarifs à paliers (≤200k / >200k) et promotions datées : relever les deux.",
     "deepseek": "Tarification heures pleines / heures creuses : relever les deux grilles.",
-    "alibaba": "Tarifs variables selon la région de facturation : préciser laquelle.",
+    "alibaba": "La page /models ne porte pas de tarif : la grille est sur "
+               "alibabacloud.com/help/en/model-studio/model-pricing. Prix par région — "
+               "le catalogue relève Singapour (International), la Chine continentale est "
+               "nettement moins chère. Beaucoup de modèles sont à paliers de contexte.",
+    "minimax": "platform.minimax.io/docs/price renvoie 404 : la grille est sous "
+               "/docs/guides/pricing-paygo.",
+    "meta": "llama.developer.meta.com redirige (302) vers ai.developer.meta.com, qui renvoie "
+            "404. La grille vit sur developer.meta.com/ai/models/muse-spark/.",
+    "xai": "docs.x.ai/docs/models porte la grille. x.ai/grok renvoie 403 : les paliers "
+           "d'abonnement SuperGrok n'ont pas pu être relevés.",
+}
+
+# Pièges d'accès rencontrés sur les pages d'outils, pas de modèles.
+GOTCHAS_OUTILS = {
+    "windsurf": "windsurf.com redirige (308) vers devin.ai. devin.ai/pricing répond 429 "
+                "(limitation de débit) : réessayer plus tard ou depuis app.devin.ai.",
 }
 
 
@@ -76,6 +92,10 @@ def main() -> int:
         pr = m.get("pricing") or {}
         src = pr.get("source") or {}
         has = pr.get("input_per_1m") is not None
+        # Un modèle sans tarif éditeur (poids ouverts, génération retirée, alias
+        # de passerelle) n'est pas un reste-à-faire : il n'y a rien à relever.
+        if not has and src.get("status") == "no_public_price":
+            continue
         lab = m.get("lab")
         weight = m.get("benchmark_records") or 0
         if not has:
@@ -137,12 +157,15 @@ def main() -> int:
                       ", ".join(f"{a_} {b}" for a_, b, _ in items)))
     known = {p["vendor"] for p in plans}
     for t in tools:
-        if t.get("plans") or t.get("free"):
+        # `no_subscription` : l'outil se facture à l'usage et ne vend aucun palier.
+        # Vérifié, donc plus rien à relever.
+        if t.get("plans") or t.get("free") or t.get("no_subscription"):
             continue
         if t.get("pricing_url") and t.get("vendor") not in known:
             tasks.append((2, "FORFAITS", f"{t['name']} — aucun forfait au catalogue",
                           t.get("pricing_url"),
-                          "l'outil est payant mais ses paliers ne sont pas relevés"))
+                          "l'outil est payant mais ses paliers ne sont pas relevés"
+                          + (f"\n    ⓘ {GOTCHAS_OUTILS[t['id']]}" if t["id"] in GOTCHAS_OUTILS else "")))
 
     # ── 3 bis. Couverture fournisseur ─────────────────────────────────────
     # La veille par mots-clés trouve les outils dont on parle, pas ceux qui
@@ -150,6 +173,11 @@ def main() -> int:
     vendeurs = {(t.get("vendor") or "").lower() for t in tools}
     sans_outil = []
     for lab in labs.values():
+        # Un fournisseur balayé qui ne publie aucun harnais n'est pas un trou du
+        # catalogue : c'est un constat. Ce qui doit rester visible, c'est le
+        # fournisseur qu'on n'a jamais cherché à balayer.
+        if (lab.get("tooling") or {}).get("checked_on"):
+            continue
         nom = lab["name"].split(" (")[0].split(" /")[0].lower()
         if not any(nom in v for v in vendeurs if v):
             sans_outil.append(lab)
@@ -176,7 +204,9 @@ def main() -> int:
                       + "\n    ⓘ contrôler : projet actif/archivé/racheté, URL vivantes, "
                         "changement de modèle économique, date du dernier commit."))
     for t, d in old:
-        tasks.append((2, "HARNAIS", f"{t['name']} — fiche vieille de {d} j", t.get("url"), ""))
+        g = GOTCHAS_OUTILS.get(t["id"])
+        tasks.append((2, "HARNAIS", f"{t['name']} — fiche vieille de {d} j", t.get("url"),
+                      f"ⓘ {g}" if g else ""))
 
     # ── 5. Benchmarks ─────────────────────────────────────────────────────
     runs = [s.get("run_date") for s in scores if s.get("run_date")]

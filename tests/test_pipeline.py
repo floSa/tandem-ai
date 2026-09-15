@@ -182,6 +182,98 @@ class TestIntegriteReferentielle(unittest.TestCase):
             self.assertEqual(len(ids), len(set(ids)), f"{f} : identifiants dupliqués")
 
 
+class TestAbsenceDeTarif(unittest.TestCase):
+    """Un modèle sans tarif doit dire POURQUOI il n'en a pas.
+
+    Sans cette distinction, « pas encore relevé » et « n'aura jamais de tarif »
+    se ressemblent — et le catalogue paraît éternellement inachevé.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.models = load("models.yaml")["models"]
+        cls.saisie = load("pricing_verified.yaml")
+
+    def test_tout_modele_sans_tarif_est_motive(self):
+        muets = [m["id"] for m in self.models
+                 if (m.get("pricing") or {}).get("input_per_1m") is None
+                 and (m.get("pricing") or {}).get("source", {}).get("status") != "no_public_price"]
+        self.assertEqual(muets, [],
+                         "modèles sans tarif ni motif — les classer dans no_public_price "
+                         "ou relever leur tarif")
+
+    def test_un_motif_accompagne_chaque_exclusion(self):
+        for m in self.models:
+            src = (m.get("pricing") or {}).get("source") or {}
+            if src.get("status") == "no_public_price":
+                self.assertTrue((src.get("note") or "").strip(),
+                                f"{m['id']} exclu sans motif")
+
+    def test_une_exclusion_ne_porte_aucun_montant(self):
+        for m in self.models:
+            pr = m.get("pricing") or {}
+            if (pr.get("source") or {}).get("status") != "no_public_price":
+                continue
+            for k in ("input_per_1m", "input_cached_per_1m", "output_per_1m"):
+                self.assertIsNone(pr.get(k),
+                                  f"{m['id']} est classé sans tarif mais porte {k}")
+
+    def test_aucun_modele_classe_deux_fois(self):
+        vus = set()
+        for g in self.saisie.get("no_public_price") or []:
+            for mid in g["models"]:
+                self.assertNotIn(mid, vus, f"{mid} classé dans deux motifs différents")
+                vus.add(mid)
+
+
+class TestPropagationTarifaire(unittest.TestCase):
+    """`applies_to` et les variantes d'effort recopient un tarif : jamais l'inventer."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.models = load("models.yaml")["models"]
+        cls.idx = {m["id"]: m for m in cls.models}
+        cls.saisie = load("pricing_verified.yaml")
+
+    def test_les_cibles_applies_to_existent(self):
+        for v in self.saisie["models"]:
+            for alias in v.get("applies_to") or []:
+                self.assertIn(alias, self.idx,
+                              f"`applies_to` de {v['id']} vise {alias}, absent du catalogue")
+
+    def test_un_alias_porte_le_meme_tarif_que_sa_source(self):
+        saisi = {v["id"]: v for v in self.saisie["models"]}
+        for v in self.saisie["models"]:
+            for alias in v.get("applies_to") or []:
+                a = self.idx[alias]["pricing"]
+                self.assertEqual(a["input_per_1m"], v["pricing"]["input_per_1m"],
+                                 f"{alias} diverge du tarif de {v['id']}")
+                self.assertEqual(a["source"].get("priced_as"), v["id"],
+                                 f"{alias} ne dit pas au nom de quel modèle il est tarifé")
+
+    def test_une_variante_d_effort_herite_exactement_de_sa_base(self):
+        n = 0
+        for m in self.models:
+            src = (m.get("pricing") or {}).get("source") or {}
+            base_id = src.get("variant_of")
+            if not base_id:
+                continue
+            n += 1
+            base = self.idx[base_id]["pricing"]
+            for k in ("input_per_1m", "output_per_1m"):
+                self.assertEqual(m["pricing"].get(k), base.get(k),
+                                 f"{m['id']} diverge de sa base {base_id} sur {k}")
+        self.assertGreater(n, 0, "aucune variante d'effort propagée — mécanisme mort")
+
+    def test_le_balayage_outillage_est_date_pour_chaque_fournisseur(self):
+        for lab in load("labs.yaml")["labs"]:
+            t = lab.get("tooling") or {}
+            self.assertTrue(t.get("checked_on"),
+                            f"{lab['id']} jamais balayé côté outillage")
+            self.assertTrue((t.get("note") or "").strip(),
+                            f"{lab['id']} balayé sans consigner ce qui a été trouvé")
+
+
 class TestConversionMonetaire(unittest.TestCase):
     """La conversion €/TVA est la seule arithmétique du build : elle doit être exacte."""
 

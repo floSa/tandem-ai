@@ -81,7 +81,7 @@ def main() -> int:
         add(WARN, "PROVENANCE",
             "le taux de change USD→EUR n'est pas vérifié — toutes les valeurs en euros "
             "du document en héritent")
-    priced = unverified_price = 0
+    priced = unverified_price = no_price = 0
     for m in models:
         pr = m.get("pricing") or {}
         has_price = any(pr.get(k) is not None for k in
@@ -96,6 +96,15 @@ def main() -> int:
             if src.get("status") not in allowed_prov and src.get("status") != "verified":
                 add(ERR, "PROVENANCE",
                     f"modèle `{m['id']}` : statut de source invalide `{src.get('status')}`")
+        elif src.get("status") == "no_public_price":
+            # Pas de tarif éditeur par construction (poids ouverts, génération
+            # retirée, alias de passerelle). La raison est obligatoire : sans
+            # elle, l'exclusion serait une commodité plutôt qu'un constat.
+            no_price += 1
+            if not src.get("note"):
+                add(ERR, "PROVENANCE",
+                    f"modèle `{m['id']}` est classé sans tarif éditeur sans motif — "
+                    f"renseigner `reason` dans no_public_price")
         else:
             unverified_price += 1
         if pr.get("currency") and pr["currency"] != "USD":
@@ -203,7 +212,9 @@ def main() -> int:
               "à signaler plutôt qu'à combler")
     mesures_sans_tarif = [m for m in models
                           if (m.get("benchmark_records") or 0) >= 20
-                          and (m.get("pricing") or {}).get("input_per_1m") is None]
+                          and (m.get("pricing") or {}).get("input_per_1m") is None
+                          and (m.get("pricing") or {}).get("source", {}).get("status")
+                          != "no_public_price"]
     if mesures_sans_tarif:
         add(WARN, "COUVERTURE",
             f"{len(mesures_sans_tarif)} modèles largement mesurés n'ont aucun tarif — "
@@ -232,7 +243,8 @@ def main() -> int:
     print("═" * 78)
     print(f"  catalogue : {len(labs)} labs · {len(models)} modèles · "
           f"{len(tracked)} benchmarks · {len(scores)} scores")
-    print(f"  tarifs    : {priced} renseignés · {unverified_price} à vérifier")
+    print(f"  tarifs    : {priced} relevés · {unverified_price} à relever · "
+          f"{no_price} sans tarif éditeur")
     print("─" * 78)
     for lvl in (ERR, WARN, INFO):
         rows = [f for f in findings if f[0] == lvl]
