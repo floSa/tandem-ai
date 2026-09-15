@@ -205,6 +205,7 @@ select{background:var(--bg);color:var(--ink);border:1px solid var(--line-strong)
  border-radius:7px;padding:6px 9px;font:inherit;font-size:13px;min-width:150px;cursor:pointer}
 select:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
 .seg{display:flex;gap:7px;flex-wrap:wrap;background:none;border:0;padding:0}
+#har-cat,#pas-cat{margin:16px 0 6px}
 .seg button{background:var(--panel);border:1px solid var(--line-strong);border-radius:999px;
  color:var(--ink-2);padding:7px 15px;font:inherit;font-size:13px;cursor:pointer;
  white-space:nowrap;transition:border-color .12s,color .12s}
@@ -335,6 +336,7 @@ a{color:var(--s1)}
   quels outils appeler et enchaîne les étapes. Deux harnais donnant le même modèle n'obtiennent
   pas le même résultat — sur Terminal-Bench, l'écart entre harnais dépasse souvent l'écart entre
   deux modèles concurrents.</p>
+  <div class="seg" id="har-cat" role="group" aria-label="Catégories de harnais"></div>
   <div id="har"></div>
 </section>
 
@@ -346,6 +348,7 @@ a{color:var(--s1)}
   <i>(agrégateur)</i>, soit vers un modèle tournant sur votre propre machine
   <i>(serveur local)</i>. Changer de passerelle ne change pas la qualité du code produit :
   cela change le prix, la latence et qui voit vos données.</p>
+  <div class="seg" id="pas-cat" role="group" aria-label="Catégories de passerelles"></div>
   <div id="pas"></div>
 </section>
 
@@ -920,15 +923,19 @@ $('#kind').addEventListener('click',e=>{const b=e.target.closest('button');if(!b
 
 // ── navigation par onglets ────────────────────────────────────────────────
 const SEC=['mesures','modeles','harnais','passerelles','methode'];
-function showSection(name){
+function showSection(name,remonter){
   SEC.forEach(x=>{const el=$('#s-'+x);if(el)el.hidden=(x!==name);});
   [...$('#nav').children].forEach(b=>
     b.setAttribute('aria-selected',String(b.dataset.s===name)));
   if(name==='mesures')draw();
+  if(remonter){
+    const doux=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+    $('#nav').scrollIntoView({block:'start',behavior:doux?'smooth':'auto'});
+  }
   try{localStorage.setItem('tandem.section',name);}catch(e){}
 }
 $('#nav').addEventListener('click',e=>{const b=e.target.closest('button');
-  if(b)showSection(b.dataset.s);});
+  if(b)showSection(b.dataset.s,true);});
 
 // ── fiches outils, groupées par catégorie ─────────────────────────────────
 const CATL={ide_fork:'IDE dérivés',vscode_extension:'Extensions VS Code',
@@ -973,9 +980,9 @@ function carteOutil(t){
   </div>`;
 }
 
-function rendreCouche(cible,couche,ordre){
+function rendreCouche(cible,couche,ordre,filtre){
   const el=$(cible);let html='';
-  ordre.forEach(cat=>{
+  ordre.filter(c=>!filtre||c===filtre).forEach(cat=>{
     const items=D.tools.filter(t=>t.layer===couche&&t.category===cat);
     if(!items.length)return;
     const ok=items.filter(t=>(t.verification||{}).status!=='unverified').length;
@@ -986,8 +993,24 @@ function rendreCouche(cible,couche,ordre){
   });
   el.innerHTML=html;
 }
-rendreCouche('#har',1,['ide_fork','vscode_extension','cli_agent','desktop_app']);
-rendreCouche('#pas',2,['gateway','local_server']);
+
+// Sélecteur de catégorie : évite de faire défiler toute la couche pour
+// atteindre une famille d'outils.
+function brancherCategories(idBoutons,cible,couche,ordre){
+  const bar=$(idBoutons);
+  const dispo=ordre.filter(c=>D.tools.some(t=>t.layer===couche&&t.category===c));
+  bar.innerHTML=`<button data-c="" aria-pressed="true">Toutes</button>`+
+    dispo.map(c=>`<button data-c="${c}" aria-pressed="false">${CATL[c]}</button>`).join('');
+  bar.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+    [...bar.children].forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+    rendreCouche(cible,couche,ordre,b.dataset.c||null);});
+}
+const ORD_H=['ide_fork','vscode_extension','cli_agent','desktop_app'];
+const ORD_P=['gateway','local_server'];
+rendreCouche('#har',1,ORD_H,null);
+rendreCouche('#pas',2,ORD_P,null);
+brancherCategories('#har-cat','#har',1,ORD_H);
+brancherCategories('#pas-cat','#pas',2,ORD_P);
 
 // ── modèles & tarifs ──────────────────────────────────────────────────────
 (function(){
@@ -1071,7 +1094,7 @@ $('#foot').innerHTML=`Données de benchmark : <a href="https://epoch.ai/benchmar
  `Page générée par <code>pipeline/build_site.py</code> le ${D.generated} — ne pas éditer à la main.`;
 
 try{const m=localStorage.getItem('tandem.section');
-  showSection(SEC.includes(m)?m:'mesures');}catch(e){showSection('mesures');}
+  showSection(SEC.includes(m)?m:'mesures',false);}catch(e){showSection('mesures',false);}
 </script>
 """
 
