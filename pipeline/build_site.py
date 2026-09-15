@@ -415,10 +415,8 @@ $('#strip').innerHTML=[
 ].map(([v,k])=>`<div class="cell"><b>${v}</b><span>${k}</span></div>`).join('');
 
 const al=[];
-if(C.priced>0)al.push(['','Vérification tarifaire partielle.',
- `<b>${C.priced}</b> modèles portent un tarif relevé sur la page officielle du fournisseur `+
- `(sur ${C.models} au catalogue), et <b>${C.plans}</b> forfaits d'abonnement sont sourcés. `+
- `Les modèles restants affichent un tarif vide plutôt qu'une valeur approchée.`]);
+// N'alerter que sur ce qui rend un chiffre INEXPLOITABLE. L'état d'avancement
+// du relevé regarde celui qui tient le catalogue, pas celui qui le lit.
 if(C.priced===0)al.push(['bad','Aucun tarif vérifié.',
  'Les tarifs du catalogue sont vides et marqués <code>unverified</code> : ils doivent être relevés sur la page /pricing officielle de chaque fournisseur avant toute publication chiffrée. Le graphique « Prix × performance » reste vide jusque-là.']);
 if(D.fx&&D.fx.status!=='verified')al.push(['','Taux de change non vérifié.',

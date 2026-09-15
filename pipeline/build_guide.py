@@ -98,14 +98,6 @@ def build_fiches(labs, models, plans, tools, scores, fx, vat) -> int:
                     L.append(f"- **Forfait {pl['name']} :** {usd(u)}"
                              f"{'/u' if pl.get('per_seat') else ''} — "
                              f"{eur(u, fx)} HT · {eur(u, fx, vat)} TTC")
-            v = t.get("verification") or {}
-            if v.get("status") == "unverified":
-                L.append("- **Vérification :** fiche non re-contrôlée à cette édition")
-            else:
-                L.append(f"- **Vérification :** {v.get('verified_on')} "
-                         f"({v.get('status')})")
-                if v.get("finding"):
-                    L.append(f"- **Constat :** {v['finding']}")
             if t.get("note"):
                 L += ["", t["note"]]
             L.append("")
