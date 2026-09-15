@@ -48,5 +48,12 @@ respectifs.
 
 ## Contenu propre à ce dépôt
 
-La méthodologie (`protocol/`), les scripts (`pipeline/`) et la curation éditoriale
-des benchmarks sont publiés sous la licence indiquée dans `LICENSE`.
+Deux régimes coexistent, dans deux fichiers distincts :
+
+| Périmètre | Licence | Fichier |
+| :-- | :-- | :-- |
+| Code du pipeline et tests | MIT | [`LICENSE`](LICENSE) |
+| Méthodologie, documentation, curation, Guide | CC BY 4.0 | [`LICENSE-CONTENT`](LICENSE-CONTENT) |
+
+Le contenu est sous CC BY 4.0 par compatibilité avec les données d'Epoch AI dont il
+dérive : retenir la même licence préserve la chaîne d'attribution en aval.

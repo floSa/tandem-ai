@@ -1,8 +1,4 @@
-Ce dépôt combine deux natures de contenu, sous deux régimes distincts.
-
-────────────────────────────────────────────────────────────────────────────
-1. CODE (pipeline/) — Licence MIT
-────────────────────────────────────────────────────────────────────────────
+MIT License
 
 Copyright (c) 2026 floSa
 
@@ -23,15 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-────────────────────────────────────────────────────────────────────────────
-2. CONTENU (protocol/, data/, catalog/) — CC BY 4.0
-────────────────────────────────────────────────────────────────────────────
-
-Méthodologie, curation et documentation sont publiées sous
-Creative Commons Attribution 4.0 International.
-Texte complet : https://creativecommons.org/licenses/by/4.0/legalcode
-
-Les données de benchmark agrégées proviennent d'Epoch AI, elles-mêmes sous
-CC BY 4.0. Toute republication doit conserver les attributions listées dans
-ATTRIBUTION.md.

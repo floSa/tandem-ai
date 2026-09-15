@@ -6,7 +6,7 @@
 ![PyYAML](https://img.shields.io/badge/PyYAML-6.0.1-CB171E?logo=yaml&logoColor=white)
 ![Tests](https://img.shields.io/badge/tests-34-1BAF7A)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
-![Licence](https://img.shields.io/badge/licence-MIT_%2B_CC_BY_4.0-4A3AA7)
+![Licence](https://img.shields.io/badge/licence-MIT-4A3AA7)
 
 Référentiel ouvert de l'offre de développement assisté par IA, construit pour résister
 à la vérification. Son nom dit sa thèse : un score n'est pas un attribut d'un modèle,
@@ -185,9 +185,10 @@ tandem-ia/
 | PyYAML 6.0.1 | Sérialisation du catalogue | MIT |
 | Epoch AI — *Capabilities & Benchmarking* | Données de benchmark | CC BY 4.0 |
 | Artificial Analysis Data API | Recoupement tarifaire optionnel | Attribution requise |
-| **Ce projet** | Code du pipeline | MIT — Copyright (c) 2026 floSa |
-| **Ce projet** | Méthodologie, curation, documentation | CC BY 4.0 |
+| **Ce projet** | Code du pipeline — [LICENSE](LICENSE) | MIT — Copyright (c) 2026 floSa |
+| **Ce projet** | Méthodologie, curation, documentation — [LICENSE-CONTENT](LICENSE-CONTENT) | CC BY 4.0 |
 
-Les données de benchmark proviennent d'[Epoch AI](https://epoch.ai/benchmarks) sous
-CC BY 4.0 : l'attribution est obligatoire dans toute republication. Attributions
+Le code est sous **MIT**. Le contenu documentaire et la curation sont sous **CC BY 4.0**,
+par compatibilité avec les données d'[Epoch AI](https://epoch.ai/benchmarks) dont ils
+dérivent : l'attribution est obligatoire dans toute republication. Attributions
 complètes : [ATTRIBUTION.md](ATTRIBUTION.md).

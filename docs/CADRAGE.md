@@ -51,7 +51,7 @@ porte la thèse : les deux n'avancent qu'attelés, et c'est le couple qui se mes
 |---|---|
 | Dépendances | Python 3.12 et PyYAML uniquement. Tout le reste en bibliothèque standard |
 | Fonctionnement hors ligne | Aucune clé d'API requise pour le fonctionnement nominal |
-| Publication | Dépôt public : toute donnée tierce redistribuée doit porter sa licence |
+| Publication | Dépôt public. Code sous MIT ([LICENSE](../LICENSE)), contenu sous CC BY 4.0 ([LICENSE-CONTENT](../LICENSE-CONTENT)) par compatibilité avec les sources |
 | Portabilité | La méthodologie doit être applicable par un agent autre que Claude Code, ou par un humain |
 | Sorties | Le Guide et la page doivent être lisibles sans outil : Markdown et HTML autonome |
 

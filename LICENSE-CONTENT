@@ -1,0 +1,36 @@
+Licence du contenu documentaire et des données
+==============================================
+
+Le code du dépôt est sous licence MIT — voir le fichier LICENSE.
+
+Le présent fichier couvre le contenu NON logiciel :
+
+  - protocol/     méthodologie d'audit et protocole opératoire
+  - docs/         cadrage et architecture
+  - content/      fragments narratifs du Guide
+  - data/         fiches générées par catégorie
+  - catalog/      curation éditoriale (sélection et rejet des benchmarks,
+                  relevés tarifaires, notes de provenance)
+  - Guide_Complet_Solutions_Dev_IA_2026.md
+
+Ce contenu est publié sous licence
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+  Texte complet : https://creativecommons.org/licenses/by/4.0/legalcode
+  Résumé        : https://creativecommons.org/licenses/by/4.0/deed.fr
+
+Vous êtes libre de le partager et de l'adapter, y compris commercialement,
+à condition d'en créditer la source.
+
+  Attribution suggérée :
+  « Tandem — référentiel des modèles et harnais de développement IA,
+    par floSa, https://github.com/floSa/tandem-ai, sous CC BY 4.0. »
+
+Pourquoi CC BY 4.0 pour le contenu
+----------------------------------
+Les données de benchmark agrégées dans catalog/scores.yaml proviennent
+d'Epoch AI, elles-mêmes publiées sous CC BY 4.0. Retenir la même licence
+pour le contenu dérivé garantit la compatibilité en aval et préserve la
+chaîne d'attribution.
+
+Les attributions complètes des sources tierces figurent dans ATTRIBUTION.md.
