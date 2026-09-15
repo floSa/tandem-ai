@@ -3,7 +3,7 @@
 
 # IDE dérivés
 
-5 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
+6 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
 
 ## Cursor
 
@@ -60,6 +60,21 @@ Fork open-source de VS Code. Développement principal ralenti.
 - **Vérification :** fiche non re-contrôlée à cette édition
 
 Fork VS Code, moteur Cascade. Intégration Devin Cloud.
+
+## ZCode
+
+- **Éditeur :** Z.ai (Zhipu AI)
+- **Site :** [https://zcode.z.ai/en](https://zcode.z.ai/en)
+- **Documentation :** [https://zcode.z.ai/en/docs/welcome](https://zcode.z.ai/en/docs/welcome)
+- **Statut :** active
+- **Capacités :** —
+- **Forfait Lite :** $12.6 — 10,92 € HT · 13,10 € TTC
+- **Forfait Pro :** $56 — 48,53 € HT · 58,24 € TTC
+- **Forfait Max :** $117.6 — 101,91 € HT · 122,29 € TTC
+- **Vérification :** 2026-09-15 (official_pricing_page)
+- **Constat :** Absent de l'édition précédente, et écarté à tort au relevé précédent sur des sources contradictoires. La doc API de Z.ai ne le mentionne pas — il a son propre domaine, zcode.z.ai. Contrairement à ce que laissaient entendre les sources secondaires, il n'est PAS gratuit.
+
+Environnement de développement agentique (ADE) présenté par l'éditeur comme le harnais officiel de GLM-5.3. macOS (Apple Silicon et Intel), Windows (x64 et ARM64), Linux x64 et ARM64 en bêta. Gestion de tâches longues par « Goals », pilotage à distance depuis WeChat, Feishu ou Telegram, collaboration multi-agents. Version 3.11.2 au moment du relevé.
 
 ## Zed
 

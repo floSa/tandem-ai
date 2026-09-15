@@ -225,3 +225,33 @@ plans:
     url: https://trae.ai/pricing
     verified_on: '2026-09-15'
     status: official_pricing_page
+- id: zcode-lite
+  vendor: Z.ai (Zhipu AI)
+  product: ZCode
+  name: Lite
+  price_usd_month: 12.6
+  includes: 10 000 crédits hebdomadaires. GLM-5.3 et GLM-5.3-Flash.
+  source:
+    url: https://zcode.z.ai/en
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: zcode-pro
+  vendor: Z.ai (Zhipu AI)
+  product: ZCode
+  name: Pro
+  price_usd_month: 56.0
+  includes: 6× l'usage de Lite.
+  source:
+    url: https://zcode.z.ai/en
+    verified_on: '2026-09-15'
+    status: official_pricing_page
+- id: zcode-max
+  vendor: Z.ai (Zhipu AI)
+  product: ZCode
+  name: Max
+  price_usd_month: 117.6
+  includes: 14× l'usage de Lite.
+  source:
+    url: https://zcode.z.ai/en
+    verified_on: '2026-09-15'
+    status: official_pricing_page

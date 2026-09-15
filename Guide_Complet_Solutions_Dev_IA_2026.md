@@ -13,8 +13,8 @@
 | Mesures de benchmark | 1 275 sur 18 benchmarks |
 | Modèles au catalogue | 194 |
 | Tarifs API relevés sur page officielle | 25 / 194 |
-| Forfaits d'abonnement relevés | 21 |
-| Harnais re-vérifiés | 21 / 24 |
+| Forfaits d'abonnement relevés | 24 |
+| Harnais re-vérifiés | 22 / 25 |
 | Taux de change USD→EUR | 0.8666 — vérifié |
 
 ---
@@ -94,6 +94,7 @@ L'interface développeur : le logiciel avec lequel on travaille, et qui exécute
 | [Trae](https://trae.ai) | ByteDance | MCP | Free, Lite, Pro, Pro+, Ultra | 2026-09-15 |
 | [Void IDE](https://voideditor.com) *(retired)* | Communauté open-source | BYOK, modèles locaux | — | 2026-09-15 |
 | [Windsurf / Devin](https://devin.ai) | Cognition AI | BYOK, MCP | — | non |
+| [ZCode](https://zcode.z.ai/en) | Z.ai (Zhipu AI) | — | Lite, Pro, Max | 2026-09-15 |
 | [Zed](https://zed.dev) | Zed Industries, Inc. | BYOK, modèles locaux | Personal, Pro, Business | 2026-09-15 |
 
 > **Cursor —** Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente ne figurent plus.
@@ -101,6 +102,8 @@ L'interface développeur : le logiciel avec lequel on travaille, et qui exécute
 > **Trae —** Cinq paliers confirmés, identiques à l'édition précédente. Les quotas sont désormais libellés en dollars d'usage (5 $ sur Lite, 20 $ sur Pro).
 
 > **Void IDE —** Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente est dépassé.
+
+> **ZCode —** Absent de l'édition précédente, et écarté à tort au relevé précédent sur des sources contradictoires. La doc API de Z.ai ne le mentionne pas — il a son propre domaine, zcode.z.ai. Contrairement à ce que laissaient entendre les sources secondaires, il n'est PAS gratuit.
 
 > **Zed —** Paliers actuels : Personal gratuit (BYOK illimité), Pro à 10 $, Business à 30 $/siège. Le palier Business n'était pas chiffré dans l'édition précédente.
 
@@ -210,6 +213,9 @@ Montants calculés au taux de 0.8666 $/€ et à une TVA de 20%. La colonne **�
 | Mistral AI | Mistral Vibe | **Free** | gratuit | 0,00 € | 0,00 € | Messages et recherches limités, 10 $/mois de crédits API. | [page](https://mistral.ai/pricing) |
 | Mistral AI | Mistral Vibe | **Pro** | $14.99 | 12,99 € | 15,59 € | Capacité de code étendue, 15 $/mois de crédits API. 5,99 $ pour les étudiants vérifiés. | [page](https://mistral.ai/pricing) |
 | Mistral AI | Mistral Vibe | **Team** | $24.99/u | 21,66 € | 25,99 € | Minimum 50 $/mois, 30 Go de stockage par utilisateur, vérification de domaine. | [page](https://mistral.ai/pricing) |
+| Z.ai (Zhipu AI) | ZCode | **Lite** | $12.6 | 10,92 € | 13,10 € | 10 000 crédits hebdomadaires. GLM-5.3 et GLM-5.3-Flash. | [page](https://zcode.z.ai/en) |
+| Z.ai (Zhipu AI) | ZCode | **Pro** | $56 | 48,53 € | 58,24 € | 6× l'usage de Lite. | [page](https://zcode.z.ai/en) |
+| Z.ai (Zhipu AI) | ZCode | **Max** | $117.6 | 101,91 € | 122,29 € | 14× l'usage de Lite. | [page](https://zcode.z.ai/en) |
 | Zed Industries | Zed | **Personal** | gratuit | 0,00 € | 0,00 € | 2 000 prédictions d'édition acceptées. BYOK et agents externes illimités. | [page](https://zed.dev/pricing) |
 | Zed Industries | Zed | **Pro** | $10 | 8,67 € | 10,40 € | Prédictions illimitées, 5 $ de tokens inclus, facturation à l'usage au-delà. | [page](https://zed.dev/pricing) |
 | Zed Industries | Zed | **Business** | $30/u | 26,00 € | 31,20 € | Politiques de modèles à l'échelle de l'organisation, gouvernance des données, RBAC. | [page](https://zed.dev/pricing) |

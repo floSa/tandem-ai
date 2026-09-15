@@ -321,6 +321,32 @@ tools:
     verified_on: null
     note: Conformité non relevée à cette édition.
   layer: 1
+- id: zcode
+  name: ZCode
+  vendor: Z.ai (Zhipu AI)
+  category: ide_fork
+  layer: 1
+  status: active
+  url: https://zcode.z.ai/en
+  docs_url: https://zcode.z.ai/en/docs/welcome
+  plans:
+  - zcode-lite
+  - zcode-pro
+  - zcode-max
+  note: Environnement de développement agentique (ADE) présenté par l'éditeur comme le harnais officiel
+    de GLM-5.3. macOS (Apple Silicon et Intel), Windows (x64 et ARM64), Linux x64 et ARM64 en bêta. Gestion
+    de tâches longues par « Goals », pilotage à distance depuis WeChat, Feishu ou Telegram, collaboration
+    multi-agents. Version 3.11.2 au moment du relevé.
+  verification:
+    status: official_pricing_page
+    verified_on: '2026-09-15'
+    finding: Absent de l'édition précédente, et écarté à tort au relevé précédent sur des sources contradictoires.
+      La doc API de Z.ai ne le mentionne pas — il a son propre domaine, zcode.z.ai. Contrairement à ce
+      que laissaient entendre les sources secondaires, il n'est PAS gratuit.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: zed
   name: Zed
   vendor: Zed Industries, Inc.
