@@ -168,7 +168,7 @@ def main() -> int:
     A = L.append
 
     # ── En-tête ───────────────────────────────────────────────────────────
-    A(f"# Guide de référence des solutions de développement par IA")
+    A("# Tandem — guide de référence")
     A("")
     A(f"**{ed['label']}** · document généré le {date.today().isoformat()} "
       f"depuis `catalog/` · prochaine révision prévue le {ed['next_review_due']}")

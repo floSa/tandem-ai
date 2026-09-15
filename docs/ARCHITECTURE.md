@@ -1,4 +1,4 @@
-# Architecture — Observatoire Dev IA
+# Architecture — Tandem
 
 Le COMMENT. Le POURQUOI est dans [CADRAGE.md](CADRAGE.md) ; le protocole opératoire
 de mise à jour est dans [protocol/06_protocole_operatoire.md](../protocol/06_protocole_operatoire.md).

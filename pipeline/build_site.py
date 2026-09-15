@@ -116,7 +116,7 @@ def build_payload() -> dict:
     }
 
 
-HTML = r"""<title>Observatoire Dev IA</title>
+HTML = r"""<title>Tandem</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
@@ -226,9 +226,10 @@ a{color:var(--s1)}
 
 <div class="wrap">
 <header>
-  <h1>Référentiel des solutions de développement par IA</h1>
-  <p class="sub">Modèles, harnais et benchmarks — mesurés, sourcés et datés.
-     Chaque score porte sa provenance, son protocole et son incertitude.</p>
+  <h1>Tandem</h1>
+  <p class="sub">Modèles et harnais mesurés ensemble — parce qu'un score n'appartient
+     jamais à un modèle seul. Chaque mesure porte son harnais, son protocole,
+     son incertitude et son coût réel.</p>
   <p class="meta" id="meta"></p>
 </header>
 

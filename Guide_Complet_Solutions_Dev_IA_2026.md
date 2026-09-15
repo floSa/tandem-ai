@@ -1,4 +1,4 @@
-# Guide de référence des solutions de développement par IA
+# Tandem — guide de référence
 
 **Édition Septembre 2026** · document généré le 2026-09-15 depuis `catalog/` · prochaine révision prévue le 2027-03-15
 

@@ -1,4 +1,4 @@
-# Instructions pour les agents
+# Tandem — instructions pour les agents
 
 Ce dépôt est un **référentiel de données**, pas une application. Sa valeur tient
 entièrement à la traçabilité de ses chiffres : un chiffre sans source est un

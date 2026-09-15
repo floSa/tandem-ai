@@ -1,6 +1,6 @@
-# Observatoire Dev IA
+# Tandem
 
-**Référentiel ouvert de l'offre de développement assisté par IA — modèles et harnais — construit pour résister à la vérification.**
+**Modèles et harnais mesurés ensemble — parce qu'un score n'appartient jamais à un modèle seul.**
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![PyYAML](https://img.shields.io/badge/PyYAML-6.0.1-CB171E?logo=yaml&logoColor=white)
@@ -8,11 +8,12 @@
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 ![Licence](https://img.shields.io/badge/licence-MIT_%2B_CC_BY_4.0-4A3AA7)
 
-La particularité tient en une phrase : **un score n'est pas un attribut d'un modèle**,
+Référentiel ouvert de l'offre de développement assisté par IA, construit pour résister
+à la vérification. Son nom dit sa thèse : un score n'est pas un attribut d'un modèle,
 mais du triplet *(modèle × harnais × effort de raisonnement)*. Le catalogue recense
 **52 harnais distincts** sur le seul Terminal-Bench, et l'écart qu'ils produisent dépasse
-souvent l'écart entre deux modèles concurrents. Ce dépôt est construit pour rendre cet
-effet visible plutôt que pour le masquer derrière un classement.
+souvent l'écart entre deux modèles concurrents. Ce dépôt rend cet attelage visible plutôt
+que de le masquer derrière un classement.
 
 ## Sommaire
 
@@ -155,7 +156,7 @@ Le plan de travail (`worklist.py`) détaille ce qui reste, trié par impact.
 ## Structure du projet
 
 ```text
-Audit_Harness_2026/
+tandem-ia/
 ├── catalog/                 # SOURCE DE VÉRITÉ — seul endroit édité à la main
 │   ├── _meta.yaml           #   taux, TVA, seuils, hiérarchie de provenance
 │   ├── pricing_verified.yaml#   seul endroit où l'on saisit un tarif API

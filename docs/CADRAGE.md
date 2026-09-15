@@ -1,4 +1,4 @@
-# Cadrage — Observatoire Dev IA
+# Cadrage — Tandem
 
 Le POURQUOI. Le COMMENT est dans [ARCHITECTURE.md](ARCHITECTURE.md).
 
@@ -6,8 +6,9 @@ Le POURQUOI. Le COMMENT est dans [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## 1. Pitch
 
-Un référentiel ouvert de l'offre de développement assisté par IA — modèles de fondation
-et harnais d'exécution — construit pour résister à la vérification.
+**Tandem** — un référentiel ouvert de l'offre de développement assisté par IA, modèles
+de fondation et harnais d'exécution, construit pour résister à la vérification. Le nom
+porte la thèse : les deux n'avancent qu'attelés, et c'est le couple qui se mesure.
 
 1. **Mesurer** la performance des modèles sur des benchmarks réputés, en conservant le
    harnais, le protocole, l'incertitude et le coût réel de chaque mesure.
