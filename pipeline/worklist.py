@@ -188,6 +188,12 @@ def main() -> int:
                           "et documenter le rejet dans REJECTED"))
 
     # ── 6. Veille ─────────────────────────────────────────────────────────
+    if not (ROOT / ".env").exists() and not __import__("os").environ.get("AA_API_KEY"):
+        tasks.append((2, "SOURCES",
+                      "Source de recoupement non configurée", "https://artificialanalysis.ai/data-api",
+                      "Tous les benchmarks proviennent d'Epoch AI seul : aucun chiffre n'est "
+                      "confronté à un second relevé.\n    Palier gratuit suffisant (100 req/24 h), "
+                      "puis : python3 pipeline/crosscheck_aa.py"))
     tasks.append((3, "VEILLE", "Rechercher les nouveaux harnais", None,
                   'requêtes : "AI code editor" 2026 · "autonomous coding agent" CLI 2026 · '
                   'site:github.com "coding agent" stars:>2000 pushed:>2026-01-01'))

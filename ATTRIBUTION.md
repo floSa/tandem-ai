@@ -28,8 +28,13 @@ d'origine ; le champ `source_url` de chaque score renvoie à la source amont.
 
 ## Artificial Analysis
 
-Si les données de l'API Artificial Analysis sont utilisées, leurs conditions
-exigent une **attribution visible** sur toute page les affichant.
+`pipeline/crosscheck_aa.py` interroge cette API pour **recouper** les tarifs du
+catalogue. Il n'écrit rien : il signale les écarts, qui s'arbitrent selon la
+hiérarchie de provenance.
+
+Si des données issues de cette API venaient à être **affichées**, leurs conditions
+imposent une **attribution visible** sur la page concernée. En l'état, le
+référentiel ne les publie pas — il s'en sert uniquement comme contre-témoignage.
 
 Source : [Artificial Analysis](https://artificialanalysis.ai) —
 https://artificialanalysis.ai/data-api/docs

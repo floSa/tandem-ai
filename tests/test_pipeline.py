@@ -240,6 +240,21 @@ class TestScriptsExecutables(unittest.TestCase):
         r = self._run("pipeline/validate.py")
         self.assertEqual(r.returncode, 0, f"le validateur échoue :\n{r.stdout[-2000:]}")
 
+    def test_recoupement_inoffensif_sans_cle(self):
+        """Le recoupement est optionnel : sans clé il explique et sort en 0."""
+        import os
+        env = {k: v for k, v in os.environ.items() if k != "AA_API_KEY"}
+        r = subprocess.run([sys.executable, "pipeline/crosscheck_aa.py"], cwd=ROOT,
+                           capture_output=True, text=True, timeout=60, env=env)
+        self.assertEqual(r.returncode, 0, r.stderr[-800:])
+        self.assertIn("OPTIONNELLE", r.stdout)
+
+    def test_recoupement_n_ecrit_jamais(self):
+        """Une contradiction entre sources s'arbitre, elle ne se fusionne pas."""
+        src = (ROOT / "pipeline" / "crosscheck_aa.py").read_text(encoding="utf-8")
+        self.assertNotIn("models.yaml\").write_text", src)
+        self.assertNotIn("safe_dump", src, "le recoupement ne doit pas réécrire le catalogue")
+
     def test_worklist_demarre(self):
         r = self._run("pipeline/worklist.py")
         self.assertEqual(r.returncode, 0, r.stderr[-1500:])
