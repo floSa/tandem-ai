@@ -1,149 +1,192 @@
-# Observatoire des solutions de développement par IA
+# Observatoire Dev IA
 
-Référentiel ouvert sur l'offre du marché — **modèles de fondation** et **harnais
-de développement** — évalués sur benchmarks, avec leurs coûts, leurs sources et
-leurs dates de vérification.
+**Référentiel ouvert de l'offre de développement assisté par IA — modèles et harnais — construit pour résister à la vérification.**
 
-La particularité tient en une phrase : **un score n'est pas un attribut d'un
-modèle**, mais d'un triplet *(modèle × harnais × protocole)*. Sur Terminal-Bench,
-le catalogue recense 52 harnais distincts, et l'écart entre le meilleur et le
-moins bon dépasse souvent l'écart entre deux modèles. Ce référentiel est construit
-pour rendre cet effet visible plutôt que pour le masquer derrière un classement.
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![PyYAML](https://img.shields.io/badge/PyYAML-6.0.1-CB171E?logo=yaml&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-34-1BAF7A)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+![Licence](https://img.shields.io/badge/licence-MIT_%2B_CC_BY_4.0-4A3AA7)
 
-État actuel : **11 fournisseurs · 194 modèles · 18 benchmarks · 1 263 mesures
-dont 286 avec coût réellement mesuré · 25 grilles tarifaires et 21 forfaits
-relevés sur sources officielles · 18 harnais dont 13 re-vérifiés.**
+La particularité tient en une phrase : **un score n'est pas un attribut d'un modèle**,
+mais du triplet *(modèle × harnais × effort de raisonnement)*. Le catalogue recense
+**52 harnais distincts** sur le seul Terminal-Bench, et l'écart qu'ils produisent dépasse
+souvent l'écart entre deux modèles concurrents. Ce dépôt est construit pour rendre cet
+effet visible plutôt que pour le masquer derrière un classement.
 
----
+## Sommaire
 
-## Consulter
-
-| | |
-| :-- | :-- |
-| **Vue interactive** | [`site/index.html`](./site/index.html) — classements avec intervalles de confiance, effet du harnais, progression, couverture, prix × performance |
-| **Méthodologie** | [`protocol/`](./protocol/) |
-| **Données** | [`catalog/`](./catalog/) |
-
----
-
-## Principes
-
-**1. Aucun chiffre sans source vérifiable, date de relevé et niveau de provenance.**
-En cas de doute, le champ reste vide et marqué `unverified`. Un trou déclaré est
-exploitable ; un chiffre plausible mais inventé contamine tout le document.
-
-**2. L'incertitude fait partie de la donnée.** Deux modèles dont les intervalles
-de confiance à 95 % se chevauchent sont à égalité. Le validateur refuse les
-classements qui l'ignorent — c'est aujourd'hui le cas des deux premiers de
-SWE-bench Verified.
-
-**3. Ce que le référentiel ne mesure pas est dit explicitement.** La vue
-« Couverture » affiche les trous en pointillés plutôt que de les interpoler, et
-le validateur distingue un modèle *pas encore mesuré* d'un modèle *dont le tarif
-reste à relever*.
-
-**4. Le coût se mesure, il ne se déduit pas.** Le prix au token ne permet pas de
-comparer deux niveaux d'effort d'un même modèle : le tarif est identique, seule
-la consommation change. Le référentiel exploite le coût réellement dépensé
-pendant les runs — 286 mesures — pour croiser performance et dépense.
-
----
+- [Architecture](#architecture)
+- [Documentation](#documentation)
+- [Démarrage](#démarrage)
+- [Configuration](#configuration)
+- [Tests](#tests)
+- [État de vérification](#état-de-vérification)
+- [Ce que le référentiel n'affirme pas](#ce-que-le-référentiel-naffirme-pas)
+- [Structure du projet](#structure-du-projet)
+- [Licences & composants](#licences--composants)
 
 ## Architecture
 
+`catalog/` est la **seule source de vérité** ; le Guide Markdown, les fiches `data/` et
+la page `site/index.html` en sont générés. Deux portes contrôlent la publication : les
+tests du pipeline, puis le validateur de la donnée.
+
+```mermaid
+flowchart LR
+  subgraph Sources
+    ep[(Epoch AI)]
+    pr[Pages /pricing]
+  end
+  subgraph Catalogue
+    cat[(catalog/ - YAML)]
+  end
+  subgraph Controle
+    vl[tests + validate.py]
+  end
+  subgraph Sorties
+    gd[Guide + data/]
+    st[site/index.html]
+  end
+  ep -->|epoch_ingest.py| cat
+  pr -.releve manuel.-> cat
+  cat --> vl
+  vl -->|build_guide.py| gd
+  vl -->|build_site.py| st
 ```
-catalog/        SOURCE DE VÉRITÉ — le seul endroit édité à la main
-  _meta.yaml      taux de change, TVA, seuils de fraîcheur, hiérarchie de provenance
-  labs.yaml       fournisseurs + URL de tarification officielles
-  models.yaml     modèles + tarifs + provenance
-  tools.yaml      harnais (IDE, extensions, CLI, desktop, passerelles) + conformité
-  plans.yaml      forfaits d'abonnement SaaS
-  pricing_verified.yaml  tarifs API relevés à la main (seul endroit de saisie)
-  benchmarks.yaml registre raisonné des benchmarks        ← généré
-  scores.yaml     mesures (modèle × harnais × protocole)  ← généré
 
-pipeline/       ingestion, validation, génération, recoupement
-tests/          34 tests des invariants du protocole
-content/        fragments narratifs du Guide (écrits à la main)
-site/           page interactive                          ← généré
-data/           fiches par catégorie                      ← généré
-protocol/       méthodologie (fait autorité)
-snapshots/      instantanés datés, base des changelogs
-```
+> Détails : [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 
-Le Guide Markdown et `site/index.html` sont **générés**. On ne les corrige pas à
-la main : on corrige `catalog/` puis on régénère.
+## Documentation
 
----
+| Document | Contenu |
+|---|---|
+| [docs/CADRAGE.md](docs/CADRAGE.md) | Le POURQUOI : objectifs, périmètre, hypothèses, décisions, roadmap |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Le COMMENT : composants, modèle de données, contrôles, flux |
+| [protocol/06_protocole_operatoire.md](protocol/06_protocole_operatoire.md) | Runbook de mise à jour, applicable par tout agent |
+| [protocol/04_sources_et_collecte.md](protocol/04_sources_et_collecte.md) | Où trouver la donnée, hiérarchie de provenance |
+| [protocol/05_methodologie_benchmarks.md](protocol/05_methodologie_benchmarks.md) | Comment lire et publier un score |
+| [AGENTS.md](AGENTS.md) | Point d'entrée pour les agents non-Claude |
+| [Guide complet](Guide_Complet_Solutions_Dev_IA_2026.md) | Livrable généré : tableaux comparatifs |
 
-## Utilisation
+## Démarrage
+
+**Prérequis** : Python ≥ 3.12.
 
 ```bash
-pip install pyyaml
+pip install -r requirements.txt
+cp .env.example .env        # optionnel : uniquement pour le recoupement tarifaire
 ```
+
+Le point d'entrée de toute mise à jour est le plan de travail : il dit ce qui est à
+vérifier maintenant, trié par impact, avec l'URL à ouvrir et les pièges d'accès déjà
+rencontrés pour chaque fournisseur.
 
 ```bash
-python3 pipeline/worklist.py                        # ← COMMENCER ICI : quoi vérifier maintenant
-python3 pipeline/epoch_ingest.py --force-download   # rafraîchir les benchmarks
-python3 pipeline/seed_catalog.py                    # détecter les nouveaux modèles
-python3 pipeline/apply_pricing.py                   # injecter les tarifs relevés
-python3 pipeline/validate.py                        # contrôle qualité (code 1 si erreur)
-python3 pipeline/build_site.py                      # régénérer la page
-python3 pipeline/apply_pricing.py                   # injecter les tarifs relevés
-python3 pipeline/crosscheck_aa.py                   # recouper avec une seconde source
-python3 pipeline/build_guide.py                     # régénérer le Guide et les fiches
-python3 pipeline/changelog.py                       # diff avec l'édition précédente
-python3 -m unittest discover -s tests               # tests du pipeline
+python3 pipeline/worklist.py
 ```
 
-Deux portes avant publication : les **tests du pipeline** (34 tests sur le code
-qui produit la donnée) puis **`validate.py`** (la donnée elle-même). Tant que
-l'une échoue, on ne publie pas. Les deux tournent en CI à chaque push et une fois
-par mois, avec un contrôle que les sorties générées n'ont pas divergé du
-catalogue.
+| Commande | Rôle |
+|---|---|
+| `python3 pipeline/worklist.py` | Plan de travail — **commencer ici** |
+| `python3 pipeline/epoch_ingest.py --force-download` | Rafraîchit les benchmarks |
+| `python3 pipeline/seed_catalog.py` | Détecte les nouveaux modèles mesurés |
+| `python3 pipeline/apply_pricing.py` | Injecte les tarifs relevés à la main |
+| `python3 pipeline/crosscheck_aa.py` | Recoupe avec une seconde source |
+| `python3 pipeline/validate.py` | Contrôle qualité — code 1 si erreur bloquante |
+| `python3 pipeline/build_guide.py` | Régénère le Guide et les fiches `data/` |
+| `python3 pipeline/build_site.py` | Régénère la page interactive |
+| `python3 pipeline/changelog.py` | Diff avec l'édition précédente |
 
-`worklist.py` est le point d'entrée : il dit ce qui n'a jamais été vérifié, ce qui
-a dépassé sa date de péremption, avec l'URL à ouvrir et les pièges d'accès connus
-pour chaque fournisseur (redirections, 403, 404 déjà rencontrés).
+## Configuration
 
-Une mise à jour ne consiste pas seulement à remplir les cases vides : elle
-re-contrôle aussi l'existant, et tout écart constaté alimente le changelog au lieu
-d'être corrigé silencieusement.
+Les paramètres globaux vivent dans [catalog/_meta.yaml](catalog/_meta.yaml) et
+commandent tout le reste : modifiés là, ils se propagent à chaque génération.
 
-Le protocole opératoire complet — quoi relever, dans quel ordre, quels pièges —
-est dans [`protocol/06_protocole_operatoire.md`](./protocol/06_protocole_operatoire.md).
-Avec Claude Code, le skill `audit-referentiel` l'applique directement :
-« mets à jour le référentiel en suivant le protocole ». Les autres agents lisent
-[`AGENTS.md`](./AGENTS.md).
+| Paramètre | Valeur | Effet |
+|---|---|---|
+| `fx.usd_eur` | `0.8666` | Taux de conversion. **Aucune valeur en euros ne se saisit à la main** |
+| `vat.rate` | `0.20` | TVA française, appliquée au calcul du TTC particulier |
+| `freshness.warn_after_days` | `90` | Au-delà, une donnée est signalée à re-vérifier |
+| `freshness.stale_after_days` | `180` | Au-delà, elle est considérée périmée et bloque |
+| `provenance_ranking` | 7 niveaux | Arbitre les contradictions entre sources |
 
----
+| Variable d'environnement | Défaut | Effet |
+|---|---|---|
+| `AA_API_KEY` | vide | Active le recoupement Artificial Analysis. Sans elle, le script explique et sort proprement |
 
-## État de la vérification
+## Tests
 
-| Couche | État |
-| :-- | :-- |
-| Benchmarks | ✅ 1 263 mesures sourcées (Epoch AI, CC-BY) |
-| Identité des modèles | ✅ 194 modèles |
-| Taux de change | ✅ taux de référence BCE du 15/09/2026 |
-| Tarifs API | 🟡 25 relevés sur page officielle — Mistral, Alibaba, xAI, MiniMax, Meta restants |
-| Forfaits d'abonnement | 🟡 21 relevés (Anthropic, GitHub, Cursor, Mistral, Zed, Trae) |
-| Harnais | 🟡 13 re-vérifiés sur 18 |
-| Conformité | 🟡 6 harnais sur 18 |
-| Source de recoupement | ⚠️ Artificial Analysis implémenté, clé non configurée |
+```bash
+python3 -m unittest discover -s tests -v
+```
 
-Le [Guide 2026](./Guide_Complet_Solutions_Dev_IA_2026.md) et les fiches
-[`data/`](./data/) sont antérieurs à ce pipeline. La confrontation aux pages
-officielles donne un bilan nuancé : les noms de modèles sont réels et plusieurs
-grilles tarifaires (Anthropic, Moonshot, Codestral) sont exactes, mais les prix
-de mise en cache sont fréquemment faux et certains tarifs ont été attribués à la
-mauvaise génération de modèle. Le détail figure en tête du Guide.
+34 tests sur les invariants du protocole. Ils tournent en CI à chaque push, avant le
+validateur, avec un contrôle que les sorties générées n'ont pas divergé du catalogue.
 
----
+## État de vérification
 
-## Sources & licences
+| Couche | Vérifié | Détail |
+|---|:---:|---|
+| Benchmarks | ✅ | 1 263 mesures sourcées, dont 286 avec coût réellement mesuré |
+| Identité des modèles | ✅ | 194 modèles, 11 fournisseurs |
+| Taux de change | ✅ | Taux de référence BCE du 15/09/2026 |
+| Tarifs API | ❌ | 25 sur 194 — Mistral, Alibaba, xAI, MiniMax et Meta restent à relever |
+| Forfaits d'abonnement | ❌ | 21 relevés sur 6 éditeurs |
+| Harnais | ❌ | 13 re-vérifiés sur 18 |
+| Conformité | ❌ | 6 harnais sur 18 |
+| Source de recoupement | ❌ | Implémentée, clé non configurée |
 
-Données de benchmark : [Epoch AI — *Capabilities & Benchmarking*](https://epoch.ai/benchmarks),
-sous [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Le plan de travail (`worklist.py`) détaille ce qui reste, trié par impact.
 
-Code sous MIT, contenu sous CC BY 4.0. Attributions complètes :
-[`ATTRIBUTION.md`](./ATTRIBUTION.md).
+## Ce que le référentiel n'affirme pas
+
+- **Aucun classement de « meilleur modèle »** : la question est mal posée.
+- **Aucun score composite maison** : agréger des protocoles différents produit un nombre
+  sans signification.
+- **Aucune interpolation** : un modèle non mesuré reste vide, et la vue « Couverture »
+  affiche les trous en pointillés.
+- Le validateur **interdit de titrer sur un vainqueur** quand les deux premiers d'un
+  classement ne sont pas séparés statistiquement — c'est actuellement le cas sur
+  SWE-bench Verified.
+- **Le coût par tâche de benchmark n'est pas le coût d'une journée de développement.**
+- Rien sur la latence perçue, l'ergonomie du harnais ni la qualité durable du code produit.
+
+## Structure du projet
+
+```text
+Audit_Harness_2026/
+├── catalog/                 # SOURCE DE VÉRITÉ — seul endroit édité à la main
+│   ├── _meta.yaml           #   taux, TVA, seuils, hiérarchie de provenance
+│   ├── pricing_verified.yaml#   seul endroit où l'on saisit un tarif API
+│   ├── plans.yaml           #   forfaits d'abonnement
+│   ├── tools.yaml           #   harnais + conformité
+│   ├── labs.yaml            #   fournisseurs
+│   ├── models.yaml          #   modèles + tarifs fusionnés
+│   ├── benchmarks.yaml      #   registre raisonné              (généré)
+│   └── scores.yaml          #   mesures                        (généré)
+├── pipeline/                # ingestion, validation, génération, recoupement
+├── tests/                   # 34 tests des invariants du protocole
+├── protocol/                # méthodologie — fait autorité
+├── content/                 # fragments narratifs du Guide (écrits à la main)
+├── docs/                    # cadrage et architecture
+├── snapshots/               # instantanés datés, base des changelogs
+├── data/                    # fiches par catégorie             (généré)
+├── site/index.html          # page interactive                 (généré)
+└── Guide_Complet_Solutions_Dev_IA_2026.md                      # (généré)
+```
+
+## Licences & composants
+
+| Composant | Rôle | Licence |
+|---|---|---|
+| Python 3.12 | Langage | PSF |
+| PyYAML 6.0.1 | Sérialisation du catalogue | MIT |
+| Epoch AI — *Capabilities & Benchmarking* | Données de benchmark | CC BY 4.0 |
+| Artificial Analysis Data API | Recoupement tarifaire optionnel | Attribution requise |
+| **Ce projet** | Code du pipeline | MIT — Copyright (c) 2026 floSa |
+| **Ce projet** | Méthodologie, curation, documentation | CC BY 4.0 |
+
+Les données de benchmark proviennent d'[Epoch AI](https://epoch.ai/benchmarks) sous
+CC BY 4.0 : l'attribution est obligatoire dans toute republication. Attributions
+complètes : [ATTRIBUTION.md](ATTRIBUTION.md).

@@ -1,0 +1,2 @@
+# Unique dépendance externe du projet : tout le reste est en bibliothèque standard.
+PyYAML==6.0.1
