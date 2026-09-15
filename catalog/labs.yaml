@@ -1,0 +1,139 @@
+_generated:
+  by: pipeline/seed_catalog.py
+  'on': '2026-09-15'
+  basis: Identités de modèles observées dans les données de benchmark Epoch AI (CC-BY).
+  warning: 'AMORCE. Les champs tarifaires sont vides et marqués `unverified` : ils doivent être renseignés
+    depuis la page /pricing officielle de chaque lab. Voir protocol/04_collecte_donnees.md.'
+labs:
+- id: anthropic
+  name: Anthropic
+  country: US
+  pricing_url: https://www.anthropic.com/pricing
+  api_docs_url: https://docs.claude.com/en/docs/about-claude/models
+  console_url: https://console.anthropic.com
+  model_count_tracked: 34
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: openai
+  name: OpenAI
+  country: US
+  pricing_url: https://openai.com/api/pricing/
+  api_docs_url: https://platform.openai.com/docs/models
+  console_url: https://platform.openai.com
+  model_count_tracked: 41
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: google
+  name: Google DeepMind
+  country: US
+  pricing_url: https://ai.google.dev/gemini-api/docs/pricing
+  api_docs_url: https://ai.google.dev/gemini-api/docs/models
+  console_url: https://aistudio.google.com
+  model_count_tracked: 22
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: deepseek
+  name: DeepSeek
+  country: CN
+  pricing_url: https://api-docs.deepseek.com/quick_start/pricing
+  api_docs_url: https://api-docs.deepseek.com
+  console_url: https://platform.deepseek.com
+  model_count_tracked: 13
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: alibaba
+  name: Alibaba
+  country: CN
+  pricing_url: https://www.alibabacloud.com/help/en/model-studio/models
+  api_docs_url: https://www.alibabacloud.com/help/en/model-studio
+  console_url: https://modelstudio.console.alibabacloud.com
+  model_count_tracked: 32
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: mistral
+  name: Mistral AI
+  country: FR
+  pricing_url: https://mistral.ai/pricing
+  api_docs_url: https://docs.mistral.ai/getting-started/models/models_overview/
+  console_url: https://console.mistral.ai
+  model_count_tracked: 10
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: moonshot
+  name: Moonshot
+  country: CN
+  pricing_url: https://platform.moonshot.ai/docs/pricing
+  api_docs_url: https://platform.moonshot.ai/docs
+  console_url: https://platform.moonshot.ai
+  model_count_tracked: 9
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: zhipu
+  name: Z.ai (Zhipu AI)
+  country: CN
+  pricing_url: https://docs.z.ai/guides/overview/pricing
+  api_docs_url: https://docs.z.ai
+  console_url: https://z.ai
+  model_count_tracked: 8
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: xai
+  name: xAI
+  country: US
+  pricing_url: https://docs.x.ai/docs/models
+  api_docs_url: https://docs.x.ai
+  console_url: https://console.x.ai
+  model_count_tracked: 10
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: meta
+  name: Meta AI
+  country: US
+  pricing_url: https://llama.developer.meta.com/docs/pricing
+  api_docs_url: https://llama.developer.meta.com/docs
+  console_url: https://llama.developer.meta.com
+  model_count_tracked: 3
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.
+- id: minimax
+  name: MiniMax
+  country: CN
+  pricing_url: https://platform.minimax.io/docs/price
+  api_docs_url: https://platform.minimax.io/docs
+  console_url: https://platform.minimax.io
+  model_count_tracked: 6
+  source:
+    url: null
+    verified_on: null
+    status: unverified
+    note: À renseigner depuis la page /pricing officielle du lab.

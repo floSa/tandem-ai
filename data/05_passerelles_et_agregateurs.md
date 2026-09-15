@@ -1,3 +1,8 @@
+> [!WARNING]
+> Fiche antérieure à la mise en place du pipeline de sourçage. Les chiffres qu'elle
+> contient n'ont pas de source vérifiable et sont en attente de re-vérification.
+> Données validées : [`catalog/`](../catalog/).
+
 # Référentiel Data : Passerelles Universelles & Agrégateurs Multi-Modèles (Août 2026)
 
 ## 1. OpenRouter (L'Agrégateur Universel de Référence)

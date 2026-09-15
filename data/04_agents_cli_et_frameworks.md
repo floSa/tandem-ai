@@ -1,3 +1,8 @@
+> [!WARNING]
+> Fiche antérieure à la mise en place du pipeline de sourçage. Les chiffres qu'elle
+> contient n'ont pas de source vérifiable et sont en attente de re-vérification.
+> Données validées : [`catalog/`](../catalog/).
+
 # Référentiel Data : Agents CLI & Frameworks Autonomes (Août 2026)
 
 ## 1. Claude Code CLI

@@ -1,0 +1,291 @@
+_generated:
+  by: pipeline/epoch_ingest.py --registry
+  'on': '2026-09-15'
+  upstream: Epoch AI — Capabilities & Benchmarking (CC-BY 4.0)
+  upstream_url: https://epoch.ai/benchmarks
+  warning: Fichier généré. Éditer CURATION dans pipeline/epoch_ingest.py, pas ce fichier.
+tracked:
+- id: terminal_bench
+  name: Terminal Bench
+  domain: agentic_cli
+  tier: reference
+  track: true
+  measures: 'Tâches multi-étapes en ligne de commande : navigation, exécution, vérification.'
+  caveat: Le score dépend fortement du harnais (agent) utilisé, pas seulement du modèle. Toujours lire
+    le couple (modèle, agent).
+  released_on: '2025-05-19'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: terminalbench_external.csv
+  provenance: independent_leaderboard
+- id: metr_time_horizons
+  name: METR Time Horizons
+  domain: autonomy
+  tier: reference
+  track: true
+  measures: Durée de tâche humaine qu'un modèle accomplit avec 50% de réussite. Exprimé en minutes/heures,
+    pas en pourcentage.
+  caveat: 'Unité différente des autres benchmarks : ne pas agréger avec des scores en %.'
+  released_on: '2025-03-19'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: metr_time_horizons_external.csv
+  provenance: independent_leaderboard
+- id: aider_polyglot
+  name: Aider polyglot
+  domain: code_editing
+  tier: reference
+  track: true
+  measures: Édition de code existant dans plusieurs langages, au format diff.
+  caveat: Mesure l'édition, pas la conception. Publié par l'auteur d'Aider.
+  released_on: '2024-12-21'
+  scale_to_fraction: 0.01
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: aider_polyglot_external.csv
+  provenance: independent_leaderboard
+- id: gpqa_diamond
+  name: GPQA diamond
+  domain: reasoning
+  tier: reference
+  track: true
+  measures: Questions scientifiques de niveau doctorat, hors de portée d'une recherche web.
+  caveat: 'Proche de la saturation chez les modèles de pointe : pouvoir discriminant en baisse.'
+  released_on: '2023-11-20'
+  scale_to_fraction: 1.0
+  random_baseline: 0.25
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: gpqa_diamond.csv
+  provenance: independent_run
+- id: hle
+  name: HLE
+  domain: reasoning
+  tier: reference
+  track: true
+  measures: 'Humanity''s Last Exam : questions expertes volontairement très difficiles.'
+  caveat: null
+  released_on: '2025-01-23'
+  scale_to_fraction: 1.0
+  random_baseline: 0.048
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: hle_external.csv
+  provenance: independent_leaderboard
+- id: swe_bench_verified
+  name: SWE-Bench verified
+  domain: software_engineering
+  tier: reference
+  track: true
+  measures: Résolution de vraies issues GitHub Python, patch validé par les tests du dépôt.
+  caveat: Benchmark de 2024, massivement présent dans les données d'entraînement. Les scores très élevés
+    doivent être lus avec une réserve de contamination.
+  released_on: '2024-08-13'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: swe_bench_verified.csv
+  provenance: independent_run
+- id: apex_agents
+  name: APEX-Agents
+  domain: agentic_work
+  tier: secondary
+  track: true
+  measures: Capacités agentiques sur tâches expertes.
+  caveat: null
+  released_on: '2026-01-21'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: apex_agents_external.csv
+  provenance: independent_leaderboard
+- id: the_agent_company
+  name: The Agent Company
+  domain: agentic_work
+  tier: secondary
+  track: true
+  measures: Tâches de travail réalistes en entreprise simulée (navigation, outils, collègues).
+  caveat: null
+  released_on: '2024-12-18'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: the_agent_company_external.csv
+  provenance: independent_leaderboard
+- id: frontiercode
+  name: FrontierCode
+  domain: code_generation
+  tier: secondary
+  track: true
+  measures: Génération de code sur problèmes récents, conçu contre la contamination.
+  caveat: null
+  released_on: '2026-06-08'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: frontiercode_external.csv
+  provenance: independent_leaderboard
+- id: mirrorcode
+  name: MirrorCode
+  domain: code_generation
+  tier: secondary
+  track: true
+  measures: Benchmark de code récent, résistant à la contamination.
+  caveat: null
+  released_on: '2026-06-26'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: mirrorcode.csv
+  provenance: independent_run
+- id: osworld_2.0
+  name: OSWorld 2.0
+  domain: computer_use
+  tier: secondary
+  track: true
+  measures: Pilotage d'un vrai bureau graphique (fenêtres, applications).
+  caveat: null
+  released_on: '2026-06-26'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: osworld_2_external.csv
+  provenance: independent_leaderboard
+- id: gdpval
+  name: GDPval
+  domain: economic_value
+  tier: secondary
+  track: true
+  measures: Tâches professionnelles réelles évaluées par des experts du métier.
+  caveat: null
+  released_on: '2025-09-25'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: gdpval_external.csv
+  provenance: independent_leaderboard
+- id: remote_labor_index
+  name: Remote Labor Index
+  domain: economic_value
+  tier: secondary
+  track: true
+  measures: Capacité à accomplir des missions freelance réellement rémunérées.
+  caveat: null
+  released_on: '2025-10-29'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: rli_external.csv
+  provenance: independent_leaderboard
+- id: arc_agi_2
+  name: ARC-AGI-2
+  domain: reasoning
+  tier: secondary
+  track: true
+  measures: Raisonnement abstrait sur grilles, résistant à la mémorisation.
+  caveat: null
+  released_on: '2025-03-24'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: arc_agi_2_external.csv
+  provenance: independent_leaderboard
+- id: scicode
+  name: SciCode
+  domain: scientific_code
+  tier: secondary
+  track: true
+  measures: Implémentation de code scientifique à partir d'énoncés de recherche.
+  caveat: null
+  released_on: '2024-07-18'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: scicode_external.csv
+  provenance: independent_run
+- id: cybench
+  name: Cybench
+  domain: security
+  tier: secondary
+  track: true
+  measures: Résolution de défis de cybersécurité type CTF.
+  caveat: null
+  released_on: '2024-08-15'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: cybench_external.csv
+  provenance: independent_leaderboard
+- id: deepswe
+  name: DeepSWE
+  domain: software_engineering
+  tier: secondary
+  track: true
+  measures: Ingénierie logicielle sur tâches longues.
+  caveat: null
+  released_on: '2026-05-26'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: deepswe_external.csv
+  provenance: independent_leaderboard
+- id: gso_bench
+  name: GSO-Bench
+  domain: software_engineering
+  tier: secondary
+  track: true
+  measures: Optimisation de code sous contrainte de performance mesurée.
+  caveat: null
+  released_on: '2025-05-29'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: gso_external.csv
+  provenance: independent_leaderboard
+rejected:
+- benchmark: ANLI
+  reason: Obsolète.
+- benchmark: ARC AI2
+  reason: Obsolète, saturé.
+- benchmark: BBH
+  reason: Largement saturé.
+- benchmark: GSM8K
+  reason: Saturé et massivement contaminé.
+- benchmark: HellaSwag
+  reason: Obsolète, saturé depuis 2023.
+- benchmark: LAMBADA
+  reason: Obsolète (modélisation du langage brute).
+- benchmark: MMLU
+  reason: Saturé (>90% pour tout modèle de pointe) — pouvoir discriminant nul.
+- benchmark: OSWorld
+  reason: Remplacé par OSWorld 2.0.
+- benchmark: OpenBookQA
+  reason: Obsolète, saturé.
+- benchmark: PIQA
+  reason: Obsolète, saturé.
+- benchmark: ScienceQA
+  reason: Obsolète, saturé.
+- benchmark: SuperGLUE
+  reason: Obsolète (ère pré-LLM).
+- benchmark: TriviaQA
+  reason: Mesure la mémorisation, sans rapport avec le développement.
+- benchmark: Winogrande
+  reason: Obsolète, saturé.

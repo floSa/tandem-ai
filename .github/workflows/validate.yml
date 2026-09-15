@@ -1,0 +1,26 @@
+name: Contrôle qualité du référentiel
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 6 1 * *'   # veille mensuelle : détecte les données périmées
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+      - name: Contrôle du catalogue
+        run: python3 pipeline/validate.py
+      - name: Vérifier que la page est à jour
+        run: |
+          python3 pipeline/build_site.py
+          git diff --exit-code site/ || {
+            echo "::error::site/index.html n'est pas à jour — lancer pipeline/build_site.py et commiter"
+            exit 1
+          }

@@ -1,3 +1,19 @@
+> [!WARNING]
+> **Document en cours de re-vérification — ne pas utiliser pour une décision d'achat.**
+>
+> La mise en place du pipeline de sourçage (septembre 2026) a établi que plusieurs
+> affirmations de ce document ne résistent pas à la vérification sur sources
+> primaires : des modèles qui n'apparaissent dans aucune source de benchmark
+> (`GPT-5.6 Sol/Terra/Luna`, `Kimi K3`, `Qwen3.8-Max`, `GLM-5.3`, `Claude 5.0`),
+> et des grilles tarifaires sans source vérifiable.
+>
+> Les données réellement vérifiées vivent désormais dans [`catalog/`](./catalog/)
+> et se consultent via [`site/index.html`](./site/index.html).
+> Ce Guide sera régénéré depuis le catalogue une fois les tarifs relevés sur les
+> pages officielles. Voir [`protocol/04_sources_et_collecte.md`](./protocol/04_sources_et_collecte.md).
+
+---
+
 # Guide de Référence & Audit Exhaustif des Solutions de Développement par IA (Août 2026)
 ## Panorama des Harnais, IDEs Dérivés, Applications Desktop, Agents CLI, Passerelles & Grilles Tarifaires Réelles en France
 

@@ -1,3 +1,8 @@
+> [!WARNING]
+> Fiche antérieure à la mise en place du pipeline de sourçage. Les chiffres qu'elle
+> contient n'ont pas de source vérifiable et sont en attente de re-vérification.
+> Données validées : [`catalog/`](../catalog/).
+
 # Référentiel Data : Fournisseurs de Modèles (Labs IA) & Grilles Tarifaires API Détaillées (Août 2026)
 
 *Note de conversion : Les tarifs sont indiqués en Euros (€) au taux de référence standard (1 $ USD ≈ 0,92 € EUR). Les équivalents en dollars sont précisés entre parenthèses.*

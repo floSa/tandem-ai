@@ -1,0 +1,1231 @@
+{
+ "edition": "2026-09",
+ "models": {
+  "claude-fable-5-1": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-5": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-5": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-fable-5": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-8_none": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-8": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-7": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-mythos-preview-early": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-4-6_32K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-4-6": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-6_64K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-6_32K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-6_120K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-6": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-5-20251101_8K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-5-20251101_64K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-5-20251101_32K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-5-20251101_16K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-5-20251101_128K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-5-20251101": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-haiku-4-5-20251001_8K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-haiku-4-5-20251001_32K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-haiku-4-5-20251001_1K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-haiku-4-5-20251001_16K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-haiku-4-5-20251001": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-4-5-20250929_8K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-4-5-20250929_59K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-4-5-20250929_32K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-4-5-20250929_1K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-4-5-20250929_16K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-sonnet-4-5-20250929": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-1-20250805_27K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-1-20250805_16K": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "claude-opus-4-1-20250805": {
+   "lab": "anthropic",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-6-astra_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-6-astra": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.6-terra_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.6-terra": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.6-sol_promax": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.6-sol_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.6-sol": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.6-luna_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.6-luna": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.5-instant": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.5_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.5-pro-pre-release": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.5-pro": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.5-pre-release": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.5": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.4-nano-2026-03-17_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.4-nano-2026-03-17": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.4-mini-2026-03-17_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.4-mini-2026-03-17": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.4-pro-2026-03-05": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.4-2026-03-05_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.4-2026-03-05": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.3-codex": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.2-codex": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.2-pro-2025-12-11": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.2-2025-12-11_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.2-2025-12-11": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.1-codex-max": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.1-2025-11-13_none": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.1-2025-11-13": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.1-codex-mini": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5.1-codex": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5-pro-2025-10-06": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5-codex": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5-nano-2025-08-07": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5-mini-2025-08-07": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-5-2025-08-07": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "openai/gpt-oss-120b": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-oss-20b": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gpt-oss-120b": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "o3-pro-2025-06-10": {
+   "lab": "openai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3.8-flash": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3.7-flash": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3.6-flash": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3.5-flash-lite": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3.5-flash": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemma-4-31b-it": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemma-4-26b-a4b-it": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemma-4-26b-a4b": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3.1-pro-preview-customtools": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3.1-pro-preview": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3-deep-think-preview": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3-flash-preview": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-3-pro-preview": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-flash-preview-09-2025": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-flash": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-pro_8K": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-pro_32K": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-pro_16K": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-pro-preview-06-05_32K": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-pro-preview-06-05_1K": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-pro-preview-06-05": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "gemini-2.5-pro": {
+   "lab": "google",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-v4-pro-0813_none": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-v4-pro-0813": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-v4-flash-0731_none": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-v4-flash-0731": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-v4-pro_none": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-v4-pro": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-v4-flash": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek/deepseek-v3.2": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-reasoner": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "deepseek-chat": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "DeepSeek-V3.2-Exp_thinking": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "DeepSeek-V3.2-Exp": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "DeepSeek-V3.1-Terminus": {
+   "lab": "deepseek",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.8-max-0902": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.8-27b_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.8-27b": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.8-max": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.7-flash_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.7-flash": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.7-plus_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.7-plus": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.7-max": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.6-flash": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.6-27b_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.6-27b": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.6-max-preview": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.6-35b-a3b_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.6-35b-a3b": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.6-plus": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-flash": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-9B_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-9B": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-35b-a3b_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-35b-a3b": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-122b-a10b_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-plus": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-397b-a17b_none": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3.5-397b-a17b": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3-max-2025-09-23": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "Qwen3-Coder-480B-A35B-Instruct": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3-30b-a3b-thinking-2507": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen3-30b-a3b-instruct-2507": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "qwen/qwen3-235b-a22b-thinking-2507": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "Qwen3-235B-A22B-Thinking-2507": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "Qwen3-235B-A22B-Instruct-2507": {
+   "lab": "alibaba",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "mistral-medium-2604": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "devstral-small-2512": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "mistral-large-2512": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "magistral-small-2509": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "magistral-medium-2509": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "mistral-medium-2508": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "mistral-small-3.2-2506": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "mistral-small-2506": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "magistral-small-2506": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "magistral-medium-2506": {
+   "lab": "mistral",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "kimi-k3": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "kimi-k2.7-code": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "kimi-k2.6": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "kimi-k2.5": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "fireworks/kimi-k2p5": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "kimi-k2-thinking-turbo": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "kimi-k2-thinking": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "moonshotai/kimi-k2-0905": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "Kimi-K2-Instruct": {
+   "lab": "moonshot",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "glm-5.3-flash": {
+   "lab": "zhipu",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "glm-5.3": {
+   "lab": "zhipu",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "glm-5.2_none": {
+   "lab": "zhipu",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "glm-5.2": {
+   "lab": "zhipu",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "glm-5.1": {
+   "lab": "zhipu",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "glm-5": {
+   "lab": "zhipu",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "zai-org/glm-4.7": {
+   "lab": "zhipu",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "glm-4.7": {
+   "lab": "zhipu",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-4.6": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-4.5": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-build-0.1": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-4.3": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-4.20-0309-reasoning": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-4-20": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-4-1": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-4-fast": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-4-0709": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "grok-3-mini": {
+   "lab": "xai",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "muse-spark-1.2": {
+   "lab": "meta",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "muse-spark-1.1": {
+   "lab": "meta",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "muse-spark": {
+   "lab": "meta",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "MiniMax-M3_none": {
+   "lab": "minimax",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "MiniMax-M3": {
+   "lab": "minimax",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "MiniMax-M2.7": {
+   "lab": "minimax",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "MiniMax-M2.5": {
+   "lab": "minimax",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "MiniMax-M2.1": {
+   "lab": "minimax",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  },
+  "MiniMax-M2": {
+   "lab": "minimax",
+   "status": "active",
+   "price_in": null,
+   "price_out": null
+  }
+ },
+ "tools": {},
+ "benchmarks": {
+  "Terminal Bench": {
+   "score": 0.847,
+   "model": "gpt-5.5_unknown",
+   "harness": "NexAU-AHE"
+  },
+  "METR Time Horizons": {
+   "score": 0.852,
+   "model": "claude-mythos-preview-early",
+   "harness": null
+  },
+  "Aider polyglot": {
+   "score": 0.88,
+   "model": "gpt-5-2025-08-07_high",
+   "harness": null
+  },
+  "GPQA diamond": {
+   "score": 0.9577,
+   "model": "gpt-6-astra_max",
+   "harness": null
+  },
+  "HLE": {
+   "score": 0.465,
+   "model": "claude-fable-5-1_xhigh",
+   "harness": null
+  },
+  "SWE-Bench verified": {
+   "score": 0.8347,
+   "model": "claude-opus-4-7_max",
+   "harness": null
+  },
+  "APEX-Agents": {
+   "score": 0.474,
+   "model": "claude-fable-5-1_unknown",
+   "harness": null
+  },
+  "The Agent Company": {
+   "score": 0.524,
+   "model": "DeepSeek-V3.2-Exp",
+   "harness": null
+  },
+  "FrontierCode": {
+   "score": 0.5348,
+   "model": "claude-fable-5_unknown",
+   "harness": "claude-code"
+  },
+  "MirrorCode": {
+   "score": 0.733,
+   "model": "claude-fable-5-1_high",
+   "harness": null
+  },
+  "OSWorld 2.0": {
+   "score": 0.3143,
+   "model": "claude-opus-5_max",
+   "harness": null
+  },
+  "GDPval": {
+   "score": 0.497,
+   "model": "gpt-5.2-2025-12-11_none",
+   "harness": null
+  },
+  "Remote Labor Index": {
+   "score": 0.161,
+   "model": "claude-fable-5",
+   "harness": null
+  },
+  "ARC-AGI-2": {
+   "score": 0.95,
+   "model": "gpt-6-astra_max",
+   "harness": null
+  },
+  "SciCode": {
+   "score": 0.6204,
+   "model": "claude-fable-5-1_max",
+   "harness": null
+  },
+  "Cybench": {
+   "score": 0.93,
+   "model": "claude-opus-4-6_unknown",
+   "harness": null
+  },
+  "DeepSWE": {
+   "score": 0.7412,
+   "model": "gpt-6-astra_xhigh",
+   "harness": "mini-swe-agent"
+  },
+  "GSO-Bench": {
+   "score": 0.4706,
+   "model": "claude-opus-4-8_unknown",
+   "harness": "OpenHands"
+  }
+ },
+ "counts": {
+  "models": 188,
+  "scores": 1275,
+  "tools": 0
+ }
+}

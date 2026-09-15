@@ -1,0 +1,36 @@
+# Paramètres globaux de l'audit. Modifiés UNIQUEMENT ici : tout le reste est recalculé.
+audit:
+  edition: "2026-09"
+  label: "Édition Septembre 2026"
+  previous_edition: "2026-08"
+  next_review_due: "2027-03-15"
+
+# Taux de change et fiscalité — utilisés pour TOUTE conversion.
+# Aucune valeur en euros ne doit être saisie à la main dans le catalogue.
+fx:
+  usd_eur: 0.92
+  source_url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html"
+  verified_on: null          # ← à renseigner à la prochaine vérification
+  status: unverified
+vat:
+  country: FR
+  rate: 0.20
+  note: >-
+    Particulier : TVA 20% ajoutée au paiement Stripe.
+    Professionnel avec n° TVA intracommunautaire : autoliquidation, 0% débité.
+
+# Seuils de fraîcheur appliqués par pipeline/validate.py
+freshness:
+  warn_after_days: 90        # avertissement : donnée à re-vérifier
+  stale_after_days: 180      # erreur : donnée considérée périmée
+
+# Hiérarchie de confiance des sources (du plus fiable au moins fiable).
+# Utilisée pour arbitrer quand deux sources se contredisent.
+provenance_ranking:
+  - independent_run          # le tiers a exécuté le benchmark lui-même (Epoch, Vals)
+  - official_pricing_page    # page /pricing du fournisseur, consultée directement
+  - independent_leaderboard  # leaderboard officiel du benchmark (tbench.ai, swebench.com)
+  - official_docs            # documentation technique du fournisseur
+  - self_reported            # chiffre publié par le lab sur son propre modèle
+  - community                # agrégateur tiers, article, forum
+  - inferred                 # déduit / estimé — jamais publiable sans mention explicite

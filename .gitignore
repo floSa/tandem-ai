@@ -1,0 +1,6 @@
+sources/raw/*.zip
+sources/raw/*.json
+sources/raw/*.csv
+__pycache__/
+*.pyc
+.env
