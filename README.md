@@ -73,6 +73,7 @@ pip install pyyaml
 ```
 
 ```bash
+python3 pipeline/worklist.py                        # ← COMMENCER ICI : quoi vérifier maintenant
 python3 pipeline/epoch_ingest.py --force-download   # rafraîchir les benchmarks
 python3 pipeline/seed_catalog.py                    # détecter les nouveaux modèles
 python3 pipeline/apply_pricing.py                   # injecter les tarifs relevés
@@ -85,9 +86,19 @@ python3 pipeline/changelog.py                       # diff avec l'édition préc
 tourne aussi en CI à chaque push et une fois par mois, pour détecter les données
 qui ont dépassé leur date de péremption.
 
-Avec Claude Code, le skill `audit-referentiel` enchaîne ces étapes :
-« mets à jour le référentiel », « y a-t-il de nouveaux harnais », « vérifie les prix ».
-Les autres agents lisent [`AGENTS.md`](./AGENTS.md).
+`worklist.py` est le point d'entrée : il dit ce qui n'a jamais été vérifié, ce qui
+a dépassé sa date de péremption, avec l'URL à ouvrir et les pièges d'accès connus
+pour chaque fournisseur (redirections, 403, 404 déjà rencontrés).
+
+Une mise à jour ne consiste pas seulement à remplir les cases vides : elle
+re-contrôle aussi l'existant, et tout écart constaté alimente le changelog au lieu
+d'être corrigé silencieusement.
+
+Le protocole opératoire complet — quoi relever, dans quel ordre, quels pièges —
+est dans [`protocol/06_protocole_operatoire.md`](./protocol/06_protocole_operatoire.md).
+Avec Claude Code, le skill `audit-referentiel` l'applique directement :
+« mets à jour le référentiel en suivant le protocole ». Les autres agents lisent
+[`AGENTS.md`](./AGENTS.md).
 
 ---
 

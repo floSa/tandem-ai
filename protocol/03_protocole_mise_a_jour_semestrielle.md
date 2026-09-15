@@ -1,3 +1,9 @@
+> [!NOTE]
+> Ce document décrit l'intention de la révision semestrielle. La procédure
+> **opératoire** — quoi vérifier, dans quel ordre, avec quelles URL et quels
+> pièges — est dans [`06_protocole_operatoire.md`](./06_protocole_operatoire.md),
+> et le plan de travail concret se génère avec `python3 pipeline/worklist.py`.
+
 # Protocole de Mise à Jour Semestrielle de l'Audit
 
 ## 1. Objectif

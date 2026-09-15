@@ -1,15 +1,5 @@
----
-name: audit-referentiel
-description: >-
-  Met à jour le référentiel des solutions de développement par IA (modèles,
-  harnais, tarifs API, forfaits, benchmarks) en suivant un protocole de
-  vérification sur sources primaires. À utiliser dès que l'utilisateur veut
-  rafraîchir l'audit, savoir ce qui a changé, chercher de nouveaux modèles ou
-  harnais, vérifier des tarifs, ingérer des benchmarks, ou publier une édition.
-  Triggers : "mets à jour le référentiel", "suis le protocole de mise à jour",
-  "qu'est-ce qui a changé", "vérifie les prix", "y a-t-il de nouveaux harnais",
-  "rafraîchis les benchmarks", "publie l'édition".
----
+<!-- Version portable du skill Claude Code `audit-referentiel`.
+     Applicable par n'importe quel agent ou par un humain. -->
 
 # Protocole de mise à jour du référentiel
 

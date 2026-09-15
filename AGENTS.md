@@ -34,11 +34,32 @@ Dans `catalog/`, deux fichiers sont eux-mêmes générés et ne s'éditent pas :
    jamais au modèle seul. Publier un classement sans nommer le harnais est une
    erreur méthodologique.
 
+## Par où commencer
+
+```bash
+python3 pipeline/worklist.py
+```
+
+**C'est le point d'entrée de toute mise à jour.** Il répond à « qu'est-ce qui est
+à vérifier maintenant ? » : ce qui n'a jamais été relevé, ce qui a dépassé sa date
+de péremption, avec l'URL à ouvrir et les pièges d'accès déjà rencontrés
+(redirections, 403, 404). Le suivre dans l'ordre BLOQUANT → IMPORTANT → À FAIRE.
+
+Le protocole opératoire complet est dans
+[`protocol/06_protocole_operatoire.md`](./protocol/06_protocole_operatoire.md).
+
+Point souvent oublié : une mise à jour ne consiste pas seulement à **remplir les
+cases vides**, mais à **re-contrôler ce qui est déjà là**. Un tarif relevé il y a
+quatre mois a pu bouger. Tout écart constaté se consigne — il alimente le
+changelog — plutôt que d'être corrigé silencieusement.
+
 ## Commandes
 
 ```bash
+python3 pipeline/worklist.py                        # QUOI FAIRE MAINTENANT
 python3 pipeline/epoch_ingest.py --force-download   # rafraîchit les benchmarks
 python3 pipeline/seed_catalog.py                    # amorce modèles et labs
+python3 pipeline/apply_pricing.py                   # injecte les tarifs relevés
 python3 pipeline/validate.py                        # contrôle qualité (code 1 si erreur)
 python3 pipeline/build_site.py                      # régénère la page
 python3 pipeline/changelog.py                       # diff vs édition précédente
