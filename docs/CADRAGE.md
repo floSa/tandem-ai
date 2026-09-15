@@ -115,6 +115,15 @@ porte la thèse : les deux n'avancent qu'attelés, et c'est le couple qui se mes
   contradictoires demande un jugement fondé sur la hiérarchie de provenance.
 - **Deux portes avant publication** : les tests du pipeline, puis le validateur de la
   donnée. Tant que l'une échoue, on ne publie pas.
+- **Une absence de donnée doit dire pourquoi elle est absente.** Un modèle sans tarif est
+  soit un relevé à faire, soit un modèle qui n'aura jamais de tarif éditeur — et rien ne
+  distingue les deux si le catalogue se contente d'une case vide. La distinction est donc
+  portée par la donnée (`no_public_price` et son motif), pas laissée à l'interprétation.
+  Sans elle, le reste-à-faire affiché est faux, et il le reste indéfiniment.
+- **Un fournisseur se balaye entièrement, pas par mots-clés.** Chercher « CLI » ou
+  « coding agent » laisse passer les harnais dont le nom ne contient ni l'un ni l'autre.
+  Le balayage est donc fournisseur par fournisseur, et sa date est consignée — y compris
+  quand il ne trouve rien.
 
 **À trancher**
 
@@ -125,20 +134,24 @@ porte la thèse : les deux n'avancent qu'attelés, et c'est le couple qui se mes
   ne mesurent pas une capacité de développement ; les trois approchent la saturation.
   Recommandation par défaut : les conserver une édition, puis les écarter s'ils
   n'ajoutent rien.
-- **Conformité.** Les champs existent mais ne sont relevés que pour 6 harnais sur 18.
-  Les compléter exige de lire des DPA, pas des pages tarifaires.
+- **Conformité.** Les champs existent mais ne sont relevés que pour 6 harnais sur 30.
+  Les compléter exige de lire des DPA et des pages de confiance, pas des pages
+  tarifaires : c'est le seul chantier du référentiel qui ne se ramène pas à un relevé
+  chiffré, et le seul qui reste largement ouvert.
 
 ---
 
 ## 7. Roadmap
 
 0. **Socle** — catalogue YAML, ingestion des benchmarks, validateur. *Fait.*
-1. **Tarification** — relevé sur sources primaires, conversion euro. *25 modèles sur 194.*
+1. **Tarification** — relevé sur sources primaires, conversion euro. *Fait : 132 modèles
+   tarifés, 75 classés sans tarif éditeur avec leur motif, 0 en attente de relevé.*
 2. **Coût mesuré** — exploitation des coûts de run et de l'effort de raisonnement. *Fait.*
-3. **Harnais** — re-vérification des statuts et des forfaits. *13 sur 18.*
+3. **Harnais** — balayage fournisseur par fournisseur, statuts et forfaits. *Fait : 11
+   fournisseurs balayés, 30 fiches contrôlées. Seule la grille Windsurf / Devin manque.*
 4. **Recoupement** — seconde source pour confronter les tarifs. *Implémenté, clé non configurée.*
-5. **Conformité** — rétention, résidence, engagements contractuels. *6 harnais sur 18.*
-6. **Publication** — hébergement de la page et première édition publique. *À faire.*
+5. **Conformité** — rétention, résidence, engagements contractuels. *6 harnais sur 30.*
+6. **Publication** — hébergement de la page et première édition publique. *Fait.*
 
 ---
 
@@ -146,7 +159,7 @@ porte la thèse : les deux n'avancent qu'attelés, et c'est le couple qui se mes
 
 Deux niveaux, complémentaires et tous deux bloquants en CI.
 
-**Tests du pipeline** — 34 tests dans [tests/test_pipeline.py](../tests/test_pipeline.py),
+**Tests du pipeline** — 42 tests dans [tests/test_pipeline.py](../tests/test_pipeline.py),
 qui vérifient le code produisant la donnée : normalisation des scores, survie de l'effort
 et du coût à l'ingestion, intégrité référentielle, interdiction de saisie en euros,
 cohérence tarifaire, démarrage effectif de chaque script, non-divergence des sorties

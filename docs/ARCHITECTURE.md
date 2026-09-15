@@ -39,7 +39,7 @@ flowchart TB
   end
 
   subgraph Controle["Portes de sortie"]
-    ts[tests/ - 34 tests]
+    ts[tests/ - 42 tests]
     vl[validate.py]
   end
 
@@ -79,7 +79,7 @@ flowchart TB
 | Ingestion | [pipeline/apply_pricing.py](../pipeline/apply_pricing.py) | Fusionne les tarifs relevés à la main, avec leur provenance |
 | Contrôle | [pipeline/validate.py](../pipeline/validate.py) | Six familles de contrôles, sortie en code 1 si erreur bloquante |
 | Contrôle | [pipeline/crosscheck_aa.py](../pipeline/crosscheck_aa.py) | Confronte les tarifs à une seconde source. N'écrit jamais |
-| Contrôle | [tests/test_pipeline.py](../tests/test_pipeline.py) | 34 tests sur les invariants du protocole |
+| Contrôle | [tests/test_pipeline.py](../tests/test_pipeline.py) | 42 tests sur les invariants du protocole |
 | Pilotage | [pipeline/worklist.py](../pipeline/worklist.py) | Plan de travail : ce qui est à vérifier, trié par impact |
 | Génération | [pipeline/build_guide.py](../pipeline/build_guide.py) | Guide Markdown + 6 fiches `data/` |
 | Génération | [pipeline/build_site.py](../pipeline/build_site.py) | Page HTML autonome, données embarquées |
@@ -92,16 +92,41 @@ flowchart TB
 | Fichier | Nature | Contenu |
 |---|---|---|
 | [_meta.yaml](../catalog/_meta.yaml) | Manuel | Taux de change, TVA, seuils de fraîcheur, hiérarchie de provenance |
-| [pricing_verified.yaml](../catalog/pricing_verified.yaml) | Manuel | **Seul endroit où l'on saisit un tarif API** |
+| [pricing_verified.yaml](../catalog/pricing_verified.yaml) | Manuel | **Seul endroit où l'on saisit un tarif API**, et où l'on motive une absence de tarif |
 | [plans.yaml](../catalog/plans.yaml) | Manuel | Forfaits d'abonnement SaaS |
 | [tools.yaml](../catalog/tools.yaml) | Manuel | Harnais, statut de vérification, conformité |
-| [labs.yaml](../catalog/labs.yaml) | Généré puis enrichi | Fournisseurs et URL de tarification |
+| [labs.yaml](../catalog/labs.yaml) | Généré puis enrichi | Fournisseurs, URL de tarification, trace du balayage d'outillage |
 | [models.yaml](../catalog/models.yaml) | Généré puis enrichi | Modèles, tarifs fusionnés |
 | [benchmarks.yaml](../catalog/benchmarks.yaml) | **Généré** | Registre raisonné, avec les rejets motivés |
 | [scores.yaml](../catalog/scores.yaml) | **Généré** | Une entrée par mesure |
 
 Éditer `benchmarks.yaml` ou `scores.yaml` est inutile : la curation se pilote par les
 dictionnaires `CURATION` et `REJECTED` de [epoch_ingest.py](../pipeline/epoch_ingest.py).
+
+### Trois façons de tarifer un modèle, une seule façon de l'inventer
+
+Un tarif se saisit une fois, sur l'identifiant que porte la page du fournisseur. Les
+mesures, elles, arrivent sous d'autres identifiants : instantanés datés, réglages
+d'exécution, alias de revendeur. Trois mécanismes rapprochent les deux sans jamais
+extrapoler un prix.
+
+| Mécanisme | Ce que c'est | Contrôle |
+|---|---|---|
+| `applies_to` | Liste explicite d'identifiants qui désignent **le même modèle facturé** — `gpt-5-2025-08-07` pour `gpt-5`. Saisi à la main, donc auditable | Un test vérifie que la cible existe et porte exactement le même tarif |
+| Propagation de variante | `_none`, `_32K`, `_high` décrivent un **réglage d'exécution**, pas une référence facturée : même tarif unitaire, consommation différente. Reconnu par motif, propagé automatiquement | Un test vérifie que la variante ne diverge jamais de sa base |
+| `no_public_price` | Le modèle **n'aura pas** de tarif éditeur : poids ouverts, génération retirée, alias de passerelle, pré-version. Chaque entrée porte son motif | Le validateur rejette une exclusion sans motif ou portant un montant |
+
+Le troisième mécanisme est le moins évident et le plus utile. Sans lui, un modèle à poids
+ouverts figure indéfiniment au plan de travail comme « tarif à relever » — alors qu'il n'y
+a rien à relever, et que le travail restant paraît deux fois plus grand qu'il n'est.
+
+### Balayage des fournisseurs
+
+Chercher les harnais par mots-clés laisse passer ceux dont le nom ne contient aucun terme
+attendu. Le protocole impose donc un balayage **fournisseur par fournisseur**, et
+`labs.yaml` en garde la trace : date du balayage, et ce qui a été trouvé — y compris quand
+la réponse est « rien ». Un fournisseur qui ne publie aucun harnais est un constat daté,
+pas un trou du catalogue.
 
 ### Modèle de données d'une mesure
 

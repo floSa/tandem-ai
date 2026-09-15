@@ -36,7 +36,10 @@ IMPORTANT → À FAIRE**. La VEILLE se traite en fin d'édition.
    déclaré est exploitable ; un chiffre plausible mais non sourcé contamine tout
    le document. Cette règle a déjà servi : en septembre 2026, les tarifs Mistral
    n'ont pas été saisis faute de page officielle accessible — c'était la bonne
-   décision.
+   décision. **Corollaire :** un trou déclaré doit dire s'il se comblera. « Pas
+   encore relevé » et « n'aura jamais de tarif » se ressemblent dans un catalogue
+   et n'ont rien à voir dans un plan de travail — voir « Un modèle qui n'aura
+   jamais de tarif » plus bas.
 2. **Un score de benchmark appartient au triplet (modèle × harnais × protocole)**,
    jamais au modèle seul. Ne jamais publier un classement sans dire sous quel
    harnais il a été obtenu.
@@ -88,6 +91,28 @@ Pièges à traiter explicitement plutôt qu'à écraser :
 Ne jamais saisir d'euros : la conversion est calculée au build depuis
 `catalog/_meta.yaml`. Si le taux de change est signalé non vérifié, le traiter —
 c'est un BLOQUANT parce que toutes les valeurs en euros en héritent.
+
+---
+
+### Un modèle qui n'aura jamais de tarif
+
+Beaucoup d'identifiants mesurés n'ont pas de ligne tarifaire, et n'en auront
+jamais : poids ouverts facturés par l'hébergeur, génération retirée de la grille,
+alias de revendeur (`openai/…`, `zai-org/…`), pré-version non commercialisée. Les
+laisser vides les fait réapparaître à chaque édition comme « à relever ».
+
+Les classer dans la section `no_public_price` de `catalog/pricing_verified.yaml`,
+groupés par motif. Le motif est obligatoire : le validateur rejette une exclusion
+sans justification, et un test vérifie qu'aucune exclusion ne porte de montant.
+
+Deux mécanismes évitent par ailleurs de ressaisir un même tarif :
+
+- `applies_to` — liste explicite d'identifiants désignant **le même modèle
+  facturé** (`gpt-5-2025-08-07` pour `gpt-5`). Jamais un modèle « proche » : sur la
+  grille Anthropic de septembre 2026, Opus 4.1 est à 15/75 quand Opus 4.6 est à 5/25.
+- Les suffixes de réglage (`_none`, `_32K`, `_high`) sont propagés automatiquement :
+  un effort de raisonnement change la consommation, pas le tarif unitaire. Ne rien
+  saisir pour eux.
 
 ---
 
@@ -201,6 +226,19 @@ passe.
 
 ## Erreurs déjà commises, à ne pas refaire
 
+- **Chercher les harnais par mots-clés plutôt que fournisseur par fournisseur.**
+  En septembre 2026, ce raccourci avait laissé hors catalogue Google Antigravity
+  et son CLI, Grok Build, Mistral Vibe et Muse Code — et laissé Gemini CLI y
+  figurer alors qu'il avait cessé de servir les requêtes le 18/06/2026. Le
+  balayage lab par lab est obligatoire, et sa date se consigne dans le bloc
+  `tooling` de `labs.yaml`, y compris quand il ne trouve rien.
+- **Laisser une case vide sans dire si elle se remplira.** Un modèle à poids
+  ouverts inscrit indéfiniment au plan de travail fait paraître le référentiel
+  inachevé, et noie le travail réellement restant.
+- **Publier l'état d'avancement du relevé.** Ce qui intéresse le lecteur, c'est la
+  donnée et sa source — pas les compteurs de vérification, les « fiche restaurée »
+  ni les « non re-vérifié ». Ces informations vivent dans `catalog/`, le changelog
+  et le plan de travail ; elles ne sortent pas dans le Guide ni sur le site.
 - **Conclure qu'une donnée est fausse parce qu'elle est absente d'une source.**
   Les jeux de benchmark ont du retard sur les annonces commerciales : un modèle
   peut être vendu sans être encore mesuré. Vérifier sur la page du fournisseur

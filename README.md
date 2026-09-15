@@ -4,7 +4,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![PyYAML](https://img.shields.io/badge/PyYAML-6.0.1-CB171E?logo=yaml&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-34-1BAF7A)
+![Tests](https://img.shields.io/badge/tests-42-1BAF7A)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 ![Licence](https://img.shields.io/badge/licence-MIT-4A3AA7)
 
@@ -122,23 +122,38 @@ commandent tout le reste : modifiés là, ils se propagent à chaque génératio
 python3 -m unittest discover -s tests -v
 ```
 
-34 tests sur les invariants du protocole. Ils tournent en CI à chaque push, avant le
+42 tests sur les invariants du protocole. Ils tournent en CI à chaque push, avant le
 validateur, avec un contrôle que les sorties générées n'ont pas divergé du catalogue.
 
 ## État de vérification
 
-| Couche | Vérifié | Détail |
-|---|:---:|---|
-| Benchmarks | ✅ | 1 263 mesures sourcées, dont 286 avec coût réellement mesuré |
-| Identité des modèles | ✅ | 194 modèles, 11 fournisseurs |
-| Taux de change | ✅ | Taux de référence BCE du 15/09/2026 |
-| Tarifs API | ❌ | 25 sur 194 — Mistral, Alibaba, xAI, MiniMax et Meta restent à relever |
-| Forfaits d'abonnement | ❌ | 21 relevés sur 6 éditeurs |
-| Harnais | ❌ | 13 re-vérifiés sur 18 |
-| Conformité | ❌ | 6 harnais sur 18 |
-| Source de recoupement | ❌ | Implémentée, clé non configurée |
+Chaque chiffre publié porte sa source. Le tableau dit d'où vient la donnée, pas ce qu'il
+resterait à faire — le plan de travail s'en charge.
 
-Le plan de travail (`worklist.py`) détaille ce qui reste, trié par impact.
+| Couche | Couverture | Source |
+|---|---|---|
+| Benchmarks | 1 275 mesures, 18 classements | Epoch AI, jeu de données daté |
+| dont coût réellement mesuré | 278 mesures | même source, colonne de coût d'exécution |
+| dont effort de raisonnement connu | 510 mesures | même source, colonne de protocole |
+| Modèles | 207, 11 fournisseurs | identités issues des mesures, jamais inventées |
+| Tarifs API | 132 relevés · 75 sans tarif éditeur | page tarifaire officielle de chaque fournisseur |
+| Forfaits d'abonnement | 29 paliers, 9 éditeurs | page tarifaire officielle |
+| Harnais et passerelles | 30 fiches, toutes contrôlées | documentation ou tarifs de l'éditeur |
+| Balayage des fournisseurs | 11 sur 11 | recherche outil par outil, y compris les absences |
+| Taux de change | 1 EUR = 1,1539 USD | taux de référence BCE du 15/09/2026 |
+
+**« Sans tarif éditeur » n'est pas un trou.** 75 modèles n'auront jamais de ligne
+tarifaire : poids ouverts facturés par l'hébergeur qui les sert, générations retirées de
+la grille, identifiants de passerelle, pré-versions jamais commercialisées. Chacun porte
+son motif dans [catalog/pricing_verified.yaml](catalog/pricing_verified.yaml). Les
+confondre avec les tarifs à relever ferait paraître le catalogue incomplet à perpétuité.
+
+Deux chantiers restent ouverts, et le plan de travail les rappelle à chaque exécution :
+
+| Chantier | État | Ce qui bloque |
+|---|---|---|
+| Conformité des harnais | 6 fiches sur 30 | rétention, résidence, SSO, audit — un relevé par éditeur |
+| Recoupement des benchmarks | implémenté, inactif | `AA_API_KEY` non configurée ; sans elle, tout vient d'Epoch AI seul |
 
 ## Ce que le référentiel n'affirme pas
 
@@ -156,18 +171,18 @@ Le plan de travail (`worklist.py`) détaille ce qui reste, trié par impact.
 ## Structure du projet
 
 ```text
-tandem-ia/
+tandem-ai/
 ├── catalog/                 # SOURCE DE VÉRITÉ — seul endroit édité à la main
 │   ├── _meta.yaml           #   taux, TVA, seuils, hiérarchie de provenance
-│   ├── pricing_verified.yaml#   seul endroit où l'on saisit un tarif API
+│   ├── pricing_verified.yaml#   tarifs saisis + modèles sans tarif éditeur API
 │   ├── plans.yaml           #   forfaits d'abonnement
 │   ├── tools.yaml           #   harnais + conformité
-│   ├── labs.yaml            #   fournisseurs
+│   ├── labs.yaml            #   fournisseurs + balayage outillage
 │   ├── models.yaml          #   modèles + tarifs fusionnés
 │   ├── benchmarks.yaml      #   registre raisonné              (généré)
 │   └── scores.yaml          #   mesures                        (généré)
 ├── pipeline/                # ingestion, validation, génération, recoupement
-├── tests/                   # 34 tests des invariants du protocole
+├── tests/                   # 42 tests des invariants du protocole
 ├── protocol/                # méthodologie — fait autorité
 ├── content/                 # fragments narratifs du Guide (écrits à la main)
 ├── docs/                    # cadrage et architecture

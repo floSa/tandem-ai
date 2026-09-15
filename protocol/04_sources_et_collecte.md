@@ -112,6 +112,9 @@ fournisseur.** Aucun comparatif tiers, aucun article, aucune mémoire de modèle
 langage ne fait foi. Les URL de départ sont dans `catalog/labs.yaml`
 (champ `pricing_url`).
 
+La saisie se fait dans `catalog/pricing_verified.yaml`, jamais directement dans
+`models.yaml` : ce dernier est reconstruit par `pipeline/apply_pricing.py`.
+
 Procédure par modèle :
 
 1. Ouvrir la `pricing_url` du lab.
@@ -143,6 +146,25 @@ Points d'attention récurrents :
 - vérifier la région de facturation (les tarifs Alibaba diffèrent selon la zone) ;
 - noter les tarifs batch / asynchrones séparément du tarif temps réel.
 
+### Quand la page ne porte pas le modèle mesuré
+
+Les identifiants mesurés par les benchmarks ne sont presque jamais ceux qui figurent
+sur une page tarifaire. Trois cas, trois traitements — et un interdit.
+
+| Ce qu'on observe | Traitement | Champ |
+| :-- | :-- | :-- |
+| L'identifiant est un **instantané daté** du modèle tarifé (`gpt-5-2025-08-07` pour `gpt-5`) | Recopier le tarif à l'identique | `applies_to` |
+| L'identifiant porte un **suffixe de réglage** (`_none`, `_32K`, `_high`) | Ne rien saisir : `apply_pricing.py` propage le tarif de la base. Un réglage d'exécution ne change pas le tarif unitaire, seulement la consommation | automatique |
+| Le modèle **n'a pas de tarif éditeur** : poids ouverts, génération retirée de la grille, alias de revendeur (`openai/…`, `zai-org/…`), pré-version jamais commercialisée | Le classer avec son motif | `no_public_price` |
+
+**L'interdit :** ne jamais mettre dans `applies_to` un modèle simplement « proche ». Une
+génération voisine n'est pas le même produit — sur la grille Anthropic de septembre 2026,
+Opus 4.1 est à 15/75 quand Opus 4.6 est à 5/25. Dans le doute, ne rien saisir.
+
+Cette classification n'est pas un confort de présentation : sans elle, un modèle à poids
+ouverts reste indéfiniment inscrit au plan de travail comme « tarif à relever », et le
+reste-à-faire affiché est faux.
+
 ---
 
 ## 5. Veille des nouveaux entrants
@@ -171,11 +193,27 @@ Pour **chaque lab** de `catalog/labs.yaml`, poser les quatre mêmes questions :
 | Une extension IDE officielle ? | marketplace VS Code, plugins JetBrains |
 | Un forfait couvrant ces outils ? | page `/pricing` déjà consultée pour les tarifs |
 
-Une réponse négative se consigne aussi : « Z.ai — aucune application desktop officielle
-confirmée en septembre 2026, sources contradictoires » évite de reposer la question.
+**Une réponse négative se consigne au même titre qu'une découverte**, dans le bloc
+`tooling` de `catalog/labs.yaml` : date du balayage, et ce qui a été trouvé — y compris
+« rien ».
 
-`pipeline/worklist.py` signale automatiquement les labs dont aucun outil ne figure au
-catalogue.
+```yaml
+tooling:
+  checked_on: '2026-09-15'
+  note: >-
+    AUCUN harnais officiel. Les agents en circulation sont communautaires ;
+    la doc d'intégration du lab ne référence que des outils tiers.
+```
+
+`pipeline/worklist.py` réclame un balayage tant que `checked_on` est absent, et se tait
+dès qu'il est renseigné. Un fournisseur sans harnais devient alors un constat daté, pas
+un trou qu'on redécouvre à chaque édition.
+
+**Ce que le balayage de septembre 2026 avait manqué**, faute d'avoir été fait : Google
+Antigravity et son CLI — alors que Gemini CLI, encore catalogué par les sources
+secondaires, avait cessé de servir les requêtes grand public le 18/06/2026 — ainsi que
+Grok Build (xAI), Mistral Vibe et Muse Code (Meta). Quatre laboratoires majeurs, aucun
+harnais au catalogue.
 
 Requêtes complémentaires, en anglais, pour les nouveaux entrants :
 
