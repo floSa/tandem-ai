@@ -15,6 +15,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pyyaml
+      - name: Tests du pipeline
+        run: python3 -m unittest discover -s tests -v
       - name: Contrôle du catalogue
         run: python3 pipeline/validate.py
       - name: Vérifier que la page est à jour

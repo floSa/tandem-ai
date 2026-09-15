@@ -269,7 +269,10 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
             cost = None
             if cost_col and (r.get(cost_col) or "").strip():
                 try:
-                    cost = round(float(str(r[cost_col]).replace("$", "").replace(",", "")), 4)
+                    v_ = round(float(str(r[cost_col]).replace("$", "").replace(",", "")), 4)
+                    # Un coût de 0 est une valeur manquante encodée en zéro, jamais
+                    # une mesure : la garder fausserait le front de Pareto.
+                    cost = v_ if v_ > 0 else None
                 except ValueError:
                     cost = None
             rows.append({

@@ -4963,7 +4963,7 @@ scores:
   model_version: Llama-4-Maverick-17B-128E-Instruct
   model_base: Llama-4-Maverick-17B-128E-Instruct
   effort: null
-  cost_usd: 0.0
+  cost_usd: null
   model_display: null
   organization: Meta AI
   harness: null
@@ -5229,7 +5229,7 @@ scores:
   model_version: gemini-2.0-flash-thinking-exp-01-21
   model_base: gemini-2.0-flash-thinking-exp-01-21
   effort: null
-  cost_usd: 0.0
+  cost_usd: null
   model_display: null
   organization: Google DeepMind,Google
   harness: null
@@ -5286,7 +5286,7 @@ scores:
   model_version: gemini-2.0-pro-exp-02-05
   model_base: gemini-2.0-pro-exp-02-05
   effort: null
-  cost_usd: 0.0
+  cost_usd: null
   model_display: null
   organization: Google DeepMind
   harness: null
@@ -5324,7 +5324,7 @@ scores:
   model_version: QwQ-32B
   model_base: QwQ-32B
   effort: null
-  cost_usd: 0.0
+  cost_usd: null
   model_display: null
   organization: Alibaba
   harness: null
@@ -5343,7 +5343,7 @@ scores:
   model_version: c4ai-command-a-03-2025
   model_base: c4ai-command-a-03-2025
   effort: null
-  cost_usd: 0.0
+  cost_usd: null
   model_display: null
   organization: Cohere
   harness: null
@@ -5362,7 +5362,7 @@ scores:
   model_version: gemma-3-27b-it
   model_base: gemma-3-27b-it
   effort: null
-  cost_usd: 0.0
+  cost_usd: null
   model_display: null
   organization: Google DeepMind
   harness: null
@@ -5552,7 +5552,7 @@ scores:
   model_version: gemini-2.5-pro-preview-03-25
   model_base: gemini-2.5-pro-preview-03-25
   effort: null
-  cost_usd: 0.0
+  cost_usd: null
   model_display: null
   organization: Google DeepMind
   harness: null
@@ -5571,7 +5571,7 @@ scores:
   model_version: Qwen3-235B-A22B-Instruct-2507
   model_base: Qwen3-235B-A22B-Instruct-2507
   effort: null
-  cost_usd: 0.0
+  cost_usd: null
   model_display: null
   organization: Alibaba
   harness: null

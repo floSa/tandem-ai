@@ -60,12 +60,15 @@ python3 pipeline/worklist.py                        # QUOI FAIRE MAINTENANT
 python3 pipeline/epoch_ingest.py --force-download   # rafraîchit les benchmarks
 python3 pipeline/seed_catalog.py                    # amorce modèles et labs
 python3 pipeline/apply_pricing.py                   # injecte les tarifs relevés
+python3 -m unittest discover -s tests                # tests du pipeline
 python3 pipeline/validate.py                        # contrôle qualité (code 1 si erreur)
 python3 pipeline/build_site.py                      # régénère la page
 python3 pipeline/changelog.py                       # diff vs édition précédente
 ```
 
-`validate.py` est la porte de sortie : **tant qu'il échoue, on ne publie pas.**
+Deux portes avant publication : **les tests du pipeline** (le code qui produit la
+donnée) puis **`validate.py`** (la donnée elle-même). **Tant que l'une échoue, on
+ne publie pas.**
 Ses alertes indiquent ce que le document n'a pas le droit d'affirmer — notamment
 les classements dont les deux premiers ne sont pas séparés statistiquement.
 
