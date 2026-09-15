@@ -22,8 +22,8 @@ Work with Apps : lecture du contexte VS Code, Xcode, Terminal.
 - **Statut :** active
 - **Capacités :** MCP
 - **Forfait Free :** gratuit — 0,00 € HT · 0,00 € TTC
-- **Forfait Pro :** $20 — 18,40 € HT · 22,08 € TTC
-- **Forfait Max :** $100 — 92,00 € HT · 110,40 € TTC
+- **Forfait Pro :** $20 — 17,33 € HT · 20,80 € TTC
+- **Forfait Max :** $100 — 86,66 € HT · 103,99 € TTC
 - **Vérification :** 2026-09-15 (official_pricing_page)
 
 Windows et macOS. Serveurs MCP, accès fichiers et outils locaux.

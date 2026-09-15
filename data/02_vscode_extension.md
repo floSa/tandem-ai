@@ -36,9 +36,9 @@ VS Code et JetBrains. Sépare le modèle d'autocomplétion du modèle de chat.
 - **Statut :** active
 - **Capacités :** —
 - **Forfait Free :** gratuit — 0,00 € HT · 0,00 € TTC
-- **Forfait Pro :** $10 — 9,20 € HT · 11,04 € TTC
-- **Forfait Pro+ :** $39 — 35,88 € HT · 43,06 € TTC
-- **Forfait Max :** $100 — 92,00 € HT · 110,40 € TTC
+- **Forfait Pro :** $10 — 8,67 € HT · 10,40 € TTC
+- **Forfait Pro+ :** $39 — 33,80 € HT · 40,56 € TTC
+- **Forfait Max :** $100 — 86,66 € HT · 103,99 € TTC
 - **Vérification :** 2026-09-15 (official_pricing_page)
 - **Constat :** Modèle de crédits confirmé : 15 $ (Pro), 70 $ (Pro+), 200 $ (Max). Complétions illimitées sur tout forfait payant.
 

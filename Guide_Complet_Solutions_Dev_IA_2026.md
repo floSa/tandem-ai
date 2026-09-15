@@ -15,10 +15,7 @@
 | Tarifs API relevés sur page officielle | 25 / 194 |
 | Forfaits d'abonnement relevés | 21 |
 | Harnais re-vérifiés | 13 / 18 |
-| Taux de change USD→EUR | 0.92 — **non vérifié** |
-
-> [!WARNING]
-> Le taux de change n'est pas vérifié : **toutes les valeurs en euros de ce document en héritent**. Les montants en dollars, eux, sont relevés sur les pages officielles.
+| Taux de change USD→EUR | 0.8666 — vérifié |
 
 ---
 
@@ -160,31 +157,31 @@ La colonne *vérifié* indique si la fiche a été re-contrôlée à cette édit
 
 ## 4. Forfaits d'abonnement
 
-Montants calculés au taux de 0.92 $/€ et à une TVA de 20%. La colonne **€ HT** est ce que débite un professionnel en autoliquidation ; la colonne **€ TTC** ce que débite un particulier.
+Montants calculés au taux de 0.8666 $/€ et à une TVA de 20%. La colonne **€ HT** est ce que débite un professionnel en autoliquidation ; la colonne **€ TTC** ce que débite un particulier.
 
 | Éditeur | Produit | Forfait | Affiché | € HT (pro) | € TTC | Inclus | Source |
 | :-- | :-- | :-- | --: | --: | --: | :-- | :-- |
 | Anthropic | Claude | **Free** | gratuit | 0,00 € | 0,00 € | Chat web, iOS, Android et desktop. Claude Code non inclus. | [page](https://claude.com/pricing) |
-| Anthropic | Claude | **Pro** | $20 | 18,40 € | 22,08 € | Usage étendu, accès Opus, projets étendus, Claude for Microsoft 365. Inclut Claude Code. | [page](https://claude.com/pricing) |
-| Anthropic | Claude | **Max** | $100 | 92,00 € | 110,40 € | 5x ou 20x l'usage de Pro, limites de sortie supérieures, accès prioritaire. | [page](https://claude.com/pricing) |
+| Anthropic | Claude | **Pro** | $20 | 17,33 € | 20,80 € | Usage étendu, accès Opus, projets étendus, Claude for Microsoft 365. Inclut Claude Code. | [page](https://claude.com/pricing) |
+| Anthropic | Claude | **Max** | $100 | 86,66 € | 103,99 € | 5x ou 20x l'usage de Pro, limites de sortie supérieures, accès prioritaire. | [page](https://claude.com/pricing) |
 | Anysphere | Cursor | **Hobby** | gratuit | 0,00 € | 0,00 € | Requêtes Agent limitées, accès Composer. | [page](https://cursor.com/pricing) |
-| Anysphere | Cursor | **Individual** | $20 | 18,40 € | 22,08 € | Limites étendues sur Agent, modèles frontier, MCP, skills, hooks, agents cloud. | [page](https://cursor.com/pricing) |
-| Anysphere | Cursor | **Teams** | $40/u | 36,80 € | 44,16 € | Facturation centralisée, marketplace interne, SSO SAML/OIDC, mode privé. | [page](https://cursor.com/pricing) |
+| Anysphere | Cursor | **Individual** | $20 | 17,33 € | 20,80 € | Limites étendues sur Agent, modèles frontier, MCP, skills, hooks, agents cloud. | [page](https://cursor.com/pricing) |
+| Anysphere | Cursor | **Teams** | $40/u | 34,66 € | 41,60 € | Facturation centralisée, marketplace interne, SSO SAML/OIDC, mode privé. | [page](https://cursor.com/pricing) |
 | ByteDance | Trae | **Free** | gratuit | 0,00 € | 0,00 € | 5 000 autocomplétions/mois, 2 tâches cloud simultanées. | [page](https://trae.ai/pricing) |
-| ByteDance | Trae | **Lite** | $3 | 2,76 € | 3,31 € | Autocomplétion illimitée, 5 $ d'usage, 2 tâches simultanées. | [page](https://trae.ai/pricing) |
-| ByteDance | Trae | **Pro** | $10 | 9,20 € | 11,04 € | 20 $ d'usage, 10 tâches simultanées, essai de 7 jours. | [page](https://trae.ai/pricing) |
-| ByteDance | Trae | **Pro+** | $30 | 27,60 € | 33,12 € | 3,5× l'usage de Pro, 15 tâches simultanées. | [page](https://trae.ai/pricing) |
-| ByteDance | Trae | **Ultra** | $100 | 92,00 € | 110,40 € | 20× l'usage de Pro, accès anticipé aux modèles, 20 tâches simultanées. | [page](https://trae.ai/pricing) |
+| ByteDance | Trae | **Lite** | $3 | 2,60 € | 3,12 € | Autocomplétion illimitée, 5 $ d'usage, 2 tâches simultanées. | [page](https://trae.ai/pricing) |
+| ByteDance | Trae | **Pro** | $10 | 8,67 € | 10,40 € | 20 $ d'usage, 10 tâches simultanées, essai de 7 jours. | [page](https://trae.ai/pricing) |
+| ByteDance | Trae | **Pro+** | $30 | 26,00 € | 31,20 € | 3,5× l'usage de Pro, 15 tâches simultanées. | [page](https://trae.ai/pricing) |
+| ByteDance | Trae | **Ultra** | $100 | 86,66 € | 103,99 € | 20× l'usage de Pro, accès anticipé aux modèles, 20 tâches simultanées. | [page](https://trae.ai/pricing) |
 | GitHub | GitHub Copilot | **Free** | gratuit | 0,00 € | 0,00 € | 2 000 complétions/mois, 24+ modèles dont Haiku 4.5 et GPT-5 mini. | [page](https://github.com/features/copilot/plans) |
-| GitHub | GitHub Copilot | **Pro** | $10 | 9,20 € | 11,04 € | Complétion et next-edit illimitées, 15 $ de crédits mensuels. | [page](https://github.com/features/copilot/plans) |
-| GitHub | GitHub Copilot | **Pro+** | $39 | 35,88 € | 43,06 € | 70 $ de crédits mensuels, 4x+ l'usage de Pro. | [page](https://github.com/features/copilot/plans) |
-| GitHub | GitHub Copilot | **Max** | $100 | 92,00 € | 110,40 € | 200 $ de crédits mensuels, 2,9x+ l'usage de Pro+. | [page](https://github.com/features/copilot/plans) |
+| GitHub | GitHub Copilot | **Pro** | $10 | 8,67 € | 10,40 € | Complétion et next-edit illimitées, 15 $ de crédits mensuels. | [page](https://github.com/features/copilot/plans) |
+| GitHub | GitHub Copilot | **Pro+** | $39 | 33,80 € | 40,56 € | 70 $ de crédits mensuels, 4x+ l'usage de Pro. | [page](https://github.com/features/copilot/plans) |
+| GitHub | GitHub Copilot | **Max** | $100 | 86,66 € | 103,99 € | 200 $ de crédits mensuels, 2,9x+ l'usage de Pro+. | [page](https://github.com/features/copilot/plans) |
 | Mistral AI | Mistral Vibe | **Free** | gratuit | 0,00 € | 0,00 € | Messages et recherches limités, 10 $/mois de crédits API. | [page](https://mistral.ai/pricing) |
-| Mistral AI | Mistral Vibe | **Pro** | $14.99 | 13,79 € | 16,55 € | Capacité de code étendue, 15 $/mois de crédits API. 5,99 $ pour les étudiants vérifiés. | [page](https://mistral.ai/pricing) |
-| Mistral AI | Mistral Vibe | **Team** | $24.99/u | 22,99 € | 27,59 € | Minimum 50 $/mois, 30 Go de stockage par utilisateur, vérification de domaine. | [page](https://mistral.ai/pricing) |
+| Mistral AI | Mistral Vibe | **Pro** | $14.99 | 12,99 € | 15,59 € | Capacité de code étendue, 15 $/mois de crédits API. 5,99 $ pour les étudiants vérifiés. | [page](https://mistral.ai/pricing) |
+| Mistral AI | Mistral Vibe | **Team** | $24.99/u | 21,66 € | 25,99 € | Minimum 50 $/mois, 30 Go de stockage par utilisateur, vérification de domaine. | [page](https://mistral.ai/pricing) |
 | Zed Industries | Zed | **Personal** | gratuit | 0,00 € | 0,00 € | 2 000 prédictions d'édition acceptées. BYOK et agents externes illimités. | [page](https://zed.dev/pricing) |
-| Zed Industries | Zed | **Pro** | $10 | 9,20 € | 11,04 € | Prédictions illimitées, 5 $ de tokens inclus, facturation à l'usage au-delà. | [page](https://zed.dev/pricing) |
-| Zed Industries | Zed | **Business** | $30/u | 27,60 € | 33,12 € | Politiques de modèles à l'échelle de l'organisation, gouvernance des données, RBAC. | [page](https://zed.dev/pricing) |
+| Zed Industries | Zed | **Pro** | $10 | 8,67 € | 10,40 € | Prédictions illimitées, 5 $ de tokens inclus, facturation à l'usage au-delà. | [page](https://zed.dev/pricing) |
+| Zed Industries | Zed | **Business** | $30/u | 26,00 € | 31,20 € | Politiques de modèles à l'échelle de l'organisation, gouvernance des données, RBAC. | [page](https://zed.dev/pricing) |
 
 ---
 
@@ -195,30 +192,30 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 | Fournisseur | Modèle | Rôle | Contexte | Entrée $ | Cache $ | Sortie $ | Entrée € HT | Sortie € HT | Relevé le |
 | :-- | :-- | :-- | --: | --: | --: | --: | --: | --: | :-- |
 | Z.ai (Zhipu AI) | **GLM-4.7-Flash** | Gratuit avec limites de débit | — | gratuit | gratuit | gratuit | 0,00 € | 0,00 € | 2026-09-15 |
-| Z.ai (Zhipu AI) | **GLM-5.3-Flash** | Flash économique | — | $0.15 | $0.03 | $0.5 | 0,14 € | 0,46 € | 2026-09-15 |
-| OpenAI | **GPT-5.6 Luna** | Flash / économique | — | $0.2 | $0.02 | $1.2 | 0,18 € | 1,10 € | 2026-09-15 |
-| DeepSeek | **DeepSeek Flash** | Flash ultra-économique | 1000k | $0.3 | $0.006 | $1.2 | 0,28 € | 1,10 € | 2026-09-15 |
-| Google DeepMind | **Gemini 3.5 Flash-Lite** | Ultra-économique | — | $0.3 | $0.03 | $2.5 | 0,28 € | 2,30 € | 2026-09-15 |
-| Google DeepMind | **Gemini 3.8 Flash** | Flash génération courante | — | $0.75 | $0.075 | $3.75 | 0,69 € | 3,45 € | 2026-09-15 |
-| Moonshot | **Kimi K2.6** | — | 262k | $0.95 | $0.16 | $4 | 0,87 € | 3,68 € | 2026-09-15 |
-| Moonshot | **Kimi K2.7 Code** | Dédié développement logiciel | 262k | $0.95 | $0.19 | $4 | 0,87 € | 3,68 € | 2026-09-15 |
-| Anthropic | **Claude Haiku 4.5** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,92 € | 4,60 € | 2026-09-15 |
-| DeepSeek | **DeepSeek V4-Pro** | Flagship raisonnement | 1000k | $1.32 | $0.044 | $3.96 | 1,21 € | 3,64 € | 2026-09-15 |
-| Z.ai (Zhipu AI) | **GLM-5.3** | Flagship raisonnement et code | — | $1.4 | $0.26 | $4.4 | 1,29 € | 4,05 € | 2026-09-15 |
-| Google DeepMind | **Gemini 3.5 Flash** | — | — | $1.5 | $0.15 | $9 | 1,38 € | 8,28 € | 2026-09-15 |
-| Anthropic | **Claude Sonnet 5** | Référence ingénierie logicielle | 200k | $2 | $0.2 | $10 | 1,84 € | 9,20 € | 2026-09-15 |
-| Google DeepMind | **Gemini 3.1 Pro** | Flagship raisonnement | 200k | $2 | $0.2 | $12 | 1,84 € | 11,04 € | 2026-09-15 |
-| OpenAI | **GPT-5.6 Terra** | Équilibré développeur | — | $2 | $0.2 | $12 | 1,84 € | 11,04 € | 2026-09-15 |
-| OpenAI | **o3** | Raisonnement algorithmique | — | $2 | $0.5 | $8 | 1,84 € | 7,36 € | 2026-09-15 |
-| OpenAI | **GPT-5.4** | — | — | $2.5 | $0.25 | $15 | 2,30 € | 13,80 € | 2026-09-15 |
-| Moonshot | **Kimi K3** | Flagship multimodal | 1048k | $3 | $0.3 | $15 | 2,76 € | 13,80 € | 2026-09-15 |
-| OpenAI | **GPT-5.6 Sol** | Haute capacité multimodal | — | $4 | $0.4 | $20 | 3,68 € | 18,40 € | 2026-09-15 |
-| Anthropic | **Claude Opus 5** | Flagship architecture et cas complexes | 200k | $5 | $0.5 | $25 | 4,60 € | 23,00 € | 2026-09-15 |
-| OpenAI | **GPT-5.5** | — | — | $5 | $0.5 | $30 | 4,60 € | 27,60 € | 2026-09-15 |
-| Anthropic | **Claude Fable 5.1** | Flagship raisonnement étendu | 200k | $10 | $0.25 | $50 | 9,20 € | 46,00 € | 2026-09-15 |
-| OpenAI | **GPT-6 Astra** | Flagship nouvelle génération | — | $10 | $1 | $50 | 9,20 € | 46,00 € | 2026-09-15 |
-| OpenAI | **o3-pro** | Raisonnement extrême | — | $20 | — | $80 | 18,40 € | 73,60 € | 2026-09-15 |
-| OpenAI | **GPT-5.5 Pro** | — | — | $30 | — | $180 | 27,60 € | 165,60 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-5.3-Flash** | Flash économique | — | $0.15 | $0.03 | $0.5 | 0,13 € | 0,43 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Luna** | Flash / économique | — | $0.2 | $0.02 | $1.2 | 0,17 € | 1,04 € | 2026-09-15 |
+| DeepSeek | **DeepSeek Flash** | Flash ultra-économique | 1000k | $0.3 | $0.006 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.5 Flash-Lite** | Ultra-économique | — | $0.3 | $0.03 | $2.5 | 0,26 € | 2,17 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.8 Flash** | Flash génération courante | — | $0.75 | $0.075 | $3.75 | 0,65 € | 3,25 € | 2026-09-15 |
+| Moonshot | **Kimi K2.6** | — | 262k | $0.95 | $0.16 | $4 | 0,82 € | 3,47 € | 2026-09-15 |
+| Moonshot | **Kimi K2.7 Code** | Dédié développement logiciel | 262k | $0.95 | $0.19 | $4 | 0,82 € | 3,47 € | 2026-09-15 |
+| Anthropic | **Claude Haiku 4.5** | Flash / économique | 200k | $1 | $0.1 | $5 | 0,87 € | 4,33 € | 2026-09-15 |
+| DeepSeek | **DeepSeek V4-Pro** | Flagship raisonnement | 1000k | $1.32 | $0.044 | $3.96 | 1,14 € | 3,43 € | 2026-09-15 |
+| Z.ai (Zhipu AI) | **GLM-5.3** | Flagship raisonnement et code | — | $1.4 | $0.26 | $4.4 | 1,21 € | 3,81 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.5 Flash** | — | — | $1.5 | $0.15 | $9 | 1,30 € | 7,80 € | 2026-09-15 |
+| Anthropic | **Claude Sonnet 5** | Référence ingénierie logicielle | 200k | $2 | $0.2 | $10 | 1,73 € | 8,67 € | 2026-09-15 |
+| Google DeepMind | **Gemini 3.1 Pro** | Flagship raisonnement | 200k | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Terra** | Équilibré développeur | — | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
+| OpenAI | **o3** | Raisonnement algorithmique | — | $2 | $0.5 | $8 | 1,73 € | 6,93 € | 2026-09-15 |
+| OpenAI | **GPT-5.4** | — | — | $2.5 | $0.25 | $15 | 2,17 € | 13,00 € | 2026-09-15 |
+| Moonshot | **Kimi K3** | Flagship multimodal | 1048k | $3 | $0.3 | $15 | 2,60 € | 13,00 € | 2026-09-15 |
+| OpenAI | **GPT-5.6 Sol** | Haute capacité multimodal | — | $4 | $0.4 | $20 | 3,47 € | 17,33 € | 2026-09-15 |
+| Anthropic | **Claude Opus 5** | Flagship architecture et cas complexes | 200k | $5 | $0.5 | $25 | 4,33 € | 21,66 € | 2026-09-15 |
+| OpenAI | **GPT-5.5** | — | — | $5 | $0.5 | $30 | 4,33 € | 26,00 € | 2026-09-15 |
+| Anthropic | **Claude Fable 5.1** | Flagship raisonnement étendu | 200k | $10 | $0.25 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
+| OpenAI | **GPT-6 Astra** | Flagship nouvelle génération | — | $10 | $1 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
+| OpenAI | **o3-pro** | Raisonnement extrême | — | $20 | — | $80 | 17,33 € | 69,33 € | 2026-09-15 |
+| OpenAI | **GPT-5.5 Pro** | — | — | $30 | — | $180 | 26,00 € | 155,99 € | 2026-09-15 |
 
 **Particularités tarifaires**
 

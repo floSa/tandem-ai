@@ -187,6 +187,38 @@ def main() -> int:
             add(WARN, "COUVERTURE",
                 f"`{b['name']}` est proche de la saturation (meilleur score {top:.2f} / plafond {ceil}) — "
                 f"pouvoir discriminant en baisse, prévoir un remplaçant")
+    # Décalage entre le marché et la mesure : un modèle peut être commercialisé
+    # bien avant d'être mesuré par un tiers indépendant. Ce décalage doit être
+    # affiché, pas subi — sinon le catalogue paraît incomplet alors qu'il est
+    # simplement en avance sur les jeux de benchmark.
+    vendus_non_mesures = [m for m in models
+                          if (m.get("pricing") or {}).get("input_per_1m") is not None
+                          and not m.get("epoch_model_versions")]
+    if vendus_non_mesures:
+        add(INFO, "COUVERTURE",
+            f"{len(vendus_non_mesures)} modèles sont commercialisés (tarif relevé) mais "
+            f"pas encore mesurés par une source indépendante : "
+            + ", ".join(f"`{m['id']}`" for m in vendus_non_mesures[:6])
+            + " — décalage normal entre annonce commerciale et mesure tierce, "
+              "à signaler plutôt qu'à combler")
+    mesures_sans_tarif = [m for m in models
+                          if (m.get("benchmark_records") or 0) >= 20
+                          and (m.get("pricing") or {}).get("input_per_1m") is None]
+    if mesures_sans_tarif:
+        add(WARN, "COUVERTURE",
+            f"{len(mesures_sans_tarif)} modèles largement mesurés n'ont aucun tarif — "
+            f"ce sont ceux qu'on cite le plus : "
+            + ", ".join(f"`{m['id']}`" for m in
+                        sorted(mesures_sans_tarif,
+                               key=lambda x: -(x.get("benchmark_records") or 0))[:5]))
+    # Conformité
+    sans_conf = [t for t in load("tools.yaml").get("tools", [])
+                 if (t.get("compliance") or {}).get("status") in (None, "unverified")]
+    if sans_conf:
+        add(INFO, "COUVERTURE",
+            f"{len(sans_conf)}/{len(load('tools.yaml').get('tools', []))} harnais sans "
+            f"données de conformité relevées (rétention, résidence, SSO, audit)")
+
     measured = {s["model_version"] for s in scores}
     nomeasure = [m for m in models
                  if not set(m.get("epoch_model_versions", [])) & measured]

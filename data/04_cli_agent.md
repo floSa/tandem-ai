@@ -23,8 +23,8 @@ Pair programming en terminal. Repo map via tree-sitter, commits Git automatiques
 - **Site :** [https://docs.claude.com/en/docs/claude-code](https://docs.claude.com/en/docs/claude-code)
 - **Statut :** active
 - **Capacités :** MCP
-- **Forfait Pro :** $20 — 18,40 € HT · 22,08 € TTC
-- **Forfait Max :** $100 — 92,00 € HT · 110,40 € TTC
+- **Forfait Pro :** $20 — 17,33 € HT · 20,80 € TTC
+- **Forfait Max :** $100 — 86,66 € HT · 103,99 € TTC
 - **Vérification :** 2026-09-15 (official_pricing_page)
 - **Constat :** Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
 

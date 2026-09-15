@@ -14,8 +14,8 @@
 - **Statut :** active
 - **Capacités :** BYOK, modèles locaux, MCP
 - **Forfait Hobby :** gratuit — 0,00 € HT · 0,00 € TTC
-- **Forfait Individual :** $20 — 18,40 € HT · 22,08 € TTC
-- **Forfait Teams :** $40/u — 36,80 € HT · 44,16 € TTC
+- **Forfait Individual :** $20 — 17,33 € HT · 20,80 € TTC
+- **Forfait Teams :** $40/u — 34,66 € HT · 41,60 € TTC
 - **Vérification :** 2026-09-15 (official_pricing_page)
 - **Constat :** Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente ne figurent plus.
 
@@ -29,10 +29,10 @@ Fork VS Code. Composer agentique, indexation sémantique du dépôt.
 - **Statut :** active
 - **Capacités :** MCP
 - **Forfait Free :** gratuit — 0,00 € HT · 0,00 € TTC
-- **Forfait Lite :** $3 — 2,76 € HT · 3,31 € TTC
-- **Forfait Pro :** $10 — 9,20 € HT · 11,04 € TTC
-- **Forfait Pro+ :** $30 — 27,60 € HT · 33,12 € TTC
-- **Forfait Ultra :** $100 — 92,00 € HT · 110,40 € TTC
+- **Forfait Lite :** $3 — 2,60 € HT · 3,12 € TTC
+- **Forfait Pro :** $10 — 8,67 € HT · 10,40 € TTC
+- **Forfait Pro+ :** $30 — 26,00 € HT · 31,20 € TTC
+- **Forfait Ultra :** $100 — 86,66 € HT · 103,99 € TTC
 - **Vérification :** 2026-09-15 (official_pricing_page)
 - **Constat :** Cinq paliers confirmés, identiques à l'édition précédente. Les quotas sont désormais libellés en dollars d'usage (5 $ sur Lite, 20 $ sur Pro).
 
@@ -69,8 +69,8 @@ Fork VS Code, moteur Cascade. Intégration Devin Cloud.
 - **Statut :** active
 - **Capacités :** BYOK, modèles locaux
 - **Forfait Personal :** gratuit — 0,00 € HT · 0,00 € TTC
-- **Forfait Pro :** $10 — 9,20 € HT · 11,04 € TTC
-- **Forfait Business :** $30/u — 27,60 € HT · 33,12 € TTC
+- **Forfait Pro :** $10 — 8,67 € HT · 10,40 € TTC
+- **Forfait Business :** $30/u — 26,00 € HT · 31,20 € TTC
 - **Vérification :** 2026-09-15 (official_pricing_page)
 - **Constat :** Paliers actuels : Personal gratuit (BYOK illimité), Pro à 10 $, Business à 30 $/siège. Le palier Business n'était pas chiffré dans l'édition précédente.
 

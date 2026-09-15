@@ -21,6 +21,15 @@ tools:
     status: official_pricing_page
     verified_on: '2026-09-15'
     finding: Les paliers Pro+ (60 $) et Ultra (200 $) de l'édition précédente ne figurent plus.
+  compliance:
+    zero_data_retention: true
+    sso: true
+    audit_logs: true
+    self_hosted: false
+    note: Mode privé à l'échelle de l'équipe (Teams), SSO SAML/OIDC, journaux d'audit et contrôles d'accès
+      aux dépôts, modèles et MCP (Enterprise).
+    verified_on: '2026-09-15'
+    status: official_pricing_page
 - id: windsurf
   name: Windsurf / Devin
   vendor: Cognition AI
@@ -34,6 +43,10 @@ tools:
   verification:
     status: unverified
     verified_on: null
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: trae
   name: Trae
   vendor: ByteDance
@@ -54,6 +67,10 @@ tools:
   - trae-pro
   - trae-pro-plus
   - trae-ultra
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: zed
   name: Zed
   vendor: Zed Industries, Inc.
@@ -73,6 +90,16 @@ tools:
   - zed-personal
   - zed-pro
   - zed-business
+  compliance:
+    zero_data_retention: null
+    sso: null
+    audit_logs: null
+    self_hosted: false
+    note: 'Palier Business : politiques de modèles à l''échelle de l''organisation, gouvernance des données,
+      contrôle d''accès par rôle. En BYOK, la dépense et les données transitent directement par le fournisseur
+      choisi.'
+    verified_on: '2026-09-15'
+    status: official_pricing_page
 - id: void
   name: Void IDE
   vendor: Communauté open-source
@@ -88,6 +115,10 @@ tools:
     verified_on: '2026-09-15'
     finding: Dépôt ARCHIVÉ, dernier commit le 2026-06-02. Le statut « maintenance » de l'édition précédente
       est dépassé.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: github-copilot
   name: GitHub Copilot
   vendor: GitHub / Microsoft
@@ -106,6 +137,15 @@ tools:
     verified_on: '2026-09-15'
     finding: 'Modèle de crédits confirmé : 15 $ (Pro), 70 $ (Pro+), 200 $ (Max). Complétions illimitées
       sur tout forfait payant.'
+  compliance:
+    zero_data_retention: null
+    sso: true
+    audit_logs: true
+    self_hosted: false
+    note: Politiques de sécurité d'entreprise et indexation de dépôts privés sur les paliers Business
+      et Enterprise. Rétention non précisée sur la page tarifaire.
+    verified_on: '2026-09-15'
+    status: official_pricing_page
 - id: cline
   name: Cline
   vendor: Collectif open-source
@@ -121,6 +161,13 @@ tools:
     status: official_docs
     verified_on: '2026-09-15'
     finding: Très actif (commit le jour du relevé), 68 100 étoiles, licence Apache-2.0.
+  compliance:
+    zero_data_retention: true
+    self_hosted: true
+    note: 'BYOK pur : aucune donnée ne transite par un service tiers de l''éditeur. La politique de rétention
+      est celle du fournisseur de modèle choisi.'
+    verified_on: '2026-09-15'
+    status: official_docs
 - id: roo-code
   name: Roo Code
   vendor: RooCodeInc (open-source)
@@ -137,6 +184,10 @@ tools:
     verified_on: '2026-09-15'
     finding: 'Dépôt ARCHIVÉ, dernier commit le 2026-05-15. Le projet a aussi changé d''organisation (RooVetGit
       → RooCodeInc) : l''URL de l''édition précédente était morte. 24 302 étoiles au moment du relevé.'
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: continue
   name: Continue
   vendor: Continue Dev, Inc.
@@ -152,6 +203,12 @@ tools:
     status: official_docs
     verified_on: '2026-09-15'
     finding: Très actif (commit le jour du relevé), 35 918 étoiles.
+  compliance:
+    zero_data_retention: true
+    self_hosted: true
+    note: 'BYOK et modèles locaux : la rétention dépend du fournisseur retenu.'
+    verified_on: '2026-09-15'
+    status: official_docs
 - id: claude-desktop
   name: Claude Desktop
   vendor: Anthropic, PBC
@@ -167,6 +224,10 @@ tools:
   verification:
     status: official_pricing_page
     verified_on: '2026-09-15'
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: lm-studio
   name: LM Studio
   vendor: Element Labs, Inc.
@@ -180,6 +241,13 @@ tools:
   verification:
     status: unverified
     verified_on: null
+  compliance:
+    zero_data_retention: true
+    self_hosted: true
+    data_residency: local
+    note: Exécution entièrement locale.
+    verified_on: null
+    status: unverified
 - id: chatgpt-desktop
   name: ChatGPT Desktop
   vendor: OpenAI, LLC
@@ -190,6 +258,10 @@ tools:
   verification:
     status: unverified
     verified_on: null
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: claude-code
   name: Claude Code
   vendor: Anthropic, PBC
@@ -206,6 +278,10 @@ tools:
     status: official_pricing_page
     verified_on: '2026-09-15'
     finding: Confirmé inclus dans Pro ; explicitement exclu du forfait Free.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: aider
   name: Aider
   vendor: Aider-AI (open-source)
@@ -222,6 +298,10 @@ tools:
     verified_on: '2026-09-15'
     finding: 'Dernier commit le 2026-05-22, soit près de 4 mois sans activité — rythme nettement ralenti.
       Le dépôt a migré de paul-gauthier/aider vers Aider-AI/aider : l''URL de l''édition précédente redirige.'
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: openhands
   name: OpenHands
   vendor: All-Hands-AI
@@ -237,6 +317,10 @@ tools:
     verified_on: '2026-09-15'
     finding: Très actif (commit le jour du relevé), 87 994 étoiles. Le dépôt a migré de All-Hands-AI/OpenHands
       vers OpenHands/OpenHands.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: kimi-cli
   name: Kimi Code CLI
   vendor: Moonshot AI
@@ -247,6 +331,10 @@ tools:
   verification:
     status: unverified
     verified_on: null
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: openrouter
   name: OpenRouter
   vendor: OpenRouter, Inc.
@@ -258,6 +346,10 @@ tools:
   verification:
     status: unverified
     verified_on: null
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
 - id: ollama
   name: Ollama
   vendor: Ollama
@@ -272,3 +364,10 @@ tools:
     status: official_docs
     verified_on: '2026-09-15'
     finding: Très actif, 181 039 étoiles — la passerelle locale la plus adoptée.
+  compliance:
+    zero_data_retention: true
+    self_hosted: true
+    data_residency: local
+    note: 'Exécution entièrement locale : aucune donnée ne quitte la machine.'
+    verified_on: '2026-09-15'
+    status: official_docs

@@ -245,6 +245,7 @@ quand deux barres se chevauchent, l'écart n'est pas significatif.</p>
     <div class="seg" id="kind" role="group" aria-label="Type de graphique">
       <button data-k="rank" aria-pressed="true">Classement</button>
       <button data-k="frontier" aria-pressed="false">Coût × performance</button>
+      <button data-k="budget" aria-pressed="false">Sous contrainte de budget</button>
       <button data-k="harness" aria-pressed="false">Effet du harnais</button>
       <button data-k="time" aria-pressed="false">Progression</button>
       <button data-k="cover" aria-pressed="false">Couverture</button>
@@ -254,6 +255,15 @@ quand deux barres se chevauchent, l'écart n'est pas significatif.</p>
     </div>
     <label class="f">Benchmark<select id="bench"></select></label>
     <label class="f">Fournisseur<select id="lab"><option value="">Tous</option></select></label>
+    <label class="f">Effort<select id="eff">
+      <option value="">Tous</option><option value="low">low</option>
+      <option value="medium">medium</option><option value="high">high</option>
+      <option value="xhigh">xhigh</option><option value="max">max</option></select></label>
+    <label class="f" id="budwrap" hidden>Budget max / tâche<select id="bud">
+      <option value="0.25">0,25 $</option><option value="0.5">0,50 $</option>
+      <option value="1">1 $</option><option value="2" selected>2 $</option>
+      <option value="5">5 $</option><option value="10">10 $</option>
+      <option value="25">25 $</option></select></label>
     <label class="f">Affichage<select id="top">
       <option value="15">15 premiers</option><option value="25">25 premiers</option>
       <option value="0">Tout</option></select></label>
@@ -325,6 +335,8 @@ const cur=()=>D.benchmarks.find(b=>b.name===bsel.value)||{};
 function rows(){
   let r=D.scores.filter(s=>s.b===bsel.value);
   if(lsel.value)r=r.filter(s=>s.o===lsel.value);
+  const e=$('#eff').value;
+  if(e)r=r.filter(s=>s.ef===e);
   return r;
 }
 // Un modèle peut avoir plusieurs runs : on garde le meilleur, en mémorisant combien.
@@ -370,7 +382,14 @@ function rank(){
   r.forEach((s,i)=>{const y=34+i*BH,c=cv(LABC[s.l]||'--ink-3');
     const g=mk('g');
     const lb=mk('text',{x:L-9,y:y+13,'text-anchor':'end',class:'lbl'});
-    lb.textContent=(s.d||s.m).slice(0,42);g.append(lb);
+    lb.textContent=(s.d||s.m).slice(0,36);g.append(lb);
+    if(s.ef){  // l'effort est une variable de décision, pas un détail de nommage
+      const eb=mk('text',{x:L+4,y:y+14,class:'ax','font-size':'9.5'});
+      eb.textContent=s.ef;eb.setAttribute('fill',cv('--panel'));
+      const bw=s.ef.length*6+8;
+      g.append(mk('rect',{x:L+2,y:y+4,width:bw,height:13,rx:3,
+        fill:cv('--ink-2'),opacity:.9}));
+      eb.setAttribute('x',L+6);g.append(eb);}
     g.append(mk('rect',{x:L,y:y+3,width:Math.max(2,x(s.s)-L),height:15,class:'bar',fill:c}));
     if(s.e){const a=x(s.s-1.96*s.e),z=x(s.s+1.96*s.e);
       g.append(mk('line',{x1:a,x2:z,y1:y+10.5,y2:y+10.5,stroke:cv('--ink-2'),'stroke-width':1.5}));
@@ -651,6 +670,63 @@ function frontier(){
     ).join('')+'</tbody>';
 }
 
+
+function budget(){
+  // Question inverse : sous plafond de coût, que peut-on espérer de mieux ?
+  const cap=parseFloat($('#bud').value);
+  let r=rows().filter(s=>s.c!=null&&s.c>0);
+  if(!r.length)return empty(
+    "Cette vue a besoin d'un coût mesuré. Benchmarks concernés : DeepSWE, "+
+    "Aider polyglot, ARC-AGI-2, OSWorld 2.0, The Agent Company.");
+  const within=r.filter(s=>s.c<=cap);
+  // Meilleure configuration atteignable par modèle sous le plafond.
+  const by=new Map();
+  within.forEach(s=>{const k=s.mb||s.m;const p=by.get(k);
+    if(!p||s.s>p.s)by.set(k,s);});
+  let g=[...by.values()].sort((a,b)=>b.s-a.s);
+  const n=+$('#top').value; if(n)g=g.slice(0,n);
+  const exclus=new Set(r.map(s=>s.mb||s.m)).size-by.size;
+  if(!g.length)return empty(
+    `Aucun modèle n'atteint ce benchmark pour ${cap} $ ou moins par tâche. `+
+    `Le moins cher mesuré coûte ${Math.min(...r.map(s=>s.c)).toFixed(2)} $.`);
+  const W=940,L=290,R=150,BH=26,H=g.length*BH+52;
+  const max=Math.max(...g.map(x=>x.s))*1.06;
+  const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
+    'aria-label':`Meilleur score atteignable sous ${cap} dollars par tâche`});
+  const x=v=>L+v/max*(W-L-R);
+  for(let i=0;i<=4;i++){const v=max*i/4;
+    sv.append(mk('line',{x1:x(v),x2:x(v),y1:30,y2:H-20,class:'gl'}));
+    const t=mk('text',{x:x(v),y:22,'text-anchor':'middle',class:'ax'});
+    t.textContent=(v*100).toFixed(0)+'%';sv.append(t);}
+  g.forEach((s,i)=>{const y=34+i*BH,c=cv(LABC[s.l]||'--ink-3'),gg=mk('g');
+    const lb=mk('text',{x:L-9,y:y+14,'text-anchor':'end',class:'lbl'});
+    lb.textContent=(s.d||s.m).slice(0,40);gg.append(lb);
+    gg.append(mk('rect',{x:L,y:y+3,width:Math.max(2,x(s.s)-L),height:15,rx:4,fill:c}));
+    const vt=mk('text',{x:W-R+7,y:y+15,class:'val'});
+    vt.textContent=`${(s.s*100).toFixed(1)}% · $${s.c.toFixed(2)}`;gg.append(vt);
+    wire(gg,`<b>${esc(s.d||s.m)}</b>${esc(s.o)}<br>`+
+      `meilleur résultat sous ${cap} $ : <b>${(s.s*100).toFixed(1)}%</b> pour `+
+      `<b>$${s.c.toFixed(2)}</b>`+(s.ef?`<br>à l'effort <b>${esc(s.ef)}</b>`:'')+
+      `<i>marge restante : $${(cap-s.c).toFixed(2)} par tâche</i>`);
+    sv.append(gg);});
+  $('#chart').innerHTML='';$('#chart').append(sv);
+  const meilleur=g[0];
+  $('#caveat').innerHTML=`<div class="note"><b>Sous ${cap} $ par tâche.</b> `+
+    `Le meilleur résultat atteignable est <b>${esc(meilleur.d||meilleur.m)}</b> `+
+    `à <b>${(meilleur.s*100).toFixed(1)}%</b>`+
+    (meilleur.ef?` avec un effort <code>${esc(meilleur.ef)}</code>`:'')+
+    `, pour ${meilleur.c.toFixed(2)} $. `+
+    (exclus>0?`${exclus} modèle${exclus>1?'s sont exclus':' est exclu'} du plafond. `:'')+
+    `Chaque barre montre la <b>meilleure configuration accessible</b> du modèle, `+
+    `pas sa performance maximale : un modèle plus puissant mais hors budget `+
+    `n'apparaît qu'à un palier d'effort qu'il peut se payer ici.</div>`;
+  $('#tbl').innerHTML='<thead><tr><th>Modèle</th><th>Effort accessible</th>'+
+    '<th class="n">Score</th><th class="n">Coût</th><th class="n">Marge</th></tr></thead><tbody>'+
+    g.map(s=>`<tr><td>${esc(s.d||s.m)}</td><td>${esc(s.ef||'—')}</td>`+
+      `<td class="n">${(s.s*100).toFixed(1)}%</td><td class="n">$${s.c.toFixed(2)}</td>`+
+      `<td class="n">$${(cap-s.c).toFixed(2)}</td></tr>`).join('')+'</tbody>';
+}
+
 function api(){
   // Barres du coût d'entrée, avec le coût de sortie en repère secondaire.
   let r=D.priced_models.slice();
@@ -750,17 +826,18 @@ function plans(){
       `<td>${esc(p.includes||'—')}</td></tr>`).join('')+'</tbody>';
 }
 
-const DRAW={rank,frontier,harness,time,cover,price,api,plans};
+const DRAW={rank,frontier,budget,harness,time,cover,price,api,plans};
 function draw(){DRAW[K]();}
 $('#kind').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   K=b.dataset.k;[...$('#kind').children].forEach(x=>
     x.setAttribute('aria-pressed',String(x===b)));
   // La vue coût n'a de sens que sur un benchmark qui publie un coût mesuré.
-  if(K==='frontier'&&!D.scores.some(s=>s.b===bsel.value&&s.c!=null)){
+  $('#budwrap').hidden=(K!=='budget');
+  if((K==='frontier'||K==='budget')&&!D.scores.some(s=>s.b===bsel.value&&s.c!=null)){
     const alt=D.benchmarks.find(x=>D.scores.some(s=>s.b===x.name&&s.c!=null&&s.ef));
     if(alt)bsel.value=alt.name;}
   draw();});
-[bsel,lsel,$('#top')].forEach(el=>el.addEventListener('change',draw));
+[bsel,lsel,$('#top'),$('#eff'),$('#bud')].forEach(el=>el.addEventListener('change',draw));
 
 // ── fiches benchmarks ──────────────────────────────────────────────────────
 $('#bn').textContent=D.benchmarks.length+' retenus, '+D.rejected.length+' écartés';
