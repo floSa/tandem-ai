@@ -157,15 +157,20 @@ body{background:var(--bg);color:var(--ink);
 header{padding:38px 0 20px;border-bottom:1px solid var(--line)}
 h1{font-family:"IBM Plex Serif",Georgia,serif;font-size:27px;margin:0 0 7px;
  letter-spacing:-.015em;font-weight:600;text-wrap:balance}
-.sub{color:var(--ink-2);font-size:14px;margin:0;max-width:74ch}
+.sub{color:var(--ink);font-size:15px;margin:0;max-width:76ch;line-height:1.5}
+.sub2{color:var(--ink-2);font-size:13.5px;margin:10px 0 0;max-width:76ch}
 .meta{color:var(--ink-3);font-size:12px;margin-top:12px;font-variant-numeric:tabular-nums}
 h2{font-family:"IBM Plex Serif",Georgia,serif;font-size:19px;margin:36px 0 4px;
  letter-spacing:-.01em;font-weight:600;text-wrap:balance}
 h2 .n{color:var(--ink-3);font-weight:400;font-size:13px;margin-left:8px}
+h2 .en-h{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);
+ text-transform:uppercase;letter-spacing:.1em;font-weight:400;margin-left:9px;
+ vertical-align:middle}
 .lede{color:var(--ink-2);margin:0 0 16px;max-width:78ch;font-size:13.5px}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:1px;
- background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;margin:22px 0 4px}
-.cell{background:var(--panel);padding:13px 15px}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+ background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+ margin:26px 0 0}
+.cell{background:var(--panel);padding:14px 16px}
 .cell b{display:block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:22px;
  font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .cell span{color:var(--ink-3);font-size:10.5px;text-transform:uppercase;letter-spacing:.075em;
@@ -175,15 +180,22 @@ h2 .n{color:var(--ink-3);font-weight:400;font-size:13px;margin-left:8px}
 .note b{color:var(--ink)}
 .note.bad{border-left-color:var(--bad)}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:18px;margin:14px 0}
-nav.tabs{display:flex;gap:2px;flex-wrap:wrap;margin:24px 0 6px;
- border-bottom:1px solid var(--line);padding-bottom:0}
-nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;
- color:var(--ink-3);padding:9px 15px;font:inherit;font-size:13.5px;cursor:pointer;
- margin-bottom:-1px;white-space:nowrap}
-nav.tabs button:hover{color:var(--ink-2)}
-nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--s1);font-weight:550}
-nav.tabs button:focus-visible{outline:2px solid var(--s1);outline-offset:-2px;border-radius:5px}
-nav.tabs .cnt{color:var(--ink-3);font-size:11px;margin-left:5px;font-variant-numeric:tabular-nums}
+nav.tabs{display:flex;width:100%;margin:14px 0 8px;border:1px solid var(--line-strong);
+ border-radius:10px;overflow:hidden;background:var(--panel)}
+nav.tabs button{flex:1 1 0;background:none;border:0;border-right:1px solid var(--line);
+ color:var(--ink-2);padding:12px 8px;font:inherit;cursor:pointer;text-align:center;
+ display:flex;flex-direction:column;gap:2px;align-items:center;transition:background .12s}
+nav.tabs button:last-child{border-right:0}
+nav.tabs button .fr{font-size:14px;font-weight:550;letter-spacing:-.01em}
+nav.tabs button .en{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;
+ color:var(--ink-3);font-weight:400}
+nav.tabs button:hover{background:var(--grid)}
+nav.tabs button[aria-selected="true"]{background:var(--s1);color:#fff}
+nav.tabs button[aria-selected="true"] .en{color:rgba(255,255,255,.82)}
+nav.tabs button:focus-visible{outline:2px solid var(--s1);outline-offset:-3px}
+nav.tabs .cnt{font-variant-numeric:tabular-nums;opacity:.85}
+@media(max-width:760px){nav.tabs{flex-wrap:wrap}
+ nav.tabs button{flex:1 1 33%;border-bottom:1px solid var(--line)}}
 h3.grp{font-family:"IBM Plex Serif",Georgia,serif;font-size:15.5px;font-weight:600;
  margin:26px 0 3px;letter-spacing:-.01em}
 h3.grp .c{color:var(--ink-3);font-weight:400;font-size:12px;font-family:"IBM Plex Sans",sans-serif;
@@ -244,30 +256,38 @@ a{color:var(--s1)}
 
 <div class="wrap">
 <header>
-  <h1>Tandem</h1>
-  <p class="sub">Modèles et harnais mesurés ensemble — parce qu'un score n'appartient
-     jamais à un modèle seul. Chaque mesure porte son harnais, son protocole,
-     son incertitude et son coût réel.</p>
+  <h1>Modèles et harnais de développement IA</h1>
+  <p class="sub"><b>Comparer la performance, le coût réel et les tarifs des modèles de
+     fondation et des outils qui les exécutent</b> — sur des mesures sourcées, datées
+     et reproductibles.</p>
+  <p class="sub2">Un score n'appartient jamais à un modèle seul : il dépend aussi du
+     <b>harnais</b> qui l'exécute et du budget de raisonnement accordé. C'est ce couple
+     que ce référentiel mesure.</p>
   <p class="meta" id="meta"></p>
 </header>
 
+<div class="strip" id="strip"></div>
+
 <nav class="tabs" id="nav" role="tablist" aria-label="Sections">
-  <button data-s="mesures" role="tab" aria-selected="true">Mesures</button>
-  <button data-s="modeles" role="tab" aria-selected="false">Modèles &amp; tarifs<span class="cnt" id="c-mod"></span></button>
-  <button data-s="harnais" role="tab" aria-selected="false">Harnais<span class="cnt" id="c-har"></span></button>
-  <button data-s="passerelles" role="tab" aria-selected="false">Passerelles<span class="cnt" id="c-pas"></span></button>
-  <button data-s="benchmarks" role="tab" aria-selected="false">Benchmarks<span class="cnt" id="c-ben"></span></button>
-  <button data-s="methode" role="tab" aria-selected="false">Méthode</button>
+  <button data-s="mesures" role="tab" aria-selected="true">
+    <span class="fr">Benchmarks</span><span class="en">performance</span></button>
+  <button data-s="modeles" role="tab" aria-selected="false">
+    <span class="fr">Tarifs <span class="cnt" id="c-mod"></span></span><span class="en">pricing</span></button>
+  <button data-s="harnais" role="tab" aria-selected="false">
+    <span class="fr">Harnais <span class="cnt" id="c-har"></span></span><span class="en">harness</span></button>
+  <button data-s="passerelles" role="tab" aria-selected="false">
+    <span class="fr">Passerelles <span class="cnt" id="c-pas"></span></span><span class="en">gateways</span></button>
+  <button data-s="methode" role="tab" aria-selected="false">
+    <span class="fr">Méthode</span><span class="en">methodology</span></button>
 </nav>
 
-<div class="strip" id="strip"></div>
 <div id="alerts"></div>
 
 <section id="s-mesures" role="tabpanel">
-  <h2>Comparer les modèles</h2>
-  <p class="lede">Un score n'est jamais l'attribut d'un modèle seul : il dépend du harnais qui
-  l'exécute et du budget de raisonnement accordé. Les barres d'erreur affichent l'intervalle de
-  confiance à 95 % — quand deux barres se chevauchent, l'écart n'est pas significatif.</p>
+  <h2>Performance mesurée</h2>
+  <p class="lede">Les barres d'erreur affichent l'intervalle de confiance à 95 % : quand deux
+  barres se chevauchent, l'écart n'est <b>pas</b> significatif et les deux modèles sont à
+  égalité. Chaque point renvoie à sa source et à la date de sa mesure.</p>
 
   <div class="panel">
     <div class="ctrl">
@@ -282,8 +302,8 @@ a{color:var(--s1)}
         <button data-k="plans" aria-pressed="false">Forfaits</button>
       </div>
       <label class="f">Benchmark<select id="bench"></select></label>
-      <label class="f">Fournisseur<select id="lab"><option value="">Tous</option></select></label>
-      <label class="f">Effort<select id="eff">
+      <label class="f">Fournisseur / provider<select id="lab"><option value="">Tous</option></select></label>
+      <label class="f">Effort / reasoning<select id="eff">
         <option value="">Tous</option><option value="low">low</option>
         <option value="medium">medium</option><option value="high">high</option>
         <option value="xhigh">xhigh</option><option value="max">max</option></select></label>
@@ -305,44 +325,45 @@ a{color:var(--s1)}
 </section>
 
 <section id="s-modeles" role="tabpanel" hidden>
-  <h2>Modèles &amp; tarifs</h2>
-  <p class="lede">Couche 3 de la taxonomie : les modèles de fondation et leur coût d'accès.
-  Seuls les tarifs relevés sur la page officielle du fournisseur figurent ici. Un modèle sans
-  tarif n'est pas gratuit — son tarif n'a pas encore été vérifié.</p>
+  <h2>Tarifs des modèles <span class="en-h">pricing</span></h2>
+  <p class="layer"><b>Couche 3 — les modèles de fondation</b> <i>(models)</i> et leur coût
+  d'accès à l'API, au million de tokens. Seuls figurent les tarifs relevés sur la page
+  officielle du fournisseur <i>(provider)</i>. Un modèle absent de cette page n'est pas
+  gratuit : son tarif n'a simplement pas encore été vérifié.</p>
   <div id="mod"></div>
 </section>
 
 <section id="s-harnais" role="tabpanel" hidden>
-  <h2>Harnais d'exécution</h2>
-  <p class="layer"><b>Couche 1 de la taxonomie — l'interface développeur.</b> C'est le logiciel
-  avec lequel on travaille, et qui exécute le modèle. Son effet sur la performance mesurée est
-  loin d'être négligeable : sur Terminal-Bench, l'écart entre deux harnais dépasse souvent
-  l'écart entre deux modèles. Les passerelles, qui ne sont pas des harnais, ont leur propre
-  onglet.</p>
+  <h2>Harnais <span class="en-h">harness</span></h2>
+  <p class="layer"><b>Couche 1 — l'interface développeur.</b> Le <b>harnais</b> est le logiciel
+  avec lequel on code et qui pilote le modèle : il lit le dépôt, construit le contexte, décide
+  quels outils appeler et enchaîne les étapes. Deux harnais donnant le même modèle n'obtiennent
+  pas le même résultat — sur Terminal-Bench, l'écart entre harnais dépasse souvent l'écart entre
+  deux modèles concurrents.</p>
   <div id="har"></div>
 </section>
 
 <section id="s-passerelles" role="tabpanel" hidden>
-  <h2>Passerelles</h2>
-  <p class="layer"><b>Couche 2 de la taxonomie — le routage et le service.</b> Une passerelle
-  n'écrit pas de code : elle donne accès aux modèles. Elle se place entre le harnais et le
-  fournisseur, soit en agrégeant plusieurs laboratoires derrière une clé unique, soit en
-  servant des modèles depuis la machine locale.</p>
+  <h2>Passerelles <span class="en-h">gateways</span></h2>
+  <p class="layer"><b>Couche 2 — le routage et le service.</b> Une <b>passerelle</b> n'écrit
+  jamais de code : c'est le tuyau entre le harnais et le modèle. Elle prend la requête du
+  harnais et la route, soit vers plusieurs laboratoires derrière une clé d'API unique
+  <i>(agrégateur)</i>, soit vers un modèle tournant sur votre propre machine
+  <i>(serveur local)</i>. Changer de passerelle ne change pas la qualité du code produit :
+  cela change le prix, la latence et qui voit vos données.</p>
   <div id="pas"></div>
 </section>
 
-<section id="s-benchmarks" role="tabpanel" hidden>
-  <h2>Benchmarks suivis</h2>
+<section id="s-methode" role="tabpanel" hidden>
+  <h2>Les six règles</h2>
+  <p class="lede">Ce que ce référentiel s'autorise à affirmer, et ce qu'il refuse.</p>
+  <div class="bl" id="meth"></div>
+
+  <h2>Benchmarks retenus<span class="n" id="bn"></span></h2>
   <p class="lede">Sélection raisonnée. Un benchmark saturé ou remplacé est écarté explicitement :
   documenter un rejet évite d'avoir à reposer la question à chaque édition.</p>
   <div class="bl" id="blist"></div>
   <details><summary id="rj">Benchmarks écartés</summary><div class="bl" id="rlist"></div></details>
-</section>
-
-<section id="s-methode" role="tabpanel" hidden>
-  <h2>Méthode</h2>
-  <p class="lede">Ce que ce référentiel s'autorise à affirmer, et ce qu'il refuse.</p>
-  <div class="bl" id="meth"></div>
 </section>
 
 <footer id="foot"></footer>
@@ -361,15 +382,19 @@ const pct=(v,u)=>u==='minutes'?v.toFixed(2):(v*100).toFixed(1)+'%';
 let K='rank';
 
 // ── bandeau ────────────────────────────────────────────────────────────────
-$('#meta').textContent=`${D.edition} · généré le ${D.generated} · `+
-  `${D.counts.scores.toLocaleString('fr-FR')} mesures`;
+$('#meta').textContent=`${D.edition} · données arrêtées au ${D.generated} · `+
+  `prochaine révision mars 2027`;
 const C=D.counts;
-$('#strip').innerHTML=[['Fournisseurs',C.labs],['Modèles',C.models],
- ['Benchmarks',C.benchmarks],['Mesures',C.scores.toLocaleString('fr-FR')],
- ['Tarifs vérifiés',C.priced],['Forfaits',C.plans],
- ['Harnais',D.tools.filter(t=>t.layer===1).length],
- ['Passerelles',D.tools.filter(t=>t.layer===2).length]]
- .map(([k,v])=>`<div class="cell"><b>${v}</b><span>${k}</span></div>`).join('');
+$('#strip').innerHTML=[
+ [C.scores.toLocaleString('fr-FR'),'mesures sourcées'],
+ [C.models,'modèles'],
+ [C.labs,'fournisseurs'],
+ [D.tools.filter(t=>t.layer===1).length,'harnais'],
+ [D.tools.filter(t=>t.layer===2).length,'passerelles'],
+ [C.benchmarks,'benchmarks'],
+ [C.priced,'tarifs vérifiés'],
+ [C.plans,'forfaits'],
+].map(([v,k])=>`<div class="cell"><b>${v}</b><span>${k}</span></div>`).join('');
 
 const al=[];
 if(C.priced>0)al.push(['','Vérification tarifaire partielle.',
@@ -900,7 +925,7 @@ $('#kind').addEventListener('click',e=>{const b=e.target.closest('button');if(!b
 [bsel,lsel,$('#top'),$('#eff'),$('#bud')].forEach(el=>el.addEventListener('change',draw));
 
 // ── navigation par onglets ────────────────────────────────────────────────
-const SEC=['mesures','modeles','harnais','passerelles','benchmarks','methode'];
+const SEC=['mesures','modeles','harnais','passerelles','methode'];
 function showSection(name){
   SEC.forEach(x=>{const el=$('#s-'+x);if(el)el.hidden=(x!==name);});
   [...$('#nav').children].forEach(b=>
@@ -1038,7 +1063,7 @@ $('#meth').innerHTML=[
 ].map(([t,d])=>`<div class="bc"><h3>${esc(t)}</h3><p>${d}</p></div>`).join('');
 
 // ── fiches benchmarks ─────────────────────────────────────────────────────
-$('#c-ben').textContent=D.benchmarks.length;
+$('#bn').textContent=`${D.benchmarks.length} retenus, ${D.rejected.length} écartés`;
 $('#blist').innerHTML=D.benchmarks.map(b=>
  `<div class="bc"><h3>${esc(b.name)} ${b.tier==='reference'?
    '<span class="tag ref">référence</span>':'<span class="tag">secondaire</span>'}</h3>
