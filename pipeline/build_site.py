@@ -213,6 +213,8 @@ h3.grp .c{color:var(--ink-3);font-weight:400;font-size:12px;font-family:"IBM Ple
 .layer{border-left:3px solid var(--s1);padding:3px 0 3px 15px;margin:6px 0 4px;
  color:var(--ink-2);font-size:13.5px;line-height:1.5}
 .ctrl{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:16px}
+/* Rangée des vues : collée à la rangée des filtres qu'elle commande. */
+.ctrl:has(>.seg){margin-bottom:13px}
 label.f{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--ink-3);
  text-transform:uppercase;letter-spacing:.05em}
 select{background:var(--bg);color:var(--ink);border:1px solid var(--line-strong);
@@ -318,6 +320,8 @@ a{color:var(--s1)}
         <button data-k="api" aria-pressed="false">Tarifs API</button>
         <button data-k="plans" aria-pressed="false">Forfaits</button>
       </div>
+    </div>
+    <div class="ctrl">
       <label class="f">Benchmark<select id="bench"></select></label>
       <label class="f">Fournisseur / provider<select id="lab"><option value="">Tous</option></select></label>
       <label class="f">Effort / reasoning<select id="eff">
