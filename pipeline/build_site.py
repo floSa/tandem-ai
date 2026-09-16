@@ -44,6 +44,12 @@ def build_payload() -> dict:
         price[m["id"]] = rec
         for v in m.get("epoch_model_versions", []):
             price[v] = rec
+        # Un tarif dérivé — variante d'effort, ou instantané daté rattaché par
+        # `applies_to` — désigne la même référence facturée que sa base. Le
+        # reprendre ici produit deux lignes au tarif identique.
+        src = p.get("source") or {}
+        if src.get("variant_of") or src.get("priced_as"):
+            continue
         priced_models.append({
             "id": m["id"], "name": m.get("display_name") or m["id"],
             "lab": m.get("lab"), "role": m.get("role"),
@@ -236,6 +242,9 @@ table{border-collapse:collapse;width:100%;font-size:12.5px;margin-top:6px}
 th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line)}
 th{color:var(--ink-3);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em;
  position:sticky;top:0;background:var(--panel)}
+/* Un en-tête de colonne chiffrée s'aligne comme ses chiffres, sinon le titre
+   flotte au-dessus du vide. La compensation annule l'interlettrage final. */
+th.n{text-align:right;padding-right:calc(10px - .05em)}
 td.n{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace;
  font-variant-numeric:tabular-nums}
 .tw{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:9px}
@@ -255,6 +264,8 @@ footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);
 a{color:var(--s1)}
 .empty{padding:40px 20px;text-align:center;color:var(--ink-3);font-size:13px;
  border:1px dashed var(--line-strong);border-radius:9px}
+.empty p{max-width:62ch;margin:0 auto;line-height:1.6}
+.empty p+p{margin-top:10px;color:var(--ink-2)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media(max-width:640px){.ctrl{flex-direction:column;align-items:stretch}select{width:100%}}
 </style>
@@ -457,6 +468,17 @@ function wire(el,html){el.style.cursor='pointer';
   el.setAttribute('tabindex','0');el.setAttribute('role','img');
   el.addEventListener('focus',e=>show({clientX:el.getBoundingClientRect().left+40,
     clientY:el.getBoundingClientRect().top+40},html));el.addEventListener('blur',hide);}
+// ── échelle logarithmique ──────────────────────────────────────────────────
+// Un prix ne se lit pas sur une échelle linéaire : entre 0,03 $ et 30 $ il y a
+// trois décades, et tout le bas de gamme se retrouve collé à l'axe.
+function decades(lo,hi){
+  const out=[];
+  for(let e=Math.floor(lo);e<=Math.ceil(hi);e++)
+    for(const m of [1,2,5]){const v=m*Math.pow(10,e);
+      if(Math.log10(v)>=lo&&Math.log10(v)<=hi)out.push(v);}
+  return out;
+}
+const money=v=>'$'+(v<1?v.toFixed(2):v.toFixed(0));
 const NS='http://www.w3.org/2000/svg';
 const mk=(t,a={})=>{const e=document.createElementNS(NS,t);
   for(const k in a)e.setAttribute(k,a[k]);return e;};
@@ -509,8 +531,12 @@ function rank(){
 function harness(){
   // Même modèle, harnais différents : l'écart mesure l'effet du harnais.
   const r=rows().filter(s=>s.h);
-  if(!r.length)return empty('Ce benchmark ne publie pas le harnais utilisé. '+
-    'Terminal Bench est le plus riche sur cet axe.');
+  if(!r.length){
+    // Dire lesquels le publient vaut mieux que de laisser un cadre vide.
+    const ok=[...new Set(D.scores.filter(s=>s.h).map(s=>s.b))].sort();
+    return empty('Ce benchmark ne nomme pas l\'outil utilisé pour lancer les modèles : '+
+      'l\'écart entre outils n\'y est donc pas mesurable.'+
+      (ok.length?'\n\nCeux qui le publient : '+ok.join(', ')+'.':''));}
   const by=new Map();
   r.forEach(s=>{if(!by.has(s.m))by.set(s.m,[]);by.get(s.m).push(s);});
   let g=[...by.entries()].filter(([,v])=>v.length>1)
@@ -591,18 +617,49 @@ function cover(){
   const n=+$('#top').value; if(n)ms=ms.slice(0,n);
   const bs=D.benchmarks.map(b=>b.name);
   if(!ms.length)return empty('Aucun modèle pour ce filtre.');
-  const CW=40,L=290,T=118,RH=23,W=L+bs.length*CW+24,H=T+ms.length*RH+18;
+
+  // Regroupement par fournisseur : comparer deux générations d'un même
+  // laboratoire n'a de sens que si elles se suivent à l'écran.
+  const info=new Map();
+  D.scores.forEach(s=>{if(!info.has(s.m))info.set(s.m,s);});
+  const parO=new Map();
+  ms.forEach(m=>{const o=info.get(m)?.o||'—';
+    if(!parO.has(o))parO.set(o,[]);parO.get(o).push(m);});
+  const grp=[...parO.entries()]
+    .map(([o,v])=>({o,v,tot:v.reduce((a,m)=>a+cnt.get(m),0)}))
+    .sort((a,b)=>b.tot-a.tot);
+  const ordre=grp.flatMap(g=>g.v);
+
+  const GUT=118,CW=40,L=GUT+212,T=118,RH=23,GAP=9,
+        W=L+bs.length*CW+24,
+        H=T+ordre.length*RH+grp.length*GAP+18;
   const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
-    'aria-label':'Couverture des benchmarks par modèle'});
+    'aria-label':'Couverture des benchmarks par modèle, groupée par fournisseur'});
   bs.forEach((b,j)=>{const t=mk('text',{x:L+j*CW+CW/2,y:T-9,class:'ax',
     transform:`rotate(-52 ${L+j*CW+CW/2} ${T-9})`,'text-anchor':'start'});
     t.textContent=b.length>17?b.slice(0,16)+'…':b;sv.append(t);});
   const mp=new Map();
   D.scores.forEach(s=>{const k=s.m+'|'+s.b;const p=mp.get(k);
     if(!p||s.s>p.s)mp.set(k,s);});
-  ms.forEach((m,i)=>{const y=T+i*RH,row=D.scores.find(s=>s.m===m);
+
+  // Position verticale de chaque modèle, décalée d'un cran par groupe.
+  const posY=new Map();
+  let k=0;
+  grp.forEach((g,gi)=>{
+    const y0=T+k*RH+gi*GAP;
+    g.v.forEach((m,j)=>posY.set(m,y0+j*RH));
+    k+=g.v.length;
+    const y1=y0+g.v.length*RH-4,xb=GUT-10,c=cv(LABC[info.get(g.v[0])?.l]||'--ink-3');
+    // Crochet : il tient ensemble les modèles d'un même laboratoire.
+    sv.append(mk('path',{d:`M${xb+6},${y0+2} H${xb} V${y1} H${xb+6}`,
+      fill:'none',stroke:c,'stroke-width':1.5,opacity:.75}));
+    const t=mk('text',{x:8,y:(y0+y1)/2+4,class:'lbl','font-size':'11','font-weight':'600'});
+    t.textContent=g.o.length>15?g.o.slice(0,14)+'…':g.o;
+    t.setAttribute('fill',c);sv.append(t);});
+
+  ordre.forEach(m=>{const y=posY.get(m),row=info.get(m);
     const lb=mk('text',{x:L-9,y:y+15,'text-anchor':'end',class:'lbl'});
-    lb.textContent=(row?.d||m).slice(0,42);sv.append(lb);
+    lb.textContent=(row?.d||m).slice(0,32);sv.append(lb);
     bs.forEach((b,j)=>{const s=mp.get(m+'|'+b),X=L+j*CW;
       const g=mk('g');
       if(!s){g.append(mk('rect',{x:X+2,y:y+2,width:CW-4,height:RH-4,rx:4,
@@ -627,24 +684,41 @@ function price(){
      'Ce graphique croise le coût au million de tokens avec la performance — '+
      'il s\'activera dès que les tarifs auront été relevés sur les pages officielles '+
      'et validés par pipeline/validate.py.');
-  const r=best(rows()).filter(s=>D.prices[s.m]);
+  // Les tarifs s'étalent sur trois décades — de 0,03 $ à 30 $ le million. Une
+  // échelle linéaire écrase tout le bas de gamme contre l'axe : elle est log.
+  const all=best(rows()).filter(s=>D.prices[s.m]);
+  const r=all.filter(s=>D.prices[s.m].in>0);
+  const gratuits=all.length-r.length;
   if(!r.length)return empty('Aucun modèle tarifé pour ce benchmark.');
-  const W=940,H=440,L=58,B=46,T=26,R=22;
-  const mxp=Math.max(...r.map(s=>D.prices[s.m].in))*1.1,my=Math.max(...r.map(s=>s.s))*1.06;
-  const x=v=>L+v/mxp*(W-L-R),y=v=>H-B-v/my*(H-B-T);
+  const W=940,H=440,L=58,B=52,T=26,R=150;
+  const ps=r.map(s=>D.prices[s.m].in);
+  const lo=Math.log10(Math.min(...ps)*0.7),hi=Math.log10(Math.max(...ps)*1.4);
+  const my=Math.max(...r.map(s=>s.s))*1.06;
+  // Même convention que « Coût × perf » : moins cher vers la droite.
+  const x=v=>W-R-(Math.log10(v)-lo)/(hi-lo)*(W-L-R),y=v=>H-B-v/my*(H-B-T);
   const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
-    'aria-label':'Prix contre performance'});
+    'aria-label':'Prix catalogue contre performance, échelle logarithmique'});
   for(let i=0;i<=4;i++){const v=my*i/4;
     sv.append(mk('line',{x1:L,x2:W-R,y1:y(v),y2:y(v),class:'gl'}));
     const t=mk('text',{x:L-8,y:y(v)+4,'text-anchor':'end',class:'ax'});
     t.textContent=(v*100).toFixed(0)+'%';sv.append(t);}
+  decades(lo,hi).forEach(v=>{
+    sv.append(mk('line',{x1:x(v),x2:x(v),y1:T,y2:H-B,class:'gl'}));
+    const t=mk('text',{x:x(v),y:H-B+16,'text-anchor':'middle',class:'ax'});
+    t.textContent=money(v);sv.append(t);});
   r.forEach(s=>{const c=cv(LABC[s.l]||'--ink-3'),g=mk('g');
     g.append(mk('circle',{cx:x(D.prices[s.m].in),cy:y(s.s),r:5.5,fill:c,
       stroke:cv('--panel'),'stroke-width':2}));
-    wire(g,`<b>${esc(s.d||s.m)}</b>${pct(s.s)} — $${D.prices[s.m].in}/1M entrée`);
+    wire(g,`<b>${esc(s.d||s.m)}</b>${esc(s.o)}<br>${pct(s.s)} pour `+
+      `<b>$${D.prices[s.m].in}</b> le million de tokens d'entrée`+
+      `<i>prix affiché au catalogue, pas un coût de tâche mesuré</i>`);
     sv.append(g);});
-  const xt=mk('text',{x:(L+W)/2,y:H-8,'text-anchor':'middle',class:'ax'});
-  xt.textContent='Coût d\'entrée ($ / 1M tokens)';sv.append(xt);
+  const xt=mk('text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle',class:'ax'});
+  xt.textContent='◀ plus cher      prix d\'entrée par million de tokens (échelle log)      moins cher ▶';
+  sv.append(xt);
+  if(gratuits){const t=mk('text',{x:W-R+8,y:H-B+16,class:'ax'});
+    t.textContent=gratuits+' modèle'+(gratuits>1?'s':'')+' gratuit'+(gratuits>1?'s':'')+
+      ' — hors échelle';sv.append(t);}
   legend(sv,r,W);render(sv,r,'fraction');
 }
 
@@ -654,13 +728,40 @@ function legend(sv,r,W){
     sv.append(mk('circle',{cx:X,cy:12,r:4,fill:cv(LABC[s.l]||'--ink-3')}));
     const t=mk('text',{x:X+8,y:16,class:'ax'});t.textContent=o.slice(0,14);sv.append(t);});
 }
-function empty(msg){$('#chart').innerHTML=`<div class="empty">${esc(msg)}</div>`;
+// Ce que montre chaque vue, en une phrase. Sans elle, un graphique juste reste
+// un graphique qu'on ne sait pas lire.
+const HOWTO={
+ rank:"Une barre par modèle : la longueur est son score sur le benchmark choisi. Le trait "+
+   "fin qui la traverse est sa marge d'erreur — deux modèles dont les traits se chevauchent "+
+   "ne sont pas départageables, même si le classement les sépare.",
+ harness:"Un même modèle, relancé sous plusieurs outils différents. Chaque point est un "+
+   "outil, la ligne relie le pire au meilleur : sa longueur, c'est ce que le choix de "+
+   "l'outil vous fait gagner ou perdre, à modèle identique.",
+ time:"Chaque point est un modèle, placé à sa date de publication et à la hauteur de son "+
+   "score. La ligne pointillée suit le record du moment : elle montre à quelle vitesse ce "+
+   "benchmark se fait battre, et quand il commence à saturer.",
+ cover:"Une ligne par modèle, une colonne par benchmark, regroupées par fournisseur. Plus "+
+   "la case est foncée, meilleur est le score ; une case en pointillés veut dire que "+
+   "personne n'a publié la mesure — le trou compte autant que le chiffre.",
+ price:"Chaque point est un modèle : son prix affiché au million de tokens en abscisse, son "+
+   "score en ordonnée. <b>L'axe des prix est logarithmique et inversé</b> — chaque graduation "+
+   "vaut dix fois la précédente, et <b>le meilleur rapport se lit en haut à droite</b>.",
+};
+function empty(msg){
+  $('#chart').innerHTML='<div class="empty">'+
+    msg.split('\n\n').map(x=>`<p>${esc(x)}</p>`).join('')+'</div>';
   $('#tbl').innerHTML='';$('#caveat').innerHTML='';}
 function render(sv,r,unit){
   $('#chart').innerHTML='';$('#chart').append(sv);
   const b=cur();
-  $('#caveat').innerHTML=b.caveat?
-    `<div class="note"><b>Réserve de lecture.</b> ${esc(b.caveat)}</div>`:'';
+  // Deux notes distinctes : comment lire le dessin, puis ce que le benchmark
+  // lui-même ne garantit pas. Les confondre rendait les deux illisibles.
+  $('#caveat').innerHTML=
+    (HOWTO[K]?`<div class="note"><b>Comment lire.</b> ${HOWTO[K]}</div>`:'')+
+    // La couverture ne dépend pas du benchmark sélectionné : lui accoler la
+    // réserve de SWE-Bench laisserait croire qu'elle porte sur toute la matrice.
+    (b.caveat&&K!=='cover'?
+      `<div class="note"><b>Réserve sur ce benchmark.</b> ${esc(b.caveat)}</div>`:'');
   $('#tbl').innerHTML=r.length?
     '<thead><tr><th>Modèle</th><th>Fournisseur</th><th>Harnais</th>'+
     '<th class="n">Score</th><th class="n">IC95</th><th>Provenance</th><th>Source</th></tr></thead>'+
@@ -705,14 +806,10 @@ function frontier(){
     sv.append(mk('line',{x1:L,x2:W-R,y1:y(v),y2:y(v),class:'gl'}));
     const t=mk('text',{x:L-8,y:y(v)+4,'text-anchor':'end',class:'ax'});
     t.textContent=(v*100).toFixed(0)+'%';sv.append(t);}
-  const decs=[];
-  for(let e=Math.floor(lo);e<=Math.ceil(hi);e++)
-    for(const m of [1,2,5]){const v=m*Math.pow(10,e);
-      if(v>=cmin*0.8&&v<=cmax*1.25)decs.push(v);}
-  decs.forEach(v=>{
+  decades(lo,hi).forEach(v=>{
     sv.append(mk('line',{x1:x(v),x2:x(v),y1:T,y2:H-B,class:'gl'}));
     const t=mk('text',{x:x(v),y:H-B+16,'text-anchor':'middle',class:'ax'});
-    t.textContent='$'+(v<1?v.toFixed(2):v.toFixed(0));sv.append(t);});
+    t.textContent=money(v);sv.append(t);});
 
   // Front de Pareto : rien n'est à la fois moins cher ET meilleur.
   const par=pts.filter(p=>!pts.some(q=>q!==p&&q.c<=p.c&&q.s>=p.s&&(q.c<p.c||q.s>p.s)))
@@ -742,10 +839,27 @@ function frontier(){
         (p.h?`<br>harnais : ${esc(p.h)}`:'')+
         `<i>coût mesuré lors du run, pas un prix catalogue</i>`);
       sv.append(gg);});
-    // Étiquette directe au meilleur point : l'identité ne repose pas sur la couleur.
-    const bst=row.v.reduce((a,b)=>b.s>a.s?b:a);
-    const t=mk('text',{x:x(bst.c)+9,y:y(bst.s)+4,class:'lbl','font-size':'11'});
-    t.textContent=(row.d||row.k).slice(0,26);sv.append(t);});
+    });
+
+  // Étiquettes directes — l'identité ne doit pas reposer sur la seule couleur.
+  // Posées au point, elles se recouvraient toutes au centre du nuage : elles
+  // vivent donc dans la gouttière de droite, décollées verticalement, chacune
+  // reliée à son modèle par un filet.
+  const lab=g.map(row=>{const b=row.v.reduce((a,c)=>c.s>a.s?c:a);
+    return {row,b,y0:y(b.s)};}).sort((a,b)=>a.y0-b.y0);
+  const PAS=13;
+  let prev=T-PAS;
+  lab.forEach(z=>{z.ly=Math.max(z.y0,prev+PAS);prev=z.ly;});
+  const debord=lab.length?lab.at(-1).ly-(H-B):0;
+  if(debord>0){prev=H-B+PAS;
+    for(let i=lab.length-1;i>=0;i--){lab[i].ly=Math.min(lab[i].ly,prev-PAS);prev=lab[i].ly;}}
+  lab.forEach(z=>{const c=cv(LABC[z.row.l]||'--ink-3'),
+    px=x(z.b.c),py=y(z.b.s),lx=W-R+12;
+    sv.append(mk('path',{d:`M${px+7},${py} L${lx-8},${z.ly-4} L${lx-3},${z.ly-4}`,
+      fill:'none',stroke:c,'stroke-width':1,opacity:.4}));
+    const t=mk('text',{x:lx,y:z.ly,class:'lbl','font-size':'11'});
+    t.textContent=(z.row.d||z.row.k).slice(0,26);
+    t.setAttribute('fill',c);sv.append(t);});
 
   const xt=mk('text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle',class:'ax'});
   xt.textContent='◀ plus cher      coût mesuré par tâche (échelle log)      moins cher ▶';
@@ -837,26 +951,38 @@ function api(){
    if(m)r=r.filter(x=>x.lab===m);}
   const n=+$('#top').value; if(n)r=r.slice(0,n);
   if(!r.length)return empty('Aucun modèle tarifé pour ce filtre.');
-  const W=940,L=250,R=132,BH=25,H=r.length*BH+56;
-  const max=Math.max(...r.map(x=>x.out||x.in))*1.06;
+  // Les tarifs couvrent trois décades : en linéaire, tout ce qui est sous 1 $
+  // se colle à l'axe et devient illisible. L'échelle est donc logarithmique —
+  // ce qui interdit la barre, qui a besoin d'un zéro. Chaque modèle est une
+  // haltère : un point pour l'entrée, un pour la sortie, reliés par leur écart.
+  const W=940,L=250,R=132,BH=25,TOP=46,H=r.length*BH+TOP+22;
+  const vals=r.flatMap(m=>[m.in,m.out]).filter(v=>v!=null&&v>0);
+  const gratuits=r.filter(m=>!m.in);
+  const lo=Math.log10(Math.min(...vals)*0.7),hi=Math.log10(Math.max(...vals)*1.4);
   const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
-    'aria-label':'Tarifs API par million de tokens'});
-  const x=v=>L+v/max*(W-L-R);
-  for(let i=0;i<=4;i++){const v=max*i/4;
-    sv.append(mk('line',{x1:x(v),x2:x(v),y1:30,y2:H-20,class:'gl'}));
-    const t=mk('text',{x:x(v),y:22,'text-anchor':'middle',class:'ax'});
-    t.textContent='$'+v.toFixed(0);sv.append(t);}
+    'aria-label':'Tarifs API par million de tokens, échelle logarithmique'});
+  const x=v=>L+(Math.log10(v)-lo)/(hi-lo)*(W-L-R);
+  decades(lo,hi).forEach(v=>{
+    sv.append(mk('line',{x1:x(v),x2:x(v),y1:TOP-10,y2:H-20,class:'gl'}));
+    const t=mk('text',{x:x(v),y:TOP-16,'text-anchor':'middle',class:'ax'});
+    t.textContent=money(v);sv.append(t);});
   [['entrée','--s1',0],['sortie','--s2',108]].forEach(([lb,c,off])=>{
-    sv.append(mk('circle',{cx:L+off,cy:12,r:4,fill:cv(c)}));
-    const t=mk('text',{x:L+off+8,y:16,class:'ax'});t.textContent=lb;sv.append(t);});
-  r.forEach((m,i)=>{const y=34+i*BH,g=mk('g');
-    const lb=mk('text',{x:L-9,y:y+14,'text-anchor':'end',class:'lbl'});
+    sv.append(mk('circle',{cx:L+off,cy:11,r:4.5,fill:cv(c)}));
+    const t=mk('text',{x:L+off+9,y:15,class:'ax'});t.textContent=lb;sv.append(t);});
+  const eh=mk('text',{x:W-8,y:15,'text-anchor':'end',class:'ax'});
+  eh.textContent='échelle logarithmique';sv.append(eh);
+  r.forEach((m,i)=>{const y=TOP+i*BH,g=mk('g'),cy=y+11;
+    const lb=mk('text',{x:L-9,y:y+15,'text-anchor':'end',class:'lbl'});
     lb.textContent=(m.name||m.id).slice(0,34);g.append(lb);
-    g.append(mk('rect',{x:L,y:y+2,width:Math.max(2,x(m.in)-L),height:7,rx:3.5,fill:cv('--s1')}));
-    if(m.out)g.append(mk('rect',{x:L,y:y+11,width:Math.max(2,x(m.out)-L),height:7,rx:3.5,
-      fill:cv('--s2')}));
+    if(m.in){
+      if(m.out)g.append(mk('line',{x1:x(m.in),x2:x(m.out),y1:cy,y2:cy,
+        stroke:cv('--ink-3'),'stroke-width':2,opacity:.35}));
+      g.append(mk('circle',{cx:x(m.in),cy,r:4.5,fill:cv('--s1'),
+        stroke:cv('--panel'),'stroke-width':1.8}));
+      if(m.out)g.append(mk('circle',{cx:x(m.out),cy,r:4.5,fill:cv('--s2'),
+        stroke:cv('--panel'),'stroke-width':1.8}));}
     const vt=mk('text',{x:W-R+7,y:y+15,class:'val'});
-    vt.textContent=`$${m.in} / $${m.out??'—'}`;g.append(vt);
+    vt.textContent=m.in?`$${m.in} / $${m.out??'—'}`:'gratuit';g.append(vt);
     wire(g,`<b>${esc(m.name)}</b>${esc(m.api_id||m.id)}<br>`+
       `entrée <b>$${m.in}</b> · cache $${m.cached??'—'} · sortie <b>$${m.out??'—'}</b> /1M`+
       (m.ctx?`<br>contexte : ${(m.ctx/1000).toFixed(0)}k`:'')+
@@ -865,9 +991,14 @@ function api(){
       ``);
     sv.append(g);});
   $('#chart').innerHTML='';$('#chart').append(sv);
-  $('#caveat').innerHTML='<div class="note"><b>Lecture.</b> Le coût réel d\'une tâche dépend '+
-    'du ratio entrée/sortie et du taux de cache. Un modèle cher au token peut revenir moins '+
-    'cher s\'il réussit en un essai.</div>';
+  $('#caveat').innerHTML='<div class="note"><b>Comment lire.</b> Chaque ligne est un modèle. '+
+    'Le point bleu est le prix d\'un million de tokens envoyés, le point orange celui d\'un '+
+    'million de tokens produits ; l\'écart entre les deux est le facteur de sortie. '+
+    '<b>L\'axe est logarithmique</b> : chaque graduation vaut dix fois la précédente, sans quoi '+
+    'les modèles à quelques centimes seraient tous écrasés contre le bord gauche.</div>'+
+    '<div class="note"><b>Réserve de lecture.</b> Le coût réel d\'une tâche dépend du ratio '+
+    'entrée/sortie et du taux de cache. Un modèle cher au token peut revenir moins cher '+
+    's\'il réussit du premier coup.</div>';
   $('#tbl').innerHTML='<thead><tr><th>Modèle</th><th>Identifiant API</th>'+
     '<th class="n">Entrée</th><th class="n">Cache</th><th class="n">Sortie</th>'+
     '<th class="n">Contexte</th></tr></thead><tbody>'+
@@ -1041,8 +1172,8 @@ brancherCategories('#pas-cat','#pas',2,ORD_P);
   let html='';
   [...parLab.entries()].sort((a,b)=>nomLab(a[0]).localeCompare(nomLab(b[0]))).forEach(([lab,ms])=>{
     const L=D.labs_full.find(l=>l.id===lab)||{};
-    html+=`<h3 class="grp">${esc(nomLab(lab))}<span class="c">${ms.length} modèle${
-      ms.length>1?'s':''} tarifé${ms.length>1?'s':''}${L.country?' · '+esc(L.country):''}</span></h3>
+    html+=`<h3 class="grp">${esc(nomLab(lab))}<span class="c">${ms.length} tarif${
+      ms.length>1?'s':''} relevé${ms.length>1?'s':''}${L.country?' · '+esc(L.country):''}</span></h3>
      <div class="tw" style="max-height:none"><table>
      <thead><tr><th>Modèle</th><th>Identifiant API</th><th>Rôle</th>
      <th class="n">Entrée</th><th class="n">Cache</th><th class="n">Sortie</th>
