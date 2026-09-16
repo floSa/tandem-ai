@@ -4,7 +4,7 @@
 :root{
   color-scheme:light;
   --bg:#fbfcfd; --panel:#ffffff; --line:#e2e6ec; --line-strong:#c8cfd9;
-  --ink:#0a0d12; --ink-2:#4c535e; --ink-3:#7d858f;
+  --ink:#0a0d12; --ink-2:#4c535e; --ink-3:#676e79;
   --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4;
   --s6:#008300; --s7:#4a3aa7; --s8:#e34948;
   --grid:#edf0f4; --warn:#eda100; --bad:#e34948; --good:#1baf7a;
@@ -13,7 +13,7 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   color-scheme:dark;
   --bg:#101317; --panel:#171b21; --line:#2b323b; --line-strong:#3e4753;
-  --ink:#ffffff; --ink-2:#bcc3cd; --ink-3:#88909b;
+  --ink:#ffffff; --ink-2:#bcc3cd; --ink-3:#a7aeb9;
   --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
   --s6:#008300; --s7:#9085e9; --s8:#e66767;
   --grid:#232931; --warn:#c98500; --bad:#e66767; --good:#199e70;
@@ -22,13 +22,14 @@
 :root[data-theme="dark"]{
   color-scheme:dark;
   --bg:#101317; --panel:#171b21; --line:#2b323b; --line-strong:#3e4753;
-  --ink:#ffffff; --ink-2:#bcc3cd; --ink-3:#88909b;
+  --ink:#ffffff; --ink-2:#bcc3cd; --ink-3:#a7aeb9;
   --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
   --s6:#008300; --s7:#9085e9; --s8:#e66767;
   --grid:#232931; --warn:#c98500; --bad:#e66767; --good:#199e70;
   --seq1:#104281;--seq2:#184f95;--seq3:#256abf;--seq4:#2a78d6;--seq5:#5598e7;--seq6:#9ec5f4;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);
  font:14px/1.55 "IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
  margin:0;padding:0 20px 72px;-webkit-font-smoothing:antialiased}
@@ -96,7 +97,7 @@ select:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
 .chart{width:100%;overflow-x:auto}
 svg{display:block;max-width:100%;height:auto;font:inherit}
 .gl{stroke:var(--grid);stroke-width:1}
-.ax{fill:var(--ink-3);font-size:10.5px;font-family:"IBM Plex Mono",ui-monospace,monospace}
+.ax{fill:var(--ink-3);font-size:11px;font-family:"IBM Plex Mono",ui-monospace,monospace}
 .lbl{fill:var(--ink);font-size:11.5px}
 .val{fill:var(--ink-2);font-size:11px;font-family:"IBM Plex Mono",ui-monospace,monospace;
  font-variant-numeric:tabular-nums}
@@ -503,7 +504,9 @@ function cover(){
         H=T+ordre.length*RH+grp.length*GAP+18;
   const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
     'aria-label':'Couverture des benchmarks par modèle, groupée par fournisseur'});
-  bs.forEach((b,j)=>{const t=mk('text',{x:L+j*CW+CW/2,y:T-9,class:'ax',
+  // Même encre que les noms de lignes : pivoté et petit, ce texte a besoin du
+  // contraste maximal pour rester lisible.
+  bs.forEach((b,j)=>{const t=mk('text',{x:L+j*CW+CW/2,y:T-9,class:'lbl','font-size':'11',
     transform:`rotate(-52 ${L+j*CW+CW/2} ${T-9})`,'text-anchor':'start'});
     t.textContent=b.length>17?b.slice(0,16)+'…':b;sv.append(t);});
   const mp=new Map();
@@ -554,19 +557,24 @@ function price(){
      'et validés par pipeline/validate.py.');
   // Les tarifs s'étalent sur trois décades — de 0,03 $ à 30 $ le million. Une
   // échelle linéaire écrase tout le bas de gamme contre l'axe : elle est log.
-  const all=best(rows()).filter(s=>D.prices[s.m]);
+  let all=best(rows()).filter(s=>D.prices[s.m]);
+  const n=+$('#top').value; if(n)all=all.slice(0,n);   // le sélecteur d'affichage vaut ici aussi
   const r=all.filter(s=>D.prices[s.m].in>0);
   const gratuits=all.length-r.length;
   if(!r.length)return empty('Aucun modèle tarifé pour ce benchmark.');
-  const W=940,H=440,L=58,B=52,T=26,R=150;
+  const W=940,H=470,L=58,B=52,T=34,R=178;
   const ps=r.map(s=>D.prices[s.m].in);
   const lo=Math.log10(Math.min(...ps)*0.7),hi=Math.log10(Math.max(...ps)*1.4);
-  const my=Math.max(...r.map(s=>s.s))*1.06;
-  // Même convention que « Coût × perf » : moins cher vers la droite.
-  const x=v=>W-R-(Math.log10(v)-lo)/(hi-lo)*(W-L-R),y=v=>H-B-v/my*(H-B-T);
+  // Cadrage sur la plage réellement occupée : partir de zéro laissait la moitié
+  // du graphique vide et écrasait les écarts entre modèles.
+  const smax=Math.max(...r.map(s=>s.s))*1.04,
+        smin=Math.max(0,Math.min(...r.map(s=>s.s))-0.05);
+  // Même convention que le coût mesuré : moins cher vers la droite.
+  const x=v=>W-R-(Math.log10(v)-lo)/(hi-lo)*(W-L-R),
+        y=v=>H-B-(v-smin)/(smax-smin)*(H-B-T);
   const sv=mk('svg',{viewBox:`0 0 ${W} ${H}`,width:W,role:'group',
     'aria-label':'Prix catalogue contre performance, échelle logarithmique'});
-  for(let i=0;i<=4;i++){const v=my*i/4;
+  for(let i=0;i<=4;i++){const v=smin+(smax-smin)*i/4;
     sv.append(mk('line',{x1:L,x2:W-R,y1:y(v),y2:y(v),class:'gl'}));
     const t=mk('text',{x:L-8,y:y(v)+4,'text-anchor':'end',class:'ax'});
     t.textContent=(v*100).toFixed(0)+'%';sv.append(t);}
@@ -584,17 +592,42 @@ function price(){
   const xt=mk('text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle',class:'ax'});
   xt.textContent='◀ plus cher      prix d\'entrée par million de tokens (échelle log)      moins cher ▶';
   sv.append(xt);
-  if(gratuits){const t=mk('text',{x:W-R+8,y:H-B+16,class:'ax'});
+  if(gratuits){const t=mk('text',{x:W-8,y:H-8,'text-anchor':'end',class:'ax'});
     t.textContent=gratuits+' modèle'+(gratuits>1?'s':'')+' gratuit'+(gratuits>1?'s':'')+
       ' — hors échelle';sv.append(t);}
-  legend(sv,r,W);render(sv,r,'fraction');
+  // L'identité ne doit pas reposer sur la seule couleur : chaque point est nommé.
+  gouttiere(sv,r.map(s=>({nom:s.d||s.m,c:cv(LABC[s.l]||'--ink-3'),
+    cx:x(D.prices[s.m].in),cy:y(s.s)})),W,R,T,B,H);
+  render(sv,r,'fraction');
 }
 
 function legend(sv,r,W){
-  const ls=[...new Set(r.map(s=>s.o))].slice(0,8);
-  ls.forEach((o,i)=>{const s=r.find(z=>z.o===o),X=58+i*112;
-    sv.append(mk('circle',{cx:X,cy:12,r:4,fill:cv(LABC[s.l]||'--ink-3')}));
-    const t=mk('text',{x:X+8,y:16,class:'ax'});t.textContent=o.slice(0,14);sv.append(t);});
+  // Espacement calculé sur la longueur réelle : à pas fixe, les noms longs
+  // débordaient sur le suivant.
+  let X=58;
+  [...new Set(r.map(s=>s.o))].slice(0,8).forEach(o=>{
+    const z=r.find(v=>v.o===o),lb=o.length>20?o.slice(0,19)+'…':o;
+    if(X+lb.length*6.3+30>W)return;
+    sv.append(mk('circle',{cx:X,cy:12,r:4,fill:cv(LABC[z.l]||'--ink-3')}));
+    const t=mk('text',{x:X+8,y:16,class:'ax'});t.textContent=lb;sv.append(t);
+    X+=lb.length*6.3+30;});
+}
+
+// Étiquettes directes posées dans la gouttière de droite. Au point, elles se
+// recouvrent dès que le nuage est dense ; ici elles sont décollées d'un pas
+// minimum et reliées à leur marque par un filet.
+function gouttiere(sv,items,W,R,T,B,H){
+  const PAS=13,lab=items.slice().sort((a,b)=>a.cy-b.cy);
+  let prev=T-PAS;
+  lab.forEach(z=>{z.ly=Math.max(z.cy,prev+PAS);prev=z.ly;});
+  const debord=lab.length?lab.at(-1).ly-(H-B):0;
+  if(debord>0){prev=H-B+PAS;
+    for(let i=lab.length-1;i>=0;i--){lab[i].ly=Math.min(lab[i].ly,prev-PAS);prev=lab[i].ly;}}
+  lab.forEach(z=>{const lx=W-R+12;
+    sv.append(mk('path',{d:`M${z.cx+7},${z.cy} L${lx-8},${z.ly-4} L${lx-3},${z.ly-4}`,
+      fill:'none',stroke:z.c,'stroke-width':1,opacity:.4}));
+    const t=mk('text',{x:lx,y:z.ly,class:'lbl','font-size':'11'});
+    t.textContent=z.nom.slice(0,26);sv.append(t);});
 }
 // Ce que montre chaque vue, en une phrase. Sans elle, un graphique juste reste
 // un graphique qu'on ne sait pas lire.
@@ -611,9 +644,14 @@ const HOWTO={
  cover:"Une ligne par modèle, une colonne par benchmark, regroupées par fournisseur. Plus "+
    "la case est foncée, meilleur est le score ; une case en pointillés veut dire que "+
    "personne n'a publié la mesure — le trou compte autant que le chiffre.",
- price:"Chaque point est un modèle : son prix affiché au million de tokens en abscisse, son "+
-   "score en ordonnée. <b>L'axe des prix est logarithmique et inversé</b> — chaque graduation "+
-   "vaut dix fois la précédente, et <b>le meilleur rapport se lit en haut à droite</b>.",
+ // Cette note sert au repli « prix catalogue » de la vue coût × performance :
+ // quand le benchmark publie un coût mesuré, frontier() écrit la sienne.
+ frontier:"Chaque point est un modèle : son <b>prix affiché au catalogue</b> par million de "+
+   "tokens d'entrée en abscisse, son score en ordonnée. <b>L'axe des prix est logarithmique "+
+   "et inversé</b> — chaque graduation vaut dix fois la précédente, et <b>le meilleur rapport "+
+   "se lit en haut à droite</b>. Ce benchmark ne publiant pas le coût réel des runs, c'est le "+
+   "tarif au token qui sert d'approximation : il ne dit rien du nombre de tokens qu'une tâche "+
+   "consomme réellement.",
 };
 function empty(msg){
   $('#chart').innerHTML='<div class="empty">'+
@@ -713,21 +751,9 @@ function frontier(){
   // Posées au point, elles se recouvraient toutes au centre du nuage : elles
   // vivent donc dans la gouttière de droite, décollées verticalement, chacune
   // reliée à son modèle par un filet.
-  const lab=g.map(row=>{const b=row.v.reduce((a,c)=>c.s>a.s?c:a);
-    return {row,b,y0:y(b.s)};}).sort((a,b)=>a.y0-b.y0);
-  const PAS=13;
-  let prev=T-PAS;
-  lab.forEach(z=>{z.ly=Math.max(z.y0,prev+PAS);prev=z.ly;});
-  const debord=lab.length?lab.at(-1).ly-(H-B):0;
-  if(debord>0){prev=H-B+PAS;
-    for(let i=lab.length-1;i>=0;i--){lab[i].ly=Math.min(lab[i].ly,prev-PAS);prev=lab[i].ly;}}
-  lab.forEach(z=>{const c=cv(LABC[z.row.l]||'--ink-3'),
-    px=x(z.b.c),py=y(z.b.s),lx=W-R+12;
-    sv.append(mk('path',{d:`M${px+7},${py} L${lx-8},${z.ly-4} L${lx-3},${z.ly-4}`,
-      fill:'none',stroke:c,'stroke-width':1,opacity:.4}));
-    const t=mk('text',{x:lx,y:z.ly,class:'lbl','font-size':'11'});
-    t.textContent=(z.row.d||z.row.k).slice(0,26);
-    t.setAttribute('fill',c);sv.append(t);});
+  gouttiere(sv,g.map(row=>{const b=row.v.reduce((a,c)=>c.s>a.s?c:a);
+    return {nom:row.d||row.k,c:cv(LABC[row.l]||'--ink-3'),cx:x(b.c),cy:y(b.s)};}),
+    W,R,T,B,H);
 
   const xt=mk('text',{x:(L+W-R)/2,y:H-8,'text-anchor':'middle',class:'ax'});
   xt.textContent='◀ plus cher      coût mesuré par tâche (échelle log)      moins cher ▶';
@@ -925,19 +951,27 @@ function plans(){
       `<td>${esc(p.includes||'—')}</td></tr>`).join('')+'</tbody>';
 }
 
-const DRAW={rank,frontier,budget,harness,time,cover,price,api,plans};
+// Deux façons de croiser coût et performance, sous un même bouton : le coût
+// réellement mesuré quand le benchmark le publie, le prix catalogue sinon. Les
+// deux ne se valent pas — chaque vue le dit dans sa note de lecture.
+const coutPerf=()=>mesure(bsel.value)?frontier():price();
+const DRAW={rank,frontier:coutPerf,budget,harness,time,cover,api,plans};
 
 // Toutes les vues ne s'appliquent pas à tous les benchmarks : le coût mesuré et
 // le nom du harnais ne sont publiés que par une minorité d'entre eux. Proposer
 // un bouton qui ne peut rien afficher se lit comme une panne — on le désactive
 // et on dit où la vue existe.
-const EXIGE={frontier:'le coût mesuré de chaque run',
-             budget:'le coût mesuré de chaque run',
+const EXIGE={budget:'le coût mesuré de chaque run',
              harness:"le nom du harnais utilisé"};
+const mesure=b=>D.scores.some(s=>s.b===b&&s.c!=null&&s.c>0);
 function dispo(k,b){
   b=b||bsel.value;
-  if(k==='frontier'||k==='budget')
-    return D.scores.some(s=>s.b===b&&s.c!=null&&s.c>0);
+  // Le coût mesuré n'existe que sur quelques benchmarks, mais le prix catalogue
+  // existe pour tout modèle tarifé : la vue reste donc ouverte, et dit lequel
+  // des deux elle montre.
+  if(k==='frontier')
+    return mesure(b)||D.scores.some(s=>s.b===b&&D.prices[s.m]);
+  if(k==='budget')return mesure(b);
   if(k==='harness'){
     const vus=new Map();
     for(const s of D.scores){
@@ -949,6 +983,19 @@ function dispo(k,b){
     return false;
   }
   return true;
+}
+// Un filtre qui n'agit sur rien ne doit pas être affiché : la matrice de
+// couverture montre TOUS les benchmarks, les vues tarifaires n'en dépendent
+// d'aucun. Laisser le sélecteur visible laissait croire qu'il agissait.
+const CTRL={rank:'blet',frontier:'blet',budget:'blet',harness:'blet',time:'blet',
+            cover:'lt',api:'lt',plans:''};
+function majControles(){
+  const c=CTRL[K]??'blet';
+  bsel.closest('label').hidden=!c.includes('b');
+  lsel.closest('label').hidden=!c.includes('l');
+  $('#eff').closest('label').hidden=!c.includes('e');
+  $('#top').closest('label').hidden=!c.includes('t');
+  $('#budwrap').hidden=(K!=='budget');
 }
 function majBoutons(){
   [...$('#kind').children].forEach(btn=>{
@@ -967,12 +1014,11 @@ function majBoutons(){
     $('#budwrap').hidden=true;
   }
 }
-function draw(){majBoutons();DRAW[K]();}
+function draw(){majBoutons();majControles();DRAW[K]();}
 $('#kind').addEventListener('click',e=>{const b=e.target.closest('button');
   if(!b||b.disabled)return;
   K=b.dataset.k;[...$('#kind').children].forEach(x=>
     x.setAttribute('aria-pressed',String(x===b)));
-  $('#budwrap').hidden=(K!=='budget');
   draw();});
 [bsel,lsel,$('#top'),$('#eff'),$('#bud')].forEach(el=>el.addEventListener('change',draw));
 
