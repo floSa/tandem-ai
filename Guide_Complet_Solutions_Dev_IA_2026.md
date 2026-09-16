@@ -10,9 +10,9 @@
 
 | Couche | Couverture |
 | :-- | :-- |
-| Mesures de benchmark | 1 275 sur 18 benchmarks |
-| Modèles au catalogue | 207 |
-| Tarifs API relevés sur page officielle | 132 / 207 |
+| Mesures de benchmark | 832 sur 16 benchmarks |
+| Modèles au catalogue | 160 |
+| Tarifs API relevés sur page officielle | 109 / 160 |
 | Forfaits d'abonnement relevés | 29 |
 | Harnais re-vérifiés | 30 / 30 |
 | Taux de change USD→EUR | 0.8666 — vérifié |
@@ -49,9 +49,9 @@ de facturation choisi.
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-La couche 1 n'est pas neutre. Sur Terminal-Bench, le référentiel recense des
-dizaines de harnais différents pour les mêmes modèles, et l'écart qu'ils
-produisent dépasse souvent l'écart entre deux modèles concurrents. C'est la
+La couche 1 n'est pas neutre. Un même modèle n'obtient pas le même score selon le
+harnais qui l'exécute, et l'écart qu'ils produisent dépasse souvent l'écart entre
+deux modèles concurrents. C'est la
 raison d'être de ce document : un score ne se lit jamais sans son harnais.
 
 ---
@@ -201,8 +201,6 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 | Z.ai (Zhipu AI) | **GLM-4.7-Flash** | Gratuit avec limites de débit | — | gratuit | gratuit | gratuit | 0,00 € | 0,00 € | 2026-09-15 |
 | Alibaba | **Qwen3.7-Flash** | Flash économique | — | $0.03 | — | $0.13 | 0,03 € | 0,11 € | 2026-09-15 |
 | Alibaba | **Qwen3.7 Flash** | Flash économique | — | $0.03 | — | $0.13 | 0,03 € | 0,11 € | 2026-09-15 |
-| OpenAI | **GPT-5 nano** | Ultra-économique | — | $0.05 | $0.005 | $0.4 | 0,04 € | 0,35 € | 2026-09-15 |
-| OpenAI | **GPT-5 nano (high)** | Ultra-économique | — | $0.05 | $0.005 | $0.4 | 0,04 € | 0,35 € | 2026-09-15 |
 | Alibaba | **Qwen3.5-Flash** | — | — | $0.1 | — | $0.4 | 0,09 € | 0,35 € | 2026-09-15 |
 | Z.ai (Zhipu AI) | **GLM-5.3-Flash** | Flash économique | — | $0.15 | $0.03 | $0.5 | 0,13 € | 0,43 € | 2026-09-15 |
 | OpenAI | **GPT-5.4 nano** | — | — | $0.2 | $0.02 | $1.25 | 0,17 € | 1,08 € | 2026-09-15 |
@@ -211,11 +209,7 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 | OpenAI | **GPT-5.6 Luna** | Flash / économique | — | $0.2 | $0.02 | $1.2 | 0,17 € | 1,04 € | 2026-09-15 |
 | OpenAI | **GPT-5.6 Luna (none)** | Flash / économique | — | $0.2 | $0.02 | $1.2 | 0,17 € | 1,04 € | 2026-09-15 |
 | Alibaba | **Qwen3.6-Flash** | — | — | $0.25 | — | $1.5 | 0,22 € | 1,30 € | 2026-09-15 |
-| OpenAI | **GPT-5 mini** | — | — | $0.25 | $0.025 | $2 | 0,22 € | 1,73 € | 2026-09-15 |
-| OpenAI | **GPT-5 mini (high)** | — | — | $0.25 | $0.025 | $2 | 0,22 € | 1,73 € | 2026-09-15 |
 | DeepSeek | **DeepSeek Flash** | Flash ultra-économique | 1000k | $0.3 | $0.006 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
-| Google DeepMind | **Gemini 2.5 Flash** | — | 1048k | $0.3 | — | $2.5 | 0,26 € | 2,17 € | 2026-09-15 |
-| Google DeepMind | **gemini-2.5-flash-preview-09-2025** | — | 1048k | $0.3 | — | $2.5 | 0,26 € | 2,17 € | 2026-09-15 |
 | Google DeepMind | **Gemini 3.5 Flash-Lite** | Ultra-économique | — | $0.3 | $0.03 | $2.5 | 0,26 € | 2,17 € | 2026-09-15 |
 | MiniMax | **MiniMax-M2** | — | — | $0.3 | $0.03 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
 | MiniMax | **MiniMax-M2.1** | — | — | $0.3 | $0.03 | $1.2 | 0,26 € | 1,04 € | 2026-09-15 |
@@ -247,15 +241,6 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 | Z.ai (Zhipu AI) | **GLM-5** | — | — | $1 | — | $3.2 | 0,87 € | 2,77 € | 2026-09-15 |
 | Alibaba | **Qwen3-Max** | — | — | $1.2 | — | $6 | 1,04 € | 5,20 € | 2026-09-15 |
 | Alibaba | **Qwen3-Max-Instruct** | — | — | $1.2 | — | $6 | 1,04 € | 5,20 € | 2026-09-15 |
-| Google DeepMind | **Gemini 2.5 Pro** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
-| Google DeepMind | **Gemini 2.5 Pro Preview (Jun 2025)** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
-| Google DeepMind | **Gemini 2.5 Pro Preview (Jun 2025)** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
-| Google DeepMind | **Gemini 2.5 Pro Preview (Jun 2025)** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
-| Google DeepMind | **gemini-2.5-pro_16K** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
-| Google DeepMind | **gemini-2.5-pro_32K** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
-| Google DeepMind | **gemini-2.5-pro_8K** | — | 1048k | $1.25 | — | $10 | 1,08 € | 8,67 € | 2026-09-15 |
-| OpenAI | **GPT-5** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
-| OpenAI | **GPT-5 (high)** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
 | OpenAI | **GPT-5.1** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
 | OpenAI | **GPT-5.1 (high)** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
 | OpenAI | **GPT-5.1 (no thinking)** | — | — | $1.25 | $0.125 | $10 | 1,08 € | 8,67 € | 2026-09-15 |
@@ -280,10 +265,8 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 | Alibaba | **Qwen3.8 Max (0902) (xhigh)** | Flagship | — | $2 | — | $6 | 1,73 € | 5,20 € | 2026-09-15 |
 | Anthropic | **Claude Sonnet 5** | Référence ingénierie logicielle | 200k | $2 | $0.2 | $10 | 1,73 € | 8,67 € | 2026-09-15 |
 | Google DeepMind | **Gemini 3.1 Pro** | Flagship raisonnement | 200k | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
-| Google DeepMind | **Gemini 3.1 Pro Preview** | Flagship raisonnement | 200k | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
 | OpenAI | **GPT-5.6 Terra** | Équilibré développeur | — | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
 | OpenAI | **GPT-5.6 Terra (none)** | Équilibré développeur | — | $2 | $0.2 | $12 | 1,73 € | 10,40 € | 2026-09-15 |
-| OpenAI | **o3** | Raisonnement algorithmique | — | $2 | $0.5 | $8 | 1,73 € | 6,93 € | 2026-09-15 |
 | xAI | **Grok 4.5** | — | — | $2 | — | $6 | 1,73 € | 5,20 € | 2026-09-15 |
 | xAI | **Grok 4.6** | Flagship | — | $2 | — | $6 | 1,73 € | 5,20 € | 2026-09-15 |
 | Alibaba | **Qwen3.7-Max** | — | — | $2.5 | — | $7.5 | 2,17 € | 6,50 € | 2026-09-15 |
@@ -317,14 +300,8 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 | Anthropic | **Claude Fable 5.1** | Flagship raisonnement étendu | 200k | $10 | $0.25 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
 | OpenAI | **GPT-6 Astra** | Flagship nouvelle génération | — | $10 | $1 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
 | OpenAI | **GPT-6 Astra (none)** | Flagship nouvelle génération | — | $10 | $1 | $50 | 8,67 € | 43,33 € | 2026-09-15 |
-| Anthropic | **Claude Opus 4.1** | — | 200k | $15 | $1.5 | $75 | 13,00 € | 65,00 € | 2026-09-15 |
-| Anthropic | **claude-opus-4-1-20250805** | — | 200k | $15 | $1.5 | $75 | 13,00 € | 65,00 € | 2026-09-15 |
-| Anthropic | **claude-opus-4-1-20250805_16K** | — | 200k | $15 | $1.5 | $75 | 13,00 € | 65,00 € | 2026-09-15 |
-| Anthropic | **claude-opus-4-1-20250805_27K** | — | 200k | $15 | $1.5 | $75 | 13,00 € | 65,00 € | 2026-09-15 |
 | OpenAI | **GPT-5 Pro** | — | — | $15 | — | $120 | 13,00 € | 103,99 € | 2026-09-15 |
 | OpenAI | **GPT-5 Pro** | — | — | $15 | — | $120 | 13,00 € | 103,99 € | 2026-09-15 |
-| OpenAI | **o3-pro** | Raisonnement extrême | — | $20 | — | $80 | 17,33 € | 69,33 € | 2026-09-15 |
-| OpenAI | **o3-pro-2025-06-10** | Raisonnement extrême | — | $20 | — | $80 | 17,33 € | 69,33 € | 2026-09-15 |
 | OpenAI | **GPT-5.2 Pro** | — | — | $21 | — | $168 | 18,20 € | 145,59 € | 2026-09-15 |
 | OpenAI | **GPT-5.2 Pro** | — | — | $21 | — | $168 | 18,20 € | 145,59 € | 2026-09-15 |
 | OpenAI | **GPT-5.4 Pro** | Raisonnement extrême | — | $30 | — | $180 | 26,00 € | 155,99 € | 2026-09-15 |
@@ -348,17 +325,7 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 - **DeepSeek V4 Pro 0813 (high)** — heures creuses : $0.66 en entrée, $1.98 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
 - **DeepSeek V4 Pro 0813 (none)** — heures creuses : $0.66 en entrée, $1.98 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
 - **DeepSeek v4 Pro (unknown thinking)** — heures creuses : $0.66 en entrée, $1.98 en sortie (01:00-04:00 et 06:00-10:00, lundi-vendredi).
-- **Gemini 2.5 Flash** — Entrée audio facturée 1,00.
-- **gemini-2.5-flash-preview-09-2025** — Entrée audio facturée 1,00.
-- **Gemini 2.5 Pro** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
-- **Gemini 2.5 Pro Preview (Jun 2025)** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
-- **Gemini 2.5 Pro Preview (Jun 2025)** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
-- **Gemini 2.5 Pro Preview (Jun 2025)** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
-- **gemini-2.5-pro_16K** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
-- **gemini-2.5-pro_32K** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
-- **gemini-2.5-pro_8K** — Tarif ≤200k tokens. Au-delà : 2,50 / 15,00.
 - **Gemini 3.1 Pro** — Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00.
-- **Gemini 3.1 Pro Preview** — Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00.
 - **Gemini 3.6 Flash** — Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50. (jusqu'au 2026-12-31).
 - **Gemini 3.7 Flash** — Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50. (jusqu'au 2026-12-31).
 - **Gemini 3.8 Flash** — Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50. (jusqu'au 2026-12-31).
@@ -376,61 +343,61 @@ Une ligne par modèle, triée par coût d'entrée croissant. Seuls figurent les 
 
 ## 7. Performance mesurée
 
-18 benchmarks suivis, 14 écartés (saturés, obsolètes ou mesurant de la mémorisation). Chaque rejet est documenté avec son motif dans `catalog/benchmarks.yaml`.
+16 benchmarks suivis, 21 écartés (saturés, obsolètes ou mesurant de la mémorisation). Chaque rejet est documenté avec son motif dans `catalog/benchmarks.yaml`.
 
 ### 7.1 État de l'art par benchmark
 
 | Benchmark | Ce qu'il mesure | Meilleur score | Modèle | Harnais |
 | :-- | :-- | --: | :-- | :-- |
-| **Aider polyglot** | Édition de code existant dans plusieurs langages, au format diff. | 88.0% | `gpt-5-2025-08-07_high` | — |
+| **CursorBench** | Tâches de développement réelles tirées de l'usage de Cursor, exécutées dan | 73.4% | `claude-fable-5-1_max` | Cursor |
 | **GPQA diamond** | Questions scientifiques de niveau doctorat, hors de portée d'une recherche | 95.8% | `gpt-6-astra_max` | — |
 | **HLE** | Humanity's Last Exam : questions expertes volontairement très difficiles. | 46.5% | `claude-fable-5-1_xhigh` | — |
-| **METR Time Horizons** | Durée de tâche humaine qu'un modèle accomplit avec 50% de réussite. Exprim | 0.85 min | `claude-mythos-preview-early` | — |
-| **SWE-Bench verified** | Résolution de vraies issues GitHub Python, patch validé par les tests du d | 83.5% | `claude-opus-4-7_max` | — |
-| **Terminal Bench** | Tâches multi-étapes en ligne de commande : navigation, exécution, vérifica | 84.7% | `gpt-5.5_unknown` | NexAU-AHE |
+| **Terminal-Bench 4.0** | Tâches multi-étapes en ligne de commande : navigation, exécution, vérifica | 58.2% | `gpt-6-astra_max` | Codex |
 | **APEX-Agents** | Capacités agentiques sur tâches expertes. | 47.4% | `claude-fable-5-1_unknown` | — |
 | **ARC-AGI-2** | Raisonnement abstrait sur grilles, résistant à la mémorisation. | 95.0% | `gpt-6-astra_max` | — |
-| **Cybench** | Résolution de défis de cybersécurité type CTF. | 93.0% | `claude-opus-4-6_unknown` | — |
 | **DeepSWE** | Ingénierie logicielle sur tâches longues. | 74.1% | `gpt-6-astra_xhigh` | mini-swe-agent |
 | **FrontierCode** | Génération de code sur problèmes récents, conçu contre la contamination. | 53.5% | `claude-fable-5_unknown` | claude-code |
-| **GDPval** | Tâches professionnelles réelles évaluées par des experts du métier. | 49.7% | `gpt-5.2-2025-12-11_none` | — |
+| **FrontierSWE** | Projets d'ingénierie de plusieurs heures (implémentation, performance, rec | 56.3% | `claude-fable-5-1_max` | proximus |
+| **GDP.pdf** | Production de livrables professionnels (documents, analyses) jugés par des | 30.7% | `gpt-5.6-sol_unknown` | — |
 | **GSO-Bench** | Optimisation de code sous contrainte de performance mesurée. | 47.1% | `claude-opus-4-8_unknown` | OpenHands |
 | **MirrorCode** | Benchmark de code récent, résistant à la contamination. | 73.3% | `claude-fable-5-1_high` | — |
 | **OSWorld 2.0** | Pilotage d'un vrai bureau graphique (fenêtres, applications). | 31.4% | `claude-opus-5_max` | — |
+| **PostTrainBench** | Un agent post-entraîne lui-même un modèle ouvert sous contrainte de calcul | 41.8% | `claude-fable-5_max` | Claude Code |
 | **Remote Labor Index** | Capacité à accomplir des missions freelance réellement rémunérées. | 16.1% | `claude-fable-5` | — |
 | **SciCode** | Implémentation de code scientifique à partir d'énoncés de recherche. | 62.0% | `claude-fable-5-1_max` | — |
-| **The Agent Company** | Tâches de travail réalistes en entreprise simulée (navigation, outils, col | 52.4% | `DeepSeek-V3.2-Exp` | — |
 
 > [!IMPORTANT]
 > **Égalités statistiques.** Sur les benchmarks suivants, les deux premiers ne sont pas séparés au seuil de 95 % : les classer l'un devant l'autre est une erreur de lecture.
 >
-> - **Terminal Bench** — `gpt-5.5_unknown` et `gpt-5.5_unknown` (écart 0.016, intervalle 0.058)
 > - **GPQA diamond** — `gpt-6-astra_max` et `gemini-3.8-flash_high` (écart 0.004, intervalle 0.038)
-> - **SWE-Bench verified** — `claude-opus-4-7_max` et `gpt-5.5-pre-release_xhigh` (écart 0.029, intervalle 0.048)
 > - **DeepSWE** — `gpt-6-astra_xhigh` et `gemini-3.8-flash_high` (écart 0.003, intervalle 0.032)
+> - **Terminal-Bench 4.0** — `gpt-6-astra_max` et `claude-fable-5-1_max` (écart 0.003, intervalle 0.047)
 
 ### 7.2 Coût mesuré et effort de raisonnement
 
 Les suffixes `low` à `max` ne désignent pas des modèles différents mais le **budget de raisonnement** accordé au même modèle. Son effet dépasse souvent l'écart entre deux modèles concurrents, et il se paie. Le coût ci-dessous est celui **réellement mesuré pendant le run**, pas un prix au token.
 
-Benchmark de référence sur cet axe : **DeepSWE**, mesuré sous un harnais unique (`mini-swe-agent`) — l'écart observé s'impute donc au modèle et à son effort, pas au harnais.
+Benchmark de référence sur cet axe : **CursorBench**, mesuré sous un harnais unique (`Cursor`) — l'écart observé s'impute donc au modèle et à son effort, pas au harnais.
 
 | Modèle | Effort le plus bas | Effort le plus haut | Gain | Surcoût |
 | :-- | :-- | :-- | --: | --: |
-| `gpt-6-astra` | low — 67.0% à $2.19 | max — 73.2% à $12.37 | +6.2 pts | ×5.7 |
-| `gemini-3.8-flash` | medium — 71.0% à $1.97 | high — 73.8% à $2.36 | +2.8 pts | ×1.2 |
-| `claude-opus-5` | low — 58.1% à $1.66 | max — 73.7% à $11.84 | +15.5 pts | ×7.1 |
-| `gpt-5.6-sol` | low — 45.4% à $1.07 | max — 72.7% à $8.39 | +27.3 pts | ×7.8 |
-| `claude-fable-5` | low — 59.6% à $3.76 | max — 69.7% à $21.63 | +10.1 pts | ×5.8 |
-| `gpt-5.6-terra` | low — 24.1% à $0.43 | max — 69.6% à $4.95 | +45.6 pts | ×11.6 |
-| `grok-4.6` | low — 41.6% à $1.04 | xhigh — 66.7% à $5.50 | +25.1 pts | ×5.3 |
-| `gpt-5.6-luna` | low — 1.6% à $0.07 | max — 67.2% à $3.03 | +65.6 pts | ×41.8 |
-| `gpt-5.5` | low — 27.0% à $1.20 | xhigh — 67.0% à $7.23 | +40.1 pts | ×6.0 |
-| `gemini-3.7-flash` | low — 53.8% à $1.83 | high — 65.3% à $2.18 | +11.5 pts | ×1.2 |
-| `claude-opus-4-8` | low — 40.8% à $2.29 | max — 59.0% à $13.22 | +18.2 pts | ×5.8 |
-| `claude-sonnet-5` | low — 30.5% à $2.19 | max — 53.8% à $26.40 | +23.3 pts | ×12.1 |
-| `glm-5.2` | high — 36.3% à $2.84 | max — 43.8% à $3.92 | +7.5 pts | ×1.4 |
-| `gemini-3.5-flash` | medium — 37.4% à $7.34 | high — 36.1% à $3.45 | -1.3 pts | ×0.5 |
+| `claude-fable-5-1` | low — 66.2% à $2.90 | max — 73.4% à $9.64 | +7.2 pts | ×3.3 |
+| `grok-4.6` | low — 61.0% à $0.70 | xhigh — 70.8% à $2.81 | +9.8 pts | ×4.0 |
+| `claude-fable-5` | low — 62.1% à $4.46 | max — 70.5% à $17.32 | +8.4 pts | ×3.9 |
+| `claude-opus-5` | low — 62.8% à $2.55 | max — 70.0% à $8.23 | +7.2 pts | ×3.2 |
+| `gemini-3.8-flash` | medium — 67.0% à $1.93 | high — 69.2% à $2.38 | +2.2 pts | ×1.2 |
+| `gpt-5.6-sol` | low — 52.6% à $1.01 | max — 67.2% à $5.69 | +14.6 pts | ×5.6 |
+| `gpt-5.6-terra` | low — 46.9% à $0.42 | max — 64.9% à $2.31 | +18.0 pts | ×5.5 |
+| `claude-opus-4-7` | low — 48.3% à $1.87 | max — 64.8% à $11.02 | +16.5 pts | ×5.9 |
+| `claude-opus-4-8` | low — 53.1% à $2.02 | max — 62.3% à $5.77 | +9.2 pts | ×2.9 |
+| `gemini-3.7-flash` | low — 53.8% à $0.74 | high — 61.6% à $1.20 | +7.8 pts | ×1.6 |
+| `claude-sonnet-5` | low — 47.7% à $0.87 | max — 61.5% à $4.30 | +13.8 pts | ×4.9 |
+| `gpt-5.6-luna` | low — 37.6% à $0.03 | max — 61.1% à $0.39 | +23.5 pts | ×13.0 |
+| `kimi-k3` | low — 50.5% à $0.99 | max — 60.8% à $2.70 | +10.3 pts | ×2.7 |
+| `gpt-5.5` | low — 46.6% à $0.98 | xhigh — 58.4% à $2.85 | +11.8 pts | ×2.9 |
+| `glm-5.2` | high — 51.5% à $1.19 | max — 55.0% à $1.76 | +3.5 pts | ×1.5 |
+| `gemini-3.6-flash` | low — 47.4% à $1.13 | high — 53.5% à $1.56 | +6.1 pts | ×1.4 |
+| `claude-sonnet-4-6` | medium — 46.0% à $2.64 | max — 49.0% à $3.09 | +3.0 pts | ×1.2 |
 
 Un gain faible pour un surcoût élevé signale que l'effort supplémentaire ne s'achète plus. Certains modèles **régressent** au palier maximal.
 

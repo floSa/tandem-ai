@@ -4,3 +4,5 @@ sources/raw/*.csv
 __pycache__/
 *.pyc
 .env
+sources/raw/*.html
+.venv/

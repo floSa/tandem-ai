@@ -556,8 +556,8 @@ const bsel=$('#bench');
 const bench_tri=[...D.benchmarks].sort((a,b)=>
   a.name.localeCompare(b.name,'fr',{sensitivity:'base',numeric:true}));
 bench_tri.forEach(b=>bsel.add(new Option(b.name,b.name)));
-bsel.value=bench_tri.some(b=>b.name==='SWE-Bench verified')
-  ?'SWE-Bench verified':bench_tri[0]?.name;
+bsel.value=bench_tri.some(b=>b.name==='Terminal-Bench 4.0')
+  ?'Terminal-Bench 4.0':bench_tri[0]?.name;
 const lsel=$('#lab');
 [...new Set(D.scores.map(s=>s.o))].sort().forEach(o=>lsel.add(new Option(o,o)));
 ['#bench','#lab','#eff','#bud','#top'].forEach(q=>habiller($(q)));
@@ -729,11 +729,17 @@ function time(){
 
 function cover(){
   // La matrice des trous : ce qui n'a PAS été mesuré compte autant.
-  let ms=[...new Set(D.scores.map(s=>s.m))];
-  if(lsel.value)ms=ms.filter(m=>D.scores.some(s=>s.m===m&&s.o===lsel.value));
-  const cnt=new Map();
-  D.scores.forEach(s=>cnt.set(s.m,(cnt.get(s.m)||0)+1));
-  ms.sort((a,b)=>cnt.get(b)-cnt.get(a));
+  // Une ligne par modèle de base : `_max`, `_high`… sont des réglages du même
+  // modèle, pas des modèles distincts. Trier par nombre de mesures faisait
+  // remonter les générations anciennes, mesurées partout depuis longtemps :
+  // on montre d'abord les plus récentes.
+  const K=s=>s.mb||s.m;
+  let ms=[...new Set(D.scores.map(K))];
+  if(lsel.value)ms=ms.filter(m=>D.scores.some(s=>K(s)===m&&s.o===lsel.value));
+  const cnt=new Map(),rel=new Map();
+  D.scores.forEach(s=>{const k=K(s);cnt.set(k,(cnt.get(k)||0)+1);
+    if(s.r&&s.r>(rel.get(k)||''))rel.set(k,s.r);});
+  ms.sort((a,b)=>(rel.get(b)||'').localeCompare(rel.get(a)||'')||cnt.get(b)-cnt.get(a));
   const n=+$('#top').value; if(n)ms=ms.slice(0,n);
   const bs=D.benchmarks.map(b=>b.name);
   if(!ms.length)return empty('Aucun modèle pour ce filtre.');
@@ -741,7 +747,9 @@ function cover(){
   // Regroupement par fournisseur : comparer deux générations d'un même
   // laboratoire n'a de sens que si elles se suivent à l'écran.
   const info=new Map();
-  D.scores.forEach(s=>{if(!info.has(s.m))info.set(s.m,s);});
+  // Libellé le plus court : le nom du modèle sans mention d'effort.
+  D.scores.forEach(s=>{const p=info.get(K(s));
+    if(!p||(s.d||'').length<(p.d||'').length)info.set(K(s),s);});
   const parO=new Map();
   ms.forEach(m=>{const o=info.get(m)?.o||'—';
     if(!parO.has(o))parO.set(o,[]);parO.get(o).push(m);});
@@ -761,7 +769,7 @@ function cover(){
     transform:`rotate(-52 ${L+j*CW+CW/2} ${T-9})`,'text-anchor':'start'});
     t.textContent=b.length>17?b.slice(0,16)+'…':b;sv.append(t);});
   const mp=new Map();
-  D.scores.forEach(s=>{const k=s.m+'|'+s.b;const p=mp.get(k);
+  D.scores.forEach(s=>{const k=K(s)+'|'+s.b;const p=mp.get(k);
     if(!p||s.s>p.s)mp.set(k,s);});
 
   // Position verticale de chaque modèle, décalée d'un cran par groupe.
@@ -930,15 +938,18 @@ function render(sv,r,unit){
 }
 
 const EFF=['low','medium','high','xhigh','max'];
+// Benchmarks qui publient un coût mesuré : lus dans les données, pour qu'un
+// benchmark retiré ne reste pas cité comme source de coût.
+const AVEC_COUT=[...new Set(D.scores.filter(s=>s.c!=null&&s.c>0).map(s=>s.b))]
+  .sort((a,b)=>a.localeCompare(b,'fr',{sensitivity:'base'})).join(', ');
 function frontier(){
   // Coût RÉELLEMENT MESURÉ (pas le prix catalogue) contre score, avec les
   // points d'un même modèle reliés par son échelle d'effort de raisonnement.
   // Axe des coûts inversé : moins cher vers la droite, donc « mieux » = haut-droite.
   let r=rows().filter(s=>s.c!=null&&s.c>0);
   if(!r.length)return empty(
-    "Ce benchmark ne publie pas de coût mesuré. Les benchmarks qui le font : "+
-    "DeepSWE (le plus complet — 5 niveaux d'effort par modèle, harnais unique), "+
-    "Aider polyglot, ARC-AGI-2, OSWorld 2.0, The Agent Company.");
+    "Ce benchmark ne publie pas de coût mesuré. Les benchmarks qui le font : "+AVEC_COUT+
+    ". DeepSWE est le plus complet — 5 niveaux d'effort par modèle, harnais unique.");
   const by=new Map();
   r.forEach(s=>{const k=s.mb||s.m;if(!by.has(k))by.set(k,[]);by.get(k).push(s);});
   let g=[...by.entries()].map(([k,v])=>({k,d:v[0].d,o:v[0].o,l:v[0].l,
@@ -1036,8 +1047,7 @@ function budget(){
   const cap=parseFloat($('#bud').value);
   let r=rows().filter(s=>s.c!=null&&s.c>0);
   if(!r.length)return empty(
-    "Cette vue a besoin d'un coût mesuré. Benchmarks concernés : DeepSWE, "+
-    "Aider polyglot, ARC-AGI-2, OSWorld 2.0, The Agent Company.");
+    "Cette vue a besoin d'un coût mesuré. Benchmarks concernés : "+AVEC_COUT+".");
   const within=r.filter(s=>s.c<=cap);
   // Meilleure configuration atteignable par modèle sous le plafond.
   const by=new Map();
@@ -1403,9 +1413,10 @@ brancherCategories('#pas-cat','#pas',2,ORD_P);
 // ── méthode ───────────────────────────────────────────────────────────────
 $('#meth').innerHTML=[
  ['Un score appartient à un triplet',
-  "Modèle, harnais et effort de raisonnement. Le catalogue recense 52 harnais distincts sur "+
-  "le seul Terminal-Bench, et l'écart qu'ils produisent dépasse souvent l'écart entre deux "+
-  "modèles concurrents. Aucun classement n'est publié sans son harnais."],
+  "Modèle, harnais et effort de raisonnement. Le catalogue recense "+
+  new Set(D.scores.map(s=>s.h).filter(Boolean)).size+" harnais distincts, et l'écart "+
+  "qu'ils produisent dépasse souvent l'écart entre deux modèles concurrents. Aucun "+
+  "classement n'est publié sans son harnais."],
  ['Aucun chiffre sans source',
   "Chaque tarif porte l'URL réellement consultée, la date du relevé et un niveau de "+
   "provenance. En cas de doute, le champ reste vide plutôt que rempli d'une valeur plausible."],

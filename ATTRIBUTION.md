@@ -5,8 +5,9 @@ totale ou partielle, doit conserver les attributions ci-dessous.
 
 ## Epoch AI — Capabilities & Benchmarking
 
-La totalité des scores de benchmark de `catalog/scores.yaml` et du registre
-`catalog/benchmarks.yaml` provient de cette source.
+Les scores de benchmark de `catalog/scores.yaml` et le registre
+`catalog/benchmarks.yaml` proviennent de cette source, à l'exception de
+Terminal-Bench 4.0 (section suivante).
 
 > Epoch AI, *Capabilities & Benchmarking*. Publié en ligne sur epoch.ai.
 > Consulté sur https://epoch.ai/benchmarks
@@ -25,6 +26,18 @@ d'origine ; le champ `source_url` de chaque score renvoie à la source amont.
   url    = {https://epoch.ai/benchmarks}
 }
 ```
+
+## Terminal-Bench 4.0 — tbench.ai
+
+Epoch AI ne relaie que Terminal-Bench 2.0. Les scores de Terminal-Bench 4.0 sont lus
+sur le leaderboard officiel par `pipeline/tbench_ingest.py`.
+
+> Terminal-Bench, *Terminal-Bench 4.0 leaderboard*. Consulté sur
+> https://www.tbench.ai/leaderboard/terminal-bench/4.0
+
+Le leaderboard ne publie pas de licence explicite pour ses données : elles sont
+citées avec leur source, score par score (`source_url`), et ne sont pas
+redistribuées sous forme brute (`sources/raw/` n'est pas versionné).
 
 ## Artificial Analysis
 

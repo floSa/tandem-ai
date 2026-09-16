@@ -11,9 +11,8 @@ indépendant de tout agent et doit pouvoir être appliqué par un tiers.
 > (modèle × harnais × protocole), mesuré à une date donnée par un acteur donné.**
 
 Ce n'est pas une précaution théorique, c'est mesurable dans nos propres données.
-Sur Terminal-Bench, un même modèle change de score de plusieurs points selon
-l'agent qui l'exécute ; le catalogue contient **52 harnais distincts** sur ce seul
-benchmark. Le graphique « Effet du harnais » de `site/index.html` existe
+Un même modèle change de score de plusieurs points selon l'agent qui l'exécute ;
+le catalogue contient **17 harnais distincts**, dont 4 sur Terminal-Bench 4.0. Le graphique « Effet du harnais » de `site/index.html` existe
 précisément pour rendre cet écart visible.
 
 Conséquence pratique : **« quel est le meilleur modèle ? » est une question mal
@@ -47,7 +46,7 @@ les classer l'un devant l'autre est une erreur de lecture, pas une nuance.
 
 `pipeline/validate.py` applique ce test automatiquement et signale les cas où les
 deux premiers d'un classement ne sont pas séparables. Au moment de l'écriture,
-c'est le cas sur SWE-bench Verified entre les deux modèles de tête.
+c'est le cas sur Terminal-Bench 4.0, DeepSWE et GPQA diamond entre les deux modèles de tête.
 
 **Règle de rédaction : ne jamais titrer sur un vainqueur que le validateur
 signale comme non séparé.**
@@ -83,18 +82,17 @@ plafond — signal qu'il faut lui chercher un remplaçant.
 
 | Famille | Ce que ça mesure | Ce que ça ne mesure pas |
 | :-- | :-- | :-- |
-| **Ingénierie logicielle** (SWE-bench, DeepSWE, GSO) | réparer du code existant dans un vrai dépôt | concevoir une architecture |
-| **Agentique CLI** (Terminal-Bench) | enchaîner des commandes et vérifier son travail | qualité du code produit |
-| **Édition de code** (Aider Polyglot) | appliquer un diff correct, multi-langages | raisonnement long |
+| **Ingénierie logicielle** (CursorBench, DeepSWE, FrontierSWE, GSO) | réparer du code existant dans un vrai dépôt | concevoir une architecture |
+| **Agentique CLI** (Terminal-Bench 4.0) | enchaîner des commandes et vérifier son travail | qualité du code produit |
 | **Génération** (LiveCodeBench, FrontierCode, MirrorCode) | algorithmique sur problèmes récents | travail en base de code réelle |
 | **Computer use** (OSWorld) | piloter une interface graphique | fiabilité en production |
-| **Autonomie** (METR Time Horizons) | durée de tâche tenue sans humain | qualité du résultat |
-| **Valeur économique** (GDPval, Remote Labor Index) | tâches professionnelles réelles jugées par des experts | coût total d'usage |
+| **Post-entraînement** (PostTrainBench) | conduire seul une boucle d'entraînement de modèle | qualité du code produit |
+| **Valeur économique** (GDP.pdf, Remote Labor Index) | tâches professionnelles réelles jugées par des experts | coût total d'usage |
 | **Raisonnement** (GPQA, HLE, ARC-AGI-2) | capacité générale hors code | aptitude au développement |
 
-**METR Time Horizons s'exprime en minutes, pas en pourcentage.** Ne jamais
-l'agréger avec des scores en %. Le champ `unit` du catalogue protège de cette
-erreur.
+**Un score ne s'agrège qu'avec des scores de même unité.** Le champ `unit` du
+catalogue protège de cette erreur (METR Time Horizons, retiré en septembre 2026,
+s'exprimait en minutes).
 
 ---
 
@@ -145,7 +143,8 @@ coût mesuré rend la comparaison possible — c'est pourquoi la vue
 
 Benchmarks fournissant un coût mesuré : **DeepSWE** (le plus complet — jusqu'à 5
 niveaux d'effort par modèle, sous un harnais unique, donc comparaison contrôlée),
-**Aider polyglot**, **ARC-AGI-2**, **OSWorld 2.0**, **The Agent Company**.
+**CursorBench**, **FrontierSWE**, **Terminal-Bench 4.0** (coût du run rapporté à un
+essai), **ARC-AGI-2**, **OSWorld 2.0**.
 
 ### L'effort de raisonnement est une variable de décision
 

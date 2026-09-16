@@ -4,15 +4,15 @@
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![PyYAML](https://img.shields.io/badge/PyYAML-6.0.1-CB171E?logo=yaml&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-42-1BAF7A)
+![Tests](https://img.shields.io/badge/tests-51-1BAF7A)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 ![Licence](https://img.shields.io/badge/licence-MIT-4A3AA7)
 
 Référentiel ouvert de l'offre de développement assisté par IA, construit pour résister
 à la vérification. Son nom dit sa thèse : un score n'est pas un attribut d'un modèle,
 mais du triplet *(modèle × harnais × effort de raisonnement)*. Le catalogue recense
-**52 harnais distincts** sur le seul Terminal-Bench, et l'écart qu'ils produisent dépasse
-souvent l'écart entre deux modèles concurrents. Ce dépôt rend cet attelage visible plutôt
+**17 harnais distincts**, et l'écart qu'ils produisent dépasse souvent l'écart entre deux
+modèles concurrents. Ce dépôt rend cet attelage visible plutôt
 que de le masquer derrière un classement.
 
 ## Sommaire
@@ -37,6 +37,7 @@ tests du pipeline, puis le validateur de la donnée.
 flowchart LR
   subgraph Sources
     ep[(Epoch AI)]
+    tb[(tbench.ai)]
     pr[Pages /pricing]
   end
   subgraph Catalogue
@@ -50,6 +51,7 @@ flowchart LR
     st[site/index.html]
   end
   ep -->|epoch_ingest.py| cat
+  tb -->|tbench_ingest.py| cat
   pr -.releve manuel.-> cat
   cat --> vl
   vl -->|build_guide.py| gd
@@ -67,6 +69,7 @@ flowchart LR
 | [protocol/06_protocole_operatoire.md](protocol/06_protocole_operatoire.md) | Runbook de mise à jour, applicable par tout agent |
 | [protocol/04_sources_et_collecte.md](protocol/04_sources_et_collecte.md) | Où trouver la donnée, hiérarchie de provenance |
 | [protocol/05_methodologie_benchmarks.md](protocol/05_methodologie_benchmarks.md) | Comment lire et publier un score |
+| [docs/NOTE_DE_REPRISE.md](docs/NOTE_DE_REPRISE.md) | Ce qui reste à faire à la prochaine session |
 | [AGENTS.md](AGENTS.md) | Point d'entrée pour les agents non-Claude |
 | [Guide complet](Guide_Complet_Solutions_Dev_IA_2026.md) | Livrable généré : tableaux comparatifs |
 
@@ -90,7 +93,7 @@ python3 pipeline/worklist.py
 | Commande | Rôle |
 |---|---|
 | `python3 pipeline/worklist.py` | Plan de travail — **commencer ici** |
-| `python3 pipeline/epoch_ingest.py --force-download` | Rafraîchit les benchmarks |
+| `python3 pipeline/epoch_ingest.py --force-download` | Rafraîchit les benchmarks (Epoch AI + Terminal-Bench 4.0) |
 | `python3 pipeline/seed_catalog.py` | Détecte les nouveaux modèles mesurés |
 | `python3 pipeline/apply_pricing.py` | Injecte les tarifs relevés à la main |
 | `python3 pipeline/crosscheck_aa.py` | Recoupe avec une seconde source |
@@ -122,7 +125,7 @@ commandent tout le reste : modifiés là, ils se propagent à chaque génératio
 python3 -m unittest discover -s tests -v
 ```
 
-42 tests sur les invariants du protocole. Ils tournent en CI à chaque push, avant le
+51 tests sur les invariants du protocole. Ils tournent en CI à chaque push, avant le
 validateur, avec un contrôle que les sorties générées n'ont pas divergé du catalogue.
 
 ## État de vérification
@@ -132,17 +135,17 @@ resterait à faire — le plan de travail s'en charge.
 
 | Couche | Couverture | Source |
 |---|---|---|
-| Benchmarks | 1 275 mesures, 18 classements | Epoch AI, jeu de données daté |
-| dont coût réellement mesuré | 278 mesures | même source, colonne de coût d'exécution |
-| dont effort de raisonnement connu | 510 mesures | même source, colonne de protocole |
-| Modèles | 207, 11 fournisseurs | identités issues des mesures, jamais inventées |
-| Tarifs API | 73 tarifs relevés, couvrant 132 modèles · 75 sans tarif éditeur | page tarifaire officielle de chaque fournisseur |
+| Benchmarks | 832 mesures, 16 classements, modèles des 12 derniers mois | Epoch AI (jeu daté) + tbench.ai pour Terminal-Bench 4.0 |
+| dont coût réellement mesuré | 264 mesures | même source, colonne de coût d'exécution |
+| dont effort de raisonnement connu | 517 mesures | même source, colonne de protocole |
+| Modèles | 160, 11 fournisseurs | identités issues des mesures, jamais inventées |
+| Tarifs API | 65 tarifs relevés, couvrant 109 modèles · 51 sans tarif éditeur | page tarifaire officielle de chaque fournisseur |
 | Forfaits d'abonnement | 29 paliers, 9 éditeurs | page tarifaire officielle |
 | Harnais et passerelles | 30 fiches, toutes contrôlées | documentation ou tarifs de l'éditeur |
 | Balayage des fournisseurs | 11 sur 11 | recherche outil par outil, y compris les absences |
 | Taux de change | 1 EUR = 1,1539 USD | taux de référence BCE du 15/09/2026 |
 
-**« Sans tarif éditeur » n'est pas un trou.** 75 modèles n'auront jamais de ligne
+**« Sans tarif éditeur » n'est pas un trou.** 51 modèles n'auront jamais de ligne
 tarifaire : poids ouverts facturés par l'hébergeur qui les sert, générations retirées de
 la grille, identifiants de passerelle, pré-versions jamais commercialisées. Chacun porte
 son motif dans [catalog/pricing_verified.yaml](catalog/pricing_verified.yaml). Les
@@ -164,7 +167,7 @@ Deux chantiers restent ouverts, et le plan de travail les rappelle à chaque ex�
   affiche les trous en pointillés.
 - Le validateur **interdit de titrer sur un vainqueur** quand les deux premiers d'un
   classement ne sont pas séparés statistiquement — c'est actuellement le cas sur
-  SWE-bench Verified.
+  Terminal-Bench 4.0, DeepSWE et GPQA diamond.
 - **Le coût par tâche de benchmark n'est pas le coût d'une journée de développement.**
 - Rien sur la latence perçue, l'ergonomie du harnais ni la qualité durable du code produit.
 
@@ -182,7 +185,7 @@ tandem-ai/
 │   ├── benchmarks.yaml      #   registre raisonné              (généré)
 │   └── scores.yaml          #   mesures                        (généré)
 ├── pipeline/                # ingestion, validation, génération, recoupement
-├── tests/                   # 42 tests des invariants du protocole
+├── tests/                   # 51 tests des invariants du protocole
 ├── protocol/                # méthodologie — fait autorité
 ├── content/                 # fragments narratifs du Guide (écrits à la main)
 ├── docs/                    # cadrage et architecture

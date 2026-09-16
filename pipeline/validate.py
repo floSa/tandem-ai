@@ -20,6 +20,8 @@ from datetime import date, datetime
 from pathlib import Path
 import yaml
 
+import scope
+
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "catalog"
 
@@ -53,7 +55,8 @@ def main() -> int:
     labs = load("labs.yaml").get("labs", [])
     models = load("models.yaml").get("models", [])
     bench = load("benchmarks.yaml")
-    scores = load("scores.yaml").get("scores", [])
+    scores_doc = load("scores.yaml")
+    scores = scores_doc.get("scores", [])
     tracked = bench.get("tracked", [])
 
     allowed_prov = set(meta.get("provenance_ranking", []))
@@ -133,6 +136,22 @@ def main() -> int:
             add(ERR, "FRAÎCHEUR", f"tarif de `{m['id']}` vérifié il y a {d} j (> {stale_days} j) : périmé")
         elif d > warn_days:
             add(WARN, "FRAÎCHEUR", f"tarif de `{m['id']}` vérifié il y a {d} j : à re-vérifier")
+    # Par benchmark : un benchmark qui reçoit des mesures chaque semaine ne doit pas
+    # masquer un benchmark figé depuis des mois. C'est ce qui a laissé Terminal-Bench
+    # 2.0, METR et SWE-bench Verified présentés comme actuels jusqu'en septembre 2026.
+    for b, r, lag in scope.dormant_benchmarks(scores, scope.dormant_after_days()):
+        add(WARN, "FRAÎCHEUR",
+            f"`{b}` est en sommeil : son modèle mesuré le plus récent est sorti le {r}, "
+            f"{lag} j avant le plus récent du catalogue — il ne compare plus l'offre actuelle, "
+            f"lui chercher un remplaçant")
+    since = (scores_doc.get("_generated") or {}).get("since")
+    if since:
+        vieux = sorted({s["model_version"] for s in scores
+                        if s.get("model_released_on") and s["model_released_on"] < since})
+        if vieux:
+            add(ERR, "FRAÎCHEUR",
+                f"{len(vieux)} scores portent sur des modèles antérieurs à la fenêtre "
+                f"({since}) : " + ", ".join(f"`{v}`" for v in vieux[:5]))
     run_dates = [s["run_date"] for s in scores if s.get("run_date")]
     if run_dates:
         d = days_since(max(run_dates))

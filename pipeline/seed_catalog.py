@@ -7,12 +7,18 @@ Principe : on n'invente aucun modèle. Un modèle n'entre au catalogue que s'il
 apparaît dans au moins une source de benchmark vérifiable. Les champs tarifaires
 sont délibérément laissés vides et marqués `unverified` — ils ne peuvent être
 remplis que depuis la page /pricing officielle du fournisseur.
+
+Un modèle publié avant la fenêtre glissante (`scope.model_window_months`) est
+obsolète et n'entre pas. `labs.yaml` n'est pas écrasé : les champs relevés à la main
+(source vérifiée, balayage outillage) sont conservés, seul le décompte est mis à jour.
 """
 from __future__ import annotations
 import collections, csv, io, re, sys, zipfile
 from datetime import date
 from pathlib import Path
 import yaml
+
+import scope
 
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "catalog"
@@ -91,13 +97,14 @@ def main() -> int:
         if s["model_version"]:
             measured[clean_version(s["model_version"])[0]] += 1
 
+    since = scope.cutoff()
     by_lab: dict[str, dict] = collections.defaultdict(dict)
     for r in meta:
         org, ver = r["organization"], r["model_version"]
         if org not in LABS or not ver or not r["date"]:
             continue
         base, _ = clean_version(ver)
-        if base not in measured or r["date"] < "2025-06-01":
+        if base not in measured or r["date"] < since:
             continue
         e = by_lab[org].setdefault(base, {
             "id": base, "lab": LABS[org]["id"],
@@ -116,17 +123,25 @@ def main() -> int:
         })
         e["epoch_model_versions"].add(ver)
 
+    labs_path = CATALOG / "labs.yaml"
+    existing = {l["id"]: l for l in
+                (yaml.safe_load(labs_path.read_text(encoding="utf-8")) or {}).get("labs", [])} \
+        if labs_path.exists() else {}
     labs_out, models_out = [], []
     for org, cfg in LABS.items():
-        if org not in by_lab:
+        if org not in by_lab and cfg["id"] not in existing:
             continue
-        labs_out.append({
+        lab = existing.get(cfg["id"]) or {
             "id": cfg["id"], "name": org, "country": cfg["country"],
             "pricing_url": cfg["pricing_url"], "api_docs_url": cfg["api_docs"],
             "console_url": cfg["console"],
-            "model_count_tracked": len(by_lab[org]),
+            "model_count_tracked": 0,
             "source": dict(UNVERIFIED),
-        })
+        }
+        lab["model_count_tracked"] = len(by_lab.get(org, {}))
+        labs_out.append(lab)
+        if org not in by_lab:
+            continue
         for m in sorted(by_lab[org].values(), key=lambda x: (x["released_on"], x["id"]), reverse=True):
             m["epoch_model_versions"] = sorted(m["epoch_model_versions"])
             models_out.append(m)
@@ -139,7 +154,7 @@ def main() -> int:
                        "ils doivent être renseignés depuis la page /pricing officielle de chaque lab. "
                        "Voir protocol/04_collecte_donnees.md.",
         }}
-    (CATALOG / "labs.yaml").write_text(
+    labs_path.write_text(
         yaml.safe_dump({**hdr, "labs": labs_out}, allow_unicode=True, sort_keys=False, width=100),
         encoding="utf-8")
     (CATALOG / "models.yaml").write_text(

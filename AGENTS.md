@@ -57,7 +57,7 @@ changelog — plutôt que d'être corrigé silencieusement.
 
 ```bash
 python3 pipeline/worklist.py                        # QUOI FAIRE MAINTENANT
-python3 pipeline/epoch_ingest.py --force-download   # rafraîchit les benchmarks
+python3 pipeline/epoch_ingest.py --force-download   # rafraîchit les benchmarks (+ tbench.ai)
 python3 pipeline/seed_catalog.py                    # amorce modèles et labs
 python3 pipeline/apply_pricing.py                   # injecte les tarifs relevés
 python3 -m unittest discover -s tests                # tests du pipeline
@@ -80,4 +80,5 @@ externe hors la police Google Fonts.
 ## Licences
 
 Les données de benchmark viennent d'Epoch AI sous CC-BY 4.0 : l'attribution est
-obligatoire dans toute republication. Voir `ATTRIBUTION.md`.
+obligatoire dans toute republication. Terminal-Bench 4.0 est lu sur tbench.ai et
+cité comme tel. Voir `ATTRIBUTION.md`.

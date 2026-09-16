@@ -61,7 +61,8 @@ porte la thèse : les deux n'avancent qu'attelés, et c'est le couple qui se mes
 
 - **Une mesure sans son protocole n'est pas comparable.** Le harnais, le budget de
   raisonnement et le nombre de tentatives déplacent les scores autant que le modèle.
-  Empiriquement vérifié : le catalogue recense **52 harnais distincts** sur Terminal-Bench.
+  Empiriquement vérifié : le catalogue recense **17 harnais distincts** ; sur Terminal-Bench 4.0,
+  le même modèle n'est pas mesuré dans le même harnais selon son éditeur.
   *Ce qui la remettrait en cause* : une normalisation du marché sur un harnais de
   référence unique.
 
@@ -144,8 +145,8 @@ porte la thèse : les deux n'avancent qu'attelés, et c'est le couple qui se mes
 ## 7. Roadmap
 
 0. **Socle** — catalogue YAML, ingestion des benchmarks, validateur. *Fait.*
-1. **Tarification** — relevé sur sources primaires, conversion euro. *Fait : 132 modèles
-   tarifés, 75 classés sans tarif éditeur avec leur motif, 0 en attente de relevé.*
+1. **Tarification** — relevé sur sources primaires, conversion euro. *Fait : 109 modèles
+   tarifés, 51 classés sans tarif éditeur avec leur motif, 0 en attente de relevé.*
 2. **Coût mesuré** — exploitation des coûts de run et de l'effort de raisonnement. *Fait.*
 3. **Harnais** — balayage fournisseur par fournisseur, statuts et forfaits. *Fait : 11
    fournisseurs balayés, 30 fiches contrôlées. Seule la grille Windsurf / Devin manque.*
@@ -159,7 +160,7 @@ porte la thèse : les deux n'avancent qu'attelés, et c'est le couple qui se mes
 
 Deux niveaux, complémentaires et tous deux bloquants en CI.
 
-**Tests du pipeline** — 42 tests dans [tests/test_pipeline.py](../tests/test_pipeline.py),
+**Tests du pipeline** — 51 tests dans [tests/test_pipeline.py](../tests/test_pipeline.py),
 qui vérifient le code produisant la donnée : normalisation des scores, survie de l'effort
 et du coût à l'ingestion, intégrité référentielle, interdiction de saisie en euros,
 cohérence tarifaire, démarrage effectif de chaque script, non-divergence des sorties
@@ -181,7 +182,7 @@ de vérification et l'URL consignée permettent de le recontrôler.
   mesures, sous CC BY 4.0.
 - [Artificial Analysis Data API](https://artificialanalysis.ai/data-api/docs) — source
   de recoupement.
-- Leaderboards officiels consultés en cas de doute : [SWE-bench](https://swebench.com),
+- Leaderboards officiels consultés en cas de doute : [SWE-bench](https://swebench.com) (figé, retiré du suivi),
   [Terminal-Bench](https://www.tbench.ai/leaderboard),
   [Aider Polyglot](https://aider.chat/docs/leaderboards/),
   [ARC Prize](https://arcprize.org/leaderboard).

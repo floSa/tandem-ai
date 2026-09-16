@@ -131,11 +131,28 @@ date — on ne le supprime pas.
 ```bash
 python3 pipeline/epoch_ingest.py --force-download
 python3 pipeline/seed_catalog.py
+python3 pipeline/apply_pricing.py
 ```
 
-Epoch AI republie régulièrement ; `--force-download` ignore le cache local.
-`seed_catalog.py` ajoute les modèles nouvellement mesurés — sans jamais inventer :
-un modèle n'entre que s'il apparaît dans une source de benchmark.
+Epoch AI republie régulièrement ; `--force-download` ignore le cache local et relit
+aussi Terminal-Bench 4.0 sur tbench.ai (`pipeline/tbench_ingest.py`), qu'Epoch ne
+relaie pas. `seed_catalog.py` ajoute les modèles nouvellement mesurés — sans jamais
+inventer : un modèle n'entre que s'il apparaît dans une source de benchmark. Il ne
+touche pas aux champs relevés à la main dans `labs.yaml`. `apply_pricing.py` doit
+suivre : `seed_catalog.py` réécrit `models.yaml` sans tarifs.
+
+**Fenêtre glissante.** Un modèle publié il y a plus de `scope.model_window_months`
+(12 mois, `catalog/_meta.yaml`) est obsolète : ses scores ne sont plus ingérés et il
+sort du catalogue. Quand un modèle sort ainsi, retirer aussi son entrée de
+`catalog/pricing_verified.yaml` (et des listes `no_public_price`) — sinon
+`apply_pricing.py` le réintroduit comme « commercialisé non mesuré ».
+
+**Vitalité, benchmark par benchmark.** Un benchmark dont le modèle mesuré le plus
+récent a plus de `freshness.benchmark_dormant_after_days` (90 j) de retard sur le plus
+récent du catalogue est en sommeil : il ne compare plus l'offre actuelle. Le
+validateur et le plan de travail le signalent. Avant de le retirer, vérifier la
+source d'origine : une version plus récente existe peut-être ailleurs que chez Epoch
+— c'est ainsi que Terminal-Bench 2.0 a été remplacé par la 4.0 en septembre 2026.
 
 Pour ajouter ou retirer un benchmark du suivi, éditer `CURATION` dans
 `pipeline/epoch_ingest.py`, jamais `catalog/benchmarks.yaml`. Tout rejet se
@@ -196,6 +213,13 @@ passe.
   peut être vendu sans être encore mesuré. Vérifier sur la page du fournisseur
   avant de qualifier quoi que ce soit d'erroné.
 - Éditer un fichier généré (Guide, `site/`, `benchmarks.yaml`, `scores.yaml`).
+- **Juger la fraîcheur sur la mesure la plus récente, tous benchmarks confondus.**
+  Jusqu'en septembre 2026, GPQA recevait des mesures chaque semaine pendant que
+  Terminal-Bench 2.0, METR et SWE-bench Verified étaient figés depuis des mois : la
+  page présentait une photo de 2025 comme actuelle. La vitalité se contrôle par
+  benchmark.
+- Laisser un script re-dater un tarif qui n'a pas été re-vérifié : la date d'un
+  tarif est celle du relevé (`_meta.verified_on` de `pricing_verified.yaml`).
 - Saisir un prix en euros dans le catalogue.
 - Comparer des scores obtenus sous des harnais différents sans le dire.
 - Écraser un tarif sans noter qu'il a changé : le changelog perd l'information.

@@ -28,7 +28,7 @@ de facturation choisi.
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-La couche 1 n'est pas neutre. Sur Terminal-Bench, le référentiel recense des
-dizaines de harnais différents pour les mêmes modèles, et l'écart qu'ils
-produisent dépasse souvent l'écart entre deux modèles concurrents. C'est la
+La couche 1 n'est pas neutre. Un même modèle n'obtient pas le même score selon le
+harnais qui l'exécute, et l'écart qu'ils produisent dépasse souvent l'écart entre
+deux modèles concurrents. C'est la
 raison d'être de ce document : un score ne se lit jamais sans son harnais.

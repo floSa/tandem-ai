@@ -1,53 +1,25 @@
 _generated:
   by: pipeline/epoch_ingest.py --registry
-  'on': '2026-09-15'
+  'on': '2026-09-16'
   upstream: Epoch AI — Capabilities & Benchmarking (CC-BY 4.0)
   upstream_url: https://epoch.ai/benchmarks
   warning: Fichier généré. Éditer CURATION dans pipeline/epoch_ingest.py, pas ce fichier.
 tracked:
-- id: terminal_bench
-  name: Terminal Bench
+- id: terminal_bench_4_0
+  name: Terminal-Bench 4.0
   domain: agentic_cli
   tier: reference
   track: true
   measures: 'Tâches multi-étapes en ligne de commande : navigation, exécution, vérification.'
   caveat: Le score dépend fortement du harnais (agent) utilisé, pas seulement du modèle. Toujours lire
     le couple (modèle, agent).
-  released_on: '2025-05-19'
-  scale_to_fraction: 1.0
-  random_baseline: 0.0
-  score_ceiling: 1.0
-  superseded_by: null
-  epoch_source_file: terminalbench_external.csv
-  provenance: independent_leaderboard
-- id: metr_time_horizons
-  name: METR Time Horizons
-  domain: autonomy
-  tier: reference
-  track: true
-  measures: Durée de tâche humaine qu'un modèle accomplit avec 50% de réussite. Exprimé en minutes/heures,
-    pas en pourcentage.
-  caveat: 'Unité différente des autres benchmarks : ne pas agréger avec des scores en %.'
-  released_on: '2025-03-19'
-  scale_to_fraction: 1.0
-  random_baseline: 0.0
-  score_ceiling: 1.0
-  superseded_by: null
-  epoch_source_file: metr_time_horizons_external.csv
-  provenance: independent_leaderboard
-- id: aider_polyglot
-  name: Aider polyglot
-  domain: code_editing
-  tier: reference
-  track: true
-  measures: Édition de code existant dans plusieurs langages, au format diff.
-  caveat: Mesure l'édition, pas la conception. Publié par l'auteur d'Aider.
-  released_on: '2024-12-21'
+  released_on: null
   scale_to_fraction: 0.01
   random_baseline: 0.0
   score_ceiling: 1.0
   superseded_by: null
-  epoch_source_file: aider_polyglot_external.csv
+  epoch_source_file: null
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
   provenance: independent_leaderboard
 - id: gpqa_diamond
   name: GPQA diamond
@@ -77,21 +49,21 @@ tracked:
   superseded_by: null
   epoch_source_file: hle_external.csv
   provenance: independent_leaderboard
-- id: swe_bench_verified
-  name: SWE-Bench verified
+- id: cursorbench
+  name: CursorBench
   domain: software_engineering
   tier: reference
   track: true
-  measures: Résolution de vraies issues GitHub Python, patch validé par les tests du dépôt.
-  caveat: Benchmark de 2024, massivement présent dans les données d'entraînement. Les scores très élevés
-    doivent être lus avec une réserve de contamination.
-  released_on: '2024-08-13'
+  measures: Tâches de développement réelles tirées de l'usage de Cursor, exécutées dans son agent.
+  caveat: 'Publié par Cursor et mesuré dans son propre harnais : le couple (modèle, Cursor) est mesuré,
+    pas le modèle seul.'
+  released_on: '2026-03-11'
   scale_to_fraction: 1.0
   random_baseline: 0.0
   score_ceiling: 1.0
   superseded_by: null
-  epoch_source_file: swe_bench_verified.csv
-  provenance: independent_run
+  epoch_source_file: cursorbench_external.csv
+  provenance: independent_leaderboard
 - id: apex_agents
   name: APEX-Agents
   domain: agentic_work
@@ -106,19 +78,20 @@ tracked:
   superseded_by: null
   epoch_source_file: apex_agents_external.csv
   provenance: independent_leaderboard
-- id: the_agent_company
-  name: The Agent Company
+- id: posttrainbench
+  name: PostTrainBench
   domain: agentic_work
   tier: secondary
   track: true
-  measures: Tâches de travail réalistes en entreprise simulée (navigation, outils, collègues).
-  caveat: null
-  released_on: '2024-12-18'
+  measures: Un agent post-entraîne lui-même un modèle ouvert sous contrainte de calcul.
+  caveat: 'Le harnais varie selon le modèle (Claude Code, Codex CLI, Cursor CLI) : lire le couple (modèle,
+    harnais).'
+  released_on: '2026-03-11'
   scale_to_fraction: 1.0
   random_baseline: 0.0
   score_ceiling: 1.0
   superseded_by: null
-  epoch_source_file: the_agent_company_external.csv
+  epoch_source_file: posttrainbench_external.csv
   provenance: independent_leaderboard
 - id: frontiercode
   name: FrontierCode
@@ -162,19 +135,19 @@ tracked:
   superseded_by: null
   epoch_source_file: osworld_2_external.csv
   provenance: independent_leaderboard
-- id: gdpval
-  name: GDPval
+- id: gdp.pdf
+  name: GDP.pdf
   domain: economic_value
   tier: secondary
   track: true
-  measures: Tâches professionnelles réelles évaluées par des experts du métier.
-  caveat: null
-  released_on: '2025-09-25'
+  measures: Production de livrables professionnels (documents, analyses) jugés par des experts.
+  caveat: Évaluation par juges humains, protocole Surge AI.
+  released_on: '2026-04-14'
   scale_to_fraction: 1.0
   random_baseline: 0.0
   score_ceiling: 1.0
   superseded_by: null
-  epoch_source_file: gdpval_external.csv
+  epoch_source_file: gdp_pdf_external.csv
   provenance: independent_leaderboard
 - id: remote_labor_index
   name: Remote Labor Index
@@ -217,20 +190,6 @@ tracked:
   score_ceiling: 1.0
   superseded_by: null
   epoch_source_file: scicode_external.csv
-  provenance: independent_run
-- id: cybench
-  name: Cybench
-  domain: security
-  tier: secondary
-  track: true
-  measures: Résolution de défis de cybersécurité type CTF.
-  caveat: null
-  released_on: '2024-08-15'
-  scale_to_fraction: 1.0
-  random_baseline: 0.0
-  score_ceiling: 1.0
-  superseded_by: null
-  epoch_source_file: cybench_external.csv
   provenance: independent_leaderboard
 - id: deepswe
   name: DeepSWE
@@ -245,6 +204,20 @@ tracked:
   score_ceiling: 1.0
   superseded_by: null
   epoch_source_file: deepswe_external.csv
+  provenance: independent_leaderboard
+- id: frontierswe
+  name: FrontierSWE
+  domain: software_engineering
+  tier: secondary
+  track: true
+  measures: Projets d'ingénierie de plusieurs heures (implémentation, performance, recherche).
+  caveat: 'Peu de tâches (34) et un harnais unique (proximus) : moyenne sur 5 essais.'
+  released_on: '2026-09-02'
+  scale_to_fraction: 1.0
+  random_baseline: 0.0
+  score_ceiling: 1.0
+  superseded_by: null
+  epoch_source_file: frontierswe_external.csv
   provenance: independent_leaderboard
 - id: gso_bench
   name: GSO-Bench
@@ -265,14 +238,22 @@ rejected:
   reason: Obsolète.
 - benchmark: ARC AI2
   reason: Obsolète, saturé.
+- benchmark: Aider polyglot
+  reason: 'Leaderboard abandonné : dernière soumission en octobre 2025.'
 - benchmark: BBH
   reason: Largement saturé.
+- benchmark: Cybench
+  reason: Aucune mesure depuis février 2026 ; son successeur ExploitBench est lui aussi figé (avril 2026).
+- benchmark: GDPval
+  reason: Aucune mesure depuis décembre 2025. Remplacé par GDP.pdf.
 - benchmark: GSM8K
   reason: Saturé et massivement contaminé.
 - benchmark: HellaSwag
   reason: Obsolète, saturé depuis 2023.
 - benchmark: LAMBADA
   reason: Obsolète (modélisation du langage brute).
+- benchmark: METR Time Horizons
+  reason: Suite v1.1 saturée (horizon > 16 h, IC jusqu'à 55 h) et aucune mesure depuis avril 2026.
 - benchmark: MMLU
   reason: Saturé (>90% pour tout modèle de pointe) — pouvoir discriminant nul.
 - benchmark: OSWorld
@@ -281,10 +262,18 @@ rejected:
   reason: Obsolète, saturé.
 - benchmark: PIQA
   reason: Obsolète, saturé.
+- benchmark: SWE-Bench verified
+  reason: Leaderboard officiel figé depuis février 2026, relais Epoch arrêté en juin 2026 ; contamination
+    avérée. Remplacé par CursorBench, FrontierSWE et DeepSWE.
 - benchmark: ScienceQA
   reason: Obsolète, saturé.
 - benchmark: SuperGLUE
   reason: Obsolète (ère pré-LLM).
+- benchmark: Terminal Bench
+  reason: 'Terminal-Bench 2.0 : plus aucune soumission depuis mai 2026 (dernier modèle GPT-5.5). Remplacé
+    par Terminal-Bench 4.0, relevé sur tbench.ai.'
+- benchmark: The Agent Company
+  reason: Aucune mesure depuis septembre 2025.
 - benchmark: TriviaQA
   reason: Mesure la mémorisation, sans rapport avec le développement.
 - benchmark: Winogrande

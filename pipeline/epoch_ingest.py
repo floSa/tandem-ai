@@ -11,6 +11,9 @@ Deux modes :
   --registry   (re)génère catalog/benchmarks.yaml depuis benchmark_metadata.csv
   --scores     génère catalog/scores.yaml pour les benchmarks marqués track: true
 
+Terminal-Bench 4.0 n'est pas relayé par Epoch : il est lu sur tbench.ai par
+`tbench_ingest.py` et fusionné ici, avec la même structure de ligne.
+
 Source   : https://epoch.ai/benchmarks/use-this-data
 Licence  : CC-BY 4.0 — l'attribution est obligatoire (voir ATTRIBUTION.md)
 """
@@ -29,6 +32,9 @@ from pathlib import Path
 
 import yaml
 
+import scope
+import tbench_ingest
+
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "catalog"
 RAW = ROOT / "sources" / "raw"
@@ -39,20 +45,15 @@ EPOCH_ZIP = RAW / "epoch_benchmark_data.zip"
 # Epoch catalogue ~80 benchmarks ; tous n'ont pas d'intérêt pour un audit
 # d'outils de développement. `track: true` = ingéré dans scores.yaml.
 CURATION = {
-    "SWE-Bench verified": dict(
+    "CursorBench": dict(
         track=True, domain="software_engineering", tier="reference",
-        measures="Résolution de vraies issues GitHub Python, patch validé par les tests du dépôt.",
-        caveat="Benchmark de 2024, massivement présent dans les données d'entraînement. "
-               "Les scores très élevés doivent être lus avec une réserve de contamination."),
-    "Terminal Bench": dict(
-        track=True, domain="agentic_cli", tier="reference",
-        measures="Tâches multi-étapes en ligne de commande : navigation, exécution, vérification.",
-        caveat="Le score dépend fortement du harnais (agent) utilisé, pas seulement du modèle. "
-               "Toujours lire le couple (modèle, agent)."),
-    "Aider polyglot": dict(
-        track=True, domain="code_editing", tier="reference",
-        measures="Édition de code existant dans plusieurs langages, au format diff.",
-        caveat="Mesure l'édition, pas la conception. Publié par l'auteur d'Aider."),
+        measures="Tâches de développement réelles tirées de l'usage de Cursor, exécutées dans son agent.",
+        caveat="Publié par Cursor et mesuré dans son propre harnais : le couple (modèle, Cursor) "
+               "est mesuré, pas le modèle seul."),
+    "FrontierSWE": dict(
+        track=True, domain="software_engineering", tier="secondary",
+        measures="Projets d'ingénierie de plusieurs heures (implémentation, performance, recherche).",
+        caveat="Peu de tâches (34) et un harnais unique (proximus) : moyenne sur 5 essais."),
     "SciCode": dict(
         track=True, domain="scientific_code", tier="secondary",
         measures="Implémentation de code scientifique à partir d'énoncés de recherche.", caveat=""),
@@ -68,23 +69,17 @@ CURATION = {
     "MirrorCode": dict(
         track=True, domain="code_generation", tier="secondary",
         measures="Benchmark de code récent, résistant à la contamination.", caveat=""),
-    "The Agent Company": dict(
-        track=True, domain="agentic_work", tier="secondary",
-        measures="Tâches de travail réalistes en entreprise simulée (navigation, outils, collègues).", caveat=""),
     "APEX-Agents": dict(
         track=True, domain="agentic_work", tier="secondary",
         measures="Capacités agentiques sur tâches expertes.", caveat=""),
+    "PostTrainBench": dict(
+        track=True, domain="agentic_work", tier="secondary",
+        measures="Un agent post-entraîne lui-même un modèle ouvert sous contrainte de calcul.",
+        caveat="Le harnais varie selon le modèle (Claude Code, Codex CLI, Cursor CLI) : "
+               "lire le couple (modèle, harnais)."),
     "OSWorld 2.0": dict(
         track=True, domain="computer_use", tier="secondary",
         measures="Pilotage d'un vrai bureau graphique (fenêtres, applications).", caveat=""),
-    "METR Time Horizons": dict(
-        track=True, domain="autonomy", tier="reference",
-        measures="Durée de tâche humaine qu'un modèle accomplit avec 50% de réussite. "
-                 "Exprimé en minutes/heures, pas en pourcentage.",
-        caveat="Unité différente des autres benchmarks : ne pas agréger avec des scores en %."),
-    "Cybench": dict(
-        track=True, domain="security", tier="secondary",
-        measures="Résolution de défis de cybersécurité type CTF.", caveat=""),
     "GPQA diamond": dict(
         track=True, domain="reasoning", tier="reference",
         measures="Questions scientifiques de niveau doctorat, hors de portée d'une recherche web.",
@@ -95,9 +90,10 @@ CURATION = {
     "ARC-AGI-2": dict(
         track=True, domain="reasoning", tier="secondary",
         measures="Raisonnement abstrait sur grilles, résistant à la mémorisation.", caveat=""),
-    "GDPval": dict(
+    "GDP.pdf": dict(
         track=True, domain="economic_value", tier="secondary",
-        measures="Tâches professionnelles réelles évaluées par des experts du métier.", caveat=""),
+        measures="Production de livrables professionnels (documents, analyses) jugés par des experts.",
+        caveat="Évaluation par juges humains, protocole Surge AI."),
     "Remote Labor Index": dict(
         track=True, domain="economic_value", tier="secondary",
         measures="Capacité à accomplir des missions freelance réellement rémunérées.", caveat=""),
@@ -120,7 +116,21 @@ REJECTED = {
     "BBH": "Largement saturé.",
     "ScienceQA": "Obsolète, saturé.",
     "OSWorld": "Remplacé par OSWorld 2.0.",
-    "Terminal Bench": None,  # placeholder, non utilisé — Terminal Bench est suivi
+    # Retirés en septembre 2026 : benchmarks figés à la source, qui ne mesurent plus
+    # aucun modèle de l'offre actuelle. Les garder donnait une photo de 2025 présentée
+    # comme actuelle.
+    "Terminal Bench": "Terminal-Bench 2.0 : plus aucune soumission depuis mai 2026 (dernier modèle "
+                      "GPT-5.5). Remplacé par Terminal-Bench 4.0, relevé sur tbench.ai.",
+    "SWE-Bench verified": "Leaderboard officiel figé depuis février 2026, relais Epoch arrêté en "
+                          "juin 2026 ; contamination avérée. Remplacé par CursorBench, FrontierSWE "
+                          "et DeepSWE.",
+    "METR Time Horizons": "Suite v1.1 saturée (horizon > 16 h, IC jusqu'à 55 h) et aucune mesure "
+                          "depuis avril 2026.",
+    "Aider polyglot": "Leaderboard abandonné : dernière soumission en octobre 2025.",
+    "Cybench": "Aucune mesure depuis février 2026 ; son successeur ExploitBench est lui aussi "
+               "figé (avril 2026).",
+    "GDPval": "Aucune mesure depuis décembre 2025. Remplacé par GDP.pdf.",
+    "The Agent Company": "Aucune mesure depuis septembre 2025.",
 }
 
 
@@ -129,9 +139,15 @@ REJECTED = {
 # d'étapes). Ces paramètres ne sont PAS du bruit : deux scores obtenus sous des
 # protocoles différents ne sont pas comparables. On les conserve intégralement.
 COLUMN_MAP = {
-    "SWE-Bench verified":  dict(score="mean_score", se="stderr"),
-    "Terminal Bench":      dict(score="Accuracy mean", se="Accuracy SE", harness="Agent"),
-    "Aider polyglot":      dict(score="Percent correct", cost="Cost"),
+    "CursorBench":         dict(score="Score", cost="Cost per task", effort="Reasoning level",
+                                harness_fixed="Cursor",
+                                protocol=["Tokens per task", "Steps per task"]),
+    "FrontierSWE":         dict(score="Score", harness="Harness", cost="Average cost (USD)",
+                                protocol=["Aggregation", "Best@5", "Worst@5",
+                                          "Average duration (hours)"]),
+    "PostTrainBench":      dict(score="Average (%)", harness="Scaffold",
+                                protocol=["Average SD (%)"]),
+    "GDP.pdf":             dict(score="GDP.pdf score"),
     "SciCode":             dict(score="Score"),
     "FrontierCode":        dict(score="Main score", harness="Harness", protocol=["Reasoning effort"]),
     "DeepSWE":             dict(score="Pass@1", harness="Harness", cost="Mean cost (USD)",
@@ -139,22 +155,25 @@ COLUMN_MAP = {
                                 protocol=["Pass@4", "Mean output tokens", "Mean agent steps", "Runs"]),
     "GSO-Bench":           dict(score="Score OPT@1", harness="Scaffold"),
     "MirrorCode":          dict(score="Best score (across scorers)", se="stderr"),
-    "The Agent Company":   dict(score="% Score", cost="Average costs"),
     "APEX-Agents":         dict(score="Pass@1 score"),
     "OSWorld 2.0":         dict(score="Binary accuracy", cost="Estimated cost (USD)",
                                 protocol=["Reasoning", "Tool setting", "Step budget", "Partial score"]),
-    "METR Time Horizons":  dict(score="average_score", unit="minutes", protocol=["Time horizon"]),
-    "Cybench":             dict(score="Unguided % Solved"),
     "GPQA diamond":        dict(score="Best score (across scorers)", se="stderr"),
     "HLE":                 dict(score="Accuracy"),
     "ARC-AGI-2":           dict(score="Score", cost="Cost per task"),
-    "GDPval":              dict(score="Win Rate (%)", protocol=["Win + tie rate (%)"]),
     "Remote Labor Index":  dict(score="Score"),
 }
 
 
 # Métadonnées amont incomplètes : source_file vide pour certains benchmarks.
-FALLBACK_FILE = {"SciCode": "scicode_external.csv"}
+FALLBACK_FILE = {"SciCode": "scicode_external.csv",
+                 "CursorBench": "cursorbench_external.csv",
+                 "FrontierSWE": "frontierswe_external.csv",
+                 "GDP.pdf": "gdp_pdf_external.csv"}
+
+# Vocabulaire d'effort : chaque source a le sien (`Extra High`, `xhigh`…).
+EFFORT_ALIASES = {"extra high": "xhigh", "extra-high": "xhigh", "x-high": "xhigh"}
+EFFORTS = {"minimal", "low", "medium", "high", "xhigh", "max"}
 
 def fetch(force: bool = False) -> Path:
     """Télécharge l'export Epoch si absent ou si --force."""
@@ -197,9 +216,10 @@ def build_registry(z: zipfile.ZipFile) -> dict:
             "score_ceiling": float(b["score_ceiling"]) if b["score_ceiling"] else None,
             "superseded_by": b["superseded_by"] or None,
             "epoch_source_file": b["source_file"] or FALLBACK_FILE.get(name, ""),
-            "provenance": ("independent_run" if not b["source_file"].endswith("_external.csv")
-                           else "independent_leaderboard"),
+            "provenance": ("independent_run" if not (b["source_file"] or FALLBACK_FILE.get(name, ""))
+                           .endswith("_external.csv") else "independent_leaderboard"),
         })
+    entries.append(dict(tbench_ingest.REGISTRY))
     return {
         "_generated": {
             "by": "pipeline/epoch_ingest.py --registry",
@@ -213,11 +233,11 @@ def build_registry(z: zipfile.ZipFile) -> dict:
     }
 
 
-def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
+def build_scores(z: zipfile.ZipFile, registry: dict, since: str, force: bool = False) -> dict:
     """catalog/scores.yaml — un enregistrement par (modèle × benchmark × harnais × run)."""
     rows = []
     for bench in registry["tracked"]:
-        if not bench["track"]:
+        if not bench["track"] or not bench.get("epoch_source_file"):
             continue
         fname = bench["epoch_source_file"]
         try:
@@ -262,7 +282,9 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
             # Le protocole exact sous lequel le score a été obtenu.
             protocol = {c: r[c] for c in protocol_cols if (r.get(c) or "").strip()}
             mv = r.get("Model version") or r.get("Model") or None
-            effort = (r.get(effort_col) or "").strip() if effort_col else ""
+            effort = (r.get(effort_col) or "").strip().lower() if effort_col else ""
+            effort = EFFORT_ALIASES.get(effort, effort)
+            effort = effort if effort in EFFORTS else ""
             if not effort and mv:
                 m_ = re.search(r"_(max|xhigh|high|medium|low|minimal)$", mv)
                 effort = m_.group(1) if m_ else ""
@@ -284,7 +306,8 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
                 "cost_usd": cost,
                 "model_display": r.get("Name") or None,
                 "organization": r.get("Organization") or r.get("Model Org") or None,
-                "harness": (r.get(harness_col) or None) if harness_col else None,
+                "harness": ((r.get(harness_col) or None) if harness_col
+                            else cm.get("harness_fixed")),
                 "harness_org": r.get("Agent Org") or None,
                 "score": round(val * scale, 4),
                 "unit": unit,
@@ -300,6 +323,7 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
             })
             kept += 1
         print(f"  {kept:>5} scores  {bench['name']}")
+    rows += tbench_ingest.build_scores(z, since, force)
     return {
         "_generated": {
             "by": "pipeline/epoch_ingest.py --scores",
@@ -307,6 +331,7 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str) -> dict:
             "upstream": "Epoch AI — Capabilities & Benchmarking (CC-BY 4.0)",
             "upstream_url": "https://epoch.ai/benchmarks",
             "filter": f"modèles publiés à partir du {since}",
+            "since": since,
             "warning": "Fichier généré. Ne pas éditer à la main.",
         },
         "scores": rows,
@@ -325,7 +350,9 @@ def main() -> int:
     ap.add_argument("--registry", action="store_true", help="régénère catalog/benchmarks.yaml")
     ap.add_argument("--scores", action="store_true", help="régénère catalog/scores.yaml")
     ap.add_argument("--force-download", action="store_true", help="ignore le cache local")
-    ap.add_argument("--since", default="2025-01-01", help="ne garder que les modèles publiés depuis cette date")
+    ap.add_argument("--since", default=scope.cutoff(),
+                    help="ne garder que les modèles publiés depuis cette date "
+                         "(défaut : fenêtre glissante scope.model_window_months de _meta.yaml)")
     a = ap.parse_args()
     if not (a.registry or a.scores):
         a.registry = a.scores = True
@@ -339,7 +366,7 @@ def main() -> int:
     if a.scores:
         print("\n▸ Scores")
         reg = yaml.safe_load((CATALOG / "benchmarks.yaml").read_text(encoding="utf-8"))
-        dump(build_scores(z, reg, a.since), CATALOG / "scores.yaml")
+        dump(build_scores(z, reg, a.since, a.force_download), CATALOG / "scores.yaml")
     print("\n✓ ingestion terminée")
     return 0
 

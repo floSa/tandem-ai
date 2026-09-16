@@ -274,6 +274,92 @@ class TestPropagationTarifaire(unittest.TestCase):
                             f"{lab['id']} balayé sans consigner ce qui a été trouvé")
 
 
+class TestPerimetreTemporel(unittest.TestCase):
+    """Bug réel : jusqu'en septembre 2026, Terminal-Bench 2.0, METR et SWE-bench Verified
+    étaient figés depuis des mois sans qu'aucun contrôle ne le dise, et la page montrait
+    encore Claude 3.7. Le contrôle de fraîcheur ne regardait que la mesure la plus récente,
+    tous benchmarks confondus."""
+
+    def test_fenetre_glissante_en_mois(self):
+        import scope
+        self.assertEqual(scope.cutoff(date(2026, 9, 16), 12), "2025-09-16")
+        self.assertEqual(scope.cutoff(date(2026, 3, 31), 1), "2026-02-28")
+        self.assertEqual(scope.cutoff(date(2026, 1, 10), 18), "2024-07-10")
+
+    def test_un_benchmark_fige_est_detecte_meme_si_un_autre_vit(self):
+        import scope
+        scores = [
+            {"benchmark": "vivant", "model_released_on": "2026-09-03"},
+            {"benchmark": "vivant", "model_released_on": "2025-01-01"},
+            {"benchmark": "fige", "model_released_on": "2026-04-23"},
+        ]
+        dormants = scope.dormant_benchmarks(scores, 90)
+        self.assertEqual([d[0] for d in dormants], ["fige"])
+        self.assertEqual(dormants[0][2], 133)
+
+    def test_aucun_benchmark_suivi_en_sommeil(self):
+        import scope
+        scores = load("scores.yaml").get("scores", [])
+        self.assertEqual(scope.dormant_benchmarks(scores, scope.dormant_after_days()), [],
+                         "benchmark figé à la source : le remplacer ou le retirer")
+
+    def test_aucun_score_hors_fenetre(self):
+        doc = load("scores.yaml")
+        since = (doc.get("_generated") or {}).get("since")
+        self.assertTrue(since, "scores.yaml ne consigne plus la fenêtre appliquée")
+        vieux = {s["model_version"] for s in doc["scores"]
+                 if s.get("model_released_on") and s["model_released_on"] < since}
+        self.assertEqual(vieux, set())
+
+    def test_les_benchmarks_retires_sont_motives(self):
+        suivis = {b["name"] for b in load("benchmarks.yaml").get("tracked", [])}
+        rejets = {b["benchmark"]: b["reason"] for b in load("benchmarks.yaml").get("rejected", [])}
+        for nom in ("Terminal Bench", "SWE-Bench verified", "METR Time Horizons", "Aider polyglot"):
+            self.assertNotIn(nom, suivis)
+            self.assertTrue(rejets.get(nom), f"{nom} retiré sans motif consigné")
+
+
+class TestTerminalBench4(unittest.TestCase):
+    """Terminal-Bench 4.0 n'est pas relayé par Epoch : il est lu sur tbench.ai."""
+
+    def test_parseur_du_flux_next(self):
+        import json
+        import tbench_ingest
+        ligne = {"rank": 1, "metadata": {"date": "2026-09-03"},
+                 "metrics": {"accuracy": 58.18, "n_trials": 330}}
+        flight = ('{"title":"Terminal-Bench 4.0","x":1},"rows":' + json.dumps([ligne]) + "}")
+        html = ("<script>self.__next_f.push([1," + json.dumps(flight) + "])</script>")
+        rows = tbench_ingest.parse_rows(html)
+        self.assertEqual(rows[0]["metrics"]["accuracy"], 58.18)
+
+    def test_parseur_echoue_bruyamment_si_la_page_change(self):
+        import tbench_ingest
+        with self.assertRaises(ValueError):
+            tbench_ingest.parse_rows("<html>autre chose</html>")
+
+    def test_chaque_score_nomme_son_harnais(self):
+        tb = [s for s in load("scores.yaml")["scores"] if s["benchmark"] == "Terminal-Bench 4.0"]
+        self.assertTrue(tb, "Terminal-Bench 4.0 absent du catalogue")
+        for s in tb:
+            self.assertTrue(s.get("harness"), f"{s['model_version']} sans harnais")
+            self.assertLessEqual(s["score"], 1.0)
+
+
+class TestDateDesTarifs(unittest.TestCase):
+    """Bug réel : apply_pricing.py datait chaque tarif du jour où il tournait —
+    relancer le script faisait passer un relevé ancien pour une vérification fraîche."""
+
+    def test_la_date_est_celle_du_releve(self):
+        saisie = load("pricing_verified.yaml")
+        campagne = str(saisie["_meta"]["verified_on"])
+        attendu = {v["id"]: str(v.get("verified_on") or campagne) for v in saisie["models"]}
+        for m in load("models.yaml")["models"]:
+            src = (m.get("pricing") or {}).get("source") or {}
+            if m["id"] in attendu:
+                self.assertEqual(str(src.get("verified_on")), attendu[m["id"]],
+                                 f"{m['id']} : date de relevé réécrite")
+
+
 class TestConversionMonetaire(unittest.TestCase):
     """La conversion €/TVA est la seule arithmétique du build : elle doit être exacte."""
 

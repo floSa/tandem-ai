@@ -19,6 +19,8 @@ from datetime import date, datetime
 from pathlib import Path
 import yaml
 
+import scope
+
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "catalog"
 
@@ -215,6 +217,12 @@ def main() -> int:
         if d and d > warn:
             tasks.append((1, "BENCHMARKS", f"Dernière mesure vieille de {d} jours", None,
                           "relancer : python3 pipeline/epoch_ingest.py --force-download"))
+    for b, r, lag in scope.dormant_benchmarks(scores, scope.dormant_after_days()):
+        tasks.append((1, "BENCHMARKS", f"`{b}` en sommeil — dernier modèle mesuré sorti le {r}", None,
+                      f"{lag} j de retard sur le modèle le plus récent du catalogue : il ne compare "
+                      "plus l'offre actuelle.\n    Vérifier la source d'origine (une version plus "
+                      "récente existe-t-elle ?), sinon le retirer\n    dans CURATION et consigner "
+                      "le motif dans REJECTED (pipeline/epoch_ingest.py)."))
     by_b = collections.defaultdict(list)
     for s in scores:
         if s.get("score") is not None:

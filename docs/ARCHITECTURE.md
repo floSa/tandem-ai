@@ -39,7 +39,7 @@ flowchart TB
   end
 
   subgraph Controle["Portes de sortie"]
-    ts[tests/ - 42 tests]
+    ts[tests/ - 51 tests]
     vl[validate.py]
   end
 
@@ -79,7 +79,7 @@ flowchart TB
 | Ingestion | [pipeline/apply_pricing.py](../pipeline/apply_pricing.py) | Fusionne les tarifs relevés à la main, avec leur provenance |
 | Contrôle | [pipeline/validate.py](../pipeline/validate.py) | Six familles de contrôles, sortie en code 1 si erreur bloquante |
 | Contrôle | [pipeline/crosscheck_aa.py](../pipeline/crosscheck_aa.py) | Confronte les tarifs à une seconde source. N'écrit jamais |
-| Contrôle | [tests/test_pipeline.py](../tests/test_pipeline.py) | 42 tests sur les invariants du protocole |
+| Contrôle | [tests/test_pipeline.py](../tests/test_pipeline.py) | 51 tests sur les invariants du protocole |
 | Pilotage | [pipeline/worklist.py](../pipeline/worklist.py) | Plan de travail : ce qui est à vérifier, trié par impact |
 | Génération | [pipeline/build_guide.py](../pipeline/build_guide.py) | Guide Markdown + 6 fiches `data/` |
 | Génération | [pipeline/build_site.py](../pipeline/build_site.py) | Page HTML autonome, données embarquées |
@@ -187,7 +187,7 @@ détectée, ce qui le rend utilisable tel quel en CI.
 
 Le contrôle de comparabilité applique un test statistique : quand l'écart entre les deux
 premiers d'un classement est inférieur à l'intervalle de confiance combiné à 95 %, il
-interdit de titrer sur un vainqueur. C'est le cas actuel sur SWE-bench Verified.
+interdit de titrer sur un vainqueur. C'est le cas actuel sur Terminal-Bench 4.0, DeepSWE et GPQA diamond.
 
 ---
 

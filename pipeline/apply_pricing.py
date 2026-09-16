@@ -123,6 +123,12 @@ def main() -> int:
     models = doc.get("models", [])
     idx = {m["id"]: m for m in models}
     today = date.today().isoformat()
+    # La date d'un tarif est celle où la page a été LUE, pas celle où ce script
+    # tourne : sans quoi chaque relance ferait passer un vieux relevé pour frais.
+    campaign_on = str((vp.get("_meta") or {}).get("verified_on") or "") or None
+    if not campaign_on:
+        print("  ✗ `_meta.verified_on` absent de pricing_verified.yaml : date du relevé inconnue")
+        return 1
     updated = added = skipped = 0
 
     for v in vp.get("models", []):
@@ -135,7 +141,8 @@ def main() -> int:
         p = dict(v["pricing"])
         p.update({
             "currency": "USD",
-            "source": {"url": url, "verified_on": today, "status": status,
+            "source": {"url": url, "verified_on": str(v.get("verified_on") or campaign_on),
+                       "status": status,
                        **({"note": note} if note else {})},
         })
         # Variantes tarifaires : elles ne remplacent pas le tarif principal,
