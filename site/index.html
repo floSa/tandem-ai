@@ -416,8 +416,14 @@ $('#alerts').innerHTML=al.map(([c,t,b])=>
 
 // ── sélecteurs ─────────────────────────────────────────────────────────────
 const bsel=$('#bench');
-D.benchmarks.forEach(b=>bsel.add(new Option(b.name,b.name)));
-bsel.value=D.benchmarks.find(b=>b.name==='SWE-Bench verified')?'SWE-Bench verified':D.benchmarks[0]?.name;
+// Par ordre alphabétique : dix-huit entrées se cherchent par leur nom, pas par
+// l'ordre de curation du catalogue. La matrice de couverture, elle, garde
+// l'ordre du catalogue — ses colonnes vont du plus mesuré au moins mesuré.
+const bench_tri=[...D.benchmarks].sort((a,b)=>
+  a.name.localeCompare(b.name,'fr',{sensitivity:'base',numeric:true}));
+bench_tri.forEach(b=>bsel.add(new Option(b.name,b.name)));
+bsel.value=bench_tri.some(b=>b.name==='SWE-Bench verified')
+  ?'SWE-Bench verified':bench_tri[0]?.name;
 const lsel=$('#lab');
 [...new Set(D.scores.map(s=>s.o))].sort().forEach(o=>lsel.add(new Option(o,o)));
 ['#bench','#lab','#eff','#bud','#top'].forEach(q=>habiller($(q)));
