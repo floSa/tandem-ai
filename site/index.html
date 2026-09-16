@@ -91,6 +91,8 @@ select:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
 .seg button:hover{border-color:var(--s1);color:var(--ink)}
 .seg button[aria-pressed="true"]{background:var(--s1);border-color:var(--s1);color:#fff}
 .seg button:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
+.seg button:disabled{opacity:.4;cursor:not-allowed;border-style:dashed}
+.seg button:disabled:hover{border-color:var(--line-strong);color:var(--ink-2)}
 .chart{width:100%;overflow-x:auto}
 svg{display:block;max-width:100%;height:auto;font:inherit}
 .gl{stroke:var(--grid);stroke-width:1}
@@ -108,10 +110,10 @@ table{border-collapse:collapse;width:100%;font-size:12.5px;margin-top:6px}
 th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line)}
 th{color:var(--ink-3);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em;
  position:sticky;top:0;background:var(--panel)}
-/* Un en-tête de colonne chiffrée s'aligne comme ses chiffres, sinon le titre
-   flotte au-dessus du vide. La compensation annule l'interlettrage final. */
-th.n{text-align:right;padding-right:calc(10px - .05em)}
-td.n{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace;
+/* En-tête et valeur d'une colonne chiffrée partagent le même axe : centrés
+   tous les deux, le titre tombe au-dessus de ses chiffres. */
+th.n,td.n{text-align:center}
+td.n{font-family:"IBM Plex Mono",ui-monospace,monospace;
  font-variant-numeric:tabular-nums}
 .tw{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:9px}
 details{margin-top:12px}
@@ -515,13 +517,13 @@ function cover(){
     const y0=T+k*RH+gi*GAP;
     g.v.forEach((m,j)=>posY.set(m,y0+j*RH));
     k+=g.v.length;
-    const y1=y0+g.v.length*RH-4,xb=GUT-10,c=cv(LABC[info.get(g.v[0])?.l]||'--ink-3');
-    // Crochet : il tient ensemble les modèles d'un même laboratoire.
+    const y1=y0+g.v.length*RH-4,xb=GUT-10;
+    // Crochet : il tient ensemble les modèles d'un même laboratoire. Neutre —
+    // la couleur est déjà prise par l'intensité des cases.
     sv.append(mk('path',{d:`M${xb+6},${y0+2} H${xb} V${y1} H${xb+6}`,
-      fill:'none',stroke:c,'stroke-width':1.5,opacity:.75}));
+      fill:'none',stroke:cv('--line-strong'),'stroke-width':1.5}));
     const t=mk('text',{x:8,y:(y0+y1)/2+4,class:'lbl','font-size':'11','font-weight':'600'});
-    t.textContent=g.o.length>15?g.o.slice(0,14)+'…':g.o;
-    t.setAttribute('fill',c);sv.append(t);});
+    t.textContent=g.o.length>15?g.o.slice(0,14)+'…':g.o;sv.append(t);});
 
   ordre.forEach(m=>{const y=posY.get(m),row=info.get(m);
     const lb=mk('text',{x:L-9,y:y+15,'text-anchor':'end',class:'lbl'});
@@ -924,15 +926,53 @@ function plans(){
 }
 
 const DRAW={rank,frontier,budget,harness,time,cover,price,api,plans};
-function draw(){DRAW[K]();}
-$('#kind').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+
+// Toutes les vues ne s'appliquent pas à tous les benchmarks : le coût mesuré et
+// le nom du harnais ne sont publiés que par une minorité d'entre eux. Proposer
+// un bouton qui ne peut rien afficher se lit comme une panne — on le désactive
+// et on dit où la vue existe.
+const EXIGE={frontier:'le coût mesuré de chaque run',
+             budget:'le coût mesuré de chaque run',
+             harness:"le nom du harnais utilisé"};
+function dispo(k,b){
+  b=b||bsel.value;
+  if(k==='frontier'||k==='budget')
+    return D.scores.some(s=>s.b===b&&s.c!=null&&s.c>0);
+  if(k==='harness'){
+    const vus=new Map();
+    for(const s of D.scores){
+      if(s.b!==b||!s.h)continue;
+      if(!vus.has(s.m))vus.set(s.m,new Set());
+      vus.get(s.m).add(s.h);
+      if(vus.get(s.m).size>1)return true;   // il faut deux harnais pour comparer
+    }
+    return false;
+  }
+  return true;
+}
+function majBoutons(){
+  [...$('#kind').children].forEach(btn=>{
+    const k=btn.dataset.k,ok=dispo(k);
+    btn.disabled=!ok;
+    if(ok){btn.removeAttribute('title');btn.removeAttribute('aria-disabled');return;}
+    btn.setAttribute('aria-disabled','true');
+    const ailleurs=D.benchmarks.map(x=>x.name).filter(n=>dispo(k,n));
+    btn.title=`${bsel.value} ne publie pas ${EXIGE[k]}.`+
+      (ailleurs.length?` Vue disponible sur : ${ailleurs.join(', ')}.`:'');
+  });
+  if(!dispo(K)){
+    K='rank';
+    [...$('#kind').children].forEach(x=>
+      x.setAttribute('aria-pressed',String(x.dataset.k==='rank')));
+    $('#budwrap').hidden=true;
+  }
+}
+function draw(){majBoutons();DRAW[K]();}
+$('#kind').addEventListener('click',e=>{const b=e.target.closest('button');
+  if(!b||b.disabled)return;
   K=b.dataset.k;[...$('#kind').children].forEach(x=>
     x.setAttribute('aria-pressed',String(x===b)));
-  // La vue coût n'a de sens que sur un benchmark qui publie un coût mesuré.
   $('#budwrap').hidden=(K!=='budget');
-  if((K==='frontier'||K==='budget')&&!D.scores.some(s=>s.b===bsel.value&&s.c!=null)){
-    const alt=D.benchmarks.find(x=>D.scores.some(s=>s.b===x.name&&s.c!=null&&s.ef));
-    if(alt)bsel.value=alt.name;}
   draw();});
 [bsel,lsel,$('#top'),$('#eff'),$('#bud')].forEach(el=>el.addEventListener('change',draw));
 
