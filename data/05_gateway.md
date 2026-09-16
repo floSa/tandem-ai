@@ -3,7 +3,7 @@
 
 # Agrégateurs cloud
 
-1 outils au catalogue. Généré le 2026-09-15 depuis `catalog/tools.yaml`.
+1 outils au catalogue. Généré le 2026-09-16 depuis `catalog/tools.yaml`.
 
 ## OpenRouter
 

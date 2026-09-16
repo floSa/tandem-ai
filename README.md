@@ -136,7 +136,7 @@ resterait à faire — le plan de travail s'en charge.
 | dont coût réellement mesuré | 278 mesures | même source, colonne de coût d'exécution |
 | dont effort de raisonnement connu | 510 mesures | même source, colonne de protocole |
 | Modèles | 207, 11 fournisseurs | identités issues des mesures, jamais inventées |
-| Tarifs API | 132 relevés · 75 sans tarif éditeur | page tarifaire officielle de chaque fournisseur |
+| Tarifs API | 73 tarifs relevés, couvrant 132 modèles · 75 sans tarif éditeur | page tarifaire officielle de chaque fournisseur |
 | Forfaits d'abonnement | 29 paliers, 9 éditeurs | page tarifaire officielle |
 | Harnais et passerelles | 30 fiches, toutes contrôlées | documentation ou tarifs de l'éditeur |
 | Balayage des fournisseurs | 11 sur 11 | recherche outil par outil, y compris les absences |
