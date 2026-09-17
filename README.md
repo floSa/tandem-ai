@@ -8,6 +8,9 @@
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 ![Licence](https://img.shields.io/badge/licence-MIT-4A3AA7)
 
+**[Consulter la page interactive →](https://flosa.github.io/tandem-ai/)** — classements,
+coût contre performance, couverture des benchmarks, tarifs et forfaits.
+
 Référentiel ouvert de l'offre de développement assisté par IA, construit pour résister
 à la vérification. Son nom dit sa thèse : un score n'est pas un attribut d'un modèle,
 mais du triplet *(modèle × harnais × effort de raisonnement)*. Le catalogue recense
@@ -72,6 +75,7 @@ flowchart LR
 | [docs/NOTE_DE_REPRISE.md](docs/NOTE_DE_REPRISE.md) | Ce qui reste à faire à la prochaine session |
 | [AGENTS.md](AGENTS.md) | Point d'entrée pour les agents non-Claude |
 | [Guide complet](Guide_Complet_Solutions_Dev_IA_2026.md) | Livrable généré : tableaux comparatifs |
+| [Page interactive](https://flosa.github.io/tandem-ai/) | Livrable généré : graphiques et tableaux filtrables |
 
 ## Démarrage
 
