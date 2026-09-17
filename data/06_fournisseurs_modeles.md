@@ -3,7 +3,7 @@
 
 # Fournisseurs de modèles
 
-11 laboratoires suivis. Généré le 2026-09-16 depuis `catalog/`.
+11 laboratoires suivis. Généré le 2026-09-17 depuis `catalog/`.
 
 ## Anthropic
 

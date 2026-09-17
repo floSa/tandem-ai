@@ -1,6 +1,6 @@
 # Tandem — guide de référence
 
-**Édition Septembre 2026** · document généré le 2026-09-16 depuis `catalog/` · prochaine révision prévue le 2027-03-15
+**Édition Septembre 2026** · document généré le 2026-09-17 depuis `catalog/` · prochaine révision prévue le 2027-03-15
 
 > [!NOTE]
 > Ce document est **généré**. Toute correction se fait dans `catalog/`, puis `python3 pipeline/build_guide.py`.

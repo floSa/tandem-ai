@@ -295,6 +295,11 @@ a{color:var(--s1)}
  border:1px dashed var(--line-strong);border-radius:9px}
 .empty p{max-width:62ch;margin:0 auto;line-height:1.6}
 .empty p+p{margin-top:10px;color:var(--ink-2)}
+/* Changer d'onglet ramène le bandeau en tête de fenêtre. Encore faut-il que la
+   page soit assez haute pour défiler jusque-là : sur une section courte —
+   Méthode fait 400 px — le défilement s'arrêtait à mi-course et l'onglet
+   sélectionné restait hors de vue. */
+section[role="tabpanel"]{min-height:calc(100vh - 200px)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media(max-width:640px){.ctrl{flex-direction:column;align-items:stretch}
  select,.cb,.cb-b{width:100%}}

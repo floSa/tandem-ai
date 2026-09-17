@@ -3,7 +3,7 @@
 
 # Agents CLI
 
-10 outils au catalogue. Généré le 2026-09-16 depuis `catalog/tools.yaml`.
+10 outils au catalogue. Généré le 2026-09-17 depuis `catalog/tools.yaml`.
 
 ## Aider
 
