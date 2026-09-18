@@ -80,14 +80,30 @@ class TestEffortEtCout(unittest.TestCase):
         self.assertTrue(vus, "aucun effort identifié — le parsing a régressé")
         self.assertTrue(vus <= connus, f"efforts inconnus : {vus - connus}")
 
-    def test_model_base_sans_suffixe_d_effort(self):
+    def test_model_base_sans_suffixe_de_reglage(self):
+        """Le budget de réflexion est un réglage, au même titre que l'effort.
+
+        La règle n'en retirait que les paliers nommés : `claude-opus-4-6_32K`
+        restait un modèle à part entière, et la matrice de couverture affichait
+        quatre lignes pour un seul Opus 4.6 — chassant du classement des modèles
+        réellement distincts.
+        """
+        import variantes
         for s in self.scores:
             mb = s.get("model_base")
             if not mb:
                 continue
-            self.assertIsNone(
-                re.search(r"_(max|xhigh|high|medium|low|minimal)$", mb),
-                f"`model_base` porte encore un suffixe d'effort : {mb}")
+            self.assertIsNone(variantes.SUFFIXE.match(mb),
+                              f"`model_base` porte encore un réglage d'exécution : {mb}")
+
+    def test_le_budget_de_reflexion_n_est_pas_perdu(self):
+        """Retirer le suffixe ne doit pas effacer l'information qu'il portait."""
+        avec = [s for s in self.scores
+                if (s.get("model_version") or "").endswith("K")
+                and (s.get("model_version") or "") != s.get("model_base")]
+        for s in avec:
+            self.assertIn("Budget de réflexion", s.get("protocol") or {},
+                          f"{s['model_version']} perd son budget de réflexion")
 
     def test_couts_positifs(self):
         c = [s for s in self.scores if s.get("cost_usd") is not None]
@@ -358,6 +374,46 @@ class TestDateDesTarifs(unittest.TestCase):
             if m["id"] in attendu:
                 self.assertEqual(str(src.get("verified_on")), attendu[m["id"]],
                                  f"{m['id']} : date de relevé réécrite")
+
+
+class TestHarnaisMesures(unittest.TestCase):
+    """Un harnais qui apparaît dans les mesures existe et compte.
+
+    La veille par mots-clés trouve les outils dont on parle ; les mesures nomment
+    ceux qui servent. mini-SWE-agent, le harnais le plus mesuré du référentiel,
+    est resté hors catalogue faute de ce contrôle.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.scores = load("scores.yaml")["scores"]
+        doc = load("tools.yaml")
+        cls.tools = doc["tools"]
+        cls.ecartes = doc.get("ecartes") or []
+
+    @staticmethod
+    def cle(x):
+        return re.sub(r"[^a-z0-9]", "", (x or "").lower())
+
+    def test_tout_harnais_mesure_est_catalogue_ou_ecarte(self):
+        connus = {self.cle(t["id"]) for t in self.tools}
+        connus |= {self.cle(t["name"]) for t in self.tools}
+        connus |= {self.cle(e["id"]) for e in self.ecartes}
+        connus |= {self.cle(e["name"]) for e in self.ecartes}
+        connus.discard("")
+        vus = {s["harness"] for s in self.scores if s.get("harness")}
+        orphelins = sorted(h for h in vus
+                           if not any(k in self.cle(h) or self.cle(h) in k for k in connus))
+        self.assertEqual(orphelins, [],
+                         "harnais mesurés absents du catalogue : les ajouter, "
+                         "ou consigner leur rejet dans `ecartes` de tools.yaml")
+
+    def test_tout_harnais_ecarte_porte_son_motif(self):
+        for e in self.ecartes:
+            self.assertTrue((e.get("reason") or "").strip(),
+                            f"{e['id']} écarté sans motif")
+            self.assertTrue(e.get("checked_on"),
+                            f"{e['id']} écarté sans date de contrôle")
 
 
 class TestConversionMonetaire(unittest.TestCase):

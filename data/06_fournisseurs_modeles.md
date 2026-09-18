@@ -3,7 +3,7 @@
 
 # Fournisseurs de modèles
 
-11 laboratoires suivis. Généré le 2026-09-17 depuis `catalog/`.
+11 laboratoires suivis. Généré le 2026-09-18 depuis `catalog/`.
 
 ## Anthropic
 
@@ -48,7 +48,7 @@
 - `claude-opus-4-7` — GPQA diamond 90.1% · ARC-AGI-2 75.8% · CursorBench 64.8%
 - `claude-opus-5` — GPQA diamond 93.9% · ARC-AGI-2 90.4% · DeepSWE 73.7%
 - `claude-fable-5-1` — ARC-AGI-2 90.0% · CursorBench 73.4% · MirrorCode 73.3%
-- `claude-sonnet-4-6` — GPQA diamond 83.3% · ARC-AGI-2 60.4% · CursorBench 49.0%
+- `claude-sonnet-4-6` — GPQA diamond 87.4% · ARC-AGI-2 60.4% · CursorBench 49.0%
 
 ## OpenAI
 
@@ -150,7 +150,7 @@
 - `deepseek-v4-pro-0813` — GPQA diamond 91.7% · ARC-AGI-2 61.3% · SciCode 49.2%
 - `deepseek/deepseek-v3.2` — APEX-Agents 7.0% · ARC-AGI-2 4.0%
 - `DeepSeek-V3.1-Terminus` — SciCode 40.6%
-- `DeepSeek-V3.2-Exp_thinking` — SciCode 38.9%
+- `deepseek-chat` — GPQA diamond 71.2%
 
 ## Alibaba
 

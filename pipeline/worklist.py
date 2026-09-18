@@ -14,7 +14,7 @@ d'actions concrètes, chacune avec l'URL à ouvrir, triée par impact.
   python3 pipeline/worklist.py --markdown   # sortie cochable
 """
 from __future__ import annotations
-import argparse, collections, sys
+import argparse, collections, re, sys
 from datetime import date, datetime
 from pathlib import Path
 import yaml
@@ -209,6 +209,29 @@ def main() -> int:
         g = GOTCHAS_OUTILS.get(t["id"])
         tasks.append((2, "HARNAIS", f"{t['name']} — fiche vieille de {d} j", t.get("url"),
                       f"ⓘ {g}" if g else ""))
+
+    # ── 4 bis. Harnais mesurés mais absents du catalogue ──────────────────
+    # La veille par mots-clés trouve les outils dont on parle. Les mesures, elles,
+    # nomment ceux qui servent vraiment : un harnais qui apparaît dans les scores
+    # existe, est utilisé, et compte — qu'on en ait entendu parler ou non. C'est
+    # ce contrôle qui manquait quand mini-SWE-agent, le harnais le plus mesuré du
+    # référentiel, est resté hors catalogue.
+    def cle(x: str) -> str:
+        return re.sub(r"[^a-z0-9]", "", (x or "").lower())
+
+    connus = {cle(t["id"]) for t in tools} | {cle(t["name"]) for t in tools}
+    ecartes = load("tools.yaml").get("ecartes") or []
+    connus |= {cle(e["id"]) for e in ecartes} | {cle(e["name"]) for e in ecartes}
+    vus = collections.Counter(s["harness"] for s in scores if s.get("harness"))
+    inconnus = [(n, h) for h, n in vus.items()
+                if not any(k and (k in cle(h) or cle(h) in k) for k in connus)]
+    if inconnus:
+        inconnus.sort(reverse=True)
+        tasks.append((0, "HARNAIS",
+                      f"{len(inconnus)} harnais mesurés absents du catalogue", None,
+                      ", ".join(f"{h} ({n} scores)" for n, h in inconnus[:6])
+                      + "\n    ⓘ un harnais qui apparaît dans les mesures est utilisé pour de bon. "
+                        "Le cataloguer, ou consigner son rejet dans `ecartes` de tools.yaml."))
 
     # ── 5. Benchmarks ─────────────────────────────────────────────────────
     runs = [s.get("run_date") for s in scores if s.get("run_date")]

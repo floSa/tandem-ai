@@ -1,6 +1,6 @@
 _generated:
   by: pipeline/seed_catalog.py
-  'on': '2026-09-16'
+  'on': '2026-09-18'
   basis: Identités de modèles observées dans les données de benchmark Epoch AI (CC-BY).
   warning: 'AMORCE. Les champs tarifaires sont vides et marqués `unverified` : ils doivent être renseignés
     depuis la page /pricing officielle de chaque lab. Voir protocol/04_collecte_donnees.md.'

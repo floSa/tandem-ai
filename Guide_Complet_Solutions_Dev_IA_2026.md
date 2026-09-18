@@ -1,6 +1,6 @@
 # Tandem — guide de référence
 
-**Édition Septembre 2026** · document généré le 2026-09-17 depuis `catalog/` · prochaine révision prévue le 2027-03-15
+**Édition Septembre 2026** · document généré le 2026-09-18 depuis `catalog/` · prochaine révision prévue le 2027-03-15
 
 > [!NOTE]
 > Ce document est **généré**. Toute correction se fait dans `catalog/`, puis `python3 pipeline/build_guide.py`.
@@ -10,11 +10,11 @@
 
 | Couche | Couverture |
 | :-- | :-- |
-| Mesures de benchmark | 832 sur 16 benchmarks |
+| Mesures de benchmark | 840 sur 16 benchmarks |
 | Modèles au catalogue | 160 |
 | Tarifs API relevés sur page officielle | 109 / 160 |
 | Forfaits d'abonnement relevés | 29 |
-| Harnais re-vérifiés | 30 / 30 |
+| Harnais re-vérifiés | 33 / 33 |
 | Taux de change USD→EUR | 0.8666 — vérifié |
 
 ---
@@ -116,11 +116,14 @@ L'interface développeur : le logiciel avec lequel on travaille, et qui exécute
 | [Claude Code](https://docs.claude.com/en/docs/claude-code) | Anthropic, PBC | MCP | Pro, Max |
 | [Codex CLI](https://developers.openai.com/codex) | OpenAI | MCP, gratuit | — |
 | [Grok Build](https://x.ai/build) | xAI | BYOK | — |
+| [Hermes Agent](https://hermes-agent.nousresearch.com) | Nous Research | BYOK, gratuit | — |
 | [Kimi Code CLI](https://platform.kimi.ai) | Moonshot AI | — | — |
 | [Mistral Vibe](https://mistral.ai/products/vibe) | Mistral AI | — | Free, Pro, Team, Enterprise |
 | [Muse Code](https://developer.meta.com/ai/products/muse-code/) | Meta | — | Everyday Usage, High Usage, Power Usage |
+| [OpenCode](https://opencode.ai) | Anomaly | BYOK, modèles locaux, MCP, gratuit | — |
 | [OpenHands](https://all-hands.dev) | All-Hands-AI | BYOK, gratuit | — |
 | [Qwen Code](https://github.com/QwenLM/qwen-code) | Alibaba | BYOK, gratuit | — |
+| [mini-SWE-agent](https://swe-agent.com) | SWE-agent (Princeton, Stanford) | BYOK, gratuit | — |
 
 ### 3.4 Applications desktop
 

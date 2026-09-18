@@ -676,3 +676,97 @@ tools:
     status: unverified
     verified_on: null
     note: Conformité non relevée à cette édition.
+- id: opencode
+  name: OpenCode
+  vendor: Anomaly
+  category: cli_agent
+  layer: 1
+  status: active
+  url: https://opencode.ai
+  docs_url: https://opencode.ai/docs/
+  repo_url: https://github.com/sst/opencode
+  byok: true
+  local_models: true
+  free: true
+  mcp: true
+  note: 'Agent de terminal open-source, décliné en application de bureau et en extension IDE. Agnostique
+    du fournisseur : il se branche sur plus de 75 fournisseurs de modèles, ou sur un modèle local. Conversations
+    stockées en SQLite sur le poste. Installation par npm, Homebrew, Chocolatey, Scoop, Mise ou Docker.
+    L''éditeur propose « OpenCode Zen », une sélection de modèles qu''il a testés — sans obligation de
+    l''utiliser.'
+  verification:
+    status: official_docs
+    verified_on: '2026-09-18'
+    finding: 'Absent des éditions précédentes alors qu''il est le harnais open-source le plus adopté :
+      208 000 étoiles, 950 contributeurs.'
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+- id: mini-swe-agent
+  name: mini-SWE-agent
+  vendor: SWE-agent (Princeton, Stanford)
+  category: cli_agent
+  layer: 1
+  status: active
+  url: https://swe-agent.com
+  repo_url: https://github.com/SWE-agent/mini-swe-agent
+  install: pip install mini-swe-agent
+  byok: true
+  free: true
+  note: 'Agent minimal — une centaine de lignes de Python — publié par l''équipe qui a construit SWE-bench.
+    Il n''utilise que bash, sans outillage propre, et conserve un historique de messages linéaire : c''est
+    ce qui le rend reproductible, et donc utilisable comme harnais de référence dans les évaluations.
+    Revendique plus de 74 % sur SWE-bench verified. Sous licence MIT. Il remplace SWE-agent, que ses auteurs
+    ne recommandent plus.'
+  verification:
+    status: official_docs
+    verified_on: '2026-09-18'
+    finding: C'est le harnais le PLUS mesuré du référentiel — 80 scores — et il était absent du catalogue.
+      Sa neutralité en fait le support par défaut des comparaisons entre modèles.
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+- id: hermes-agent
+  name: Hermes Agent
+  vendor: Nous Research
+  category: cli_agent
+  layer: 1
+  status: active
+  url: https://hermes-agent.nousresearch.com
+  repo_url: https://github.com/NousResearch/hermes-agent
+  byok: true
+  free: true
+  note: 'Agent de terminal open-source sous licence MIT, publié en février 2026. Interface TUI complète
+    : édition multiligne, autocomplétion des commandes, historique, interruption et réorientation en cours
+    de tâche, coût de session estimé en continu. Fonctionne avec tes propres clés d''API ou via le portail
+    de l''éditeur. Windows, macOS, Linux, Docker, WSL2.'
+  verification:
+    status: official_docs
+    verified_on: '2026-09-18'
+  compliance:
+    status: unverified
+    verified_on: null
+    note: Conformité non relevée à cette édition.
+ecartes:
+- id: openclaw
+  name: OpenClaw
+  vendor: OpenClaw Foundation
+  checked_on: '2026-09-18'
+  reason: 'Assistant autonome généraliste, pas un harnais de développement : son interface utilisateur
+    est la messagerie (Signal, Telegram, Discord, WhatsApp), pas l''éditeur ni le terminal. Il sort donc
+    de la couche 1 telle que le référentiel la définit — l''interface par laquelle un développeur travaille.
+    Libre sous MIT, v2.0 le 30/08/2026.'
+- id: proximus
+  name: proximus
+  vendor: null
+  checked_on: '2026-09-18'
+  reason: 'Nom de harnais relevé dans les mesures (9 scores) mais non identifié : aucune source publique
+    trouvée. Probablement un harnais interne à un laboratoire. À réexaminer.'
+- id: chisel
+  name: chisel
+  vendor: null
+  checked_on: '2026-09-18'
+  reason: 'Nom de harnais relevé dans les mesures (6 scores) mais non identifié : aucune source publique
+    trouvée. Probablement un harnais interne à un laboratoire. À réexaminer.'

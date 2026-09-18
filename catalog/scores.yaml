@@ -1,10 +1,10 @@
 _generated:
   by: pipeline/epoch_ingest.py --scores
-  'on': '2026-09-16'
+  'on': '2026-09-18'
   upstream: Epoch AI — Capabilities & Benchmarking (CC-BY 4.0)
   upstream_url: https://epoch.ai/benchmarks
-  filter: modèles publiés à partir du 2025-09-16
-  since: '2025-09-16'
+  filter: modèles publiés à partir du 2025-09-18
+  since: '2025-09-18'
   warning: Fichier généré. Ne pas éditer à la main.
 scores:
 - benchmark: GPQA diamond
@@ -2289,7 +2289,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2FfFatyce8UvpN7ZivdmrhAy.eval
 - benchmark: GPQA diamond
   model_version: claude-sonnet-4-6_32K
-  model_base: claude-sonnet-4-6_32K
+  model_base: claude-sonnet-4-6
   effort: null
   cost_usd: null
   model_display: null
@@ -2300,7 +2300,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.02
-  protocol: null
+  protocol:
+    Budget de réflexion: 32K
   model_released_on: '2026-02-17'
   run_date: '2026-02-20'
   provenance: independent_run
@@ -2346,7 +2347,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2Fn4hyz75SVpwPEisKVVjvNg.eval
 - benchmark: GPQA diamond
   model_version: claude-opus-4-6_32K
-  model_base: claude-opus-4-6_32K
+  model_base: claude-opus-4-6
   effort: null
   cost_usd: null
   model_display: null
@@ -2357,7 +2358,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.0169
-  protocol: null
+  protocol:
+    Budget de réflexion: 32K
   model_released_on: '2026-02-05'
   run_date: '2026-02-06'
   provenance: independent_run
@@ -2365,7 +2367,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2FDiXCMhdfhcjaCUSzYWgACy.eval
 - benchmark: GPQA diamond
   model_version: claude-opus-4-6_64K
-  model_base: claude-opus-4-6_64K
+  model_base: claude-opus-4-6
   effort: null
   cost_usd: null
   model_display: null
@@ -2376,7 +2378,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.0194
-  protocol: null
+  protocol:
+    Budget de réflexion: 64K
   model_released_on: '2026-02-05'
   run_date: '2026-02-06'
   provenance: independent_run
@@ -2536,7 +2539,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2FoD4Jpoi75KWChqTPDaN9aB.eval
 - benchmark: GPQA diamond
   model_version: claude-opus-4-5-20251101_16K
-  model_base: claude-opus-4-5-20251101_16K
+  model_base: claude-opus-4-5-20251101
   effort: null
   cost_usd: null
   model_display: null
@@ -2547,7 +2550,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.0215
-  protocol: null
+  protocol:
+    Budget de réflexion: 16K
   model_released_on: '2025-11-24'
   run_date: '2025-11-25'
   provenance: independent_run
@@ -2555,7 +2559,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2FcXkPywkhy3NnW992ri73yG.eval
 - benchmark: GPQA diamond
   model_version: claude-opus-4-5-20251101_32K
-  model_base: claude-opus-4-5-20251101_32K
+  model_base: claude-opus-4-5-20251101
   effort: null
   cost_usd: null
   model_display: null
@@ -2566,7 +2570,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.0207
-  protocol: null
+  protocol:
+    Budget de réflexion: 32K
   model_released_on: '2025-11-24'
   run_date: '2025-11-24'
   provenance: independent_run
@@ -2669,7 +2674,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2FmuGecFpAg9wHd6gexWJ99L.eval
 - benchmark: GPQA diamond
   model_version: claude-sonnet-4-5-20250929_16K
-  model_base: claude-sonnet-4-5-20250929_16K
+  model_base: claude-sonnet-4-5-20250929
   effort: null
   cost_usd: null
   model_display: null
@@ -2680,7 +2685,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.0291
-  protocol: null
+  protocol:
+    Budget de réflexion: 16K
   model_released_on: '2025-09-29'
   run_date: '2025-10-28'
   provenance: independent_run
@@ -2688,7 +2694,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2FLkVuUxvsHNzpcg3sUiH7f3.eval
 - benchmark: GPQA diamond
   model_version: claude-sonnet-4-5-20250929_59K
-  model_base: claude-sonnet-4-5-20250929_59K
+  model_base: claude-sonnet-4-5-20250929
   effort: null
   cost_usd: null
   model_display: null
@@ -2699,7 +2705,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.0272
-  protocol: null
+  protocol:
+    Budget de réflexion: 59K
   model_released_on: '2025-09-29'
   run_date: '2025-10-28'
   provenance: independent_run
@@ -2707,7 +2714,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2FXaGuWDxPtqVvyxqdMncKFj.eval
 - benchmark: GPQA diamond
   model_version: claude-haiku-4-5-20251001_32K
-  model_base: claude-haiku-4-5-20251001_32K
+  model_base: claude-haiku-4-5-20251001
   effort: null
   cost_usd: null
   model_display: null
@@ -2718,7 +2725,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.0323
-  protocol: null
+  protocol:
+    Budget de réflexion: 32K
   model_released_on: '2025-10-15'
   run_date: '2025-10-22'
   provenance: independent_run
@@ -2726,7 +2734,7 @@ scores:
   evidence_url: https://logs.epoch.ai/inspect-viewer/36231d6d/viewer.html?log_file=https%3A%2F%2Flogs.epoch.ai%2Finspect_ai_logs%2FGEaAdb9UmoUFbEtBx7WzAR.eval
 - benchmark: GPQA diamond
   model_version: claude-sonnet-4-5-20250929_32K
-  model_base: claude-sonnet-4-5-20250929_32K
+  model_base: claude-sonnet-4-5-20250929
   effort: null
   cost_usd: null
   model_display: null
@@ -2737,7 +2745,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: 0.0276
-  protocol: null
+  protocol:
+    Budget de réflexion: 32K
   model_released_on: '2025-09-29'
   run_date: '2025-10-21'
   provenance: independent_run
@@ -4869,7 +4878,7 @@ scores:
   evidence_url: null
 - benchmark: APEX-Agents
   model_version: gpt-5.6-sol_promax
-  model_base: gpt-5.6-sol_promax
+  model_base: gpt-5.6-sol
   effort: null
   cost_usd: null
   model_display: GPT 5.6 Sol (Max + Pro)
@@ -9046,7 +9055,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-opus-4-6_120K
-  model_base: claude-opus-4-6_120K
+  model_base: claude-opus-4-6
   effort: null
   cost_usd: null
   model_display: Claude Opus 4.6 (120K, High)
@@ -9057,7 +9066,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 120K
   model_released_on: '2026-02-05'
   run_date: null
   provenance: independent_leaderboard
@@ -9065,7 +9075,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-opus-4-6_120K
-  model_base: claude-opus-4-6_120K
+  model_base: claude-opus-4-6
   effort: null
   cost_usd: null
   model_display: Claude Opus 4.6 (120K, Max)
@@ -9076,7 +9086,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 120K
   model_released_on: '2026-02-05'
   run_date: null
   provenance: independent_leaderboard
@@ -9217,7 +9228,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-opus-4-6_120K
-  model_base: claude-opus-4-6_120K
+  model_base: claude-opus-4-6
   effort: null
   cost_usd: null
   model_display: Claude Opus 4.6 (120K, Medium)
@@ -9228,7 +9239,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 120K
   model_released_on: '2026-02-05'
   run_date: null
   provenance: independent_leaderboard
@@ -9274,7 +9286,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-opus-4-6_120K
-  model_base: claude-opus-4-6_120K
+  model_base: claude-opus-4-6
   effort: null
   cost_usd: null
   model_display: Claude Opus 4.6 (120K, Low)
@@ -9285,7 +9297,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 120K
   model_released_on: '2026-02-05'
   run_date: null
   provenance: independent_leaderboard
@@ -9920,7 +9933,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-opus-4-5-20251101_64K
-  model_base: claude-opus-4-5-20251101_64K
+  model_base: claude-opus-4-5-20251101
   effort: null
   cost_usd: 2.4
   model_display: Opus 4.5 (Thinking, 64K)
@@ -9931,7 +9944,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 64K
   model_released_on: '2025-11-24'
   run_date: null
   provenance: independent_leaderboard
@@ -10167,7 +10181,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-opus-4-5-20251101_16K
-  model_base: claude-opus-4-5-20251101_16K
+  model_base: claude-opus-4-5-20251101
   effort: null
   cost_usd: 0.79
   model_display: Opus 4.5 (Thinking, 16K)
@@ -10178,7 +10192,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 16K
   model_released_on: '2025-11-24'
   run_date: null
   provenance: independent_leaderboard
@@ -10300,7 +10315,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-opus-4-5-20251101_8K
-  model_base: claude-opus-4-5-20251101_8K
+  model_base: claude-opus-4-5-20251101
   effort: null
   cost_usd: 0.48
   model_display: Opus 4.5 (Thinking, 8K)
@@ -10311,7 +10326,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 8K
   model_released_on: '2025-11-24'
   run_date: null
   provenance: independent_leaderboard
@@ -10338,7 +10354,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-sonnet-4-5-20250929_32K
-  model_base: claude-sonnet-4-5-20250929_32K
+  model_base: claude-sonnet-4-5-20250929
   effort: null
   cost_usd: 0.7589
   model_display: Claude Sonnet 4.5 (Thinking 32K)
@@ -10349,7 +10365,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 32K
   model_released_on: '2025-09-29'
   run_date: null
   provenance: independent_leaderboard
@@ -10528,7 +10545,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-sonnet-4-5-20250929_16K
-  model_base: claude-sonnet-4-5-20250929_16K
+  model_base: claude-sonnet-4-5-20250929
   effort: null
   cost_usd: 0.3499
   model_display: Claude Sonnet 4.5 (Thinking 16K)
@@ -10539,7 +10556,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 16K
   model_released_on: '2025-09-29'
   run_date: null
   provenance: independent_leaderboard
@@ -10547,7 +10565,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-sonnet-4-5-20250929_8K
-  model_base: claude-sonnet-4-5-20250929_8K
+  model_base: claude-sonnet-4-5-20250929
   effort: null
   cost_usd: 0.2349
   model_display: Claude Sonnet 4.5 (Thinking 8K)
@@ -10558,7 +10576,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 8K
   model_released_on: '2025-09-29'
   run_date: null
   provenance: independent_leaderboard
@@ -10604,7 +10623,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-sonnet-4-5-20250929_1K
-  model_base: claude-sonnet-4-5-20250929_1K
+  model_base: claude-sonnet-4-5-20250929
   effort: null
   cost_usd: 0.1424
   model_display: Claude Sonnet 4.5 (Thinking 1K)
@@ -10615,7 +10634,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 1K
   model_released_on: '2025-09-29'
   run_date: null
   provenance: independent_leaderboard
@@ -10794,7 +10814,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-haiku-4-5-20251001_32K
-  model_base: claude-haiku-4-5-20251001_32K
+  model_base: claude-haiku-4-5-20251001
   effort: null
   cost_usd: 0.3766
   model_display: Claude Haiku 4.5 (Thinking 32K)
@@ -10805,7 +10825,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 32K
   model_released_on: '2025-10-15'
   run_date: null
   provenance: independent_leaderboard
@@ -10908,7 +10929,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-haiku-4-5-20251001_16K
-  model_base: claude-haiku-4-5-20251001_16K
+  model_base: claude-haiku-4-5-20251001
   effort: null
   cost_usd: 0.1392
   model_display: Claude Haiku 4.5 (Thinking 16K)
@@ -10919,7 +10940,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 16K
   model_released_on: '2025-10-15'
   run_date: null
   provenance: independent_leaderboard
@@ -11003,7 +11025,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-haiku-4-5-20251001_8K
-  model_base: claude-haiku-4-5-20251001_8K
+  model_base: claude-haiku-4-5-20251001
   effort: null
   cost_usd: 0.0909
   model_display: Claude Haiku 4.5 (Thinking 8K)
@@ -11014,7 +11036,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 8K
   model_released_on: '2025-10-15'
   run_date: null
   provenance: independent_leaderboard
@@ -11098,7 +11121,7 @@ scores:
   evidence_url: null
 - benchmark: ARC-AGI-2
   model_version: claude-haiku-4-5-20251001_1K
-  model_base: claude-haiku-4-5-20251001_1K
+  model_base: claude-haiku-4-5-20251001
   effort: null
   cost_usd: 0.0471
   model_display: Claude Haiku 4.5 (Thinking 1K)
@@ -11109,7 +11132,8 @@ scores:
   unit: fraction
   raw_score: null
   stderr: null
-  protocol: null
+  protocol:
+    Budget de réflexion: 1K
   model_released_on: '2025-10-15'
   run_date: null
   provenance: independent_leaderboard
@@ -13112,7 +13136,7 @@ scores:
   evidence_url: null
 - benchmark: SciCode
   model_version: DeepSeek-V3.2-Exp_thinking
-  model_base: DeepSeek-V3.2-Exp_thinking
+  model_base: DeepSeek-V3.2-Exp
   effort: null
   cost_usd: null
   model_display: DeepSeek V3.2 (Reasoning)
@@ -16129,6 +16153,48 @@ scores:
   source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
   evidence_url: null
 - benchmark: Terminal-Bench 4.0
+  model_version: claude-fable-5-1_xhigh
+  model_base: claude-fable-5-1
+  effort: xhigh
+  cost_usd: 14.7638
+  model_display: Fable 5.1
+  organization: Anthropic
+  harness: Claude Code
+  harness_org: Anthropic
+  score: 0.5788
+  unit: fraction
+  raw_score: 57.88
+  stderr: 0.0171
+  protocol:
+    Trials: '330'
+    Pass@5: '0.7576'
+  model_released_on: '2026-09-01'
+  run_date: '2026-09-17'
+  provenance: independent_leaderboard
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
+  evidence_url: null
+- benchmark: Terminal-Bench 4.0
+  model_version: claude-fable-5-1_high
+  model_base: claude-fable-5-1
+  effort: high
+  cost_usd: 12.0769
+  model_display: Fable 5.1
+  organization: Anthropic
+  harness: Claude Code
+  harness_org: Anthropic
+  score: 0.5455
+  unit: fraction
+  raw_score: 54.55
+  stderr: 0.0176
+  protocol:
+    Trials: '330'
+    Pass@5: '0.7576'
+  model_released_on: '2026-09-01'
+  run_date: '2026-09-17'
+  provenance: independent_leaderboard
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
+  evidence_url: null
+- benchmark: Terminal-Bench 4.0
   model_version: gpt-6-astra_medium
   model_base: gpt-6-astra
   effort: medium
@@ -16146,6 +16212,48 @@ scores:
     Pass@5: '0.6667'
   model_released_on: '2026-09-03'
   run_date: '2026-09-03'
+  provenance: independent_leaderboard
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
+  evidence_url: null
+- benchmark: Terminal-Bench 4.0
+  model_version: claude-fable-5-1_medium
+  model_base: claude-fable-5-1
+  effort: medium
+  cost_usd: 8.5845
+  model_display: Fable 5.1
+  organization: Anthropic
+  harness: Claude Code
+  harness_org: Anthropic
+  score: 0.5394
+  unit: fraction
+  raw_score: 53.94
+  stderr: 0.0173
+  protocol:
+    Trials: '330'
+    Pass@5: '0.7121'
+  model_released_on: '2026-09-01'
+  run_date: '2026-09-17'
+  provenance: independent_leaderboard
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
+  evidence_url: null
+- benchmark: Terminal-Bench 4.0
+  model_version: claude-opus-5_xhigh
+  model_base: claude-opus-5
+  effort: xhigh
+  cost_usd: 18.4431
+  model_display: Opus 5
+  organization: Anthropic
+  harness: Claude Code
+  harness_org: Anthropic
+  score: 0.5394
+  unit: fraction
+  raw_score: 53.94
+  stderr: 0.0162
+  protocol:
+    Trials: '330'
+    Pass@5: '0.697'
+  model_released_on: '2026-07-24'
+  run_date: '2026-09-17'
   provenance: independent_leaderboard
   source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
   evidence_url: null
@@ -16192,6 +16300,48 @@ scores:
   source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
   evidence_url: null
 - benchmark: Terminal-Bench 4.0
+  model_version: claude-opus-5_high
+  model_base: claude-opus-5
+  effort: high
+  cost_usd: 14.1281
+  model_display: Opus 5
+  organization: Anthropic
+  harness: Claude Code
+  harness_org: Anthropic
+  score: 0.503
+  unit: fraction
+  raw_score: 50.3
+  stderr: 0.019
+  protocol:
+    Trials: '330'
+    Pass@5: '0.7424'
+  model_released_on: '2026-07-24'
+  run_date: '2026-09-17'
+  provenance: independent_leaderboard
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
+  evidence_url: null
+- benchmark: Terminal-Bench 4.0
+  model_version: claude-opus-5_medium
+  model_base: claude-opus-5
+  effort: medium
+  cost_usd: 9.6715
+  model_display: Opus 5
+  organization: Anthropic
+  harness: Claude Code
+  harness_org: Anthropic
+  score: 0.4485
+  unit: fraction
+  raw_score: 44.85
+  stderr: 0.0195
+  protocol:
+    Trials: '330'
+    Pass@5: '0.697'
+  model_released_on: '2026-07-24'
+  run_date: '2026-09-17'
+  provenance: independent_leaderboard
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
+  evidence_url: null
+- benchmark: Terminal-Bench 4.0
   model_version: claude-fable-5_max
   model_base: claude-fable-5
   effort: max
@@ -16209,6 +16359,27 @@ scores:
     Pass@5: '0.6818'
   model_released_on: '2026-06-09'
   run_date: '2026-08-27'
+  provenance: independent_leaderboard
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
+  evidence_url: null
+- benchmark: Terminal-Bench 4.0
+  model_version: claude-fable-5-1_low
+  model_base: claude-fable-5-1
+  effort: low
+  cost_usd: 7.1476
+  model_display: Fable 5.1
+  organization: Anthropic
+  harness: Claude Code
+  harness_org: Anthropic
+  score: 0.4333
+  unit: fraction
+  raw_score: 43.33
+  stderr: 0.0184
+  protocol:
+    Trials: '330'
+    Pass@5: '0.6515'
+  model_released_on: '2026-09-01'
+  run_date: '2026-09-17'
   provenance: independent_leaderboard
   source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
   evidence_url: null
@@ -16251,6 +16422,27 @@ scores:
     Pass@5: '0.6061'
   model_released_on: '2026-06-26'
   run_date: '2026-08-27'
+  provenance: independent_leaderboard
+  source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
+  evidence_url: null
+- benchmark: Terminal-Bench 4.0
+  model_version: claude-opus-5_low
+  model_base: claude-opus-5
+  effort: low
+  cost_usd: 7.2542
+  model_display: Opus 5
+  organization: Anthropic
+  harness: Claude Code
+  harness_org: Anthropic
+  score: 0.3485
+  unit: fraction
+  raw_score: 34.85
+  stderr: 0.0201
+  protocol:
+    Trials: '330'
+    Pass@5: '0.6212'
+  model_released_on: '2026-07-24'
+  run_date: '2026-09-17'
   provenance: independent_leaderboard
   source_url: https://www.tbench.ai/leaderboard/terminal-bench/4.0
   evidence_url: null

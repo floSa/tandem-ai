@@ -243,6 +243,18 @@ passe.
 
 ## Erreurs déjà commises, à ne pas refaire
 
+- **Ne pas lire la liste des harnais que les benchmarks nomment.** Un harnais
+  qui apparaît dans les mesures est utilisé pour de bon, qu'on en ait entendu
+  parler ou non. mini-SWE-agent, le plus mesuré du référentiel, est resté hors
+  catalogue plusieurs éditions ; OpenCode aussi, alors qu'il est le harnais
+  open-source le plus adopté. `worklist.py` réclame désormais chaque harnais
+  mesuré, et un test bloque tant qu'il n'est ni catalogué ni motivé dans
+  `ecartes` de `tools.yaml`.
+- **Écrire deux fois la même règle.** L'ingestion et la tarification découpaient
+  les identifiants de modèle différemment : `claude-opus-4-6_32K` comptait comme
+  un modèle distinct côté mesures et comme une variante côté tarifs. Un même
+  modèle occupait quatre lignes de la matrice de couverture, en chassant d'autres.
+  La règle vit maintenant dans `pipeline/variantes.py`, et nulle part ailleurs.
 - **Chercher les harnais par mots-clés plutôt que fournisseur par fournisseur.**
   En septembre 2026, ce raccourci avait laissé hors catalogue Google Antigravity
   et son CLI, Grok Build, Mistral Vibe et Muse Code — et laissé Gemini CLI y

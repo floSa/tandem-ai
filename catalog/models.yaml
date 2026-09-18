@@ -1,10 +1,10 @@
 _generated:
   by: pipeline/seed_catalog.py
-  'on': '2026-09-16'
+  'on': '2026-09-18'
   basis: Identités de modèles observées dans les données de benchmark Epoch AI (CC-BY).
   warning: 'AMORCE. Les champs tarifaires sont vides et marqués `unverified` : ils doivent être renseignés
     depuis la page /pricing officielle de chaque lab. Voir protocol/04_collecte_donnees.md.'
-  pricing_applied_on: '2026-09-16'
+  pricing_applied_on: '2026-09-18'
 models:
 - id: qwen3-max
   lab: alibaba
@@ -599,7 +599,7 @@ models:
   display_name: Claude Fable 5.1
   released_on: '2026-09-01'
   accessibility: API access
-  benchmark_records: 22
+  benchmark_records: 26
   epoch_model_versions:
   - claude-fable-5-1_high
   - claude-fable-5-1_low
@@ -1056,7 +1056,7 @@ models:
   display_name: Claude Opus 5
   released_on: '2026-07-24'
   accessibility: API access
-  benchmark_records: 31
+  benchmark_records: 35
   epoch_model_versions:
   - claude-opus-5
   - claude-opus-5_high

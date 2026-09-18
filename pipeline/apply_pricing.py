@@ -13,6 +13,8 @@ from datetime import date
 from pathlib import Path
 import yaml
 
+import variantes
+
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "catalog"
 
@@ -43,15 +45,10 @@ SOURCES = {
                   "Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double."),
 }
 
-# Suffixe de variante de protocole ajouté par Epoch à l'identifiant d'un modèle :
-# effort de raisonnement (`_high`), budget de réflexion (`_32K`), mode (`_thinking`).
-# Ce suffixe décrit un RÉGLAGE D'EXÉCUTION, pas une référence facturée distincte :
-# la variante consomme plus de tokens, au même tarif unitaire. Elle hérite donc du
-# tarif de son modèle de base — ce n'est pas une extrapolation, c'est le même SKU.
-VARIANT_SUFFIX = re.compile(
-    r"^(?P<base>.+)_(?P<variant>none|minimal|low|medium|high|xhigh|max|promax"
-    r"|thinking|nonthinking|unknown|\d+K)$"
-)
+# La règle de découpage vit dans pipeline/variantes.py : l'ingestion et la
+# tarification doivent lire un identifiant de la même façon. Elles en ont
+# entretenu deux versions divergentes, et un même modèle se dédoublait.
+VARIANT_SUFFIX = variantes.SUFFIXE
 
 
 def mark_no_public_price(models: list[dict], groups: list[dict]) -> int:
@@ -105,7 +102,7 @@ def propagate_variants(models: list[dict]) -> int:
         src = dict(base["pricing"]["source"])
         src["variant_of"] = base["id"]
         src["variant_note"] = (
-            f"`{mt.group('variant')}` est un réglage d'exécution du modèle "
+            f"`{mt.group('variante')}` est un réglage d'exécution du modèle "
             f"`{base['id']}`, pas une référence facturée distincte : même tarif unitaire."
         )
         p["source"] = src

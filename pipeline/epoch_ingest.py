@@ -32,6 +32,8 @@ from pathlib import Path
 
 import yaml
 
+import variantes
+
 import scope
 import tbench_ingest
 
@@ -300,8 +302,7 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str, force: bool = F
             rows.append({
                 "benchmark": bench["name"],
                 "model_version": mv,
-                "model_base": re.sub(r"_(max|xhigh|high|medium|low|minimal|none|unknown)$", "", mv)
-                               if mv else None,
+                "model_base": variantes.base(mv),
                 "effort": effort or None,
                 "cost_usd": cost,
                 "model_display": r.get("Name") or None,
@@ -314,7 +315,8 @@ def build_scores(z: zipfile.ZipFile, registry: dict, since: str, force: bool = F
                 "raw_score": round(val, 4) if scale != 1.0 else None,
                 "stderr": round(float(r[se_col]) * scale / se_div, 4)
                           if se_col and (r.get(se_col) or "").strip() else None,
-                "protocol": protocol or None,
+                "protocol": ({**(protocol or {}), "Budget de réflexion": variantes.budget(mv)}
+                             if variantes.budget(mv) else (protocol or None)),
                 "model_released_on": rel or None,
                 "run_date": (r.get("Run date") or r.get("Started at") or "")[:10] or None,
                 "provenance": bench["provenance"],

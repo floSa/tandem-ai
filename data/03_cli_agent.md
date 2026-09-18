@@ -3,7 +3,7 @@
 
 # Agents CLI
 
-10 outils au catalogue. Généré le 2026-09-17 depuis `catalog/tools.yaml`.
+13 outils au catalogue. Généré le 2026-09-18 depuis `catalog/tools.yaml`.
 
 ## Aider
 
@@ -57,6 +57,16 @@ Agent de codage en terminal, open-source sous Apache-2.0. Depuis juillet 2026, C
 
 Agent de codage et TUI plein écran de xAI, écrit en Rust. Sessions interactives ou headless, connexion par Agent Client Protocol, modèles personnalisés via fichier de configuration. Code de première partie sous Apache-2.0. Authentification par navigateur au premier lancement, ou clé XAI_API_KEY. macOS, Linux, Windows.
 
+## Hermes Agent
+
+- **Éditeur :** Nous Research
+- **Site :** [https://hermes-agent.nousresearch.com](https://hermes-agent.nousresearch.com)
+- **Dépôt :** [https://github.com/NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+- **Statut :** active
+- **Capacités :** BYOK, gratuit
+
+Agent de terminal open-source sous licence MIT, publié en février 2026. Interface TUI complète : édition multiligne, autocomplétion des commandes, historique, interruption et réorientation en cours de tâche, coût de session estimé en continu. Fonctionne avec tes propres clés d'API ou via le portail de l'éditeur. Windows, macOS, Linux, Docker, WSL2.
+
 ## Kimi Code CLI
 
 - **Éditeur :** Moonshot AI
@@ -94,6 +104,17 @@ Successeur du Chat, renommé Vibe le 28/05/2026. Plusieurs surfaces pour un mêm
 
 Agent de codage en terminal de Meta, installé par une commande bash unique. Plusieurs agents se coordonnent sur une même tâche, avec traçabilité complète du code produit. Tourne sur Muse Spark 1.3 et 1.2, co-entraînés avec le harnais.
 
+## OpenCode
+
+- **Éditeur :** Anomaly
+- **Site :** [https://opencode.ai](https://opencode.ai)
+- **Documentation :** [https://opencode.ai/docs/](https://opencode.ai/docs/)
+- **Dépôt :** [https://github.com/sst/opencode](https://github.com/sst/opencode)
+- **Statut :** active
+- **Capacités :** BYOK, modèles locaux, MCP, gratuit
+
+Agent de terminal open-source, décliné en application de bureau et en extension IDE. Agnostique du fournisseur : il se branche sur plus de 75 fournisseurs de modèles, ou sur un modèle local. Conversations stockées en SQLite sur le poste. Installation par npm, Homebrew, Chocolatey, Scoop, Mise ou Docker. L'éditeur propose « OpenCode Zen », une sélection de modèles qu'il a testés — sans obligation de l'utiliser.
+
 ## OpenHands
 
 - **Éditeur :** All-Hands-AI
@@ -113,4 +134,14 @@ Agent d'ingénierie autonome en sandbox Docker. Offre cloud managée payante.
 - **Capacités :** BYOK, gratuit
 
 Agent de codage en terminal, open-source sous Apache-2.0, qui édite directement les fichiers d'un projet réel.
+
+## mini-SWE-agent
+
+- **Éditeur :** SWE-agent (Princeton, Stanford)
+- **Site :** [https://swe-agent.com](https://swe-agent.com)
+- **Dépôt :** [https://github.com/SWE-agent/mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent)
+- **Statut :** active
+- **Capacités :** BYOK, gratuit
+
+Agent minimal — une centaine de lignes de Python — publié par l'équipe qui a construit SWE-bench. Il n'utilise que bash, sans outillage propre, et conserve un historique de messages linéaire : c'est ce qui le rend reproductible, et donc utilisable comme harnais de référence dans les évaluations. Revendique plus de 74 % sur SWE-bench verified. Sous licence MIT. Il remplace SWE-agent, que ses auteurs ne recommandent plus.
 

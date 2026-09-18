@@ -1,6 +1,6 @@
 _generated:
   by: pipeline/epoch_ingest.py --registry
-  'on': '2026-09-16'
+  'on': '2026-09-18'
   upstream: Epoch AI — Capabilities & Benchmarking (CC-BY 4.0)
   upstream_url: https://epoch.ai/benchmarks
   warning: Fichier généré. Éditer CURATION dans pipeline/epoch_ingest.py, pas ce fichier.
