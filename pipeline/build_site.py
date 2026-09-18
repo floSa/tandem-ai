@@ -114,11 +114,15 @@ def build_payload() -> dict:
         # Les blocs `verification` et les notes de conformité documentent le
         # travail d'audit, pas le sujet : ils restent dans le catalogue mais ne
         # sont pas embarqués dans la page.
+        # Un dépôt archivé ne se recommande pas. Les fiches restent au catalogue
+        # — savoir qu'un outil est mort a de la valeur pour qui tient la donnée —
+        # mais elles ne partent pas dans la page : les compteurs et les listes
+        # s'alignent ainsi d'eux-mêmes sur ce qui est encore vivant.
         "tools": [{k: v for k, v in t.items() if k not in ("verification",)}
                   | ({"compliance": {k2: v2 for k2, v2 in (t.get("compliance") or {}).items()
                                      if k2 not in ("note", "status", "verified_on")}}
                      if t.get("compliance") else {})
-                  for t in tools],
+                  for t in tools if t.get("status") != "retired"],
         "labs_full": [{"id": v["id"], "name": v["name"], "country": v["country"],
                        "pricing_url": v["pricing_url"], "docs": v.get("api_docs_url")}
                       for v in labs.values()],
@@ -1321,7 +1325,6 @@ const CATD={
  local_server:"Exécution des modèles sur la machine de l'utilisateur, exposée en API compatible OpenAI."};
 
 function carteOutil(t){
-  const mort=t.status==='retired';
   const caps=[t.byok&&'BYOK',t.local_models&&'modèles locaux',t.mcp&&'MCP',t.free&&'gratuit']
     .filter(Boolean);
   const pl=(t.plans||[]).map(id=>D.plans.find(p=>p.id===id)).filter(Boolean);
@@ -1329,8 +1332,8 @@ function carteOutil(t){
   const cf=[c.zero_data_retention&&'rétention zéro',c.self_hosted&&'auto-hébergeable',
     c.sso&&'SSO',c.audit_logs&&"journaux d'audit",
     c.data_residency==='local'&&'données locales'].filter(Boolean);
-  return `<div class="bc" ${mort?'style="opacity:.7"':''}>
-   <h3>${esc(t.name)} ${mort?'<span class="tag" style="border-color:var(--bad);color:var(--bad)">retiré</span>':''}</h3>
+  return `<div class="bc">
+   <h3>${esc(t.name)}</h3>
    <p style="color:var(--ink-3);font-size:11.5px;margin:2px 0 7px">${esc(t.vendor||'—')}</p>
    <p>${esc(t.note||'')}</p>
    ${caps.length?`<p style="margin-top:8px">${caps.map(x=>`<span class="tag">${x}</span>`).join(' ')}</p>`:''}
@@ -1436,7 +1439,9 @@ $('#meth').innerHTML=[
   "Un modèle non mesuré sur un benchmark reste vide. La vue Couverture montre les absences "+
   "en pointillés plutôt que de les interpoler."],
  ['Une disparition est une information',
-  "Un outil archivé passe en statut retiré, avec sa date. Il n'est pas supprimé du catalogue."],
+  "Un outil dont le dépôt est archivé sort de cette page : un projet qui n'est plus maintenu "+
+  "n'a pas à être recommandé. Sa fiche reste au catalogue, avec la date de son dernier commit — "+
+  "savoir qu'un outil est mort compte, mais c'est une information de suivi, pas de choix."],
 ].map(([t,d])=>`<div class="bc"><h3>${esc(t)}</h3><p>${d}</p></div>`).join('');
 
 // ── fiches benchmarks ─────────────────────────────────────────────────────

@@ -501,6 +501,24 @@ class TestScriptsExecutables(unittest.TestCase):
         self.assertIn("<title>", page)
         self.assertGreater(len(page), 100_000)
 
+    def test_la_page_ne_recommande_aucun_outil_mort(self):
+        """Un dépôt archivé ne se recommande pas.
+
+        La fiche reste au catalogue — c'est une information de suivi — mais elle
+        ne part pas dans la page, compteurs compris.
+        """
+        import json
+        html = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
+        brut = re.search(r'<script id="payload" type="application/json">(.*?)</script>',
+                         html, re.S).group(1)
+        embarques = json.loads(brut)["tools"]
+        morts = [t["id"] for t in embarques if t.get("status") == "retired"]
+        self.assertEqual(morts, [], "outils archivés embarqués dans la page")
+        noms = {t["name"] for t in load("tools.yaml")["tools"]
+                if t.get("status") == "retired"}
+        for n in noms:
+            self.assertNotIn(n, html, f"`{n}` est archivé et apparaît encore dans la page")
+
     def test_la_page_embarque_bien_ses_donnees(self):
         page = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
         for marque in ('id="payload"', "frontier", "Pareto", "coût mesuré"):
