@@ -1,6 +1,6 @@
 _generated:
   by: pipeline/seed_catalog.py
-  'on': '2026-09-18'
+  'on': '2026-09-24'
   basis: Identités de modèles observées dans les données de benchmark Epoch AI (CC-BY).
   warning: 'AMORCE. Les champs tarifaires sont vides et marqués `unverified` : ils doivent être renseignés
     depuis la page /pricing officielle de chaque lab. Voir protocol/04_collecte_donnees.md.'
@@ -25,7 +25,7 @@ labs:
   pricing_url: https://developers.openai.com/api/docs/pricing
   api_docs_url: https://platform.openai.com/docs/models
   console_url: https://platform.openai.com
-  model_count_tracked: 31
+  model_count_tracked: 28
   source:
     url: https://developers.openai.com/api/docs/pricing
     verified_on: '2026-09-15'
@@ -69,7 +69,7 @@ labs:
   pricing_url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
   api_docs_url: https://www.alibabacloud.com/help/en/model-studio
   console_url: https://modelstudio.console.alibabacloud.com
-  model_count_tracked: 26
+  model_count_tracked: 27
   source:
     url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
     verified_on: '2026-09-15'
@@ -83,7 +83,7 @@ labs:
   pricing_url: https://docs.mistral.ai/inference/pricing
   api_docs_url: https://docs.mistral.ai/getting-started/models/models_overview/
   console_url: https://console.mistral.ai
-  model_count_tracked: 5
+  model_count_tracked: 3
   source:
     url: https://docs.mistral.ai/inference/pricing
     verified_on: '2026-09-15'
@@ -97,7 +97,7 @@ labs:
   pricing_url: https://platform.kimi.ai/docs/pricing
   api_docs_url: https://platform.moonshot.ai/docs
   console_url: https://platform.moonshot.ai
-  model_count_tracked: 7
+  model_count_tracked: 6
   source:
     url: https://platform.kimi.ai/docs/pricing
     verified_on: '2026-09-15'
@@ -111,7 +111,7 @@ labs:
   pricing_url: https://docs.z.ai/guides/overview/pricing
   api_docs_url: https://docs.z.ai
   console_url: https://z.ai
-  model_count_tracked: 8
+  model_count_tracked: 7
   source:
     url: https://docs.z.ai/guides/overview/pricing
     verified_on: '2026-09-15'
@@ -125,7 +125,7 @@ labs:
   pricing_url: https://docs.x.ai/docs/models
   api_docs_url: https://docs.x.ai
   console_url: https://console.x.ai
-  model_count_tracked: 8
+  model_count_tracked: 7
   source:
     url: https://docs.x.ai/docs/models
     verified_on: '2026-09-15'
@@ -139,7 +139,7 @@ labs:
   pricing_url: https://developer.meta.com/ai/models/muse-spark/
   api_docs_url: https://llama.developer.meta.com/docs
   console_url: https://llama.developer.meta.com
-  model_count_tracked: 3
+  model_count_tracked: 4
   source:
     url: https://developer.meta.com/ai/models/muse-spark/
     verified_on: '2026-09-15'

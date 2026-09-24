@@ -1,10 +1,10 @@
 _generated:
   by: pipeline/seed_catalog.py
-  'on': '2026-09-18'
+  'on': '2026-09-24'
   basis: Identités de modèles observées dans les données de benchmark Epoch AI (CC-BY).
   warning: 'AMORCE. Les champs tarifaires sont vides et marqués `unverified` : ils doivent être renseignés
     depuis la page /pricing officielle de chaque lab. Voir protocol/04_collecte_donnees.md.'
-  pricing_applied_on: '2026-09-18'
+  pricing_applied_on: '2026-09-24'
 models:
 - id: qwen3-max
   lab: alibaba
@@ -112,7 +112,7 @@ models:
   display_name: Qwen3.5 397B-A17B
   released_on: '2026-02-13'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 1
+  benchmark_records: 2
   epoch_model_versions:
   - qwen3.5-397b-a17b
   status: active
@@ -204,7 +204,7 @@ models:
   display_name: Qwen3.5-Plus
   released_on: '2026-02-16'
   accessibility: null
-  benchmark_records: 2
+  benchmark_records: 1
   epoch_model_versions:
   - qwen3.5-plus
   status: active
@@ -454,6 +454,7 @@ models:
       status: official_pricing_page
       note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
         chère — elle n'est pas relevée ici.
+    promo_note: Remise temporaire de 20 % affichée par Alibaba au 24/09/2026.
     tier_note: 'Tarif 0-256k tokens. 256k-1M : 1,20 / 4,80.'
 - id: qwen3.7-plus_none
   lab: alibaba
@@ -471,6 +472,7 @@ models:
     input_per_1m: 0.4
     output_per_1m: 1.6
     currency: USD
+    promo_note: Remise temporaire de 20 % affichée par Alibaba au 24/09/2026.
     tier_note: 'Tarif 0-256k tokens. 256k-1M : 1,20 / 4,80.'
     source:
       url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
@@ -519,6 +521,28 @@ models:
   pricing:
     currency: USD
     source: *id006
+- id: qwen3.8-flash
+  lab: alibaba
+  display_name: Qwen3.8-Flash
+  released_on: '2026-08-26'
+  accessibility: API access
+  benchmark_records: 1
+  epoch_model_versions:
+  - qwen3.8-flash_xhigh
+  status: active
+  api_model_id: qwen3.8-flash
+  context_window: null
+  role: Flash économique
+  pricing:
+    input_per_1m: 0.15
+    output_per_1m: 0.47
+    currency: USD
+    source:
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: Grille région Singapour (International). La région Chine continentale est sensiblement moins
+        chère — elle n'est pas relevée ici.
 - id: qwen3.8-max
   lab: alibaba
   display_name: Qwen3.8-Max
@@ -544,11 +568,12 @@ models:
         chère — elle n'est pas relevée ici.
 - id: qwen3.8-max-0902
   lab: alibaba
-  display_name: Qwen3.8 Max (0902) (xhigh)
+  display_name: Qwen3.8 Max (0902) (unknown)
   released_on: '2026-09-01'
   accessibility: API access
-  benchmark_records: 1
+  benchmark_records: 2
   epoch_model_versions:
+  - qwen3.8-max-0902_unknown
   - qwen3.8-max-0902_xhigh
   status: active
   api_model_id: null
@@ -570,7 +595,7 @@ models:
   display_name: Claude Fable 5
   released_on: '2026-06-09'
   accessibility: API access
-  benchmark_records: 28
+  benchmark_records: 24
   epoch_model_versions:
   - claude-fable-5
   - claude-fable-5_high
@@ -599,7 +624,7 @@ models:
   display_name: Claude Fable 5.1
   released_on: '2026-09-01'
   accessibility: API access
-  benchmark_records: 26
+  benchmark_records: 29
   epoch_model_versions:
   - claude-fable-5-1_high
   - claude-fable-5-1_low
@@ -649,7 +674,7 @@ models:
   display_name: claude-haiku-4-5-20251001
   released_on: '2025-10-15'
   accessibility: API access
-  benchmark_records: 4
+  benchmark_records: 3
   epoch_model_versions:
   - claude-haiku-4-5-20251001
   - claude-haiku-4-5-20251001_low
@@ -778,12 +803,34 @@ models:
       variant_of: claude-haiku-4-5-20251001
       variant_note: '`8K` est un réglage d''exécution du modèle `claude-haiku-4-5-20251001`, pas une référence
         facturée distincte : même tarif unitaire.'
+- id: claude-opus-4-5
+  lab: anthropic
+  display_name: Claude Opus 4.5
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: claude-opus-4-5-20251101
+  context_window: 200000
+  role: null
+  pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
+    currency: USD
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
 - id: claude-opus-4-5-20251101
   lab: anthropic
   display_name: Claude Opus 4.5 (no thinking)
   released_on: '2025-11-24'
   accessibility: API access
-  benchmark_records: 8
+  benchmark_records: 7
   epoch_model_versions:
   - claude-opus-4-5-20251101
   - claude-opus-4-5-20251101_high
@@ -791,17 +838,20 @@ models:
   - claude-opus-4-5-20251101_unknown
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    source: &id007
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
-        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
-        aucun autre.'
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-opus-4-5
 - id: claude-opus-4-5-20251101_16K
   lab: anthropic
   display_name: Claude Opus 4.5 (16k thinking)
@@ -812,11 +862,23 @@ models:
   - claude-opus-4-5-20251101_16K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    source: *id007
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-opus-4-5
+      variant_of: claude-opus-4-5-20251101
+      variant_note: '`16K` est un réglage d''exécution du modèle `claude-opus-4-5-20251101`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-5-20251101_32K
   lab: anthropic
   display_name: Claude Opus 4.5 (32k thinking)
@@ -827,11 +889,23 @@ models:
   - claude-opus-4-5-20251101_32K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    source: *id007
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-opus-4-5
+      variant_of: claude-opus-4-5-20251101
+      variant_note: '`32K` est un réglage d''exécution du modèle `claude-opus-4-5-20251101`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-5-20251101_64K
   lab: anthropic
   display_name: Claude Opus 4.5 (64k thinking)
@@ -842,11 +916,23 @@ models:
   - claude-opus-4-5-20251101_64K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    source: *id007
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-opus-4-5
+      variant_of: claude-opus-4-5-20251101
+      variant_note: '`64K` est un réglage d''exécution du modèle `claude-opus-4-5-20251101`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-5-20251101_8K
   lab: anthropic
   display_name: Claude Opus 4.5 (8k thinking)
@@ -857,17 +943,29 @@ models:
   - claude-opus-4-5-20251101_8K
   status: active
   api_model_id: null
-  context_window: null
+  context_window: 200000
   role: null
   pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
     currency: USD
-    source: *id007
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+      priced_as: claude-opus-4-5
+      variant_of: claude-opus-4-5-20251101
+      variant_note: '`8K` est un réglage d''exécution du modèle `claude-opus-4-5-20251101`, pas une référence
+        facturée distincte : même tarif unitaire.'
 - id: claude-opus-4-6
   lab: anthropic
   display_name: Claude Opus 4.6
   released_on: '2026-02-05'
   accessibility: API access
-  benchmark_records: 10
+  benchmark_records: 9
   epoch_model_versions:
   - claude-opus-4-6
   - claude-opus-4-6_high
@@ -973,7 +1071,7 @@ models:
   display_name: Claude Opus 4.7
   released_on: '2026-04-16'
   accessibility: API access
-  benchmark_records: 24
+  benchmark_records: 19
   epoch_model_versions:
   - claude-opus-4-7
   - claude-opus-4-7_high
@@ -1002,7 +1100,7 @@ models:
   display_name: Claude Opus 4.8
   released_on: '2026-05-28'
   accessibility: API access
-  benchmark_records: 26
+  benchmark_records: 21
   epoch_model_versions:
   - claude-opus-4-8_high
   - claude-opus-4-8_low
@@ -1056,7 +1154,7 @@ models:
   display_name: Claude Opus 5
   released_on: '2026-07-24'
   accessibility: API access
-  benchmark_records: 35
+  benchmark_records: 36
   epoch_model_versions:
   - claude-opus-5
   - claude-opus-5_high
@@ -1074,6 +1172,28 @@ models:
     input_cached_per_1m: 0.5
     cache_write_per_1m: 6.25
     output_per_1m: 25.0
+    currency: USD
+    source:
+      url: https://claude.com/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
+- id: claude-opus-5-5
+  lab: anthropic
+  display_name: Claude Opus 5.5
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: claude-opus-5-5
+  context_window: 200000
+  role: Agentique et travail d'entreprise au quotidien
+  pricing:
+    input_per_1m: 4.0
+    input_cached_per_1m: 0.2
+    cache_write_per_1m: 5.0
+    output_per_1m: 20.0
     currency: USD
     source:
       url: https://claude.com/pricing
@@ -1268,7 +1388,7 @@ models:
   display_name: Claude Sonnet 4.6
   released_on: '2026-02-17'
   accessibility: API access
-  benchmark_records: 15
+  benchmark_records: 12
   epoch_model_versions:
   - claude-sonnet-4-6
   - claude-sonnet-4-6_high
@@ -1346,27 +1466,6 @@ models:
       verified_on: '2026-09-15'
       status: official_pricing_page
       note: anthropic.com/pricing redirige (301) vers claude.com/pricing.
-- id: DeepSeek-V3.1-Terminus
-  lab: deepseek
-  display_name: DeepSeek-V3.1-Terminus
-  released_on: '2025-09-22'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - DeepSeek-V3.1-Terminus
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
-        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
-        aucun autre.'
 - id: DeepSeek-V3.2-Exp_thinking
   lab: deepseek
   display_name: DeepSeek-V3.2-Exp_thinking
@@ -1430,7 +1529,7 @@ models:
       verified_on: '2026-09-15'
       status: official_pricing_page
       note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
-    offpeak:
+    offpeak: &id009
       input_per_1m: 0.15
       input_cached_per_1m: 0.003
       output_per_1m: 0.6
@@ -1496,7 +1595,7 @@ models:
   role: null
   pricing:
     currency: USD
-    source: &id008
+    source: &id007
       url: null
       verified_on: null
       status: no_public_price
@@ -1517,7 +1616,7 @@ models:
   role: null
   pricing:
     currency: USD
-    source: *id008
+    source: *id007
 - id: deepseek-v4-pro
   lab: deepseek
   display_name: DeepSeek V4-Pro
@@ -1542,7 +1641,7 @@ models:
       verified_on: '2026-09-15'
       status: official_pricing_page
       note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
-    offpeak: &id009
+    offpeak: &id008
       input_per_1m: 0.66
       input_cached_per_1m: 0.022
       output_per_1m: 1.98
@@ -1552,7 +1651,7 @@ models:
   display_name: DeepSeek V4 Pro 0813 (high)
   released_on: '2026-08-13'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 5
+  benchmark_records: 7
   epoch_model_versions:
   - deepseek-v4-pro-0813_high
   - deepseek-v4-pro-0813_low
@@ -1573,7 +1672,7 @@ models:
       status: official_pricing_page
       note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
       priced_as: deepseek-v4-pro
-    offpeak: *id009
+    offpeak: *id008
     peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
 - id: deepseek-v4-pro-0813_none
   lab: deepseek
@@ -1592,7 +1691,7 @@ models:
     input_cached_per_1m: 0.044
     output_per_1m: 3.96
     currency: USD
-    offpeak: *id009
+    offpeak: *id008
     peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
     source:
       url: https://api-docs.deepseek.com/quick_start/pricing
@@ -1620,7 +1719,7 @@ models:
     input_cached_per_1m: 0.044
     output_per_1m: 3.96
     currency: USD
-    offpeak: *id009
+    offpeak: *id008
     peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
     source:
       url: https://api-docs.deepseek.com/quick_start/pricing
@@ -1630,12 +1729,39 @@ models:
       variant_of: deepseek-v4-pro
       variant_note: '`none` est un réglage d''exécution du modèle `deepseek-v4-pro`, pas une référence
         facturée distincte : même tarif unitaire.'
+- id: deepseek-v4.1-flash
+  lab: deepseek
+  display_name: DeepSeek V4.1 Flash (high)
+  released_on: '2026-09-09'
+  accessibility: Open weights (unrestricted)
+  benchmark_records: 1
+  epoch_model_versions:
+  - deepseek-v4.1-flash_high
+  - deepseek-v4.1-flash_max
+  - deepseek-v4.1-flash_unknown
+  status: active
+  api_model_id: null
+  context_window: 1000000
+  role: Flash ultra-économique
+  pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.006
+    output_per_1m: 1.2
+    currency: USD
+    source:
+      url: https://api-docs.deepseek.com/quick_start/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Tarification dynamique : heures creuses à 50%. Montants = tarif de pointe.'
+      priced_as: deepseek-flash
+    offpeak: *id009
+    peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
 - id: deepseek/deepseek-v3.2
   lab: deepseek
   display_name: DeepSeek-V3.2 (Thinking; Novita)
   released_on: '2025-12-01'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 2
+  benchmark_records: 1
   epoch_model_versions:
   - deepseek/deepseek-v3.2
   status: active
@@ -1675,7 +1801,7 @@ models:
   display_name: Gemini 3 Flash Preview
   released_on: '2025-12-17'
   accessibility: API access
-  benchmark_records: 10
+  benchmark_records: 9
   epoch_model_versions:
   - gemini-3-flash-preview
   - gemini-3-flash-preview_high
@@ -1699,7 +1825,7 @@ models:
   display_name: Gemini 3 Pro Preview
   released_on: '2025-11-18'
   accessibility: API access
-  benchmark_records: 6
+  benchmark_records: 5
   epoch_model_versions:
   - gemini-3-pro-preview
   - gemini-3-pro-preview_low
@@ -1799,7 +1925,7 @@ models:
   display_name: Gemini 3.6 Flash
   released_on: '2026-07-21'
   accessibility: API access
-  benchmark_records: 15
+  benchmark_records: 13
   epoch_model_versions:
   - gemini-3.6-flash_high
   - gemini-3.6-flash_low
@@ -1827,7 +1953,7 @@ models:
   display_name: Gemini 3.7 Flash
   released_on: '2026-08-13'
   accessibility: API access
-  benchmark_records: 19
+  benchmark_records: 17
   epoch_model_versions:
   - gemini-3.7-flash_high
   - gemini-3.7-flash_low
@@ -1854,7 +1980,7 @@ models:
   display_name: Gemini 3.8 Flash
   released_on: '2026-09-02'
   accessibility: API access
-  benchmark_records: 9
+  benchmark_records: 15
   epoch_model_versions:
   - gemini-3.8-flash_high
   - gemini-3.8-flash_low
@@ -1964,7 +2090,7 @@ models:
   display_name: Muse Spark 1.1
   released_on: '2026-07-09'
   accessibility: API access
-  benchmark_records: 5
+  benchmark_records: 4
   epoch_model_versions:
   - muse-spark-1.1
   - muse-spark-1.1_high
@@ -1987,7 +2113,7 @@ models:
   display_name: Muse Spark 1.2
   released_on: '2026-08-05'
   accessibility: API access
-  benchmark_records: 5
+  benchmark_records: 6
   epoch_model_versions:
   - muse-spark-1.2
   - muse-spark-1.2_xhigh
@@ -2004,56 +2130,42 @@ models:
       note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
         — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
         aucun autre.'
-- id: MiniMax-M2
-  lab: minimax
-  display_name: MiniMax-M2
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
+- id: muse-spark-1.3
+  lab: meta
+  display_name: Muse Spark 1.3
+  released_on: '2026-09-02'
+  accessibility: API access
+  benchmark_records: 11
+  epoch_model_versions:
+  - muse-spark-1.3_high
+  - muse-spark-1.3_low
+  - muse-spark-1.3_max
+  - muse-spark-1.3_medium
+  - muse-spark-1.3_minimal
+  - muse-spark-1.3_unknown
+  - muse-spark-1.3_xhigh
   status: active
-  api_model_id: MiniMax-M2
-  context_window: null
-  role: null
+  api_model_id: muse-spark-1.3
+  context_window: 1000000
+  role: Flagship
   pricing:
-    input_per_1m: 0.3
-    input_cached_per_1m: 0.03
-    cache_write_per_1m: 0.375
-    output_per_1m: 1.2
+    input_per_1m: 1.25
+    input_cached_per_1m: 0.15
+    output_per_1m: 4.25
     currency: USD
     source:
-      url: https://platform.minimax.io/docs/guides/pricing-paygo
+      url: https://dev.meta.ai/models/muse-spark/
       verified_on: '2026-09-15'
       status: official_pricing_page
-      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
-- id: MiniMax-M2.1
-  lab: minimax
-  display_name: MiniMax-M2.1
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: MiniMax-M2.1
-  context_window: null
-  role: null
-  pricing:
-    input_per_1m: 0.3
-    input_cached_per_1m: 0.03
-    cache_write_per_1m: 0.375
-    output_per_1m: 1.2
-    currency: USD
-    source:
-      url: https://platform.minimax.io/docs/guides/pricing-paygo
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
+      note: developer.meta.com/ai/models/muse-spark redirige (302) vers dev.meta.ai.
+    tier_note: 'Variante `muse-spark-1.3-contributor` à 0,10 / 0,002 / 0,20 : les échanges y servent à
+      améliorer le produit.'
 - id: MiniMax-M2.5
   lab: minimax
   display_name: MiniMax-M2.5
   released_on: '2026-02-12'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 2
+  benchmark_records: 1
   epoch_model_versions:
   - MiniMax-M2.5
   status: active
@@ -2061,16 +2173,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 0.3
-    input_cached_per_1m: 0.03
-    cache_write_per_1m: 0.375
-    output_per_1m: 1.2
     currency: USD
     source:
-      url: https://platform.minimax.io/docs/guides/pricing-paygo
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: 'platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/.'
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: MiniMax-M2.7
   lab: minimax
   display_name: MiniMax-M2.7
@@ -2099,7 +2209,7 @@ models:
   display_name: MiniMax-M3
   released_on: '2026-06-01'
   accessibility: Open weights (restricted use)
-  benchmark_records: 4
+  benchmark_records: 5
   epoch_model_versions:
   - MiniMax-M3
   status: active
@@ -2153,46 +2263,6 @@ models:
   benchmark_records: 1
   epoch_model_versions:
   - devstral-small-2512
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle reste appelable un
-        temps mais a quitté la grille tarifaire.'
-- id: magistral-medium-2509
-  lab: mistral
-  display_name: Magistral Medium 1.2
-  released_on: '2025-09-18'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - magistral-medium-2509
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle reste appelable un
-        temps mais a quitté la grille tarifaire.'
-- id: magistral-small-2509
-  lab: mistral
-  display_name: Magistral Small 1.2
-  released_on: '2025-09-18'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 2
-  epoch_model_versions:
-  - magistral-small-2509
   status: active
   api_model_id: null
   context_window: null
@@ -2269,27 +2339,6 @@ models:
       status: no_public_price
       note: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
         Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'
-- id: kimi-k2-thinking
-  lab: moonshot
-  display_name: Kimi K2 Thinking
-  released_on: '2025-11-06'
-  accessibility: Open weights (restricted use)
-  benchmark_records: 1
-  epoch_model_versions:
-  - kimi-k2-thinking
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
-        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
-        aucun autre.'
 - id: kimi-k2-thinking-turbo
   lab: moonshot
   display_name: Kimi K2 Thinking Turbo
@@ -2316,7 +2365,7 @@ models:
   display_name: Kimi K2.5
   released_on: '2026-01-27'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 5
+  benchmark_records: 3
   epoch_model_versions:
   - kimi-k2.5
   status: active
@@ -2337,7 +2386,7 @@ models:
   display_name: Kimi K2.6
   released_on: '2026-04-20'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 6
+  benchmark_records: 4
   epoch_model_versions:
   - kimi-k2.6
   status: active
@@ -2359,7 +2408,7 @@ models:
   display_name: Kimi K2.7 Code
   released_on: '2026-06-12'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 6
+  benchmark_records: 5
   epoch_model_versions:
   - kimi-k2.7-code
   status: active
@@ -2381,7 +2430,7 @@ models:
   display_name: Kimi K3
   released_on: '2026-07-16'
   accessibility: Open weights (non-commercial)
-  benchmark_records: 18
+  benchmark_records: 15
   epoch_model_versions:
   - kimi-k3_high
   - kimi-k3_low
@@ -2401,26 +2450,6 @@ models:
       verified_on: '2026-09-15'
       status: official_pricing_page
       note: platform.moonshot.ai redirige vers platform.kimi.ai.
-- id: gpt-5-pro
-  lab: openai
-  display_name: GPT-5 Pro
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: gpt-5-pro
-  context_window: null
-  role: null
-  pricing:
-    input_per_1m: 15.0
-    output_per_1m: 120.0
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: gpt-5-pro-2025-10-06
   lab: openai
   display_name: GPT-5 Pro
@@ -2436,42 +2465,20 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 15.0
-    output_per_1m: 120.0
     currency: USD
     source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5-pro
-- id: gpt-5.1
-  lab: openai
-  display_name: GPT-5.1
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: gpt-5.1
-  context_window: null
-  role: null
-  pricing:
-    input_per_1m: 1.25
-    input_cached_per_1m: 0.125
-    output_per_1m: 10.0
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.1-2025-11-13
   lab: openai
   display_name: GPT-5.1 (high)
   released_on: '2025-11-13'
   accessibility: API access
-  benchmark_records: 11
+  benchmark_records: 9
   epoch_model_versions:
   - gpt-5.1-2025-11-13_high
   - gpt-5.1-2025-11-13_low
@@ -2482,16 +2489,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 1.25
-    input_cached_per_1m: 0.125
-    output_per_1m: 10.0
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.1
+    source: &id010
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.1-2025-11-13_none
   lab: openai
   display_name: GPT-5.1 (no thinking)
@@ -2505,67 +2510,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 1.25
-    input_cached_per_1m: 0.125
-    output_per_1m: 10.0
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.1
-      variant_of: gpt-5.1-2025-11-13
-      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.1-2025-11-13`, pas une référence
-        facturée distincte : même tarif unitaire.'
-- id: gpt-5.1-codex
-  lab: openai
-  display_name: GPT-5.1 Codex
-  released_on: '2025-11-12'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gpt-5.1-codex
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
-        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
-        aucun autre.'
-- id: gpt-5.2
-  lab: openai
-  display_name: GPT-5.2
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: gpt-5.2
-  context_window: null
-  role: null
-  pricing:
-    input_per_1m: 1.75
-    input_cached_per_1m: 0.175
-    output_per_1m: 14.0
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+    source: *id010
 - id: gpt-5.2-2025-12-11
   lab: openai
   display_name: GPT-5.2 (high)
   released_on: '2025-12-11'
   accessibility: API access
-  benchmark_records: 18
+  benchmark_records: 15
   epoch_model_versions:
   - gpt-5.2-2025-12-11_high
   - gpt-5.2-2025-12-11_low
@@ -2577,16 +2529,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 1.75
-    input_cached_per_1m: 0.175
-    output_per_1m: 14.0
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.2
+    source: &id011
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.2-2025-12-11_none
   lab: openai
   display_name: GPT-5.2 (none)
@@ -2600,60 +2550,8 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 1.75
-    input_cached_per_1m: 0.175
-    output_per_1m: 14.0
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.2
-      variant_of: gpt-5.2-2025-12-11
-      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.2-2025-12-11`, pas une référence
-        facturée distincte : même tarif unitaire.'
-- id: gpt-5.2-codex
-  lab: openai
-  display_name: GPT-5.2 Codex
-  released_on: '2025-12-18'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gpt-5.2-codex
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
-        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
-        aucun autre.'
-- id: gpt-5.2-pro
-  lab: openai
-  display_name: GPT-5.2 Pro
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: gpt-5.2-pro
-  context_window: null
-  role: null
-  pricing:
-    input_per_1m: 21.0
-    output_per_1m: 168.0
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+    source: *id011
 - id: gpt-5.2-pro-2025-12-11
   lab: openai
   display_name: GPT-5.2 Pro
@@ -2670,66 +2568,20 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 21.0
-    output_per_1m: 168.0
     currency: USD
     source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.2-pro
-- id: gpt-5.3-codex
-  lab: openai
-  display_name: GPT-5.3-Codex
-  released_on: '2026-02-05'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - gpt-5.3-codex
-  - gpt-5.3-codex_high
-  - gpt-5.3-codex_xhigh
-  status: active
-  api_model_id: gpt-5.3-codex
-  context_window: null
-  role: Dédié développement logiciel
-  pricing:
-    input_per_1m: 1.75
-    input_cached_per_1m: 0.175
-    output_per_1m: 14.0
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-- id: gpt-5.4
-  lab: openai
-  display_name: GPT-5.4
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: gpt-5.4
-  context_window: null
-  role: null
-  pricing:
-    input_per_1m: 2.5
-    input_cached_per_1m: 0.25
-    output_per_1m: 15.0
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.4-2026-03-05
   lab: openai
   display_name: GPT-5.4 (high)
   released_on: '2026-03-05'
   accessibility: API access
-  benchmark_records: 18
+  benchmark_records: 17
   epoch_model_versions:
   - gpt-5.4-2026-03-05_high
   - gpt-5.4-2026-03-05_low
@@ -2741,16 +2593,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 2.5
-    input_cached_per_1m: 0.25
-    output_per_1m: 15.0
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.4
+    source: &id012
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.4-2026-03-05_none
   lab: openai
   display_name: GPT-5.4 (none)
@@ -2764,46 +2614,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 2.5
-    input_cached_per_1m: 0.25
-    output_per_1m: 15.0
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.4
-      variant_of: gpt-5.4-2026-03-05
-      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.4-2026-03-05`, pas une référence
-        facturée distincte : même tarif unitaire.'
-- id: gpt-5.4-mini
-  lab: openai
-  display_name: GPT-5.4 mini
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: gpt-5.4-mini
-  context_window: null
-  role: null
-  pricing:
-    input_per_1m: 0.75
-    input_cached_per_1m: 0.075
-    output_per_1m: 4.5
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+    source: *id012
 - id: gpt-5.4-mini-2026-03-17
   lab: openai
   display_name: GPT-5.4 mini (high)
   released_on: '2026-03-17'
   accessibility: API access
-  benchmark_records: 10
+  benchmark_records: 9
   epoch_model_versions:
   - gpt-5.4-mini-2026-03-17_high
   - gpt-5.4-mini-2026-03-17_low
@@ -2815,16 +2633,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 0.75
-    input_cached_per_1m: 0.075
-    output_per_1m: 4.5
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.4-mini
+    source: &id013
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.4-mini-2026-03-17_none
   lab: openai
   display_name: GPT-5.4 mini (none)
@@ -2838,46 +2654,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 0.75
-    input_cached_per_1m: 0.075
-    output_per_1m: 4.5
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.4-mini
-      variant_of: gpt-5.4-mini-2026-03-17
-      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.4-mini-2026-03-17`, pas une référence
-        facturée distincte : même tarif unitaire.'
-- id: gpt-5.4-nano
-  lab: openai
-  display_name: GPT-5.4 nano
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: gpt-5.4-nano
-  context_window: null
-  role: null
-  pricing:
-    input_per_1m: 0.2
-    input_cached_per_1m: 0.02
-    output_per_1m: 1.25
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+    source: *id013
 - id: gpt-5.4-nano-2026-03-17
   lab: openai
   display_name: GPT-5.4 nano (high)
   released_on: '2026-03-17'
   accessibility: API access
-  benchmark_records: 9
+  benchmark_records: 8
   epoch_model_versions:
   - gpt-5.4-nano-2026-03-17_high
   - gpt-5.4-nano-2026-03-17_low
@@ -2889,16 +2673,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 0.2
-    input_cached_per_1m: 0.02
-    output_per_1m: 1.25
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.4-nano
+    source: &id014
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.4-nano-2026-03-17_none
   lab: openai
   display_name: GPT-5.4 nano (no thinking)
@@ -2912,39 +2694,8 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 0.2
-    input_cached_per_1m: 0.02
-    output_per_1m: 1.25
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.4-nano
-      variant_of: gpt-5.4-nano-2026-03-17
-      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.4-nano-2026-03-17`, pas une référence
-        facturée distincte : même tarif unitaire.'
-- id: gpt-5.4-pro
-  lab: openai
-  display_name: GPT-5.4 Pro
-  released_on: null
-  accessibility: null
-  benchmark_records: 0
-  epoch_model_versions: []
-  status: active
-  api_model_id: gpt-5.4-pro
-  context_window: null
-  role: Raisonnement extrême
-  pricing:
-    input_per_1m: 30.0
-    output_per_1m: 180.0
-    currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+    source: *id014
 - id: gpt-5.4-pro-2026-03-05
   lab: openai
   display_name: GPT-5.4 Pro
@@ -2959,21 +2710,20 @@ models:
   context_window: null
   role: Raisonnement extrême
   pricing:
-    input_per_1m: 30.0
-    output_per_1m: 180.0
     currency: USD
     source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      priced_as: gpt-5.4-pro
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.5
   lab: openai
   display_name: GPT-5.5
   released_on: '2026-04-23'
   accessibility: API access
-  benchmark_records: 27
+  benchmark_records: 22
   epoch_model_versions:
   - gpt-5.5_high
   - gpt-5.5_low
@@ -2985,15 +2735,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 5.0
-    input_cached_per_1m: 0.5
-    output_per_1m: 30.0
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+    source: &id015
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.5-instant
   lab: openai
   display_name: GPT-5.5 Instant
@@ -3050,14 +2799,14 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 30.0
-    output_per_1m: 180.0
     currency: USD
     source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+      url: null
+      verified_on: null
+      status: no_public_price
+      note: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+        — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+        a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
 - id: gpt-5.5-pro-pre-release
   lab: openai
   display_name: GPT-5.5 Pro (high)
@@ -3092,18 +2841,8 @@ models:
   context_window: null
   role: null
   pricing:
-    input_per_1m: 5.0
-    input_cached_per_1m: 0.5
-    output_per_1m: 30.0
     currency: USD
-    source:
-      url: https://developers.openai.com/api/docs/pricing
-      verified_on: '2026-09-15'
-      status: official_pricing_page
-      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
-      variant_of: gpt-5.5
-      variant_note: '`none` est un réglage d''exécution du modèle `gpt-5.5`, pas une référence facturée
-        distincte : même tarif unitaire.'
+    source: *id015
 - id: gpt-5.6-luna
   lab: openai
   display_name: GPT-5.6 Luna
@@ -3161,7 +2900,7 @@ models:
   display_name: GPT-5.6 Sol
   released_on: '2026-07-09'
   accessibility: API access
-  benchmark_records: 34
+  benchmark_records: 31
   epoch_model_versions:
   - gpt-5.6-sol_high
   - gpt-5.6-sol_low
@@ -3238,7 +2977,7 @@ models:
   display_name: GPT-5.6 Terra
   released_on: '2026-07-09'
   accessibility: API access
-  benchmark_records: 27
+  benchmark_records: 28
   epoch_model_versions:
   - gpt-5.6-terra_high
   - gpt-5.6-terra_low
@@ -3290,7 +3029,7 @@ models:
   display_name: GPT-6 Astra
   released_on: '2026-09-03'
   accessibility: API access
-  benchmark_records: 24
+  benchmark_records: 27
   epoch_model_versions:
   - gpt-6-astra_high
   - gpt-6-astra_low
@@ -3337,27 +3076,48 @@ models:
       variant_of: gpt-6-astra
       variant_note: '`none` est un réglage d''exécution du modèle `gpt-6-astra`, pas une référence facturée
         distincte : même tarif unitaire.'
-- id: grok-4-1
-  lab: xai
-  display_name: grok-4-1
-  released_on: '2025-11-17'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - grok-4-1
+- id: gpt-6-luna
+  lab: openai
+  display_name: GPT-6 Luna
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
   status: active
-  api_model_id: null
+  api_model_id: gpt-6-luna
+  context_window: null
+  role: Ultra-économique
+  pricing:
+    input_per_1m: 0.1
+    input_cached_per_1m: 0.01
+    output_per_1m: 0.5
+    currency: USD
+    source:
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
+- id: gpt-6-sol
+  lab: openai
+  display_name: GPT-6 Sol
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
+  status: active
+  api_model_id: gpt-6-sol
   context_window: null
   role: null
   pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    output_per_1m: 10.0
     currency: USD
     source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
-        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
-        aucun autre.'
+      url: https://developers.openai.com/api/docs/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: platform.openai.com/docs/pricing redirige vers developers.openai.com.
 - id: grok-4-20
   lab: xai
   display_name: grok-4-20
@@ -3366,27 +3126,6 @@ models:
   benchmark_records: 1
   epoch_model_versions:
   - grok-4-20
-  status: active
-  api_model_id: null
-  context_window: null
-  role: null
-  pricing:
-    currency: USD
-    source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
-        — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à
-        aucun autre.'
-- id: grok-4-fast
-  lab: xai
-  display_name: grok-4-fast
-  released_on: '2025-09-19'
-  accessibility: API access
-  benchmark_records: 1
-  epoch_model_versions:
-  - grok-4-fast
   status: active
   api_model_id: null
   context_window: null
@@ -3496,6 +3235,32 @@ models:
       status: official_pricing_page
       note: 'Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double.'
     tier_note: 'Tarif <200k tokens. Au-delà : 4,00 / 12,00.'
+- id: grok-4.7
+  lab: xai
+  display_name: Grok 4.7
+  released_on: '2026-09-21'
+  accessibility: API access
+  benchmark_records: 6
+  epoch_model_versions:
+  - grok-4.7_high
+  - grok-4.7_low
+  - grok-4.7_medium
+  - grok-4.7_unknown
+  - grok-4.7_xhigh
+  status: active
+  api_model_id: grok-4.7
+  context_window: 500000
+  role: Flagship
+  pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
+    currency: USD
+    source:
+      url: https://docs.x.ai/docs/models
+      verified_on: '2026-09-15'
+      status: official_pricing_page
+      note: 'Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double.'
+    tier_note: 'Tarif <200k tokens. Au-delà : 4,00 / 12,00.'
 - id: grok-build-0.1
   lab: xai
   display_name: Grok Build 0.1
@@ -3523,7 +3288,7 @@ models:
   display_name: GLM-4.7
   released_on: '2025-12-22'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 3
+  benchmark_records: 2
   epoch_model_versions:
   - glm-4.7
   status: active
@@ -3563,7 +3328,7 @@ models:
   display_name: GLM-5
   released_on: '2026-02-11'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 3
+  benchmark_records: 2
   epoch_model_versions:
   - glm-5
   status: active
@@ -3583,7 +3348,7 @@ models:
   display_name: GLM-5.1
   released_on: '2026-04-07'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 2
+  benchmark_records: 3
   epoch_model_versions:
   - glm-5.1
   status: active
@@ -3603,7 +3368,7 @@ models:
   display_name: GLM-5.2
   released_on: '2026-06-16'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 10
+  benchmark_records: 7
   epoch_model_versions:
   - glm-5.2_high
   - glm-5.2_low
@@ -3651,7 +3416,7 @@ models:
   display_name: GLM-5.3
   released_on: '2026-08-14'
   accessibility: API access
-  benchmark_records: 5
+  benchmark_records: 7
   epoch_model_versions:
   - glm-5.3_high
   - glm-5.3_max
@@ -3674,7 +3439,7 @@ models:
   display_name: GLM-5.3-Flash
   released_on: '2026-08-20'
   accessibility: Open weights (unrestricted)
-  benchmark_records: 4
+  benchmark_records: 6
   epoch_model_versions:
   - glm-5.3-flash_high
   - glm-5.3-flash_max
@@ -3692,23 +3457,22 @@ models:
       url: https://docs.z.ai/guides/overview/pricing
       verified_on: '2026-09-15'
       status: official_pricing_page
-- id: zai-org/glm-4.7
+- id: glm-5.3-flashx
   lab: zhipu
-  display_name: GLM-4.7 (Novita)
-  released_on: '2025-12-22'
-  accessibility: Open weights (unrestricted)
-  benchmark_records: 1
-  epoch_model_versions:
-  - zai-org/glm-4.7
+  display_name: GLM-5.3-FlashX
+  released_on: null
+  accessibility: null
+  benchmark_records: 0
+  epoch_model_versions: []
   status: active
-  api_model_id: null
+  api_model_id: glm-5.3-flashx
   context_window: null
   role: null
   pricing:
+    input_per_1m: 0.37
+    output_per_1m: 1.25
     currency: USD
     source:
-      url: null
-      verified_on: null
-      status: no_public_price
-      note: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
-        Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'
+      url: https://docs.z.ai/guides/overview/pricing
+      verified_on: '2026-09-15'
+      status: official_pricing_page

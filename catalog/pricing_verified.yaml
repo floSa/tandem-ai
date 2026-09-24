@@ -1,544 +1,629 @@
-# Tarifs API relevés sur sources primaires.
-#
-# Ce fichier est ÉDITÉ À LA MAIN — c'est le seul endroit où l'on saisit un tarif.
-# `pipeline/apply_pricing.py` le fusionne dans catalog/models.yaml.
-#
-# Règles :
-#   • montants en USD par 1M de tokens, jamais en euros (conversion au build)
-#   • `source.status: official_pricing_page` UNIQUEMENT si la page du fournisseur
-#     a été ouverte et lue. Sinon `community` et le validateur le signalera.
-#   • `verified_on` = date de consultation réelle de la page.
-#   • `applies_to` = identifiants du catalogue qui désignent LE MÊME modèle facturé
-#     (instantané daté type `gpt-5-2025-08-07`, alias de passerelle). Le tarif y est
-#     recopié à l'identique. N'y mettre JAMAIS un modèle simplement « proche ».
-#     Les variantes d'effort (`_none`, `_32K`, `_high`) sont propagées
-#     automatiquement par apply_pricing.py : ne pas les lister ici.
-#
-# La section `no_public_price` en fin de fichier recense les modèles qui n'auront
-# JAMAIS de tarif éditeur — et pourquoi. Sans elle, ils resteraient éternellement
-# « à relever » alors qu'il n'y a rien à relever.
-
 _meta:
-  campaign: "Vérification tarifaire septembre 2026"
-  # Date du relevé des pages tarifaires. `apply_pricing.py` la reporte sur chaque
-  # tarif : relancer le script ne re-date pas un tarif qui n'a pas été re-vérifié.
-  # Une entrée re-contrôlée isolément peut porter son propre `verified_on`.
-  verified_on: "2026-09-15"
-  operator: "pipeline + relevé manuel"
-
+  campaign: Vérification tarifaire septembre 2026 (2e passe, 24/09)
+  verified_on: '2026-09-15'
+  operator: pipeline + relevé manuel
 models:
-
-  # ── Anthropic ───────────────────────────────────────────────────────────
-  # Relevé sur https://claude.com/pricing (redirection depuis anthropic.com/pricing)
-  - id: claude-fable-5-1
-    lab: anthropic
-    display_name: Claude Fable 5.1
-    api_model_id: claude-fable-5-1
-    context_window: 200000
-    role: "Flagship raisonnement étendu"
-    pricing: {input_per_1m: 10.00, input_cached_per_1m: 0.25, cache_write_per_1m: 12.50, output_per_1m: 50.00}
-  - id: claude-opus-5
-    lab: anthropic
-    display_name: Claude Opus 5
-    api_model_id: claude-opus-5
-    context_window: 200000
-    role: "Flagship architecture et cas complexes"
-    pricing: {input_per_1m: 5.00, input_cached_per_1m: 0.50, cache_write_per_1m: 6.25, output_per_1m: 25.00}
-  - id: claude-sonnet-5
-    lab: anthropic
-    display_name: Claude Sonnet 5
-    api_model_id: claude-sonnet-5
-    context_window: 200000
-    role: "Référence ingénierie logicielle"
-    pricing: {input_per_1m: 2.00, input_cached_per_1m: 0.20, cache_write_per_1m: 2.50, output_per_1m: 10.00}
-  - id: claude-haiku-4-5
-    lab: anthropic
-    display_name: Claude Haiku 4.5
-    api_model_id: claude-haiku-4-5-20251001
-    context_window: 200000
-    role: "Flash / économique"
-    pricing: {input_per_1m: 1.00, input_cached_per_1m: 0.10, cache_write_per_1m: 1.25, output_per_1m: 5.00}
-    applies_to: [claude-haiku-4-5-20251001]
-  # Générations précédentes, toujours facturées (section « Legacy models »).
-  - id: claude-fable-5
-    lab: anthropic
-    display_name: Claude Fable 5
-    api_model_id: claude-fable-5
-    context_window: 200000
-    pricing: {input_per_1m: 10.00, input_cached_per_1m: 1.00, cache_write_per_1m: 12.50, output_per_1m: 50.00}
-  - id: claude-opus-4-8
-    lab: anthropic
-    display_name: Claude Opus 4.8
-    api_model_id: claude-opus-4-8
-    context_window: 200000
-    pricing: {input_per_1m: 5.00, input_cached_per_1m: 0.50, cache_write_per_1m: 6.25, output_per_1m: 25.00}
-  - id: claude-opus-4-7
-    lab: anthropic
-    display_name: Claude Opus 4.7
-    api_model_id: claude-opus-4-7
-    context_window: 200000
-    pricing: {input_per_1m: 5.00, input_cached_per_1m: 0.50, cache_write_per_1m: 6.25, output_per_1m: 25.00}
-  - id: claude-opus-4-6
-    lab: anthropic
-    display_name: Claude Opus 4.6
-    api_model_id: claude-opus-4-6
-    context_window: 200000
-    pricing: {input_per_1m: 5.00, input_cached_per_1m: 0.50, cache_write_per_1m: 6.25, output_per_1m: 25.00}
-  - id: claude-sonnet-4-6
-    lab: anthropic
-    display_name: Claude Sonnet 4.6
-    api_model_id: claude-sonnet-4-6
-    context_window: 200000
-    pricing: {input_per_1m: 3.00, input_cached_per_1m: 0.30, cache_write_per_1m: 3.75, output_per_1m: 15.00}
-  - id: claude-sonnet-4-5
-    lab: anthropic
-    display_name: Claude Sonnet 4.5
-    api_model_id: claude-sonnet-4-5-20250929
-    context_window: 200000
-    pricing: {input_per_1m: 3.00, input_cached_per_1m: 0.30, cache_write_per_1m: 3.75, output_per_1m: 15.00}
-    applies_to: [claude-sonnet-4-5-20250929]
-  # NON TARIFÉ ICI : claude-opus-4-5-20251101 et claude-mythos-preview-early
-  # n'apparaissent pas sur claude.com/pricing au 15/09/2026. Laissés vides.
-
-  # ── OpenAI ──────────────────────────────────────────────────────────────
-  # Relevé sur https://developers.openai.com/api/docs/pricing
-  - id: gpt-6-astra
-    lab: openai
-    display_name: GPT-6 Astra
-    api_model_id: gpt-6-astra
-    role: "Flagship nouvelle génération"
-    pricing: {input_per_1m: 10.00, input_cached_per_1m: 1.00, output_per_1m: 50.00}
-  - id: gpt-5.6-sol
-    lab: openai
-    display_name: GPT-5.6 Sol
-    api_model_id: gpt-5.6-sol
-    role: "Haute capacité multimodal"
-    pricing: {input_per_1m: 4.00, input_cached_per_1m: 0.40, output_per_1m: 20.00}
-  - id: gpt-5.6-terra
-    lab: openai
-    display_name: GPT-5.6 Terra
-    api_model_id: gpt-5.6-terra
-    role: "Équilibré développeur"
-    pricing: {input_per_1m: 2.00, input_cached_per_1m: 0.20, output_per_1m: 12.00}
-  - id: gpt-5.6-luna
-    lab: openai
-    display_name: GPT-5.6 Luna
-    api_model_id: gpt-5.6-luna
-    role: "Flash / économique"
-    pricing: {input_per_1m: 0.20, input_cached_per_1m: 0.02, output_per_1m: 1.20}
-  - id: gpt-5.5
-    lab: openai
-    display_name: GPT-5.5
-    api_model_id: gpt-5.5
-    pricing: {input_per_1m: 5.00, input_cached_per_1m: 0.50, output_per_1m: 30.00}
-  - id: gpt-5.5-pro
-    lab: openai
-    display_name: GPT-5.5 Pro
-    api_model_id: gpt-5.5-pro
-    pricing: {input_per_1m: 30.00, output_per_1m: 180.00}
-  - id: gpt-5.4
-    lab: openai
-    display_name: GPT-5.4
-    api_model_id: gpt-5.4
-    pricing: {input_per_1m: 2.50, input_cached_per_1m: 0.25, output_per_1m: 15.00}
-    applies_to: [gpt-5.4-2026-03-05]
-  - id: gpt-5.4-mini
-    lab: openai
-    display_name: GPT-5.4 mini
-    api_model_id: gpt-5.4-mini
-    pricing: {input_per_1m: 0.75, input_cached_per_1m: 0.075, output_per_1m: 4.50}
-    applies_to: [gpt-5.4-mini-2026-03-17]
-  - id: gpt-5.4-nano
-    lab: openai
-    display_name: GPT-5.4 nano
-    api_model_id: gpt-5.4-nano
-    pricing: {input_per_1m: 0.20, input_cached_per_1m: 0.02, output_per_1m: 1.25}
-    applies_to: [gpt-5.4-nano-2026-03-17]
-  - id: gpt-5.4-pro
-    lab: openai
-    display_name: GPT-5.4 Pro
-    api_model_id: gpt-5.4-pro
-    role: "Raisonnement extrême"
-    pricing: {input_per_1m: 30.00, output_per_1m: 180.00}
-    applies_to: [gpt-5.4-pro-2026-03-05]
-  - id: gpt-5.3-codex
-    lab: openai
-    display_name: GPT-5.3-Codex
-    api_model_id: gpt-5.3-codex
-    role: "Dédié développement logiciel"
-    pricing: {input_per_1m: 1.75, input_cached_per_1m: 0.175, output_per_1m: 14.00}
-  - id: gpt-5.2
-    lab: openai
-    display_name: GPT-5.2
-    api_model_id: gpt-5.2
-    pricing: {input_per_1m: 1.75, input_cached_per_1m: 0.175, output_per_1m: 14.00}
-    applies_to: [gpt-5.2-2025-12-11]
-  - id: gpt-5.2-pro
-    lab: openai
-    display_name: GPT-5.2 Pro
-    api_model_id: gpt-5.2-pro
-    pricing: {input_per_1m: 21.00, output_per_1m: 168.00}
-    applies_to: [gpt-5.2-pro-2025-12-11]
-  - id: gpt-5.1
-    lab: openai
-    display_name: GPT-5.1
-    api_model_id: gpt-5.1
-    pricing: {input_per_1m: 1.25, input_cached_per_1m: 0.125, output_per_1m: 10.00}
-    applies_to: [gpt-5.1-2025-11-13]
-  - id: gpt-5-pro
-    lab: openai
-    display_name: GPT-5 Pro
-    api_model_id: gpt-5-pro
-    pricing: {input_per_1m: 15.00, output_per_1m: 120.00}
-    applies_to: [gpt-5-pro-2025-10-06]
-  # NON TARIFÉ ICI : les déclinaisons Codex antérieures à 5.3, les pré-versions
-  # (`-pre-release`, `-instant`) et les poids ouverts gpt-oss n'ont pas de ligne
-  # sur developers.openai.com/api/docs/pricing au 15/09/2026.
-
-  # ── Google DeepMind ─────────────────────────────────────────────────────
-  # Relevé sur https://ai.google.dev/gemini-api/docs/pricing
-  # ATTENTION : plusieurs modèles sont en tarif promotionnel jusqu'au 31/12/2026.
-  - id: gemini-3.8-flash
-    lab: google
-    display_name: Gemini 3.8 Flash
-    api_model_id: gemini-3.8-flash
-    role: "Flash génération courante"
-    pricing: {input_per_1m: 0.75, input_cached_per_1m: 0.075, output_per_1m: 3.75}
-    promo_until: "2026-12-31"
-    promo_note: "Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50."
-  - id: gemini-3.5-flash
-    lab: google
-    display_name: Gemini 3.5 Flash
-    api_model_id: gemini-3.5-flash
-    pricing: {input_per_1m: 1.50, input_cached_per_1m: 0.15, output_per_1m: 9.00}
-  - id: gemini-3.5-flash-lite
-    lab: google
-    display_name: Gemini 3.5 Flash-Lite
-    api_model_id: gemini-3.5-flash-lite
-    role: "Ultra-économique"
-    pricing: {input_per_1m: 0.30, input_cached_per_1m: 0.03, output_per_1m: 2.50}
-  - id: gemini-3.1-pro-preview
-    lab: google
-    display_name: Gemini 3.1 Pro
-    api_model_id: gemini-3.1-pro-preview
-    context_window: 200000
-    role: "Flagship raisonnement"
-    pricing: {input_per_1m: 2.00, input_cached_per_1m: 0.20, output_per_1m: 12.00}
-    tier_note: "Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00."
-  - id: gemini-3.7-flash
-    lab: google
-    display_name: Gemini 3.7 Flash
-    api_model_id: gemini-3.7-flash
-    pricing: {input_per_1m: 0.75, input_cached_per_1m: 0.075, output_per_1m: 3.75}
-    promo_until: "2026-12-31"
-    promo_note: "Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50."
-  - id: gemini-3.6-flash
-    lab: google
-    display_name: Gemini 3.6 Flash
-    api_model_id: gemini-3.6-flash
-    pricing: {input_per_1m: 0.75, input_cached_per_1m: 0.075, output_per_1m: 3.75}
-    promo_until: "2026-12-31"
-    promo_note: "Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50."
-  # NON TARIFÉ ICI : gemini-3-pro-preview, gemini-3-flash-preview et
-  # gemini-3-deep-think-preview ne figurent plus sur la page au 15/09/2026 ;
-  # les Gemma sont des poids ouverts sans tarif d'API.
-
-  # ── DeepSeek ────────────────────────────────────────────────────────────
-  # Relevé sur https://api-docs.deepseek.com/quick_start/pricing
-  # Tarification dynamique : heures creuses = 50% du tarif de pointe.
-  # Les montants ci-dessous sont les tarifs de POINTE (le pire cas).
-  - id: deepseek-v4-pro
-    lab: deepseek
-    display_name: DeepSeek V4-Pro
-    api_model_id: deepseek-v4-pro
-    context_window: 1000000
-    role: "Flagship raisonnement"
-    pricing: {input_per_1m: 1.32, input_cached_per_1m: 0.044, output_per_1m: 3.96}
-    offpeak: {input_per_1m: 0.66, input_cached_per_1m: 0.022, output_per_1m: 1.98}
-    peak_hours_utc: "01:00-04:00 et 06:00-10:00, lundi-vendredi"
-    applies_to: [deepseek-v4-pro-0813]
-  - id: deepseek-flash
-    lab: deepseek
-    display_name: DeepSeek Flash
-    api_model_id: deepseek-flash
-    context_window: 1000000
-    role: "Flash ultra-économique"
-    pricing: {input_per_1m: 0.30, input_cached_per_1m: 0.006, output_per_1m: 1.20}
-    offpeak: {input_per_1m: 0.15, input_cached_per_1m: 0.003, output_per_1m: 0.60}
-    peak_hours_utc: "01:00-04:00 et 06:00-10:00, lundi-vendredi"
-
-  # ── Moonshot / Kimi ─────────────────────────────────────────────────────
-  # Relevé sur https://platform.kimi.ai/docs/pricing
-  - id: kimi-k3
-    lab: moonshot
-    display_name: Kimi K3
-    api_model_id: kimi-k3
-    context_window: 1048576
-    role: "Flagship multimodal"
-    pricing: {input_per_1m: 3.00, input_cached_per_1m: 0.30, output_per_1m: 15.00}
-  - id: kimi-k2.7-code
-    lab: moonshot
-    display_name: Kimi K2.7 Code
-    api_model_id: kimi-k2.7-code
-    context_window: 262144
-    role: "Dédié développement logiciel"
-    pricing: {input_per_1m: 0.95, input_cached_per_1m: 0.19, output_per_1m: 4.00}
-  - id: kimi-k2.6
-    lab: moonshot
-    display_name: Kimi K2.6
-    api_model_id: kimi-k2.6
-    context_window: 262144
-    pricing: {input_per_1m: 0.95, input_cached_per_1m: 0.16, output_per_1m: 4.00}
-
-  # ── Alibaba / Qwen ──────────────────────────────────────────────────────
-  # Relevé sur https://www.alibabacloud.com/help/en/model-studio/model-pricing
-  # Grille RÉGION SINGAPOUR (International). La région Chine continentale est
-  # nettement moins chère : elle n'est pas relevée ici, donc pas comparable.
-  # Beaucoup de modèles sont à paliers : le tarif porté est celui du PREMIER
-  # palier, les suivants sont dans `tier_note`.
-  - id: qwen3.8-max
-    lab: alibaba
-    display_name: Qwen3.8-Max
-    api_model_id: qwen3.8-max
-    role: "Flagship"
-    pricing: {input_per_1m: 2.00, output_per_1m: 6.00}
-    applies_to: [qwen3.8-max-0902]
-  - id: qwen3.7-max
-    lab: alibaba
-    display_name: Qwen3.7-Max
-    api_model_id: qwen3.7-max
-    pricing: {input_per_1m: 2.50, output_per_1m: 7.50}
-  - id: qwen3.6-max-preview
-    lab: alibaba
-    display_name: Qwen3.6-Max (preview)
-    api_model_id: qwen3.6-max-preview
-    pricing: {input_per_1m: 1.30, output_per_1m: 7.80}
-    tier_note: "Tarif 0-128k tokens. 128k-256k : 2,00 / 12,00."
-  - id: qwen3-max
-    lab: alibaba
-    display_name: Qwen3-Max
-    api_model_id: qwen3-max
-    pricing: {input_per_1m: 1.20, output_per_1m: 6.00}
-    tier_note: "Tarif 0-32k tokens. 32k-128k : 2,40 / 12,00. 128k-256k : 3,00 / 15,00."
-    applies_to: [qwen3-max-2025-09-23]
-  - id: qwen3.7-plus
-    lab: alibaba
-    display_name: Qwen3.7-Plus
-    api_model_id: qwen3.7-plus
-    role: "Généraliste équilibré"
-    pricing: {input_per_1m: 0.40, output_per_1m: 1.60}
-    tier_note: "Tarif 0-256k tokens. 256k-1M : 1,20 / 4,80."
-  - id: qwen3.6-plus
-    lab: alibaba
-    display_name: Qwen3.6-Plus
-    api_model_id: qwen3.6-plus
-    pricing: {input_per_1m: 0.50, output_per_1m: 3.00}
-    tier_note: "Tarif 0-256k tokens. 256k-1M : 2,00 / 6,00."
-  - id: qwen3.5-plus
-    lab: alibaba
-    display_name: Qwen3.5-Plus
-    api_model_id: qwen3.5-plus
-    pricing: {input_per_1m: 0.40, output_per_1m: 2.40}
-    tier_note: "Tarif 0-256k tokens. 256k-1M : 0,50 / 3,00."
-  - id: qwen3.7-flash
-    lab: alibaba
-    display_name: Qwen3.7-Flash
-    api_model_id: qwen3.7-flash
-    role: "Flash économique"
-    pricing: {input_per_1m: 0.03, output_per_1m: 0.13}
-    tier_note: "Tarif 0-32k tokens. 32k-256k : 0,10 / 0,40. 256k-1M : 0,20 / 0,80."
-  - id: qwen3.6-flash
-    lab: alibaba
-    display_name: Qwen3.6-Flash
-    api_model_id: qwen3.6-flash
-    pricing: {input_per_1m: 0.25, output_per_1m: 1.50}
-    tier_note: "Tarif 0-256k tokens. 256k-1M : 1,00 / 4,00."
-  - id: qwen3.5-flash
-    lab: alibaba
-    display_name: Qwen3.5-Flash
-    api_model_id: qwen3.5-flash
-    pricing: {input_per_1m: 0.10, output_per_1m: 0.40}
-  # NON TARIFÉ ICI : les Qwen à poids ouverts (Qwen3-235B, Qwen3-Coder-480B,
-  # qwen3.x-27b / -35b-a3b / -397b-a17b / -9B…) n'ont pas de ligne Model Studio —
-  # ils se facturent chez l'hébergeur qui les sert, pas chez Alibaba.
-
-  # ── Mistral AI ──────────────────────────────────────────────────────────
-  # Grille : https://docs.mistral.ai/inference/pricing
-  # Correspondance nom commercial → identifiant versionné :
-  # https://docs.mistral.ai/models/overview
-  - id: mistral-medium-2604
-    lab: mistral
-    display_name: Mistral Medium 3.5
-    api_model_id: mistral-medium-2604
-    role: "Généraliste équilibré"
-    pricing: {input_per_1m: 1.50, output_per_1m: 7.50}
-  - id: mistral-large-2512
-    lab: mistral
-    display_name: Mistral Large 3
-    api_model_id: mistral-large-2512
-    role: "Flagship"
-    pricing: {input_per_1m: 0.50, output_per_1m: 1.50}
-  # NON TARIFÉ ICI : Magistral et Devstral sont marqués DÉPRÉCIÉS dans la doc
-  # Mistral et n'ont plus de ligne dans la grille tarifaire ; mistral-small-2506,
-  # mistral-small-3.2-2506 et mistral-medium-2508 n'y figurent pas non plus.
-
-  # ── MiniMax ─────────────────────────────────────────────────────────────
-  # Relevé sur https://platform.minimax.io/docs/guides/pricing-paygo
-  # (platform.minimax.io/docs/price est en 404.)
-  - id: MiniMax-M3
-    lab: minimax
-    display_name: MiniMax-M3
-    api_model_id: MiniMax-M3
-    context_window: 1000000
-    role: "Flagship agentique"
-    pricing: {input_per_1m: 0.30, input_cached_per_1m: 0.06, output_per_1m: 1.20}
-    tier_note: "Tarif ≤512k tokens d'entrée. Au-delà : 0,60 / 0,12 / 2,40."
-    promo_note: "MiniMax affiche « permanent 50% off » : ce tarif est promotionnel."
-  - id: MiniMax-M2.7
-    lab: minimax
-    display_name: MiniMax-M2.7
-    api_model_id: MiniMax-M2.7
-    pricing: {input_per_1m: 0.30, input_cached_per_1m: 0.06, cache_write_per_1m: 0.375, output_per_1m: 1.20}
-  - id: MiniMax-M2.5
-    lab: minimax
-    display_name: MiniMax-M2.5
-    api_model_id: MiniMax-M2.5
-    pricing: {input_per_1m: 0.30, input_cached_per_1m: 0.03, cache_write_per_1m: 0.375, output_per_1m: 1.20}
-  - id: MiniMax-M2.1
-    lab: minimax
-    display_name: MiniMax-M2.1
-    api_model_id: MiniMax-M2.1
-    pricing: {input_per_1m: 0.30, input_cached_per_1m: 0.03, cache_write_per_1m: 0.375, output_per_1m: 1.20}
-  - id: MiniMax-M2
-    lab: minimax
-    display_name: MiniMax-M2
-    api_model_id: MiniMax-M2
-    pricing: {input_per_1m: 0.30, input_cached_per_1m: 0.03, cache_write_per_1m: 0.375, output_per_1m: 1.20}
-
-  # ── xAI ─────────────────────────────────────────────────────────────────
-  # Relevé sur https://docs.x.ai/docs/models
-  # Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double.
-  - id: grok-4.6
-    lab: xai
-    display_name: Grok 4.6
-    api_model_id: grok-4.6
-    role: "Flagship"
-    pricing: {input_per_1m: 2.00, output_per_1m: 6.00}
-    tier_note: "Tarif <200k tokens. Au-delà : 4,00 / 12,00."
-  - id: grok-4.5
-    lab: xai
-    display_name: Grok 4.5
-    api_model_id: grok-4.5
-    pricing: {input_per_1m: 2.00, output_per_1m: 6.00}
-    tier_note: "Tarif <200k tokens. Au-delà : 4,00 / 12,00."
-  - id: grok-4.3
-    lab: xai
-    display_name: Grok 4.3
-    api_model_id: grok-4.3
-    pricing: {input_per_1m: 1.25, output_per_1m: 2.50}
-    tier_note: "Tarif <200k tokens. Au-delà : 2,50 / 5,00."
-  - id: grok-4.20-0309-reasoning
-    lab: xai
-    display_name: Grok 4.20 (raisonnement)
-    api_model_id: grok-4.20-0309-reasoning
-    pricing: {input_per_1m: 1.25, output_per_1m: 2.50}
-    tier_note: "Tarif <200k tokens. Au-delà : 2,50 / 5,00."
-  - id: grok-build-0.1
-    lab: xai
-    display_name: Grok Build 0.1
-    api_model_id: grok-build-0.1
-    role: "Dédié développement logiciel"
-    pricing: {input_per_1m: 1.00, output_per_1m: 2.00}
-    tier_note: "Tarif <200k tokens. Au-delà : 2,00 / 4,00."
-  # NON TARIFÉ ICI : grok-3-mini, grok-4-0709, grok-4-1, grok-4-20 et grok-4-fast
-  # ne figurent plus dans la grille au 15/09/2026.
-
-  # ── Zhipu / Z.ai ────────────────────────────────────────────────────────
-  # Relevé sur https://docs.z.ai/guides/overview/pricing
-  - id: glm-5.3
-    lab: zhipu
-    display_name: GLM-5.3
-    api_model_id: glm-5.3
-    role: "Flagship raisonnement et code"
-    pricing: {input_per_1m: 1.40, input_cached_per_1m: 0.26, output_per_1m: 4.40}
-  - id: glm-5.3-flash
-    lab: zhipu
-    display_name: GLM-5.3-Flash
-    api_model_id: glm-5.3-flash
-    role: "Flash économique"
-    pricing: {input_per_1m: 0.15, input_cached_per_1m: 0.03, output_per_1m: 0.50}
-  - id: glm-4.7-flash
-    lab: zhipu
-    display_name: GLM-4.7-Flash
-    api_model_id: glm-4.7-flash
-    role: "Gratuit avec limites de débit"
-    pricing: {input_per_1m: 0.0, input_cached_per_1m: 0.0, output_per_1m: 0.0}
-  - id: glm-5.2
-    lab: zhipu
-    display_name: GLM-5.2
-    api_model_id: glm-5.2
-    pricing: {input_per_1m: 1.40, output_per_1m: 4.40}
-  - id: glm-5.1
-    lab: zhipu
-    display_name: GLM-5.1
-    api_model_id: glm-5.1
-    pricing: {input_per_1m: 1.40, output_per_1m: 4.40}
-  - id: glm-5
-    lab: zhipu
-    display_name: GLM-5
-    api_model_id: glm-5
-    pricing: {input_per_1m: 1.00, output_per_1m: 3.20}
-  - id: glm-4.7
-    lab: zhipu
-    display_name: GLM-4.7
-    api_model_id: glm-4.7
-    pricing: {input_per_1m: 0.60, output_per_1m: 2.20}
-
-# ════════════════════════════════════════════════════════════════════════════
-# MODÈLES SANS TARIF ÉDITEUR
-#
-# Ces modèles n'ont pas de tarif à relever : ils ne figurent pas dans la grille
-# de leur laboratoire, et n'y figureront pas. Les distinguer des modèles « pas
-# encore relevés » est la seule façon de rendre le reste-à-faire honnête.
-#
-# Chaque entrée porte l'identifiant du MODÈLE DE BASE : les variantes d'effort
-# (`_none`, `_32K`…) héritent automatiquement de la classification.
-# ════════════════════════════════════════════════════════════════════════════
+- id: claude-fable-5-1
+  lab: anthropic
+  display_name: Claude Fable 5.1
+  api_model_id: claude-fable-5-1
+  context_window: 200000
+  role: Flagship raisonnement étendu
+  pricing:
+    input_per_1m: 10.0
+    input_cached_per_1m: 0.25
+    cache_write_per_1m: 12.5
+    output_per_1m: 50.0
+- id: claude-opus-5
+  lab: anthropic
+  display_name: Claude Opus 5
+  api_model_id: claude-opus-5
+  context_window: 200000
+  role: Flagship architecture et cas complexes
+  pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
+- id: claude-sonnet-5
+  lab: anthropic
+  display_name: Claude Sonnet 5
+  api_model_id: claude-sonnet-5
+  context_window: 200000
+  role: Référence ingénierie logicielle
+  pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    cache_write_per_1m: 2.5
+    output_per_1m: 10.0
+- id: claude-haiku-4-5
+  lab: anthropic
+  display_name: Claude Haiku 4.5
+  api_model_id: claude-haiku-4-5-20251001
+  context_window: 200000
+  role: Flash / économique
+  pricing:
+    input_per_1m: 1.0
+    input_cached_per_1m: 0.1
+    cache_write_per_1m: 1.25
+    output_per_1m: 5.0
+  applies_to:
+  - claude-haiku-4-5-20251001
+- id: claude-fable-5
+  lab: anthropic
+  display_name: Claude Fable 5
+  api_model_id: claude-fable-5
+  context_window: 200000
+  pricing:
+    input_per_1m: 10.0
+    input_cached_per_1m: 1.0
+    cache_write_per_1m: 12.5
+    output_per_1m: 50.0
+- id: claude-opus-4-8
+  lab: anthropic
+  display_name: Claude Opus 4.8
+  api_model_id: claude-opus-4-8
+  context_window: 200000
+  pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
+- id: claude-opus-4-7
+  lab: anthropic
+  display_name: Claude Opus 4.7
+  api_model_id: claude-opus-4-7
+  context_window: 200000
+  pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
+- id: claude-opus-4-6
+  lab: anthropic
+  display_name: Claude Opus 4.6
+  api_model_id: claude-opus-4-6
+  context_window: 200000
+  pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
+- id: claude-sonnet-4-6
+  lab: anthropic
+  display_name: Claude Sonnet 4.6
+  api_model_id: claude-sonnet-4-6
+  context_window: 200000
+  pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
+- id: claude-sonnet-4-5
+  lab: anthropic
+  display_name: Claude Sonnet 4.5
+  api_model_id: claude-sonnet-4-5-20250929
+  context_window: 200000
+  pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    cache_write_per_1m: 3.75
+    output_per_1m: 15.0
+  applies_to:
+  - claude-sonnet-4-5-20250929
+- id: gpt-6-astra
+  lab: openai
+  display_name: GPT-6 Astra
+  api_model_id: gpt-6-astra
+  role: Flagship nouvelle génération
+  pricing:
+    input_per_1m: 10.0
+    input_cached_per_1m: 1.0
+    output_per_1m: 50.0
+- id: gpt-5.6-sol
+  lab: openai
+  display_name: GPT-5.6 Sol
+  api_model_id: gpt-5.6-sol
+  role: Haute capacité multimodal
+  pricing:
+    input_per_1m: 4.0
+    input_cached_per_1m: 0.4
+    output_per_1m: 20.0
+- id: gpt-5.6-terra
+  lab: openai
+  display_name: GPT-5.6 Terra
+  api_model_id: gpt-5.6-terra
+  role: Équilibré développeur
+  pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    output_per_1m: 12.0
+- id: gpt-5.6-luna
+  lab: openai
+  display_name: GPT-5.6 Luna
+  api_model_id: gpt-5.6-luna
+  role: Flash / économique
+  pricing:
+    input_per_1m: 0.2
+    input_cached_per_1m: 0.02
+    output_per_1m: 1.2
+- id: gemini-3.8-flash
+  lab: google
+  display_name: Gemini 3.8 Flash
+  api_model_id: gemini-3.8-flash
+  role: Flash génération courante
+  pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 3.75
+  promo_until: '2026-12-31'
+  promo_note: 'Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50.'
+- id: gemini-3.5-flash
+  lab: google
+  display_name: Gemini 3.5 Flash
+  api_model_id: gemini-3.5-flash
+  pricing:
+    input_per_1m: 1.5
+    input_cached_per_1m: 0.15
+    output_per_1m: 9.0
+- id: gemini-3.5-flash-lite
+  lab: google
+  display_name: Gemini 3.5 Flash-Lite
+  api_model_id: gemini-3.5-flash-lite
+  role: Ultra-économique
+  pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.03
+    output_per_1m: 2.5
+- id: gemini-3.1-pro-preview
+  lab: google
+  display_name: Gemini 3.1 Pro
+  api_model_id: gemini-3.1-pro-preview
+  context_window: 200000
+  role: Flagship raisonnement
+  pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    output_per_1m: 12.0
+  tier_note: 'Tarif ≤200k tokens. Au-delà : 4,00 / 0,40 / 18,00.'
+- id: gemini-3.7-flash
+  lab: google
+  display_name: Gemini 3.7 Flash
+  api_model_id: gemini-3.7-flash
+  pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 3.75
+  promo_until: '2026-12-31'
+  promo_note: 'Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50.'
+- id: gemini-3.6-flash
+  lab: google
+  display_name: Gemini 3.6 Flash
+  api_model_id: gemini-3.6-flash
+  pricing:
+    input_per_1m: 0.75
+    input_cached_per_1m: 0.075
+    output_per_1m: 3.75
+  promo_until: '2026-12-31'
+  promo_note: 'Tarif promotionnel. Au-delà : 1,50 / 0,15 / 7,50.'
+- id: deepseek-v4-pro
+  lab: deepseek
+  display_name: DeepSeek V4-Pro
+  api_model_id: deepseek-v4-pro
+  context_window: 1000000
+  role: Flagship raisonnement
+  pricing:
+    input_per_1m: 1.32
+    input_cached_per_1m: 0.044
+    output_per_1m: 3.96
+  offpeak:
+    input_per_1m: 0.66
+    input_cached_per_1m: 0.022
+    output_per_1m: 1.98
+  peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
+  applies_to:
+  - deepseek-v4-pro-0813
+- id: deepseek-flash
+  lab: deepseek
+  display_name: DeepSeek Flash
+  api_model_id: deepseek-flash
+  context_window: 1000000
+  role: Flash ultra-économique
+  pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.006
+    output_per_1m: 1.2
+  offpeak:
+    input_per_1m: 0.15
+    input_cached_per_1m: 0.003
+    output_per_1m: 0.6
+  peak_hours_utc: 01:00-04:00 et 06:00-10:00, lundi-vendredi
+  applies_to:
+  - deepseek-v4.1-flash
+- id: kimi-k3
+  lab: moonshot
+  display_name: Kimi K3
+  api_model_id: kimi-k3
+  context_window: 1048576
+  role: Flagship multimodal
+  pricing:
+    input_per_1m: 3.0
+    input_cached_per_1m: 0.3
+    output_per_1m: 15.0
+- id: kimi-k2.7-code
+  lab: moonshot
+  display_name: Kimi K2.7 Code
+  api_model_id: kimi-k2.7-code
+  context_window: 262144
+  role: Dédié développement logiciel
+  pricing:
+    input_per_1m: 0.95
+    input_cached_per_1m: 0.19
+    output_per_1m: 4.0
+- id: kimi-k2.6
+  lab: moonshot
+  display_name: Kimi K2.6
+  api_model_id: kimi-k2.6
+  context_window: 262144
+  pricing:
+    input_per_1m: 0.95
+    input_cached_per_1m: 0.16
+    output_per_1m: 4.0
+- id: qwen3.8-max
+  lab: alibaba
+  display_name: Qwen3.8-Max
+  api_model_id: qwen3.8-max
+  role: Flagship
+  pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
+  applies_to:
+  - qwen3.8-max-0902
+- id: qwen3.7-max
+  lab: alibaba
+  display_name: Qwen3.7-Max
+  api_model_id: qwen3.7-max
+  pricing:
+    input_per_1m: 2.5
+    output_per_1m: 7.5
+- id: qwen3.6-max-preview
+  lab: alibaba
+  display_name: Qwen3.6-Max (preview)
+  api_model_id: qwen3.6-max-preview
+  pricing:
+    input_per_1m: 1.3
+    output_per_1m: 7.8
+  tier_note: 'Tarif 0-128k tokens. 128k-256k : 2,00 / 12,00.'
+- id: qwen3-max
+  lab: alibaba
+  display_name: Qwen3-Max
+  api_model_id: qwen3-max
+  pricing:
+    input_per_1m: 1.2
+    output_per_1m: 6.0
+  tier_note: 'Tarif 0-32k tokens. 32k-128k : 2,40 / 12,00. 128k-256k : 3,00 / 15,00.'
+  applies_to:
+  - qwen3-max-2025-09-23
+- id: qwen3.7-plus
+  lab: alibaba
+  display_name: Qwen3.7-Plus
+  api_model_id: qwen3.7-plus
+  role: Généraliste équilibré
+  pricing:
+    input_per_1m: 0.4
+    output_per_1m: 1.6
+  tier_note: 'Tarif 0-256k tokens. 256k-1M : 1,20 / 4,80.'
+  promo_note: Remise temporaire de 20 % affichée par Alibaba au 24/09/2026.
+- id: qwen3.6-plus
+  lab: alibaba
+  display_name: Qwen3.6-Plus
+  api_model_id: qwen3.6-plus
+  pricing:
+    input_per_1m: 0.5
+    output_per_1m: 3.0
+  tier_note: 'Tarif 0-256k tokens. 256k-1M : 2,00 / 6,00.'
+- id: qwen3.5-plus
+  lab: alibaba
+  display_name: Qwen3.5-Plus
+  api_model_id: qwen3.5-plus
+  pricing:
+    input_per_1m: 0.4
+    output_per_1m: 2.4
+  tier_note: 'Tarif 0-256k tokens. 256k-1M : 0,50 / 3,00.'
+- id: qwen3.7-flash
+  lab: alibaba
+  display_name: Qwen3.7-Flash
+  api_model_id: qwen3.7-flash
+  role: Flash économique
+  pricing:
+    input_per_1m: 0.03
+    output_per_1m: 0.13
+  tier_note: 'Tarif 0-32k tokens. 32k-256k : 0,10 / 0,40. 256k-1M : 0,20 / 0,80.'
+- id: qwen3.6-flash
+  lab: alibaba
+  display_name: Qwen3.6-Flash
+  api_model_id: qwen3.6-flash
+  pricing:
+    input_per_1m: 0.25
+    output_per_1m: 1.5
+  tier_note: 'Tarif 0-256k tokens. 256k-1M : 1,00 / 4,00.'
+- id: qwen3.5-flash
+  lab: alibaba
+  display_name: Qwen3.5-Flash
+  api_model_id: qwen3.5-flash
+  pricing:
+    input_per_1m: 0.1
+    output_per_1m: 0.4
+- id: mistral-medium-2604
+  lab: mistral
+  display_name: Mistral Medium 3.5
+  api_model_id: mistral-medium-2604
+  role: Généraliste équilibré
+  pricing:
+    input_per_1m: 1.5
+    output_per_1m: 7.5
+- id: mistral-large-2512
+  lab: mistral
+  display_name: Mistral Large 3
+  api_model_id: mistral-large-2512
+  role: Flagship
+  pricing:
+    input_per_1m: 0.5
+    output_per_1m: 1.5
+- id: MiniMax-M3
+  lab: minimax
+  display_name: MiniMax-M3
+  api_model_id: MiniMax-M3
+  context_window: 1000000
+  role: Flagship agentique
+  pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.06
+    output_per_1m: 1.2
+  tier_note: 'Tarif ≤512k tokens d''entrée. Au-delà : 0,60 / 0,12 / 2,40.'
+  promo_note: 'MiniMax affiche « permanent 50% off » : ce tarif est promotionnel.'
+- id: MiniMax-M2.7
+  lab: minimax
+  display_name: MiniMax-M2.7
+  api_model_id: MiniMax-M2.7
+  pricing:
+    input_per_1m: 0.3
+    input_cached_per_1m: 0.06
+    cache_write_per_1m: 0.375
+    output_per_1m: 1.2
+- id: grok-4.6
+  lab: xai
+  display_name: Grok 4.6
+  api_model_id: grok-4.6
+  role: Flagship
+  pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
+  tier_note: 'Tarif <200k tokens. Au-delà : 4,00 / 12,00.'
+- id: grok-4.5
+  lab: xai
+  display_name: Grok 4.5
+  api_model_id: grok-4.5
+  pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
+  tier_note: 'Tarif <200k tokens. Au-delà : 4,00 / 12,00.'
+- id: grok-4.3
+  lab: xai
+  display_name: Grok 4.3
+  api_model_id: grok-4.3
+  pricing:
+    input_per_1m: 1.25
+    output_per_1m: 2.5
+  tier_note: 'Tarif <200k tokens. Au-delà : 2,50 / 5,00.'
+- id: grok-4.20-0309-reasoning
+  lab: xai
+  display_name: Grok 4.20 (raisonnement)
+  api_model_id: grok-4.20-0309-reasoning
+  pricing:
+    input_per_1m: 1.25
+    output_per_1m: 2.5
+  tier_note: 'Tarif <200k tokens. Au-delà : 2,50 / 5,00.'
+- id: grok-build-0.1
+  lab: xai
+  display_name: Grok Build 0.1
+  api_model_id: grok-build-0.1
+  role: Dédié développement logiciel
+  pricing:
+    input_per_1m: 1.0
+    output_per_1m: 2.0
+  tier_note: 'Tarif <200k tokens. Au-delà : 2,00 / 4,00.'
+- id: glm-5.3
+  lab: zhipu
+  display_name: GLM-5.3
+  api_model_id: glm-5.3
+  role: Flagship raisonnement et code
+  pricing:
+    input_per_1m: 1.4
+    input_cached_per_1m: 0.26
+    output_per_1m: 4.4
+- id: glm-5.3-flash
+  lab: zhipu
+  display_name: GLM-5.3-Flash
+  api_model_id: glm-5.3-flash
+  role: Flash économique
+  pricing:
+    input_per_1m: 0.15
+    input_cached_per_1m: 0.03
+    output_per_1m: 0.5
+- id: glm-4.7-flash
+  lab: zhipu
+  display_name: GLM-4.7-Flash
+  api_model_id: glm-4.7-flash
+  role: Gratuit avec limites de débit
+  pricing:
+    input_per_1m: 0.0
+    input_cached_per_1m: 0.0
+    output_per_1m: 0.0
+- id: glm-5.2
+  lab: zhipu
+  display_name: GLM-5.2
+  api_model_id: glm-5.2
+  pricing:
+    input_per_1m: 1.4
+    output_per_1m: 4.4
+- id: glm-5.1
+  lab: zhipu
+  display_name: GLM-5.1
+  api_model_id: glm-5.1
+  pricing:
+    input_per_1m: 1.4
+    output_per_1m: 4.4
+- id: glm-5
+  lab: zhipu
+  display_name: GLM-5
+  api_model_id: glm-5
+  pricing:
+    input_per_1m: 1.0
+    output_per_1m: 3.2
+- id: glm-4.7
+  lab: zhipu
+  display_name: GLM-4.7
+  api_model_id: glm-4.7
+  pricing:
+    input_per_1m: 0.6
+    output_per_1m: 2.2
+- id: claude-opus-5-5
+  lab: anthropic
+  display_name: Claude Opus 5.5
+  api_model_id: claude-opus-5-5
+  context_window: 200000
+  role: Agentique et travail d'entreprise au quotidien
+  pricing:
+    input_per_1m: 4.0
+    input_cached_per_1m: 0.2
+    cache_write_per_1m: 5.0
+    output_per_1m: 20.0
+- id: claude-opus-4-5
+  lab: anthropic
+  display_name: Claude Opus 4.5
+  api_model_id: claude-opus-4-5-20251101
+  context_window: 200000
+  pricing:
+    input_per_1m: 5.0
+    input_cached_per_1m: 0.5
+    cache_write_per_1m: 6.25
+    output_per_1m: 25.0
+  applies_to:
+  - claude-opus-4-5-20251101
+- id: gpt-6-sol
+  lab: openai
+  display_name: GPT-6 Sol
+  api_model_id: gpt-6-sol
+  pricing:
+    input_per_1m: 2.0
+    input_cached_per_1m: 0.2
+    output_per_1m: 10.0
+- id: gpt-6-luna
+  lab: openai
+  display_name: GPT-6 Luna
+  api_model_id: gpt-6-luna
+  role: Ultra-économique
+  pricing:
+    input_per_1m: 0.1
+    input_cached_per_1m: 0.01
+    output_per_1m: 0.5
+- id: grok-4.7
+  lab: xai
+  display_name: Grok 4.7
+  api_model_id: grok-4.7
+  context_window: 500000
+  role: Flagship
+  pricing:
+    input_per_1m: 2.0
+    output_per_1m: 6.0
+  tier_note: 'Tarif <200k tokens. Au-delà : 4,00 / 12,00.'
+- id: qwen3.8-flash
+  lab: alibaba
+  display_name: Qwen3.8-Flash
+  api_model_id: qwen3.8-flash
+  role: Flash économique
+  pricing:
+    input_per_1m: 0.15
+    output_per_1m: 0.47
+- id: muse-spark-1.3
+  lab: meta
+  display_name: Muse Spark 1.3
+  api_model_id: muse-spark-1.3
+  context_window: 1000000
+  role: Flagship
+  pricing:
+    input_per_1m: 1.25
+    input_cached_per_1m: 0.15
+    output_per_1m: 4.25
+  tier_note: 'Variante `muse-spark-1.3-contributor` à 0,10 / 0,002 / 0,20 : les échanges y servent à améliorer
+    le produit.'
+- id: glm-5.3-flashx
+  lab: zhipu
+  display_name: GLM-5.3-FlashX
+  api_model_id: glm-5.3-flashx
+  pricing:
+    input_per_1m: 0.37
+    output_per_1m: 1.25
 no_public_price:
-
-  - reason: >-
-      Identifiant de passerelle : le préfixe désigne le revendeur qui sert le
-      modèle, pas le laboratoire. Le tarif applicable est celui de la passerelle,
-      relevé en couche 2 — pas celui de l'éditeur.
-    models: [zai-org/glm-4.7, fireworks/kimi-k2p5, deepseek/deepseek-v3.2]
-
-  - reason: >-
-      Modèle diffusé en poids ouverts : le laboratoire ne facture pas d'API pour
-      lui. Le coût dépend entièrement de l'hébergeur qui le sert, et se relève
-      donc chez lui.
-    models: [qwen3.5-122b-a10b_none, qwen3.5-35b-a3b, qwen3.5-397b-a17b,
-             qwen3.5-9B, qwen3.6-27b, qwen3.6-35b-a3b, qwen3.8-27b,
-             gemma-4-26b-a4b, gemma-4-26b-a4b-it, gemma-4-31b-it]
-
-  - reason: >-
-      Version de pré-lancement ou d'évaluation, jamais commercialisée : elle a
-      été mesurée par une source indépendante mais n'a pas de grille tarifaire.
-    models: [gpt-5.5-pre-release, gpt-5.5-pro-pre-release,
-             gemini-3-deep-think-preview]
-
-  - reason: >-
-      Génération retirée de la grille officielle du laboratoire au 15/09/2026.
-      Le score reste publiable — il a été mesuré — mais le tarif ne l'est plus :
-      le modèle n'est plus vendu à ce prix, ni à aucun autre.
-    models: [gpt-5.1-codex, gpt-5.2-codex, gpt-5.5-instant,
-             claude-opus-4-5-20251101, gemini-3-pro-preview,
-             gemini-3-flash-preview, DeepSeek-V3.1-Terminus,
-             DeepSeek-V3.2-Exp_thinking, deepseek-chat,
-             deepseek-reasoner, deepseek-v4-flash, deepseek-v4-flash-0731,
-             kimi-k2-thinking, kimi-k2-thinking-turbo, kimi-k2.5, grok-4-1,
-             grok-4-20, grok-4-fast, muse-spark, muse-spark-1.1, muse-spark-1.2]
-
-  - reason: >-
-      Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle
-      reste appelable un temps mais a quitté la grille tarifaire.
-    models: [magistral-medium-2509, magistral-small-2509, devstral-small-2512]
+- reason: 'Identifiant de passerelle : le préfixe désigne le revendeur qui sert le modèle, pas le laboratoire.
+    Le tarif applicable est celui de la passerelle, relevé en couche 2 — pas celui de l''éditeur.'
+  models:
+  - fireworks/kimi-k2p5
+  - deepseek/deepseek-v3.2
+- reason: 'Modèle diffusé en poids ouverts : le laboratoire ne facture pas d''API pour lui. Le coût dépend
+    entièrement de l''hébergeur qui le sert, et se relève donc chez lui.'
+  models:
+  - qwen3.5-122b-a10b_none
+  - qwen3.5-35b-a3b
+  - qwen3.5-397b-a17b
+  - qwen3.5-9B
+  - qwen3.6-27b
+  - qwen3.6-35b-a3b
+  - qwen3.8-27b
+  - gemma-4-26b-a4b
+  - gemma-4-26b-a4b-it
+  - gemma-4-31b-it
+- reason: 'Version de pré-lancement ou d''évaluation, jamais commercialisée : elle a été mesurée par une
+    source indépendante mais n''a pas de grille tarifaire.'
+  models:
+  - gpt-5.5-pre-release
+  - gpt-5.5-pro-pre-release
+  - gemini-3-deep-think-preview
+- reason: 'Génération retirée de la grille officielle du laboratoire au 15/09/2026. Le score reste publiable
+    — il a été mesuré — mais le tarif ne l''est plus : le modèle n''est plus vendu à ce prix, ni à aucun
+    autre.'
+  models:
+  - gpt-5.5-instant
+  - gemini-3-pro-preview
+  - gemini-3-flash-preview
+  - DeepSeek-V3.2-Exp_thinking
+  - deepseek-chat
+  - deepseek-reasoner
+  - deepseek-v4-flash
+  - deepseek-v4-flash-0731
+  - kimi-k2-thinking-turbo
+  - kimi-k2.5
+  - grok-4-20
+  - muse-spark
+  - muse-spark-1.1
+  - muse-spark-1.2
+- reason: 'Marqué explicitement DÉPRÉCIÉ dans la documentation Mistral : le modèle reste appelable un
+    temps mais a quitté la grille tarifaire.'
+  models:
+  - devstral-small-2512
+- reason: 'Retiré de la grille officielle du fournisseur au 24/09/2026. Les scores restent publiables
+    — ils ont été mesurés — mais plus aucun tarif ne s''applique : le modèle n''est plus vendu. OpenAI
+    a sorti toute la gamme GPT-5.x de sa page le même jour, MiniMax ses M2 antérieurs à la 2.7.'
+  models:
+  - gpt-5.5
+  - gpt-5.5-pro
+  - gpt-5.1-2025-11-13
+  - gpt-5.2-2025-12-11
+  - gpt-5.2-pro-2025-12-11
+  - gpt-5.4-2026-03-05
+  - gpt-5.4-mini-2026-03-17
+  - gpt-5.4-nano-2026-03-17
+  - gpt-5.4-pro-2026-03-05
+  - gpt-5-pro-2025-10-06
+  - MiniMax-M2.5

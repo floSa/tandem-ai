@@ -41,6 +41,8 @@ SOURCES = {
                   "Les identifiants versionnés viennent de docs.mistral.ai/models/overview."),
     "minimax":   ("https://platform.minimax.io/docs/guides/pricing-paygo", "official_pricing_page",
                   "platform.minimax.io/docs/price est en 404 : la grille est sous /docs/guides/."),
+    "meta":      ("https://dev.meta.ai/models/muse-spark/", "official_pricing_page",
+                  "developer.meta.com/ai/models/muse-spark redirige (302) vers dev.meta.ai."),
     "xai":       ("https://docs.x.ai/docs/models", "official_pricing_page",
                   "Grille à deux paliers : au-delà de 200k tokens de contexte, le tarif double."),
 }
@@ -128,6 +130,16 @@ def main() -> int:
         return 1
     updated = added = skipped = 0
 
+    # `pricing_verified.yaml` est la source de vérité : ce qui n'y figure plus ne
+    # doit plus figurer au catalogue. Sans cette remise à zéro, un tarif retiré de
+    # la saisie — modèle sorti de la grille du fournisseur — survivait indéfiniment
+    # dans models.yaml, et sa reclassification en `no_public_price` échouait.
+    vide = {"currency": "USD", "source": {
+        "url": None, "verified_on": None, "status": "unverified",
+        "note": "À renseigner depuis la page /pricing officielle du lab."}}
+    for m in models:
+        m["pricing"] = dict(vide, source=dict(vide["source"]))
+
     for v in vp.get("models", []):
         lab = v["lab"]
         if lab not in SOURCES:
@@ -182,6 +194,20 @@ def main() -> int:
                 "pricing": p,
             })
             added += 1
+
+    # Un modèle entré au catalogue parce qu'il était vendu, jamais mesuré par une
+    # source indépendante, et aujourd'hui retiré de la grille de son fournisseur,
+    # n'a plus de raison d'y figurer : il ne porte ni prix ni score. Le garder
+    # laisserait une ligne vide que rien ne pourra jamais remplir.
+    orphelins = [m for m in models
+                 if (m.get("pricing") or {}).get("input_per_1m") is None
+                 and not m.get("benchmark_records")
+                 and not m.get("epoch_model_versions")]
+    if orphelins:
+        ids = {m["id"] for m in orphelins}
+        models[:] = [m for m in models if m["id"] not in ids]
+        print(f"  {len(ids)} modèles retirés : plus vendus, jamais mesurés "
+              f"({', '.join(sorted(ids)[:5])}{'…' if len(ids) > 5 else ''})")
 
     excluded = mark_no_public_price(models, vp.get("no_public_price") or [])
     propagated = propagate_variants(models)

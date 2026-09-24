@@ -41,8 +41,9 @@ GOTCHAS = {
                "nettement moins chère. Beaucoup de modèles sont à paliers de contexte.",
     "minimax": "platform.minimax.io/docs/price renvoie 404 : la grille est sous "
                "/docs/guides/pricing-paygo.",
-    "meta": "llama.developer.meta.com redirige (302) vers ai.developer.meta.com, qui renvoie "
-            "404. La grille vit sur developer.meta.com/ai/models/muse-spark/.",
+    "meta": "La grille vit sur dev.meta.ai/models/muse-spark/. Les deux anciennes adresses "
+            "y mènent par redirections successives : llama.developer.meta.com → "
+            "ai.developer.meta.com (404), et developer.meta.com/ai/models/muse-spark → dev.meta.ai.",
     "xai": "docs.x.ai/docs/models porte la grille. x.ai/grok renvoie 403 : les paliers "
            "d'abonnement SuperGrok n'ont pas pu être relevés.",
 }

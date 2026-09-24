@@ -19,14 +19,8 @@ vat:
 freshness:
   warn_after_days: 90
   stale_after_days: 180
-  # Un benchmark dont le modèle mesuré le plus récent a plus de N jours de retard
-  # sur le plus récent du catalogue est « en sommeil » : il ne compare plus l'offre
-  # actuelle. Le contrôle est par benchmark — un benchmark vivant ne masque plus
-  # un benchmark figé.
   benchmark_dormant_after_days: 90
 scope:
-  # Fenêtre glissante : un modèle publié il y a plus de N mois est obsolète. Ses
-  # scores ne sont plus ingérés et il sort du catalogue.
   model_window_months: 12
 provenance_ranking:
 - independent_run

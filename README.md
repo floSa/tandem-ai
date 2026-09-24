@@ -4,7 +4,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![PyYAML](https://img.shields.io/badge/PyYAML-6.0.1-CB171E?logo=yaml&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-51-1BAF7A)
+![Tests](https://img.shields.io/badge/tests-55-1BAF7A)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 ![Licence](https://img.shields.io/badge/licence-MIT-4A3AA7)
 
@@ -139,17 +139,17 @@ resterait à faire — le plan de travail s'en charge.
 
 | Couche | Couverture | Source |
 |---|---|---|
-| Benchmarks | 832 mesures, 16 classements, modèles des 12 derniers mois | Epoch AI (jeu daté) + tbench.ai pour Terminal-Bench 4.0 |
-| dont coût réellement mesuré | 264 mesures | même source, colonne de coût d'exécution |
-| dont effort de raisonnement connu | 517 mesures | même source, colonne de protocole |
-| Modèles | 160, 11 fournisseurs | identités issues des mesures, jamais inventées |
-| Tarifs API | 65 tarifs relevés, couvrant 109 modèles · 51 sans tarif éditeur | page tarifaire officielle de chaque fournisseur |
+| Benchmarks | 815 mesures, 16 classements, modèles des 12 derniers mois | Epoch AI (jeu daté) + tbench.ai pour Terminal-Bench 4.0 |
+| dont coût réellement mesuré | 249 mesures | même source, colonne de coût d'exécution |
+| dont effort de raisonnement connu | 516 mesures | même source, colonne de protocole |
+| Modèles | 149, 11 fournisseurs | identités issues des mesures, jamais inventées |
+| Tarifs API | 67 tarifs relevés, couvrant 96 modèles · 54 sans tarif éditeur | page tarifaire officielle de chaque fournisseur |
 | Forfaits d'abonnement | 29 paliers, 9 éditeurs | page tarifaire officielle |
-| Harnais et passerelles | 30 fiches, toutes contrôlées | documentation ou tarifs de l'éditeur |
+| Harnais et passerelles | 33 fiches, dont 31 vivantes publiées | documentation ou tarifs de l'éditeur |
 | Balayage des fournisseurs | 11 sur 11 | recherche outil par outil, y compris les absences |
 | Taux de change | 1 EUR = 1,1539 USD | taux de référence BCE du 15/09/2026 |
 
-**« Sans tarif éditeur » n'est pas un trou.** 51 modèles n'auront jamais de ligne
+**« Sans tarif éditeur » n'est pas un trou.** 54 modèles n'auront jamais de ligne
 tarifaire : poids ouverts facturés par l'hébergeur qui les sert, générations retirées de
 la grille, identifiants de passerelle, pré-versions jamais commercialisées. Chacun porte
 son motif dans [catalog/pricing_verified.yaml](catalog/pricing_verified.yaml). Les
